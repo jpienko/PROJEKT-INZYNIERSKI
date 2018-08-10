@@ -1,14 +1,29 @@
-<ion-header>
-  <ion-navbar>
+
+  <ion-header >
+  <ion-navbar color="header">
     <ion-title>
       BabyWhisperer - zadbaj o swojego maluszka
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+
+
+<ion-content padding="true" align="center" class="colors">
+<p>
+  <button ion-button round icon-end color="buttons" (click) = "goToDaybook()">
+   Dzienniki
+    <ion-icon name="filing"></ion-icon>
+  </button>
+</p>
+
+  <button ion-button round icon-end color="buttons">
+    Harmonogramy
+     <ion-icon name="calendar"></ion-icon>
+   </button>
+
 </ion-content>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+

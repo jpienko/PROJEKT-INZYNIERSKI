@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -8,7 +9,14 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
 
   constructor(public navCtrl: NavController) {
-
+    
   }
-
+  ionViewDidLoad() {
+  
+  }
+  
+  
+  goToDaybook(){
+    this.navCtrl.push('DaybookPage');
+  }
 }
