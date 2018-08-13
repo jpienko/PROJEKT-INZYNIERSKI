@@ -1,0 +1,3 @@
+json sever : https://github.com/blackstile/ionic-json-server-example/blob/master/src/providers/rest/rest.ts
+
+ionic lab : emulated on devvices
