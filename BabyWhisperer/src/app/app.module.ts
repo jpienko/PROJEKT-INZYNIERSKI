@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HeaderColor } from '../../node_modules/@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
+import {File} from '@ionic-native/file';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,7 +21,8 @@ import { SQLite} from '@ionic-native/sqlite';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +34,8 @@ import { SQLite} from '@ionic-native/sqlite';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HeaderColor,
-    SQLite
+    SQLite,
+    File
   ]
 })
-export class AppModule {}
+export class AppModule {} 

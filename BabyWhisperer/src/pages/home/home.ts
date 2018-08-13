@@ -14,9 +14,15 @@ export class HomePage {
   ionViewDidLoad() {
   
   }
-  
+  ngOnInit(){
+    //this.createDB();
+    
+
+  }
   
   goToDaybook(){
     this.navCtrl.push('DaybookPage');
   }
+
+
 }
