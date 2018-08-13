@@ -9,10 +9,29 @@
   
   
   <ion-content padding="true" align="center" class="colors">
-      <label style="color: beige; font-size: 20px">
-        Posiłki
-      </label>
+    
+     <form [formGroup]="meals" (ngSubmit)="saveForm()" style="width: 90%">
+        
+      <ion-item>
+        <ion-label>Godzina</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour"></ion-datetime>
+      </ion-item>
       
+      <ion-item>
+        <ion-label>Rodzaj</ion-label>
+        <ion-textarea  formControlName="type"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ilość</ion-label>
+        <ion-textarea  formControlName="amount"></ion-textarea>
+      </ion-item>
+
+
+      <button ion-button type="submit" block>Dodaj posiłek</button>
+      
+     </form>
+
     
   </ion-content>
   
