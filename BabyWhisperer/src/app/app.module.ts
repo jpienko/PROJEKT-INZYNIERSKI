@@ -10,8 +10,8 @@ import { HeaderColor } from '../../node_modules/@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
 import {File} from '@ionic-native/file';
 import { HttpClientModule } from '@angular/common/http';
-import { OtherDatabaseProvider } from '../providers/other-database/other-database';
-import { MealDatabaseProvider } from '../providers/meal-database/meal-database';
+import { MealDatabaseProvider } from '../providers/database/meal-database';
+import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
 
 
 
@@ -38,8 +38,8 @@ import { MealDatabaseProvider } from '../providers/meal-database/meal-database';
     HeaderColor,
     SQLite,
     File,
-    OtherDatabaseProvider,
-    MealDatabaseProvider
+    MealDatabaseProvider,
+    DoctorVisitsProvider
   ]
 })
 export class AppModule {} 

@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
-import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import {map } from 'rxjs/operators';
-import {Meals} from './meals';
-import { MealDatabaseProvider} from "./../../../providers/meal-database/meal-database";
+import { MealDatabaseProvider} from "./../../../providers/database/meal-database";
 
 @IonicPage()
 @Component({
@@ -13,11 +10,10 @@ import { MealDatabaseProvider} from "./../../../providers/meal-database/meal-dat
   templateUrl: 'meals-daybook.html',
 })
 export class MealsDaybookPage {
-   newMeal:Meals;
+  
   private meals : FormGroup;
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
-    private formBuilder: FormBuilder,private storage: Storage, private database:MealDatabaseProvider) {
-    
+              private formBuilder: FormBuilder, private database:MealDatabaseProvider) {
       this.meals = this.formBuilder.group({
       hour: ['', Validators.required],
       type: [''],
@@ -26,38 +22,26 @@ export class MealsDaybookPage {
   }
 
   ionViewDidLoad() {
-
   }
-
-
+  
   saveForm(){
-  // console.log(this.meals.value)
-    //this.storage.set('Test',this.meals.value);
-
-    // Or to get a key/value pair
-   //this.storage.get('Test').then((val) => {
-    //  console.log('New meal:', val);
-   // });
-    this.newMeal = this.meals.value;
-    this.database.CreateMeal("10:22","obiad","dużo").then((data)=>{
-      console.log(data);
+    this.database.CreateMeal(this.meals.controls.hour.value,this.meals.controls.type.value,
+                             this.meals.controls.amount.value)
+      .then((data)=>{
+        console.log(data);
       },(error)=>{
         console.log(error);
       })
-      this.database.GetAllMeals().then((data)=>{
-        console.log(data);
-        },(error)=>{
-          console.log(error);
+        this.database.GetAllMeals()
+        .then((data)=>{
+          console.log(data);
+        },(error)=>{console.log(error);
         })
+
+        this.navCtrl.push('HomePage');
+   }
+  GoBack(){
+    this.navCtrl.push('HomePage');
    }
     
-  
-  getLocalData() {
-    this.http
-      .get('../assets/mock/meals.json')
-      .pipe(map(data => data as Array<Meals>))
-      .subscribe(data => {
-        console.log(data);
-      }); 
-  }
 }

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
 import {SQLite, SQLiteObject} from '@ionic-native/sqlite'
 
 /*
@@ -10,7 +9,7 @@ import {SQLite, SQLiteObject} from '@ionic-native/sqlite'
   and Angular DI.
 */
 @Injectable()
-export class MealDatabaseProvider {
+export class DoctorVisitsProvider {
 public db:SQLiteObject;
 
 private isopen:boolean;
@@ -18,7 +17,7 @@ private isopen:boolean;
     if(!this.isopen){
       this.storage = new SQLite();
       this.storage.create({name:"meals.db", location:"default"}).then((db:SQLiteObject)=>{
-        db.executeSql("CREATE TABLE IF NOT EXISTS meals(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, amount TEXT)",<any>{})
+        db.executeSql("CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, hour TEXT, where TEXT, doctor TEXT, purpose TEXT)",<any>{})
         this.db = db;
         this.isopen = true;
       }).catch((error)=> {
@@ -26,10 +25,10 @@ private isopen:boolean;
       })
     }
   }
-  CreateMeal(hour:string, type:string,amount:string){
+  CreateMeal(date:string, hour:string,where:string,doctor:string, purpose:string){
     return new Promise((resolve,reject)=>{
-      let sql = "INSERT INTO meals(hour,type, amount) VALUES (?,?,?)";
-      this.db.executeSql(sql,[hour,type,amount]).then((data)=>{
+      let sql = "INSERT INTO visits(date,hour,where,doctor,purpose) VALUES (?,?,?,?,?)";
+      this.db.executeSql(sql,[date,hour,where,doctor,purpose]).then((data)=>{
         resolve(data);
       },(error)=> {
         reject(error);
@@ -39,20 +38,22 @@ private isopen:boolean;
   }
   GetAllMeals(){
     return new Promise((resolve, reject)=>{
-      this.db.executeSql("SELECT * FROM meals",[]).then((data)=>{
-        let arrayMeals = [];
+      this.db.executeSql("SELECT * FROM visits",[]).then((data)=>{
+        let arrayVisits = [];
         if (data.rows.length>0){
           for(var i  = 0; i<data.rows.length;i++)
           {
-            arrayMeals.push({
+            arrayVisits.push({
               id:data.rows.item(i).id,
+              date:data.rows.item(i).date,
               hour:data.rows.item(i).hour,
-              type:data.rows.item(i).type,
-              amount:data.rows.item(i).amount
+              where:data.rows.item(i).where,
+              doctor:data.rows.item(i).doctor,
+              purpose:data.rows.item(i).purpose
             });
           }
         }
-        resolve(arrayMeals);
+        resolve(arrayVisits);
       },(error)=> {
         reject(error);
       });
