@@ -23,6 +23,9 @@ export class HomePage {
   goToDaybook(){
     this.navCtrl.push('DaybookPage');
   }
+  goToSchedules(){
+    this.navCtrl.push('SchedulesPage');
+  }
 
 
 }

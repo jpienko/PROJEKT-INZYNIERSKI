@@ -38,10 +38,8 @@ export class MealsDaybookPage {
         },(error)=>{console.log(error);
         })
 
-        this.navCtrl.push('HomePage');
+        this.navCtrl.push('DaybookPage');
    }
-  GoBack(){
-    this.navCtrl.push('HomePage');
-   }
+  
     
 }

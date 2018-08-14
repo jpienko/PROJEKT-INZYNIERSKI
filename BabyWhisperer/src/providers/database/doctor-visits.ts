@@ -1,13 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {SQLite, SQLiteObject} from '@ionic-native/sqlite'
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite'
 
-/*
-  Generated class for the MealDatabaseProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DoctorVisitsProvider {
 public db:SQLiteObject;
@@ -25,6 +19,7 @@ private isopen:boolean;
       })
     }
   }
+  
   CreateMeal(date:string, hour:string,where:string,doctor:string, purpose:string){
     return new Promise((resolve,reject)=>{
       let sql = "INSERT INTO visits(date,hour,where,doctor,purpose) VALUES (?,?,?,?,?)";

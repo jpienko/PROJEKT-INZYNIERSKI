@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SchedulesPage page.
+ * Generated class for the VisitsSchedulePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,22 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-schedules',
-  templateUrl: 'schedules.html',
+  selector: 'page-visits-schedule',
+  templateUrl: 'visits-schedule.html',
 })
-export class SchedulesPage {
+export class VisitsSchedulePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SchedulesPage');
+    console.log('ionViewDidLoad VisitsSchedulePage');
   }
-  
-  goToMealsSchedule(){
-    this.navCtrl.push('MealsSchedulePage');
-  }
-  goToVisitSchedule(){
-    this.navCtrl.push('VisitsSchedulePage');
-  }
+
 }

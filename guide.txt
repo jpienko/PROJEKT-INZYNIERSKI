@@ -5,4 +5,4 @@ C:\Users\jpienko\AppData\Local\Android\Sdk\platform-tools> adb.exe connect 10.10
 
 chrome://inspect/#devices
 
-ionic cordova run [<platform>] -l
+ionic cordova run android -l
