@@ -4,7 +4,8 @@ import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import {map } from 'rxjs/operators';
-import {Meals} from './meals'
+import {Meals} from './meals';
+import { MealDatabaseProvider} from "./../../../providers/meal-database/meal-database";
 
 @IonicPage()
 @Component({
@@ -12,10 +13,12 @@ import {Meals} from './meals'
   templateUrl: 'meals-daybook.html',
 })
 export class MealsDaybookPage {
-   meals2: Array<Meals>;
+   newMeal:Meals;
   private meals : FormGroup;
-  constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, private formBuilder: FormBuilder,private storage: Storage) {
-    this.meals = this.formBuilder.group({
+  constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
+    private formBuilder: FormBuilder,private storage: Storage, private database:MealDatabaseProvider) {
+    
+      this.meals = this.formBuilder.group({
       hour: ['', Validators.required],
       type: [''],
       amount: [''],
@@ -28,30 +31,33 @@ export class MealsDaybookPage {
 
 
   saveForm(){
-    console.log(this.meals.value)
-    console.log('abc')
-    this.storage.set('Test',this.meals.value);
+  // console.log(this.meals.value)
+    //this.storage.set('Test',this.meals.value);
 
     // Or to get a key/value pair
-    this.storage.get('Test').then((val) => {
-      console.log('New meal:', val);
-    });
-    this.getLocalData();
-    this.pushLocalFile();
-    this.getLocalData();
-  }
+   //this.storage.get('Test').then((val) => {
+    //  console.log('New meal:', val);
+   // });
+    this.newMeal = this.meals.value;
+    this.database.CreateMeal("10:22","obiad","dużo").then((data)=>{
+      console.log(data);
+      },(error)=>{
+        console.log(error);
+      })
+      this.database.GetAllMeals().then((data)=>{
+        console.log(data);
+        },(error)=>{
+          console.log(error);
+        })
+   }
+    
+  
   getLocalData() {
     this.http
       .get('../assets/mock/meals.json')
       .pipe(map(data => data as Array<Meals>))
       .subscribe(data => {
         console.log(data);
-        
       }); 
-  }
-
-  pushLocalFile(){
-    this.http
-    .post('../assets/mock/meals.json',{hour:"10:24", type:"kk", amount:"ll"});
   }
 }

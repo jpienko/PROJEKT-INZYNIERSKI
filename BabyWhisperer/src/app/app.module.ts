@@ -10,6 +10,8 @@ import { HeaderColor } from '../../node_modules/@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
 import {File} from '@ionic-native/file';
 import { HttpClientModule } from '@angular/common/http';
+import { OtherDatabaseProvider } from '../providers/other-database/other-database';
+import { MealDatabaseProvider } from '../providers/meal-database/meal-database';
 
 
 
@@ -35,7 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HeaderColor,
     SQLite,
-    File
+    File,
+    OtherDatabaseProvider,
+    MealDatabaseProvider
   ]
 })
 export class AppModule {} 
