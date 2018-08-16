@@ -5,7 +5,8 @@ import { MealScheduleProvider } from '../database/meals-schedule';
 @Injectable()
 export class MealProvider {
  
-  constructor(private dbProvider: MealScheduleProvider) { }
+  constructor(private dbProvider: MealScheduleProvider) { 
+  }
  
   public insert(meal: Meals) {
     return this.dbProvider.getDB()

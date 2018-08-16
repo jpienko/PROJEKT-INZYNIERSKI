@@ -8,12 +8,11 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HeaderColor } from '../../node_modules/@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
-import {File} from '@ionic-native/file';
 import { HttpClientModule } from '@angular/common/http';
 import { MealDatabaseProvider } from '../providers/database/meal-database';
 import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
-import { MealScheduleProvider } from '../providers/database/meals-schedule';
 import { MealProvider } from '../providers/database/meal-schedule-provider';
+import { MealScheduleProvider } from '../providers/database/meals-schedule';
 
 
 
@@ -40,11 +39,11 @@ import { MealProvider } from '../providers/database/meal-schedule-provider';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HeaderColor,
     SQLite,
-    File,
     MealDatabaseProvider,
     DoctorVisitsProvider,
-    MealScheduleProvider,
-    MealProvider
+    MealProvider,
+    MealScheduleProvider
+
   ]
 })
 export class AppModule {} 

@@ -19,7 +19,7 @@
       
       <ion-item>
         <ion-label>Rodzaj</ion-label>
-        <ion-select>
+        <ion-select formControlName="type" >
           <ion-option *ngFor="let c of types" [value]="c">
             {{c}}
           </ion-option>

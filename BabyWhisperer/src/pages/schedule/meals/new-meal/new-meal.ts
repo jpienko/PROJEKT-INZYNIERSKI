@@ -11,7 +11,7 @@ import {MealsTypes} from "./../../../../assets/enums/meals-types.enum"
   templateUrl: 'new-meal.html',
 })
 export class NewMealPage {
- private  meal:Meals;
+  model = new Meals;
   private meals : FormGroup;
   protected types: string[] = Object.keys(MealsTypes);
   
@@ -31,13 +31,18 @@ export class NewMealPage {
   
   
   saveForm(){
-    this.database.insert(this.meal)
+    this.model.hour = this.meals.controls.hour.value;
+    this.model.type = this.meals.controls.type.value;
+    this.model.description = this.meals.controls.description.value;
+    console.log(this.model);
+    
+    this.database.insert(this.model)
       .then((data)=>{
         console.log(data);
       },(error)=>{
         console.log(error);
       })
-        this.navCtrl.push('MealsSchedulePage');
+       // this.navCtrl.push('MealsSchedulePage');
    }
     
 }

@@ -17,11 +17,12 @@ export class MealsSchedulePage {
   }
 
   ionViewDidEnter() {
-    
     this.database.getAll().then((result: any[]) => {
       this.meals = result;
     });
     console.log('ionViewDidLoad MealsSchedulePage');
+    console.log(this.meals);
+    
   }
 
   loadSchedule(){
