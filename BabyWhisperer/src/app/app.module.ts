@@ -12,6 +12,9 @@ import {File} from '@ionic-native/file';
 import { HttpClientModule } from '@angular/common/http';
 import { MealDatabaseProvider } from '../providers/database/meal-database';
 import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
+import { MealScheduleProvider } from '../providers/database/meals-schedule';
+import { MealProvider } from '../providers/database/meal-schedule-provider';
+
 
 
 
@@ -39,7 +42,9 @@ import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
     SQLite,
     File,
     MealDatabaseProvider,
-    DoctorVisitsProvider
+    DoctorVisitsProvider,
+    MealScheduleProvider,
+    MealProvider
   ]
 })
 export class AppModule {} 

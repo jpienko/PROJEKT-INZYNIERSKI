@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="header">
+    <ion-title>Harmonogram posiłków</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="true" align="center" class="colors">
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item *ngFor="let meals of meals">
+        <h2>{{meals.hour}}</h2>
+        <h3>{{meals.type}} </h3>
+        <h4>{{meals.description}}</h4>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+  <button ion-button round icon-start color="buttons" (click) = "goToNewMeal()">
+    <ion-icon name="add"></ion-icon>
+    Dodaj posiłek
+  </button>
+  
+</ion-content>

@@ -2,25 +2,26 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { MealDatabaseProvider} from "./../../../providers/database/meal-database";
-import { MealsTypes } from "./../../../assets/enums/meals-types.enum"
+import { MealProvider,Meals} from "./../../../../providers/database/meal-schedule-provider";
+import {MealsTypes} from "./../../../../assets/enums/meals-types.enum"
 
 @IonicPage()
 @Component({
-  selector: 'page-meals-daybook',
-  templateUrl: 'meals-daybook.html',
+  selector: 'page-new-meal',
+  templateUrl: 'new-meal.html',
 })
-export class MealsDaybookPage {
-  
+export class NewMealPage {
+ private  meal:Meals;
   private meals : FormGroup;
   protected types: string[] = Object.keys(MealsTypes);
-
+  
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
-              private formBuilder: FormBuilder, private database:MealDatabaseProvider) {
+              private formBuilder: FormBuilder, private database:MealProvider) {
+                
       this.meals = this.formBuilder.group({
       hour: ['', Validators.required],
       type: [''],
-      amount: [''],
+      description: [''],
     });
   }
 
@@ -28,22 +29,15 @@ export class MealsDaybookPage {
     this.types = this.types.slice(this.types.length / 2);
   }
   
+  
   saveForm(){
-    this.database.CreateMeal(this.meals.controls.hour.value,this.meals.controls.type.value,
-                             this.meals.controls.amount.value)
+    this.database.insert(this.meal)
       .then((data)=>{
         console.log(data);
       },(error)=>{
         console.log(error);
       })
-        this.database.GetAllMeals()
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{console.log(error);
-        })
-
-        this.navCtrl.push('DaybookPage');
+        this.navCtrl.push('MealsSchedulePage');
    }
-  
     
 }

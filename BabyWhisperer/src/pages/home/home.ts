@@ -7,19 +7,9 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-    
-  }
-  ionViewDidLoad() {
   
-  }
-  ngOnInit(){
-    //this.createDB();
-    
-
-  }
-  
+  constructor(public navCtrl: NavController) {}
+ 
   goToDaybook(){
     this.navCtrl.push('DaybookPage');
   }
