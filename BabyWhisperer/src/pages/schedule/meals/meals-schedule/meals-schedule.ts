@@ -10,7 +10,7 @@ import { MealProvider, Meals } from '../../../../providers/database/meal-schedul
   templateUrl: 'meals-schedule.html',
 })
 export class MealsSchedulePage {
-
+  isEdited:boolean = false;
   meals: any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private database:MealProvider, private toast: ToastController) {
@@ -30,6 +30,9 @@ export class MealsSchedulePage {
 
   goToNewMeal(){
     this.navCtrl.push('NewMealPage');
+  }
+  editSchedule(){
+    this.isEdited = !this.isEdited;
   }
 
 }

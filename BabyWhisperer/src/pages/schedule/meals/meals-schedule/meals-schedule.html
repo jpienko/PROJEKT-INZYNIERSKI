@@ -2,9 +2,12 @@
 
   <ion-navbar color="header">
     <ion-title>Harmonogram posiłków</ion-title>
-    <button ion-button align='right'>
-Edytuj
-</button>
+    <ion-buttons end style="margin-right: 10px">
+    <button ion-button outline *ngIf="isEdited">Dodaj</button>
+    <button ion-button outline *ngIf="isEdited">Usuń</button>
+    <button ion-button outline *ngIf="!isEdited" (click)='editSchedule()'>Edytuj</button>
+    <button ion-button outline *ngIf="isEdited"(click)='editSchedule()'>Zakończ</button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
