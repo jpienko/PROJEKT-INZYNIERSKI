@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController  } from 'ionic-angular';
-import { MealProvider, Meals } from '../../../../providers/database/meal-schedule-provider';
+import { MealScheduleProvider, Meals } from '../../../../providers/database/meal-schedule-provider';
 
 
 
@@ -13,7 +13,7 @@ export class MealsSchedulePage {
   isEdited:boolean = false;
   meals: any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private database:MealProvider, private toast: ToastController) {
+              private database:MealScheduleProvider, private toast: ToastController) {
   }
 
   ionViewDidEnter() {
@@ -29,7 +29,10 @@ export class MealsSchedulePage {
   }
 
   goToNewMeal(){
-    this.navCtrl.push('NewMealPage');
+    let data = {
+      name: true
+    }
+    this.navCtrl.push('NewMealPage',data);
   }
   editSchedule(){
     this.isEdited = !this.isEdited;

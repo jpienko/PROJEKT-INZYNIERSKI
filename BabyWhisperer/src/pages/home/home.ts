@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {MealScheduleProvider} from '../../providers/database/meals-schedule'
+import { MealsDatabaseProvider } from '../../providers/database/meals-database'
 
 
 @Component({
@@ -9,7 +9,7 @@ import {MealScheduleProvider} from '../../providers/database/meals-schedule'
 })
 export class HomePage {
   
-  constructor(public navCtrl: NavController, private ms:MealScheduleProvider) {}
+  constructor(public navCtrl: NavController, private ms:MealsDatabaseProvider) {}
  
   ngOnInit(){
     this.ms.createDatabase();

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
-import { MealsDatabaseProvider } from './meals-database';
+import { MealsDatabaseProvider} from './meals-database';
+import { Meals } from './meal-schedule-provider'
 
 @Injectable()
-export class MealScheduleProvider {
+export class MealDaybookProvider {
  
   constructor(private dbProvider: MealsDatabaseProvider) { 
   }
@@ -11,7 +12,7 @@ export class MealScheduleProvider {
   public insert(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into schedule(hour, type, description) values (?, ?, ?)';
+        let sql = 'insert into meals(hour, type, description) values (?, ?, ?)';
         let data = [meal.hour, meal.type, meal.description];
  
         return db.executeSql(sql, data)
@@ -23,7 +24,7 @@ export class MealScheduleProvider {
   public update(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update schedule set hour = ?, type = ?, description = ? where id = ?';
+        let sql = 'update meals set hour = ?, type = ?, description = ? where id = ?';
         let data = [meal.hour, meal.type, meal.description, meal.id];
  
         return db.executeSql(sql, data)
@@ -35,7 +36,7 @@ export class MealScheduleProvider {
   public remove(id: number) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'delete from schedule where id = ?';
+        let sql = 'delete from meals where id = ?';
         let data = [id];
  
         return db.executeSql(sql, data)
@@ -47,7 +48,7 @@ export class MealScheduleProvider {
   public get(id: number) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'select * from schedule where id = ?';
+        let sql = 'select * from meals where id = ?';
         let data = [id];
  
         return db.executeSql(sql, data)
@@ -75,7 +76,7 @@ export class MealScheduleProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM schedule ORDER BY hour ASC",[])
+          db.executeSql("SELECT * FROM meals ORDER BY hour ASC",[])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -99,12 +100,4 @@ export class MealScheduleProvider {
     })
   }
   
-}
-
- 
-export class Meals{
-    id:number;
-    hour: string;
-    type:string;
-    description:string;
 }

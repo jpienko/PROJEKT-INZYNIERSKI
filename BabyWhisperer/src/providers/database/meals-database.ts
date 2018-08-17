@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import {SQLite, SQLiteObject} from '@ionic-native/sqlite'
 
 @Injectable()
-export class MealScheduleProvider {
+export class MealsDatabaseProvider {
 public db:SQLiteObject;
 
   constructor(public http: HttpClient, public storage:SQLite) {
@@ -27,7 +27,7 @@ public db:SQLiteObject;
   private createTables(db: SQLiteObject) {
     db.sqlBatch([
       ['CREATE TABLE IF NOT EXISTS schedule(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS meals (id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)']
+      ['CREATE TABLE IF NOT EXISTS meals(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)']
     ])
       .catch(e => console.error(e));
   }
