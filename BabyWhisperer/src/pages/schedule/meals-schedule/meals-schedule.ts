@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController  } from 'ionic-angular';
-import { MealScheduleProvider, Meals } from '../../../../providers/database/meal-schedule-provider';
+import { MealScheduleProvider, Meals } from '../../../providers/database/meal-schedule-provider';
 
 
 

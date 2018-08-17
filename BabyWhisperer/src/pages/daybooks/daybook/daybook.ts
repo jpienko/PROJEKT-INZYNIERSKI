@@ -17,9 +17,6 @@ export class DaybookPage {
   
   
   goToDaybookOfMeals(){
-    let data = {
-      name: false
-    }
-    this.navCtrl.push('NewMealPage',data);
+    this.navCtrl.push('MealDaybookPage');
   }
 }

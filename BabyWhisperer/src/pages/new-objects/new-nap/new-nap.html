@@ -2,7 +2,7 @@
 <ion-header>
 
     <ion-navbar color="header">
-      <ion-title>Dziennik posiłków</ion-title>
+      <ion-title>{{title}}</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -14,12 +14,12 @@
         
       <ion-item>
         <ion-label>Godzina</ion-label>
-        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour"></ion-datetime>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
       </ion-item>
       
       <ion-item>
         <ion-label>Rodzaj</ion-label>
-        <ion-select>
+        <ion-select formControlName="type" >
           <ion-option *ngFor="let c of types" [value]="c">
             {{c}}
           </ion-option>
@@ -27,14 +27,13 @@
       </ion-item>
 
       <ion-item>
-        <ion-label>Ilość</ion-label>
-        <ion-textarea  formControlName="amount"></ion-textarea>
+        <ion-label>Opis</ion-label>
+        <ion-textarea  formControlName="description"></ion-textarea>
       </ion-item>
 
 
-      <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>Dodaj posiłek</button>
+      <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
      </form>
 
     
   </ion-content>
-  

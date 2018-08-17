@@ -2,7 +2,7 @@
 <ion-header>
 
     <ion-navbar color="header">
-      <ion-title>Dodaj posiłek do harmonogramu</ion-title>
+      <ion-title>{{title}}</ion-title>
     </ion-navbar>
   
   </ion-header>
@@ -14,7 +14,7 @@
         
       <ion-item>
         <ion-label>Godzina</ion-label>
-        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" ></ion-datetime>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
       </ion-item>
       
       <ion-item>
@@ -32,7 +32,7 @@
       </ion-item>
 
 
-      <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>Dodaj posiłek</button>
+      <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="save"></ion-icon>{{buttonName}}</button>
      </form>
 
     

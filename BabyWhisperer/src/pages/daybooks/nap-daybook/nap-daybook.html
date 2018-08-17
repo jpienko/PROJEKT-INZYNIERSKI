@@ -1,0 +1,24 @@
+<ion-header>
+
+    <ion-navbar color="header">
+      <ion-title>Dziennik drzemek</ion-title>
+      <ion-buttons end style="margin-right: 10px">
+      <button ion-button outline (click) = "goToNewNap()">Dodaj</button>
+    </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding="true" align="center" class="colors">
+    <ion-list>
+        <ion-item  *ngFor="let nap of naps">
+          <h2>{{nap.hourStart}}</h2>
+          <h3>{{nap.hourStop}} </h3>
+          <h4>{{nap.time}}</h4>
+          <button ion-button icon-only item-end color="buttons" (click)='editNap(nap)'><ion-icon name='brush'></ion-icon> </button>     
+          <button ion-button icon-only item-end color="buttons" (click)='deleteNap(nap)'><ion-icon name='trash'></ion-icon> </button>     
+        </ion-item>
+    </ion-list>
+    
+  </ion-content>

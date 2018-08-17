@@ -6,11 +6,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { HeaderColor } from '../../node_modules/@ionic-native/header-color';
+import { HeaderColor } from '@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
 import { HttpClientModule } from '@angular/common/http';
 import { MealDaybookProvider } from '../providers/database/meal-daybook';
-import { MealsDatabaseProvider } from '../providers/database/meals-database';
+import { DatabaseProvider } from '../providers/database/database';
 import { MealScheduleProvider } from '../providers/database/meal-schedule-provider';
 
 
@@ -39,7 +39,7 @@ import { MealScheduleProvider } from '../providers/database/meal-schedule-provid
     HeaderColor,
     SQLite,
     MealDaybookProvider,
-    MealsDatabaseProvider,
+    DatabaseProvider,
     MealScheduleProvider
 
   ]
