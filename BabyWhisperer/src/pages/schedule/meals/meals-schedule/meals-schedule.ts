@@ -17,7 +17,7 @@ export class MealsSchedulePage {
   }
 
   ionViewDidEnter() {
-    this.database.getAll().then((result: any[]) => {
+    this.database.GetAllMeals().then((result: any[]) => {
       this.meals = result;
     });
     console.log('ionViewDidLoad MealsSchedulePage');
