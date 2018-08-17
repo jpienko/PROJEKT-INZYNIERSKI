@@ -69,35 +69,13 @@ export class MealProvider {
       .catch((e) => console.error(e));
   }
  
-  public getAll() {
-    return this.dbProvider.getDB()
-      .then((db: SQLiteObject) => {
-        let sql = 'SELECT * FROM schedule';
-        return db.executeSql(sql).then((data: any) => {
-            let meals: any[] = [];
-            if (data.rows.length > 0) {
-              for(var i=0;i<data.rows.length;i++){
-              let item = data.rows.item(i);
-              let meal = new Meals();
-              meal.id = item.id;
-              meal.hour = item.hour;
-              meal.type = item.type;
-              meal.description= item.description;
-              meals.push(meal);
-              }
-              return meals;
-            } else {
-              return [];
-            }
-          })          .catch((e) => console.error(e));
-      })      .catch((e) => console.error(e));
-  }
+
 
   public GetAllMeals(){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM schedule",[])
+          db.executeSql("SELECT * FROM schedule ORDER BY hour ASC",[])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){

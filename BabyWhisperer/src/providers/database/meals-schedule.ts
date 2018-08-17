@@ -27,7 +27,7 @@ public db:SQLiteObject;
   private createTables(db: SQLiteObject) {
     db.sqlBatch([
       ['CREATE TABLE IF NOT EXISTS schedule(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)'],
-     // ['CREATE TABLE IF NOT EXISTS mseals (id integer primary key AUTOINCREMENT NOT NULL, name TEXT, price REAL, duedate DATE, active integer, category_id integer, FOREIGN KEY(category_id) REFERENCES categories(id))']
+      ['CREATE TABLE IF NOT EXISTS meals (id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)']
     ])
       .catch(e => console.error(e));
   }

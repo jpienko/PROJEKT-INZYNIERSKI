@@ -35,4 +35,13 @@ export class MealsSchedulePage {
     this.isEdited = !this.isEdited;
   }
 
+  deleteMeal(meal:Meals){
+    console.log(meal);
+    this.database.remove(meal.id).then(() => {
+      var index = this.meals.indexOf(meal);
+      this.meals.splice(index, 1);
+      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+    })
+    
+  }
 }

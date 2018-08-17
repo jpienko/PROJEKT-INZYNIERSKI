@@ -42,7 +42,7 @@ export class NewMealPage {
       },(error)=>{
         console.log(error);
       })
-       // this.navCtrl.push('MealsSchedulePage');
+    this.meals.reset();
    }
     
 }
