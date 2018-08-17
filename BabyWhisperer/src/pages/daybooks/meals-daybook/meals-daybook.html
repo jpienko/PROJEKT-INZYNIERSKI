@@ -1,0 +1,40 @@
+
+<ion-header>
+
+    <ion-navbar color="header">
+      <ion-title>Dziennik posiłków</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding="true" align="center" class="colors">
+    
+     <form [formGroup]="meals" (ngSubmit)="saveForm()" style="width: 100%">
+        
+      <ion-item>
+        <ion-label>Godzina</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour"></ion-datetime>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Rodzaj</ion-label>
+        <ion-select>
+          <ion-option *ngFor="let c of types" [value]="c">
+            {{c}}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ilość</ion-label>
+        <ion-textarea  formControlName="amount"></ion-textarea>
+      </ion-item>
+
+
+      <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>Dodaj posiłek</button>
+     </form>
+
+    
+  </ion-content>
+  

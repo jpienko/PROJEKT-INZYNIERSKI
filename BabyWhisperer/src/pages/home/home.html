@@ -1,0 +1,29 @@
+
+  <ion-header >
+  <ion-navbar color="header">
+    <ion-title>
+      BabyWhisperer - zadbaj o swojego maluszka
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+
+<ion-content padding="true" align="center" class="colors">
+<p>
+  <button ion-button round icon-end color="buttons" (click) = "goToDaybook()">
+   Dzienniki
+    <ion-icon name="filing"></ion-icon>
+  </button>
+</p>
+
+  <button ion-button round icon-end color="buttons" (click) = "goToSchedules()">
+    Harmonogramy
+     <ion-icon name="calendar"></ion-icon>
+   </button>
+
+</ion-content>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
