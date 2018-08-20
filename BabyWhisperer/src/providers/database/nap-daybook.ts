@@ -79,7 +79,7 @@ export class NapDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM naps ORDER BY hourStop ASC",[])
+          db.executeSql("SELECT * FROM naps ORDER BY date DESC, hourStop ASC",[])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
@@ -103,5 +103,30 @@ export class NapDaybookProvider {
         });
     })
   }
-  
+  public GetAvrageNap(){
+    return new Promise((resolve,reject)=>{
+       this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT DISTINCT SUM(time) as sum, AVG(time) as avg ,date FROM naps GROUP BY date",[])
+          .then((data)=>{
+            let arrayNaps = [];
+            if (data.rows.length>0){
+              for(var i  = 0; i<data.rows.length;i++)
+              {
+                arrayNaps.push({
+                  date: data.rows.item(i).date,
+                  sum: data.rows.item(i).sum,
+                  avg: data.rows.item(i).avg,
+                });
+              }
+            }
+            resolve(arrayNaps)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
+    })
+  }
 }

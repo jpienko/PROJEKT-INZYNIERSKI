@@ -11,7 +11,12 @@
   <ion-content padding="true" align="center" class="colors">
     
      <form [formGroup]="naps" (ngSubmit)="saveNap()" style="width: 100%">
-        
+      
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+      </ion-item>
+
       <ion-item>
         <ion-label>Początek drzemki</ion-label>
         <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStart"></ion-datetime>

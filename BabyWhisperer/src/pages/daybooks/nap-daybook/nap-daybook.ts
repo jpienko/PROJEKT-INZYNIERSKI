@@ -56,8 +56,8 @@ export class NapDaybookPage {
   }
   public getTimeOfNap(time:number):string{
     let x = time.toString().split(".");
-    var hours = x[0];
-    var minutes = parseFloat("0."+x[1])*60;
+    var hours = x[0];    
+    var minutes = (parseFloat("0."+x[1])*60).toPrecision(2);
     return hours + " godzin " + minutes + " minut"
   } 
 

@@ -24,6 +24,7 @@ export class NewNapPage {
               private formBuilder: FormBuilder, private database:NapScheduleProvider, private database2:NapDaybookProvider) {
                 
       this.naps = this.formBuilder.group({
+      date:['', Validators.required],
       hourStart: ['', Validators.required],
       hourStop: ['']
     });
@@ -42,6 +43,7 @@ export class NewNapPage {
           this.editNaps = result;     
           this.naps.controls.hourStart.setValue(this.editNaps[0].hourStart);
           this.naps.controls.hourStop.setValue(this.editNaps[0].hourStop);    
+          this.naps.controls.date.setValue(this.editNaps[0].date);
         });    
       }
     }
@@ -53,7 +55,7 @@ export class NewNapPage {
     
     this.model.hourStart = this.naps.controls.hourStart.value;
     this.model.hourStop = this.naps.controls.hourStop.value;
-    this.model.date = new Date().toISOString();
+    this.model.date = this.naps.controls.date.value;
     this.model.time = this.getDiff(this.model.hourStart,this.model.hourStop);
     
     
@@ -95,13 +97,17 @@ export class NewNapPage {
 
     console.log(startNap);
     console.log(stopNap);
+
     if(stopNap[1]>startNap[1]){
       var mins = stopNap[1]-startNap[1];
       var hours = stopNap[0]-startNap[0];
     }else{
-      var mins = startNap[1]-stopNap[1]+60;
-      var hours = stopNap[1]-startNap[1]-1;
+      var mins = stopNap[1]-startNap[1]+60;
+      var hours = stopNap[0]-startNap[0]-1;
     }
+     console.log(mins);
+     console.log(hours);
+     
      
     return hours + (mins/60);
     
