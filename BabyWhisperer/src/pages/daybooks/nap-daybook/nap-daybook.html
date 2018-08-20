@@ -13,9 +13,9 @@
   <ion-content padding="true" align="center" class="colors">
     <ion-list>
         <ion-item  *ngFor="let nap of naps">
-          <h2>{{nap.hourStart}}</h2>
-          <h3>{{nap.hourStop}} </h3>
-          <h4>{{nap.time}}</h4>
+          <h2>Początek drzemki: {{nap.hourStart}}</h2>
+          <h2>Koniec drzemki: {{nap.hourStop}} </h2>
+          <h3>Czas trwania: {{nap.time}}</h3>
           <button ion-button icon-only item-end color="buttons" (click)='editNap(nap)'><ion-icon name='brush'></ion-icon> </button>     
           <button ion-button icon-only item-end color="buttons" (click)='deleteNap(nap)'><ion-icon name='trash'></ion-icon> </button>     
         </ion-item>

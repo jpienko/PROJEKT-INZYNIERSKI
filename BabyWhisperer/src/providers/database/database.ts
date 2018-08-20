@@ -17,6 +17,13 @@ public db:SQLiteObject;
     });
   }
 
+  public dropDB(){
+    return this.storage.deleteDatabase({
+      name: 'mealsDB.db',
+      location: 'default'
+    });
+  }
+
   public createDatabase() {
     return this.getDB()
       .then((db: SQLiteObject) => {
@@ -28,7 +35,7 @@ public db:SQLiteObject;
     db.sqlBatch([
       ['CREATE TABLE IF NOT EXISTS schedule(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)'],
       ['CREATE TABLE IF NOT EXISTS meals(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS naps(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, hourStart TEXT, hourStop TEXT, time number)']
+      ['CREATE TABLE IF NOT EXISTS naps(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, hourStart TEXT, hourStop TEXT, time number)'],
       ['CREATE TABLE IF NOT EXISTS napsSchedule(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, hourStart TEXT, hourStop TEXT, time number)']
     ])
       .catch(e => console.error(e));

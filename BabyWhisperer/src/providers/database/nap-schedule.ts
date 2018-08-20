@@ -83,10 +83,11 @@ export class NapScheduleProvider {
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayNaps.push({
-                  id:data.rows.item(i).id,
-                  hour:data.rows.item(i).hour,
-                  type:data.rows.item(i).type,
-                  description:data.rows.item(i).description
+                  date: data.rows.item(i).date,
+                  id: data.rows.item(i).id,
+                  hourStart: data.rows.item(i).hourStart,
+                  hourStop: data.rows.item(i).hourStop,
+                  time: data.rows.item(i).time
                 });
               }
             }

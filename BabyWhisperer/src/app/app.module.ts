@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MealDaybookProvider } from '../providers/database/meal-daybook';
 import { DatabaseProvider } from '../providers/database/database';
 import { MealScheduleProvider } from '../providers/database/meal-schedule-provider';
+import { NapDaybookProvider } from '../providers/database/nap-daybook';
+import { NapScheduleProvider } from '../providers/database/nap-schedule';
 
 
 
@@ -40,7 +42,9 @@ import { MealScheduleProvider } from '../providers/database/meal-schedule-provid
     SQLite,
     MealDaybookProvider,
     DatabaseProvider,
-    MealScheduleProvider
+    MealScheduleProvider,
+    NapDaybookProvider,
+    NapScheduleProvider
 
   ]
 })

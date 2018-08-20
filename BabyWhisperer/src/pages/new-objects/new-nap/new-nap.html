@@ -10,28 +10,18 @@
   
   <ion-content padding="true" align="center" class="colors">
     
-     <form [formGroup]="meals" (ngSubmit)="saveForm()" style="width: 100%">
+     <form [formGroup]="naps" (ngSubmit)="saveNap()" style="width: 100%">
         
       <ion-item>
-        <ion-label>Godzina</ion-label>
-        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
+        <ion-label>Początek drzemki</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStart"></ion-datetime>
       </ion-item>
       
       <ion-item>
-        <ion-label>Rodzaj</ion-label>
-        <ion-select formControlName="type" >
-          <ion-option *ngFor="let c of types" [value]="c">
-            {{c}}
-          </ion-option>
-        </ion-select>
+        <ion-label>Koniec drzemki</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStop"></ion-datetime>
       </ion-item>
-
-      <ion-item>
-        <ion-label>Opis</ion-label>
-        <ion-textarea  formControlName="description"></ion-textarea>
-      </ion-item>
-
-
+      
       <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
      </form>
 

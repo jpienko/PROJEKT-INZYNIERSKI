@@ -11,6 +11,7 @@ import { NapDaybookProvider } from '../../../providers/database/nap-daybook'
 export class NapDaybookPage {
   isEdited:boolean = false;
   naps: any[] = [];
+  time:string="";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider,
               public toast:ToastController) {
@@ -20,36 +21,44 @@ export class NapDaybookPage {
   ionViewDidEnter() {
     this.database.GetAllNaps().then((result: any[]) => {
       this.naps = result;
+      this.naps.forEach(element => {
+        element.time = this.getTimeOfNap(element.time);
+      });
     }); 
   }
 
-  goToNewNap(){
+  public goToNewNap(){
     let data = {
-      name: false
+      napsSchedule: false
     }
     this.navCtrl.push('NewNapPage', data);
   }
-  editDaybook(){
+  public editDaybook(){
     this.isEdited = !this.isEdited;
   }
 
-  editNap(nap){
+  public editNap(nap){
     let data = {
-      name: false,
-      edit:true,
+      napsSchedule: false,
+      editNap:true,
       napId: nap.id
     }
     this.navCtrl.push('NewNapPage', data);
   }
 
-  deleteMeal(nap:Naps){
+  public deleteNap(nap:Naps){
     console.log(nap);
     this.database.remove(nap.id).then(() => {
       var index = this.naps.indexOf(nap);
       this.naps.splice(index, 1);
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
     })
-    
   }
-}
+  public getTimeOfNap(time:number):string{
+    let x = time.toString().split(".");
+    var hours = x[0];
+    var minutes = parseFloat("0."+x[1])*60;
+    return hours + " godzin " + minutes + " minut"
+  } 
 
+}
