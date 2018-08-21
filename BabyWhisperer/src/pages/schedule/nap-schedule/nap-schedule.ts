@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DoctorVisitsProvider} from '../../../providers/database/doctor-visits'
 
 
 @IonicPage()
@@ -8,12 +9,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'nap-schedule.html',
 })
 export class NapSchedulePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+ visits: any[] =[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database:DoctorVisitsProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NapSchedulePage');
+  }
+  ionViewDidEnter(){
+    this.database.GetAllVisits().then((result: any[]) => {
+      this.visits = result;
+      console.log(this.visits);
+    }); 
   }
 
 }

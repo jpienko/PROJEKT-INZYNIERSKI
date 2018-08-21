@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the NewDoctorPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -14,8 +8,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'new-doctor.html',
 })
 export class NewDoctorPage {
+  private docs : FormGroup;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder) {
+    this.docs = this.formBuilder.group({
+      name: ['', Validators.required],
+      surname: [''],
+      specialisation: [''],
+      adress: [''],
+      tel: [''],
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    });
   }
 
   ionViewDidLoad() {

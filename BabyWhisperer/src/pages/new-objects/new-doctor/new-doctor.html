@@ -1,18 +1,41 @@
-<!--
-  Generated template for the NewDoctorPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>new-doctor</ion-title>
+    <ion-title>Dodaj lekarza</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <form [formGroup]="docs" (ngSubmit)="saveDoc()" style="width: 100%"> 
+    
+    <ion-item>
+      <ion-label>Imie</ion-label>
+      <ion-textarea  formControlName="name"></ion-textarea>
+    </ion-item>
+      
+    <ion-item>
+      <ion-label>Nazwisko</ion-label>
+      <ion-textarea  formControlName="surname"></ion-textarea>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>Specjalizacja</ion-label>
+      <ion-textarea  formControlName="specialisation"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Adres</ion-label>
+      <ion-textarea  formControlName="adress"></ion-textarea>
+    </ion-item>      
+    
+    <ion-item>
+      <ion-label>Telefon</ion-label>
+      <ion-textarea type="number"  formControlName="tel"></ion-textarea>
+    </ion-item>
+
+    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
+  </form>
 </ion-content>

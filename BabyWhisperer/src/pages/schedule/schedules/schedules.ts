@@ -25,7 +25,11 @@ export class SchedulesPage {
   goToMealsSchedule(){
     this.navCtrl.push('MealsSchedulePage');
   }
+  
   goToVisitSchedule(){
     this.navCtrl.push('VisitsSchedulePage');
+  }
+  goToNapsSchedule(){
+    this.navCtrl.push('NapSchedulePage');
   }
 }

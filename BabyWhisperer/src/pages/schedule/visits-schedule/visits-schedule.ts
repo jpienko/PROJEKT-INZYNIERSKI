@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
-import * as moment from 'moment';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import {DoctorVisitsProvider,Visits} from '../../../providers/database/doctor-visits';
 
 
@@ -13,7 +12,6 @@ export class VisitsSchedulePage {
   eventSource=[];
   viewTitle: string;
   selectedDay = new Date();
-  visit = new Visits;
   visits: any[] = [];
 
   calendar = {
@@ -23,7 +21,7 @@ export class VisitsSchedulePage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private modalCtrl: ModalController, private alertCtrl: AlertController,
+              private modalCtrl: ModalController,
               private database:DoctorVisitsProvider) {
     
   }
@@ -32,7 +30,7 @@ export class VisitsSchedulePage {
     console.log('ionViewDidLoad VisitsSchedulePage');
   } 
 
-  onViewDidEnter(){
+  ionViewDidEnter(){
     this.database.GetAllVisits().then((result: any[]) => {
       this.visits = result;
       console.log(this.visits);
@@ -44,16 +42,7 @@ export class VisitsSchedulePage {
     modal.onDidDismiss(data => {
       if (data) {
         let eventData = data;
- 
-        eventData.startTime = new Date(data.startTime);
-        eventData.endTime = new Date(data.endTime);
- 
-        let events = this.eventSource;
-        events.push(eventData);
-        this.eventSource = [];
-        setTimeout(() => {
-          this.eventSource = events;
-        });
+        this.database.insert(eventData);
       }
     });
   }

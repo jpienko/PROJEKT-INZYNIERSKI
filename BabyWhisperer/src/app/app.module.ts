@@ -19,6 +19,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
 import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
 import { CalendarComponent } from "ionic2-calendar/calendar";
 import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.service';
+import { DoctorsListProvider } from '../providers/database/doctors';
 
 
 
@@ -53,7 +54,8 @@ import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.ser
     NapScheduleProvider,
     DoctorVisitsProvider,
     CalendarComponent,
-    CalendarService
+    CalendarService,
+    DoctorsListProvider
 
   ]
 })

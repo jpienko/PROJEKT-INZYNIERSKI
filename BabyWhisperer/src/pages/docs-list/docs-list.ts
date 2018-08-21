@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the DocsListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DoctorsListProvider} from '../../providers/database/doctors';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'docs-list.html',
 })
 export class DocsListPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  docs:any[]=[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database:DoctorsListProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DocsListPage');
+  }
+  ionViewDidEnter(){
+    this.database.GetAllDocs().then((result:any[])=>{
+      this.docs = result;
+    })
   }
 
 }

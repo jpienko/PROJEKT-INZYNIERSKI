@@ -12,6 +12,7 @@ import { MealScheduleProvider, Meals } from '../../../providers/database/meal-sc
 export class MealsSchedulePage {
   isEdited:boolean = false;
   meals: any[] = [];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private database:MealScheduleProvider, private toast: ToastController) {
   }
