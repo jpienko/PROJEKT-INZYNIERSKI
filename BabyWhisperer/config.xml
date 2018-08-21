@@ -84,5 +84,6 @@
     <plugin name="cordova-plugin-headercolor" spec="^1.0.0" />
     <plugin name="cordova-plugin-file" spec="~6.0.1" />
     <allow-navigation href="http://10.10.2.11:8100" />
+    <plugin name="cordova-plugin-calendar" spec="^5.1.2" />
     <plugin name="cordova-sqlite-storage" spec="^2.3.3" />
 </widget>

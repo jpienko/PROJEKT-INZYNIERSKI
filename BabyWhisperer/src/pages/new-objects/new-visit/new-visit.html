@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-buttons start>
+          <button ion-button icon-only (click)="cancel()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>Dodaj wizytę</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="colors">
+    <ion-list>
+        <ion-item>
+          <ion-input type="text" placeholder="Cel" [(ngModel)]="event.title"></ion-input>
+        </ion-item>
+       
+        <ion-item>
+          <ion-label>Czas wizyty</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+        </ion-item>
+     
+        <ion-item>
+          <ion-label>Przypuszczalny koniec wizyty</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+        </ion-item>
+    
+      </ion-list>
+     
+      <button ion-button full icon-left (click)="save()">
+        <ion-icon name="checkmark"></ion-icon> Dodaj wizytę
+      </button>
+</ion-content>

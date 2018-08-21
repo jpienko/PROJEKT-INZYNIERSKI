@@ -36,7 +36,9 @@ public db:SQLiteObject;
       ['CREATE TABLE IF NOT EXISTS schedule(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)'],
       ['CREATE TABLE IF NOT EXISTS meals(id INTEGER PRIMARY KEY AUTOINCREMENT, hour TEXT, type TEXT, description TEXT)'],
       ['CREATE TABLE IF NOT EXISTS naps(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, hourStart TEXT, hourStop TEXT, time number)'],
-      ['CREATE TABLE IF NOT EXISTS napsSchedule(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, hourStart TEXT, hourStop TEXT, time number)']
+      ['CREATE TABLE IF NOT EXISTS napsSchedule(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, hourStart TEXT, hourStop TEXT, time number)'],
+      ['CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, startTime TEXT, endTime TEXT, allDay TEXT, place TEXT)']
+
     ])
       .catch(e => console.error(e));
   }

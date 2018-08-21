@@ -1,58 +1,117 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite'
+import { SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from './database';
 
 @Injectable()
 export class DoctorVisitsProvider {
-public db:SQLiteObject;
-
-private isopen:boolean;
-  constructor(public http: HttpClient, public storage:SQLite) {
-    if(!this.isopen){
-      this.storage = new SQLite();
-      this.storage.create({name:"meals.db", location:"default"}).then((db:SQLiteObject)=>{
-        db.executeSql("CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, hour TEXT, where TEXT, doctor TEXT, purpose TEXT)",<any>{})
-        this.db = db;
-        this.isopen = true;
-      }).catch((error)=> {
-        console.log(error);
-      })
-    }
-  }
   
-  CreateMeal(date:string, hour:string,where:string,doctor:string, purpose:string){
-    return new Promise((resolve,reject)=>{
-      let sql = "INSERT INTO visits(date,hour,where,doctor,purpose) VALUES (?,?,?,?,?)";
-      this.db.executeSql(sql,[date,hour,where,doctor,purpose]).then((data)=>{
-        resolve(data);
-      },(error)=> {
-        reject(error);
-      });
-
-    });
+  constructor(private dbProvider: DatabaseProvider) { 
   }
-  GetAllMeals(){
-    return new Promise((resolve, reject)=>{
-      this.db.executeSql("SELECT * FROM visits",[]).then((data)=>{
-        let arrayVisits = [];
-        if (data.rows.length>0){
-          for(var i  = 0; i<data.rows.length;i++)
-          {
-            arrayVisits.push({
-              id:data.rows.item(i).id,
-              date:data.rows.item(i).date,
-              hour:data.rows.item(i).hour,
-              where:data.rows.item(i).where,
-              doctor:data.rows.item(i).doctor,
-              purpose:data.rows.item(i).purpose
-            });
-          }
-        }
-        resolve(arrayVisits);
-      },(error)=> {
-        reject(error);
-      });
+ 
+  public insert(visits: Visits) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'insert into visits(title,startTime, endTime, allDay, place) values (?, ?, ?, ?, ?)';
+        let data = [visits.title, visits.startTime, visits.endTime, visits.allDay, visits.place];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+ 
+  public update(visits: Visits) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'update visits set title = ?, startTime = ?, endTime = ?, allDay = ?, place = ? where id = ?';
+        let data = [visits.title, visits.startTime, visits.endTime, visits.allDay, visits.place, visits.id];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+ 
+  public remove(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'delete from visits where id = ?';
+        let data = [id];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+ 
+  public get(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'select * from visits where id = ?';
+        let data = [id];
+ 
+        return db.executeSql(sql, data)
+          .then((data: any) => {
+            if (data.rows.length > 0) {
+              let item = data.rows.item(0);
+              let naps = new Visits();
+              naps.title = item.title;
+              naps.id = item.id;
+              naps.startTime = item.startTime;
+              naps.endTime = item.stop;
+              naps.allDay= item.allDay;
+              naps.place= item.place;
+
+              return naps;
+            }
+ 
+            return null;
+          })
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+ 
+
+
+  public GetAllVisits(){
+    return new Promise((resolve,reject)=>{
+       this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT * FROM visits",[])
+          .then((data)=>{
+            let arrayNaps = [];
+            if (data.rows.length>0){
+              for(var i  = 0; i<data.rows.length;i++)
+              {
+                arrayNaps.push({
+                  title: data.rows.item(i).title,
+                  id: data.rows.item(i).id,
+                  startTime: data.rows.item(i).startTime,
+                  endTime: data.rows.item(i).endTime,
+                  allDay: data.rows.item(i).allDay,
+                  place: data.rows.item(i).place,
+                });
+              }
+            }
+            resolve(arrayNaps)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
     })
   }
+  
 }
+
  
+export class Visits{
+    id:number;
+    title:string;
+    startTime: string;
+    endTime:string;
+    allDay:boolean;
+    place: string;s
+}

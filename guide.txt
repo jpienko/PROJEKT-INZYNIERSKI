@@ -1,11 +1,10 @@
-json sever : https://github.com/blackstile/ionic-json-server-example/blob/master/src/providers/rest/rest.ts
-
 ionic lab : emulated on devvices
-C:\Users\jpienko\AppData\Local\Android\Sdk\platform-tools> adb.exe connect 10.10.2.4ip
+to use different emulator: C:\Users\jpienko\AppData\Local\Android\Sdk\platform-tools> adb.exe connect 10.10.2.4 - ip
 
-chrome://inspect/#devices
+logger: chrome://inspect/#devices
 
-ionic cordova run android -l
+auto refresh while emulated on android device: ionic cordova run android -l
 
+plugins to install: 
 $ ionic cordova plugin add cordova-sqlite-storage
 $ npm install --save @ionic-native/sqlite

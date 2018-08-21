@@ -14,7 +14,11 @@ import { DatabaseProvider } from '../providers/database/database';
 import { MealScheduleProvider } from '../providers/database/meal-schedule-provider';
 import { NapDaybookProvider } from '../providers/database/nap-daybook';
 import { NapScheduleProvider } from '../providers/database/nap-schedule';
-
+import { Calendar } from '@ionic-native/calendar'
+import { NgCalendarModule  } from 'ionic2-calendar';
+import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
+import { CalendarComponent } from "ionic2-calendar/calendar";
+import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.service';
 
 
 
@@ -27,7 +31,8 @@ import { NapScheduleProvider } from '../providers/database/nap-schedule';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgCalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +49,11 @@ import { NapScheduleProvider } from '../providers/database/nap-schedule';
     DatabaseProvider,
     MealScheduleProvider,
     NapDaybookProvider,
-    NapScheduleProvider
+    Calendar,
+    NapScheduleProvider,
+    DoctorVisitsProvider,
+    CalendarComponent,
+    CalendarService
 
   ]
 })

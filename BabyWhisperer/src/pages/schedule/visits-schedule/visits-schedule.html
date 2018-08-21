@@ -1,13 +1,44 @@
-
 <ion-header>
-
   <ion-navbar color="header">
     <ion-title>Harmonogram wizyt lekarskich</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="addEvent()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+          <button ion-button  (click)="getEvents()">
+            Load
+          </button>
+        </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding class="colors">
+  <h2 align= "center">
+      {{ viewTitle }}
+  </h2>
+    <calendar [eventSource]="eventSource"
+    [monthviewEventDetailTemplate]="template"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)"
+    step="30"
+    class="calendar">
+  </calendar>
 
+  <ion-list>
+      <ion-item  *ngFor="let visit of visits">
+        <h2>Początek drzemki: {{visit.title}}</h2>
+        <h2>Koniec drzemki: {{visit.startTime}} </h2>
+        <h3>Czas trwania: {{visit.endTime}}</h3>
+        <button ion-button icon-only item-end color="buttons" (click)='editNap(visit)'><ion-icon name='brush'></ion-icon> </button>     
+        <button ion-button icon-only item-end color="buttons" (click)='deleteNap(visit)'><ion-icon name='trash'></ion-icon> </button>     
+      </ion-item>
+  </ion-list>
 </ion-content>
+
+<ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+</ng-template>
