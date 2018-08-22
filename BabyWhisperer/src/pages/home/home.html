@@ -11,18 +11,30 @@
 
 
 <ion-content padding="true" align="center" class="colors">
-<p>
-  <button ion-button round icon-end color="buttons" (click) = "goToDaybook()">
-   Dzienniki
-    <ion-icon name="filing"></ion-icon>
-  </button>
-</p>
+  <p>
+    <button ion-button round icon-end color="buttons" (click) = "goToDaybook()">
+      Dzienniki
+      <ion-icon name="filing"></ion-icon>
+    </button>
+  </p>
 
   <button ion-button round icon-end color="buttons" (click) = "goToSchedules()">
     Harmonogramy
-     <ion-icon name="calendar"></ion-icon>
-   </button>
+    <ion-icon name="calendar"></ion-icon>
+  </button>
 
+  <p>
+    <button ion-button round icon-end color="buttons" (click) = "goToStats()">
+      Statystyki
+      <ion-icon name="stats"></ion-icon>
+    </button>
+  </p>
+
+  <button ion-button round icon-end color="buttons" (click) = "goToDocsList()">
+    Lista zaufanych lekarzy
+    <ion-icon name="list"></ion-icon>
+  </button>
+   
 </ion-content>
 
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

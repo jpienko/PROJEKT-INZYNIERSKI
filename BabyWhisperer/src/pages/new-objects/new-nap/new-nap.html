@@ -1,0 +1,34 @@
+
+<ion-header>
+
+    <ion-navbar color="header">
+      <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding="true" align="center" class="colors">
+    
+     <form [formGroup]="naps" (ngSubmit)="saveNap()" style="width: 100%">
+      
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Początek drzemki</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStart"></ion-datetime>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Koniec drzemki</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStop"></ion-datetime>
+      </ion-item>
+      
+      <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
+     </form>
+
+    
+  </ion-content>

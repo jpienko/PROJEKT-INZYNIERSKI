@@ -17,6 +17,10 @@ export class DaybookPage {
   
   
   goToDaybookOfMeals(){
-    this.navCtrl.push('MealsDaybookPage');
+    this.navCtrl.push('MealDaybookPage');
+  }
+
+  goToDaybookOfNaps(){
+    this.navCtrl.push('NapDaybookPage');
   }
 }

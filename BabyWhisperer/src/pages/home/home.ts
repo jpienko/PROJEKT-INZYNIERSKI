@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {MealScheduleProvider} from '../../providers/database/meals-schedule'
+import { DatabaseProvider } from '../../providers/database/database'
+import { newDB } from '../../providers/database/new-database';
 
 
 @Component({
@@ -9,10 +10,14 @@ import {MealScheduleProvider} from '../../providers/database/meals-schedule'
 })
 export class HomePage {
   
-  constructor(public navCtrl: NavController, private ms:MealScheduleProvider) {}
+  constructor(public navCtrl: NavController, private ms:DatabaseProvider) {}
  
   ngOnInit(){
+    if(newDB){
+      this.ms.dropDB();
+    }
     this.ms.createDatabase();
+  
   }
   goToDaybook(){
     this.navCtrl.push('DaybookPage');
@@ -20,5 +25,13 @@ export class HomePage {
   
   goToSchedules(){
     this.navCtrl.push('SchedulesPage');
+  }
+
+  goToStats(){
+    this.navCtrl.push('StatsPage');
+  }
+  
+  goToDocsList(){
+    this.navCtrl.push('DocsListPage');
   }
 }

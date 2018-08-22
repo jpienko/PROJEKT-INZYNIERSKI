@@ -6,3 +6,7 @@
 .colors{
     background-color: darken($color: #f1d6e5, $amount: 0)
   }
+
+.semi-trans{
+  background-color: rgba($color: #ffffff, $alpha: 0.7)
+}
