@@ -11,7 +11,12 @@
   <ion-content padding="true" align="center" class="colors">
     
      <form [formGroup]="meals" (ngSubmit)="saveForm()" style="width: 100%">
-        
+
+      <ion-item *ngIf="isDaybook">
+        <ion-label>Data</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+      </ion-item>
+
       <ion-item>
         <ion-label>Godzina</ion-label>
         <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" [(ngModel)]="time" ></ion-datetime>

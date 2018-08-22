@@ -30,4 +30,8 @@ export class HomePage {
   goToStats(){
     this.navCtrl.push('StatsPage');
   }
+  
+  goToDocsList(){
+    this.navCtrl.push('DocsListPage');
+  }
 }

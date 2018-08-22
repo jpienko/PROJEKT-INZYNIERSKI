@@ -9,8 +9,9 @@ import { MealDaybookProvider } from '../../../providers/database/meal-daybook'
   templateUrl: 'meal-daybook.html',
 })
 export class MealDaybookPage {
-  isEdited:boolean = false;
-  meals: any[] = [];
+  protected isEdited:boolean = false;
+  protected meals: any[] = [];
+  protected dates: any[]=[]
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:MealDaybookProvider,
               public toast:ToastController) {
@@ -20,6 +21,12 @@ export class MealDaybookPage {
   ionViewDidEnter() {
     this.database.GetAllMeals().then((result: any[]) => {
       this.meals = result;
+      console.log(this.meals);
+      
+    }); 
+
+    this.database.GetAllDates().then((result: any[]) => {
+      this.dates = result;
     }); 
   }
 

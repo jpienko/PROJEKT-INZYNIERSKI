@@ -107,4 +107,5 @@ export class Meals{
     hour: string;
     type:string;
     description:string;
+    date:string;
 }

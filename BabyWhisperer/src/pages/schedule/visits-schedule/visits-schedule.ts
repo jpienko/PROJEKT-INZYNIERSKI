@@ -36,6 +36,7 @@ export class VisitsSchedulePage {
       console.log(this.visits);
     }); 
   }
+  
   addEvent() {
     let modal = this.modalCtrl.create('NewVisitPage', {selectedDay: this.selectedDay});
     modal.present();

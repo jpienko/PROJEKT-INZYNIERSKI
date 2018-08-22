@@ -12,8 +12,8 @@ export class MealDaybookProvider {
   public insert(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into meals(hour, type, description) values (?, ?, ?)';
-        let data = [meal.hour, meal.type, meal.description];
+        let sql = 'insert into meals(hour, type, description, date) values (?, ?, ?, ?)';
+        let data = [meal.hour, meal.type, meal.description, meal.date];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -24,8 +24,8 @@ export class MealDaybookProvider {
   public update(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update meals set hour = ?, type = ?, description = ? where id = ?';
-        let data = [meal.hour, meal.type, meal.description, meal.id];
+        let sql = 'update meals set hour = ?, type = ?, description = ?, date=? where id = ?';
+        let data = [meal.hour, meal.type, meal.description, meal.date, meal.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -58,7 +58,8 @@ export class MealDaybookProvider {
                   id:data.rows.item(i).id,
                   hour:data.rows.item(i).hour,
                   type:data.rows.item(i).type,
-                  description:data.rows.item(i).description
+                  description:data.rows.item(i).description,
+                  date:data.rows.item(i).date
                 });
               }
             }
@@ -78,7 +79,7 @@ export class MealDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM meals ORDER BY hour ASC",[])
+          db.executeSql("SELECT * FROM meals ORDER BY date, hour ASC",[])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -88,7 +89,8 @@ export class MealDaybookProvider {
                   id:data.rows.item(i).id,
                   hour:data.rows.item(i).hour,
                   type:data.rows.item(i).type,
-                  description:data.rows.item(i).description
+                  description:data.rows.item(i).description,
+                  date:data.rows.item(i).date
                 });
               }
             }
@@ -101,5 +103,29 @@ export class MealDaybookProvider {
         });
     })
   }
-  
+
+  public GetAllDates(){
+    return new Promise((resolve,reject)=>{
+       this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT date FROM meals ORDER BY date",[])
+          .then((data)=>{
+            let arrayMeals = [];
+            if (data.rows.length>0){
+              for(var i  = 0; i<data.rows.length;i++)
+              {
+                arrayMeals.push({
+                  date:data.rows.item(i).date
+                });
+              }
+            }
+            resolve(arrayMeals)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
+    })
+  }
 }

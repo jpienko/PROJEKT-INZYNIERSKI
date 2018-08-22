@@ -16,8 +16,8 @@ export class NewNapPage {
   private naps : FormGroup;
   public isEdit:boolean;
   private editNaps: any[] = [];
-  private title:string = "Dodaj drzemkę do harmonogramu";
-  private buttonName:string = "Zapisz drzemkę";
+  protected title:string = "Dodaj drzemkę do harmonogramu";
+  protected buttonName:string = "Zapisz drzemkę";
 
  
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
@@ -51,7 +51,7 @@ export class NewNapPage {
   }
   
   
-  saveNap(){
+  protected saveNap(){
     
     this.model.hourStart = this.naps.controls.hourStart.value;
     this.model.hourStop = this.naps.controls.hourStop.value;
@@ -76,6 +76,7 @@ export class NewNapPage {
         },(error)=>{
           console.log(error);
         })
+        this.navCtrl.pop();
       }
       else{
       this.database2.insert(this.model)

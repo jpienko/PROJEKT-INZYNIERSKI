@@ -1,41 +1,45 @@
 
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Dodaj lekarza</ion-title>
+  <ion-navbar color="header">
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <form [formGroup]="docs" (ngSubmit)="saveDoc()" style="width: 100%"> 
+<ion-content padding class="colors">
+  <form [formGroup]="docs" (ngSubmit)="saveDoc()" style="width: 100%" > 
     
-    <ion-item>
+    <ion-item class="semi-trans">
       <ion-label>Imie</ion-label>
       <ion-textarea  formControlName="name"></ion-textarea>
     </ion-item>
       
-    <ion-item>
+    <ion-item class="semi-trans">
       <ion-label>Nazwisko</ion-label>
       <ion-textarea  formControlName="surname"></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="semi-trans">
       <ion-label>Specjalizacja</ion-label>
       <ion-textarea  formControlName="specialisation"></ion-textarea>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="semi-trans">
       <ion-label>Adres</ion-label>
       <ion-textarea  formControlName="adress"></ion-textarea>
     </ion-item>      
     
-    <ion-item>
+    <ion-item class="semi-trans">
       <ion-label>Telefon</ion-label>
       <ion-textarea type="number"  formControlName="tel"></ion-textarea>
     </ion-item>
 
-    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
+    <button ion-button round icon-start type="submit" color="buttons" block>
+      <ion-icon name="add"></ion-icon>
+      Zapisz
+    </button>
+ 
   </form>
 </ion-content>
