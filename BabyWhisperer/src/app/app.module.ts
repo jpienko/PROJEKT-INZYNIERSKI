@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { HeaderColor } from '@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
 import { HttpClientModule } from '@angular/common/http';
 import { MealDaybookProvider } from '../providers/database/meal-daybook';
@@ -30,7 +29,10 @@ import { DoctorsListProvider } from '../providers/database/doctors';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      monthNames:['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień' ],
+      dayNames:["Pn","Wt","Śr","Czw","Pt","So","Nd"]
+    }),
     IonicStorageModule.forRoot(),
     HttpClientModule,
     NgCalendarModule
@@ -44,7 +46,6 @@ import { DoctorsListProvider } from '../providers/database/doctors';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HeaderColor,
     SQLite,
     MealDaybookProvider,
     DatabaseProvider,
