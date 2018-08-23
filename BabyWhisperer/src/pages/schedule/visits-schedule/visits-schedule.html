@@ -6,16 +6,11 @@
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-buttons>
-      <ion-buttons end>
-          <button ion-button  (click)="getEvents()">
-            Load
-          </button>
-        </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="colors">
-    <h2 align= "center">
+    <h2 class="semi-trans" align= "center">
         {{ viewTitle }}
     </h2>
       <calendar [eventSource]="eventSource"

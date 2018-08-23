@@ -11,8 +11,8 @@ export class DoctorVisitsProvider {
   public insert(visits: Visits) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into visits(title,startTime, endTime, allDay, place) values (?, ?, ?, ?, ?)';
-        let data = [visits.title, visits.startTime, visits.endTime, visits.allDay, visits.place];
+        let sql = 'insert into visits(purpose, startTime, adress) values (?, ?, ?)';
+        let data = [visits.purpose, visits.startTime, visits.adress];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -23,8 +23,8 @@ export class DoctorVisitsProvider {
   public update(visits: Visits) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update visits set title = ?, startTime = ?, endTime = ?, allDay = ?, place = ? where id = ?';
-        let data = [visits.title, visits.startTime, visits.endTime, visits.allDay, visits.place, visits.id];
+        let sql = 'update visits set purpose = ?, startTime = ?, adress = ? where id = ?';
+        let data = [visits.purpose, visits.startTime, visits.adress, visits.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -55,12 +55,11 @@ export class DoctorVisitsProvider {
             if (data.rows.length > 0) {
               let item = data.rows.item(0);
               let naps = new Visits();
-              naps.title = item.title;
+              naps.purpose = item.purpose;
               naps.id = item.id;
               naps.startTime = item.startTime;
-              naps.endTime = item.stop;
-              naps.allDay= item.allDay;
-              naps.place= item.place;
+              naps.adress = item.adress;
+             
 
               return naps;
             }
@@ -85,12 +84,10 @@ export class DoctorVisitsProvider {
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayNaps.push({
-                  title: data.rows.item(i).title,
+                  purpose: data.rows.item(i).title,
                   id: data.rows.item(i).id,
                   startTime: data.rows.item(i).startTime,
-                  endTime: data.rows.item(i).endTime,
-                  allDay: data.rows.item(i).allDay,
-                  place: data.rows.item(i).place,
+                  adress: data.rows.item(i).adress,
                 });
               }
             }
@@ -109,9 +106,8 @@ export class DoctorVisitsProvider {
  
 export class Visits{
     id:number;
-    title:string;
+    purpose:string;
     startTime: string;
-    endTime:string;
-    allDay:boolean;
-    place: string;s
+    adress:string;
+    
 }
