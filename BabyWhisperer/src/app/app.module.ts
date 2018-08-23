@@ -29,7 +29,10 @@ import { DoctorsListProvider } from '../providers/database/doctors';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      monthNames:['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień' ],
+      dayNames:["Pn","Wt","Śr","Czw","Pt","So","Nd"]
+    }),
     IonicStorageModule.forRoot(),
     HttpClientModule,
     NgCalendarModule

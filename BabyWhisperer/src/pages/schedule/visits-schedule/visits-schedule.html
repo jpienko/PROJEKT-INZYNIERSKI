@@ -28,10 +28,10 @@
       </ion-row>
     </ion-grid>
       <calendar [eventSource]="eventSource"
+      [dateFormatter]="calendar.dateFormatter"
       [monthviewEventDetailTemplate]="template"
       [calendarMode]="calendar.mode"
       [currentDate]="calendar.currentDate"
-      [markDisabled]="markDisabled"
       (onEventSelected)="onEventSelected($event)"
       (onTitleChanged)="onViewTitleChanged($event)"
       (onTimeSelected)="onTimeSelected($event)"

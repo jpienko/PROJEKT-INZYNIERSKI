@@ -18,8 +18,30 @@ export class VisitsSchedulePage {
   calendar = {
     mode: 'month',
     currentDate: new Date(),
-    locale: 'pl-PL'
-  };
+    queryMode: 'remote',
+    locale: 'pl',
+    dateFormater:{
+      formatMonthViewDay: function(date:Date) {
+        return date.getDate().toString();
+      },
+      formatMonthViewTitle: function(date:Date) {
+        const monthNames:Array<string>=['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 
+                                    'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 
+                                    'Grudzień' ];
+        let moisSelec:string=monthNames[date.getMonth()];
+        return moisSelec+" "+String(date.getFullYear());
+      },
+
+      formatMonthViewDayHeader: function(date:Date) {
+        const DaysLetter:Array<string>=["Pn","Wt","Śr","Czw","Pt","So","Nd"];
+        return DaysLetter[date.getDay()];
+      }
+    }
+
+};
+ 
+    
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private modalCtrl: ModalController,
@@ -80,4 +102,6 @@ export class VisitsSchedulePage {
   nextMonth() {
     this.calendar.currentDate = new Date(this.calendar.currentDate.setMonth(this.calendar.currentDate.getMonth() + 1));
   }
+
+  
 }
