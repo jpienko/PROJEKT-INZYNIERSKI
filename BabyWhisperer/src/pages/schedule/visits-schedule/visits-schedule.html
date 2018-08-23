@@ -10,13 +10,28 @@
 </ion-header>
 
 <ion-content padding class="colors">
-    <h2 class="semi-trans" align= "center">
-        {{ viewTitle }}
-    </h2>
+    <ion-grid class="semi-trans">
+      <ion-row>
+        <ion-col col-2>
+          <button ion-button item-left clear style="color: rgb(86, 70, 116)" (click)="prevMonth()">
+            <ion-icon name="arrow-back"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-8>
+          <button ion-button block clear [disabled]="true" style="color: rgb(86, 70, 116)" >{{ viewTitle }}</button>
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button item-right clear style="color: rgb(86, 70, 116)" (click)="nextMonth()">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
       <calendar [eventSource]="eventSource"
       [monthviewEventDetailTemplate]="template"
       [calendarMode]="calendar.mode"
       [currentDate]="calendar.currentDate"
+      [markDisabled]="markDisabled"
       (onEventSelected)="onEventSelected($event)"
       (onTitleChanged)="onViewTitleChanged($event)"
       (onTimeSelected)="onTimeSelected($event)"
@@ -28,11 +43,11 @@
 </ion-content>
 
 <ng-template #template let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
-    <ion-list>
-        <ion-item  *ngFor="let visit of visits" class="semi-trans">
-          <h2> {{visit.title}}</h2>
-          <h2> {{visit.startTime}} </h2>
-          <h3> {{visit.endTime}}</h3>
+    <ion-list style="margin-top: 10px">
+        <ion-item  *ngFor="let visit of visits" class="semi-trans" style="margin-top: 3px">
+          <h2> {{visit.purpose}}</h2>
+          <h2> {{getHour(visit.startTime)}} </h2>
+          <h3> {{visit.adress}}</h3>
           <button ion-button icon-only item-end color="buttons" (click)='editNap(visit)'><ion-icon name='brush'></ion-icon> </button>     
           <button ion-button icon-only item-end color="buttons" (click)='deleteNap(visit)'><ion-icon name='trash'></ion-icon> </button>     
         </ion-item>

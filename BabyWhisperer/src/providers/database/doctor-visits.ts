@@ -100,7 +100,30 @@ export class DoctorVisitsProvider {
         });
     })
   }
-  
+  public GetAllDates(){
+    return new Promise((resolve,reject)=>{
+       this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT startTime FROM visits",[])
+          .then((data)=>{
+            let arrayDates= [];
+            if (data.rows.length>0){
+              for(var i  = 0; i<data.rows.length;i++)
+              {
+                arrayDates.push({
+                  startTime: data.rows.item(i).startTime
+                });
+              }
+            }
+            resolve(arrayDates)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
+    })
+  }
 }
 
  

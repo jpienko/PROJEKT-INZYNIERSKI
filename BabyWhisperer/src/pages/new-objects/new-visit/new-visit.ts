@@ -9,14 +9,14 @@ import * as moment from 'moment';
 })
 export class NewVisitPage {
  
-  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false};
+  event = { purpose: '', startTime: new Date().toISOString(), adress:'' };
   minDate = new Date().toISOString();
  
   constructor(public navCtrl: NavController, private navParams: NavParams, 
               public viewCtrl: ViewController) {
     let preselectedDate = moment(this.navParams.get('selectedDay')).format();
     this.event.startTime = preselectedDate;
-    this.event.endTime = preselectedDate;
+
   }
   
   ionViewDidLoad() {
