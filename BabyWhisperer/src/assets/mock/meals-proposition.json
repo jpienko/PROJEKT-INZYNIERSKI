@@ -1,0 +1,36 @@
+[
+    {
+        "id":1,
+        "when": "po 7 miesiącu",
+        "amount":"4-5",
+        "proposition": [
+            {
+                "hour":"7",
+                "type":"śniadanie",
+                "example":"kaszka"
+            },
+            {
+                "hour":"11",
+                "type":"drugie śniadanie",
+                "example":"kaszka"
+            }
+        ]
+    },
+    {
+        "id":2,
+        "when": "po 7 miesiącu",
+        "amount":"4-5",
+        "proposition": [
+            {
+                "hour":"7",
+                "type":"śniadanie",
+                "example":"kaszka"
+            },
+            {
+                "hour":"11",
+                "type":"drugie śniadanie",
+                "example":"kaszka"
+            }
+        ]
+    }
+]

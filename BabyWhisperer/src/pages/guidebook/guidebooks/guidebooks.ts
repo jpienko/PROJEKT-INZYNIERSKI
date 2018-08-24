@@ -22,4 +22,7 @@ export class GuidebooksPage {
   goToProgressSteps(){
     this.navCtrl.push('ProgressStepsGuidebookPage');
   }
+  goToMealsPropositionGuidebook(){
+    this.navCtrl.push('MealsPropositionGuidebookPage');
+  }
 }
