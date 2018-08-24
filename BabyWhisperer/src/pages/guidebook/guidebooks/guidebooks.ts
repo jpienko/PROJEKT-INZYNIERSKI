@@ -19,5 +19,10 @@ export class GuidebooksPage {
   goToProductsGuidebook(){
     this.navCtrl.push('ProductsGuidebookPage');
   }
-
+  goToProgressSteps(){
+    this.navCtrl.push('ProgressStepsGuidebookPage');
+  }
+  goToMealsPropositionGuidebook(){
+    this.navCtrl.push('MealsPropositionGuidebookPage');
+  }
 }

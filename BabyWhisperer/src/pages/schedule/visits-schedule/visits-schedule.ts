@@ -40,9 +40,6 @@ export class VisitsSchedulePage {
 
 };
  
-    
-  
-
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private modalCtrl: ModalController,
               private database:DoctorVisitsProvider) {
@@ -79,7 +76,6 @@ export class VisitsSchedulePage {
           this.visits.push(element);
         }
       });
-      console.log(this.visits);
     }); 
 
   }

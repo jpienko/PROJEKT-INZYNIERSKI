@@ -1,18 +1,16 @@
-<!--
-  Generated template for the ProgressStepsGuidebookPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>progress-steps-guidebook</ion-title>
+  <ion-navbar color="header">
+    <ion-title>Skoki rozwojowe</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding align="center" class="colors">
+    <ion-list>
+      <ion-item text-wrap *ngFor="let step of steps" class="semi-trans">
+        <h1 white-space:normal style="margin-top: 3px">{{step.id}}.  {{step.name}}</h1>
+        <h2>{{step.time}}</h2>
+        <h2 white-space:normal>{{step.desc}}</h2>
+      </ion-item>
+    </ion-list>
 </ion-content>
