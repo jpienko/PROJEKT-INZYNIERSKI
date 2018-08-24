@@ -84,7 +84,7 @@ export class DoctorVisitsProvider {
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayNaps.push({
-                  purpose: data.rows.item(i).title,
+                  purpose: data.rows.item(i).purpose,
                   id: data.rows.item(i).id,
                   startTime: data.rows.item(i).startTime,
                   adress: data.rows.item(i).adress,
