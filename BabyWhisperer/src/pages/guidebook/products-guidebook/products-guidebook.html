@@ -1,18 +1,28 @@
-<!--
-  Generated template for the ProductsGuidebookPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>products-guidebook</ion-title>
+  <ion-navbar color="header">
+    <ion-title>Poradnik żywieniowy</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding align="center" class="colors">
+  
+  <button ion-button  color ="buttons" round (click)= "RulesShowHide()">Zasady żywieniowe</button>
+  <ion-list *ngIf="showRules">
+    <ion-item text-wrap *ngFor="let rule of rulesList" class="semi-trans">
+        <h2 white-space:normal style="margin-top: 3px">{{rule.id}}. {{rule.content}} </h2>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button  color ="buttons" round (click)= "ProductsShowHide()">Lista produktów</button>
+  <ion-toolbar *ngIf="showProducts" no-border-top>
+      <ion-searchbar placeholder="Znajdź produkt" (ionInput)="filterItems($event)"></ion-searchbar>
+    </ion-toolbar>
+  <ion-list *ngIf="showProducts">
+      <ion-item text-wrap *ngFor="let product of filtred" class="semi-trans">
+          <h2 white-space:normal style="margin-top: 3px">{{product.name}}</h2>
+          <h2>{{product.time}}</h2>
+      </ion-item>
+    </ion-list>
 
 </ion-content>

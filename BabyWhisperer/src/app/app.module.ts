@@ -19,7 +19,8 @@ import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
 import { CalendarComponent } from "ionic2-calendar/calendar";
 import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.service';
 import { DoctorsListProvider } from '../providers/database/doctors';
-
+import { HttpModule, JsonpModule, Http } from '../../node_modules/@angular/http';
+import {File} from '@ionic-native/file'
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { DoctorsListProvider } from '../providers/database/doctors';
     }),
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    NgCalendarModule
+    NgCalendarModule,
+    HttpModule,
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -56,8 +59,10 @@ import { DoctorsListProvider } from '../providers/database/doctors';
     DoctorVisitsProvider,
     CalendarComponent,
     CalendarService,
-    DoctorsListProvider
-
+    DoctorsListProvider,
+    Http,
+    HttpModule,
+    File
   ]
 })
 export class AppModule {} 
