@@ -8,3 +8,6 @@ auto refresh while emulated on android device: ionic cordova run android -l
 plugins to install: 
 $ ionic cordova plugin add cordova-sqlite-storage
 $ npm install --save @ionic-native/sqlite
+
+
+https://github.com/didinj/ionic3-angular5-calendar-ui-event/blob/master/src/pages/home/home.html

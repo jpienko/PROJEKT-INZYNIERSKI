@@ -15,7 +15,7 @@
 <ion-content padding class="colors">
     <ion-list>
         <ion-item>
-          <ion-input type="text" placeholder="Cel" [(ngModel)]="event.title"></ion-input>
+          <ion-input type="text" placeholder="Cel" [(ngModel)]="event.purpose"></ion-input>
         </ion-item>
        
         <ion-item>
@@ -24,8 +24,7 @@
         </ion-item>
      
         <ion-item>
-          <ion-label>Przypuszczalny koniec wizyty</ion-label>
-          <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+            <ion-input type="text" placeholder="Miejsce" [(ngModel)]="event.adress"></ion-input>
         </ion-item>
     
       </ion-list>

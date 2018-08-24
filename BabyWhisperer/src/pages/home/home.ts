@@ -34,4 +34,8 @@ export class HomePage {
   goToDocsList(){
     this.navCtrl.push('DocsListPage');
   }
+
+  goToGuidebooks(){
+    this.navCtrl.push('GuidebooksPage');
+  }
 }

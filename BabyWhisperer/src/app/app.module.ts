@@ -6,7 +6,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { HeaderColor } from '@ionic-native/header-color';
 import { SQLite} from '@ionic-native/sqlite';
 import { HttpClientModule } from '@angular/common/http';
 import { MealDaybookProvider } from '../providers/database/meal-daybook';
@@ -20,7 +19,8 @@ import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
 import { CalendarComponent } from "ionic2-calendar/calendar";
 import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.service';
 import { DoctorsListProvider } from '../providers/database/doctors';
-
+import { HttpModule, JsonpModule, Http } from '../../node_modules/@angular/http';
+import {File} from '@ionic-native/file'
 
 
 @NgModule({
@@ -30,10 +30,15 @@ import { DoctorsListProvider } from '../providers/database/doctors';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      monthNames:['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień' ],
+      dayNames:["Pn","Wt","Śr","Czw","Pt","So","Nd"]
+    }),
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    NgCalendarModule
+    NgCalendarModule,
+    HttpModule,
+    JsonpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +49,6 @@ import { DoctorsListProvider } from '../providers/database/doctors';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HeaderColor,
     SQLite,
     MealDaybookProvider,
     DatabaseProvider,
@@ -55,8 +59,10 @@ import { DoctorsListProvider } from '../providers/database/doctors';
     DoctorVisitsProvider,
     CalendarComponent,
     CalendarService,
-    DoctorsListProvider
-
+    DoctorsListProvider,
+    Http,
+    HttpModule,
+    File
   ]
 })
 export class AppModule {} 
