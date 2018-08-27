@@ -22,4 +22,8 @@ export class StatsPage {
   goToStatsOfNaps(){
     this.navCtrl.push('NapStatsPage');
   }
+
+  goToStatsOfDiapers(){
+    this.navCtrl.push('DiaperStatsPage');
+  }
 }

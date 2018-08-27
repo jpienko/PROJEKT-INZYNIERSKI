@@ -23,4 +23,8 @@ export class DaybookPage {
   goToDaybookOfNaps(){
     this.navCtrl.push('NapDaybookPage');
   }
+
+  goToDaybookOfDiapers(){
+    this.navCtrl.push('DiaperDaybookPage');
+  }
 }

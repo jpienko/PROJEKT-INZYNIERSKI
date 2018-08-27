@@ -1,18 +1,24 @@
-<!--
-  Generated template for the DiaperDaybookPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>diaper-daybook</ion-title>
+  <ion-navbar color="header">
+    <ion-title>Dziennik wypróżnień</ion-title>
+    <ion-buttons end style="margin-right: 10px">
+      <button ion-button outline (click) = "goToNewDiaper()">Dodaj</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding="true" align="center" class="colors">
+  <ion-list>
+      <ion-item  *ngFor="let diaper of diapers">
+          <h4 style="margin-top: 3px">{{diaper.date}} </h4>
+        <h2>Godzina: {{diaper.hour}}</h2>
+        <h2>Stolec: {{getType(diaper.type)}} </h2>
+        <button ion-button icon-only item-end color="buttons" (click)='editDiaper(diaper)'><ion-icon name='brush'></ion-icon> </button>     
+        <button ion-button icon-only item-end color="buttons" (click)='deleteDiaper(diaper)'><ion-icon name='trash'></ion-icon> </button>     
+      </ion-item>
+  </ion-list>
+  
 </ion-content>
