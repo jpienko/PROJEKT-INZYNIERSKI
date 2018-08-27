@@ -25,6 +25,8 @@ import { DiaperDaybookProvider } from '../providers/database/diaper-daybook';
 import { DaybookPage } from '../pages/daybooks/daybook/daybook';
 import { DocsListPage } from '../pages/docs-list/docs-list';
 import { SchedulesPage } from '../pages/schedule/schedules/schedules';
+import { StatsPage } from '../pages/statistics/stats/stats';
+import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 
 
 @NgModule({
@@ -32,8 +34,10 @@ import { SchedulesPage } from '../pages/schedule/schedules/schedules';
     MyApp,
     HomePage,
     DaybookPage,
+    SchedulesPage,
     DocsListPage,
-    SchedulesPage
+    StatsPage,
+    GuidebooksPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,11 @@ import { SchedulesPage } from '../pages/schedule/schedules/schedules';
   entryComponents: [
     MyApp,
     HomePage,
-    DaybookPage
+    DaybookPage,
+    DocsListPage,
+    SchedulesPage,
+    StatsPage,
+    GuidebooksPage
   ],
   providers: [
     StatusBar,

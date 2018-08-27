@@ -3,6 +3,9 @@ import { Platform, MenuController, Nav} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DaybookPage }from '../pages/daybooks/daybook/daybook'
+import { DocsListPage }from '../pages/docs-list/docs-list'
+import { GuidebooksPage }from '../pages/guidebook/guidebooks/guidebooks'
+import { StatsPage }from '../pages/statistics/stats/stats'
 import { SchedulesPage }from '../pages/schedule/schedules/schedules'
 import { HomePage } from '../pages/home/home';
 
@@ -24,7 +27,10 @@ export class MyApp {
     });
     this.pages=[
         {title: "Dzienniki", component: DaybookPage},
-        {title: "Harmonogramy", component:SchedulesPage }
+        {title: "Harmonogramy", component:SchedulesPage },
+        {title: "Lista zaufanych lekarzy", component:DocsListPage},
+        {title: "Statystyki", component: StatsPage},
+        {title: "Poradniki", component: GuidebooksPage}
       ];
   }
   public openPage(page){
