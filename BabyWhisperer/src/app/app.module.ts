@@ -21,6 +21,7 @@ import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.ser
 import { DoctorsListProvider } from '../providers/database/doctors';
 import { HttpModule, JsonpModule, Http } from '../../node_modules/@angular/http';
 import {File} from '@ionic-native/file'
+import { DiaperDaybookProvider } from '../providers/database/diaper-daybook';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {File} from '@ionic-native/file'
     CalendarComponent,
     CalendarService,
     DoctorsListProvider,
+    DiaperDaybookProvider,
     Http,
     HttpModule,
     File

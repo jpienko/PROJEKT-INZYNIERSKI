@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar color="header">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="true" align="center" class="colors">
+  
+   <form [formGroup]="diapers" (ngSubmit)="saveForm()" style="width: 100%">
+
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Godzina</ion-label>
+      <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Był stolec</ion-label>
+      <ion-checkbox formControlName="type"></ion-checkbox>
+    </ion-item>
+
+    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="save"></ion-icon>{{buttonName}}</button>
+   </form>
+
+  
+</ion-content>
