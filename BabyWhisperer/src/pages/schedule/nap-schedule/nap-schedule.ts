@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DoctorVisitsProvider} from '../../../providers/database/doctor-visits'
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NapScheduleProvider, Naps } from '../../../providers/database/nap-schedule';
 
 
 @IonicPage()
@@ -9,18 +9,40 @@ import { DoctorVisitsProvider} from '../../../providers/database/doctor-visits'
   templateUrl: 'nap-schedule.html',
 })
 export class NapSchedulePage {
- visits: any[] =[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database:DoctorVisitsProvider) {
+  isEdited:boolean = false;
+  naps: any[] = [];
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              private database:NapScheduleProvider, private toast: ToastController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NapSchedulePage');
+  ionViewDidEnter() {
+    this.database.GetAllNaps().then((result: any[]) => {
+      this.naps = result;
+    });
+    console.log(this.naps);
+    
   }
-  ionViewDidEnter(){
-    this.database.GetAllVisits().then((result: any[]) => {
-      this.visits = result;
-      console.log(this.visits);
-    }); 
+
+  protected goToNewNap(){
+    let data = {
+      napSchedule: true
+    }
+    this.navCtrl.push('NewNapPage',data);
+  }
+
+  protected editSchedule(){
+    this.isEdited = !this.isEdited;
+  }
+
+  protected deleteMeal(nap:Naps){
+    console.log(nap);
+    this.database.remove(nap.id).then(() => {
+      var index = this.naps.indexOf(nap);
+      this.naps.splice(index, 1);
+      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+    })
+    
   }
 
 }

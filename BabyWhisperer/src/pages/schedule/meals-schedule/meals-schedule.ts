@@ -21,9 +21,6 @@ export class MealsSchedulePage {
     this.database.GetAllMeals().then((result: any[]) => {
       this.meals = result;
     });
-    console.log('ionViewDidLoad MealsSchedulePage');
-    console.log(this.meals);
-    
   }
 
   loadSchedule(){
@@ -31,7 +28,7 @@ export class MealsSchedulePage {
 
   goToNewMeal(){
     let data = {
-      name: true
+      napSchedule: true
     }
     this.navCtrl.push('NewMealPage',data);
   }

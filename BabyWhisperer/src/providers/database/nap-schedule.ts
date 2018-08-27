@@ -76,7 +76,7 @@ export class NapScheduleProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM napsSchedule ORDER BY hour ASC",[])
+          db.executeSql("SELECT * FROM napsSchedule ORDER BY hourStart ASC",[])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){

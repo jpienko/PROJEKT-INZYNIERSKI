@@ -12,9 +12,9 @@
     
      <form [formGroup]="naps" (ngSubmit)="saveNap()" style="width: 100%">
       
-      <ion-item>
+      <ion-item *ngIf= "!isSchedule">
         <ion-label>Data</ion-label>
-        <ion-datetime displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+        <ion-datetime  displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
       </ion-item>
 
       <ion-item>
@@ -26,6 +26,11 @@
         <ion-label>Koniec drzemki</ion-label>
         <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStop"></ion-datetime>
       </ion-item>
+
+       <ion-item class="semi-trans" *ngIf= "isSchedule">
+       <ion-label>Przewidywany czas drzemki</ion-label>
+        <ion-textarea  formControlName="time"></ion-textarea>
+       </ion-item>
       
       <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
      </form>
