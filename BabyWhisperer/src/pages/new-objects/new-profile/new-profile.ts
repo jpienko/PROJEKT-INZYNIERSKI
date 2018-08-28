@@ -32,7 +32,7 @@ export class NewProfilePage {
       this.child.controls.name.setValue(this.profile[0].name);
       this.child.controls.birthday.setValue(this.profile[0].birthday);    
       this.child.controls.weight.setValue(this.profile[0].weight);
-      this.child.controls.height.setValue(this.profile[0].hight);
+      this.child.controls.height.setValue(this.profile[0].height);
       this.child.controls.foot.setValue(this.profile[0].foot);
     });    
   }
@@ -41,12 +41,20 @@ export class NewProfilePage {
     this.model.name = this.child.controls.name.value;
     this.model.birthday = this.child.controls.birthday.value;
     this.model.weight = this.correctNumber(this.child.controls.weight.value);
-    this.model.hight = this.correctNumber(this.child.controls.height.value);
+    this.model.height = this.correctNumber(this.child.controls.height.value);
     this.model.foot = this.correctNumber(this.child.controls.foot.value);
     this.model.id = this.navParams.get("id");
+    this.model.date = new Date().toDateString();
     console.log(this.model);
     
     this.database.update(this.model)
+        .then((data)=>{
+          console.log(data);
+        },(error)=>{
+          console.log(error);
+    });
+
+    this.database.insert(this.model)
         .then((data)=>{
           console.log(data);
         },(error)=>{

@@ -28,6 +28,7 @@ public db:SQLiteObject;
     return this.getDB()
       .then((db: SQLiteObject) => {
         this.createTables(db);
+        this.insertDefaultItems(db);
       })
       .catch(e => console.log(e));
   }
@@ -40,10 +41,25 @@ public db:SQLiteObject;
       ['CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY AUTOINCREMENT, purpose TEXT, startTime TEXT, adress TEXT)'],
       ['CREATE TABLE IF NOT EXISTS docs(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, surname TEXT, specialisation TEXT, adress TEXT, tel NUMBER)'],
       ['CREATE TABLE IF NOT EXISTS diapers(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, hour TEXT, type TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, weight NUMBER, hight NUMBER, foot NUMBER, picture TEXT)']
+      ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, weight NUMBER, height NUMBER, foot NUMBER, picture TEXT, date TEXT)']
 
     ])
       .catch(e => console.error(e));
+  }
+  private insertDefaultItems(db: SQLiteObject) {
+    db.executeSql('select COUNT(id) as qtd from child', <any>{})
+    .then((data: any) => {
+      if (data.rows.item(0).qtd == 0) {
+ 
+        db.sqlBatch([
+          ['insert into child (name, birthday, weight, height, foot, picture, date) values (?,?,?,?,?,?,?)', ['Imię dziecka', 'data urodzenia', 0, 0, 0, 'ścieżka', 'data' ]],
+        ])
+          .then(() => console.log('Dane domyślne dodane'))
+          .catch(e => console.error(e));
+ 
+      }
+    })
+    .catch(e => console.error( e));
   }
  
 }

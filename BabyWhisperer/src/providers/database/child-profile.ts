@@ -11,8 +11,8 @@ export class ChildProfileProvider {
   public insert(child: Child) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into child(name, birthday, weight, hight, foot, picture) values (?, ?, ?, ?, ?, ?)';
-        let data = [child.name,child.birthday, child.weight, child.hight, child.foot, child.picture];
+        let sql = 'insert into child(name, birthday, weight, height, foot, picture, date) values (?, ?, ?, ?, ?, ?, ?)';
+        let data = [child.name,child.birthday, child.weight, child.height, child.foot, child.picture, child.date];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -23,8 +23,8 @@ export class ChildProfileProvider {
   public update(child: Child) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update child set name = ?, birthday = ?, weight = ?, hight = ?, foot = ?, picture = ? where id = ?';
-        let data = [child.name,child.birthday, child.weight, child.hight, child.foot, child.picture, child.id];
+        let sql = 'update child set name = ?, birthday = ?, weight = ?, height = ?, foot = ?, picture = ?, date = ? where id = ?';
+        let data = [child.name,child.birthday, child.weight, child.height, child.foot, child.picture, child.date, child.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -59,9 +59,10 @@ export class ChildProfileProvider {
                  id: data.rows.item(i).id,
                  birthday: data.rows.item(i).birthday,
                  weight: data.rows.item(i).weight,
-                 hight: data.rows.item(i).hight,
+                 height: data.rows.item(i).height,
                  foot: data.rows.item(i).foot,
-                 picture: data.rows.item(i).picture
+                 picture: data.rows.item(i).picture,
+                 date: data.rows.item(i).date
                });
              }
            }
@@ -80,7 +81,7 @@ export class ChildProfileProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child",[])
+          db.executeSql("SELECT * FROM child GROUP BY date ORDER BY date",[])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
@@ -91,40 +92,10 @@ export class ChildProfileProvider {
                   id: data.rows.item(i).id,
                   birthday: data.rows.item(i).birthday,
                   weight: data.rows.item(i).weight,
-                  hight: data.rows.item(i).hight,
+                  height: data.rows.item(i).height,
                   foot: data.rows.item(i).foot,
-                  picture: data.rows.item(i).picture
-                });
-              }
-            }
-            resolve(arrayChild)
-          },(error)=> {
-            reject(error);
-          });
-        },(error)=> {
-          reject(error);
-        });
-    })
-  }
-  
-  public GetPresentProfile(){
-    return new Promise((resolve,reject)=>{
-       this.dbProvider.getDB()
-        .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child ORDER BY id DESC limit 1",[])
-          .then((data)=>{
-            let arrayChild = [];
-            if (data.rows.length>0){
-              for(var i  = 0; i<data.rows.length;i++)
-              {
-                arrayChild.push({
-                  name: data.rows.item(i).name,
-                  id: data.rows.item(i).id,
-                  birthday: data.rows.item(i).birthday,
-                  weight: data.rows.item(i).weight,
-                  hight: data.rows.item(i).hight,
-                  foot: data.rows.item(i).foot,
-                  picture: data.rows.item(i).picture
+                  picture: data.rows.item(i).picture,
+                  date: data.rows.item(i).date
                 });
               }
             }
@@ -145,7 +116,8 @@ export class Child{
     name:string;
     birthday: Date;
     weight:number;
-    hight:number;
+    height:number;
     foot:number;
     picture:string;
+    date: string;
 }

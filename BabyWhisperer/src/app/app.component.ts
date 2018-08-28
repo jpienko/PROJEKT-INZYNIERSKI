@@ -26,10 +26,14 @@ export class MyApp {
       if(newDB){
         this.dB.dropDB();
       }
-    this.dB.createDatabase();
-
       statusBar.styleDefault();
-      splashScreen.hide();
+      dB.createDatabase()
+        .then(() => {
+          splashScreen.hide();
+        })
+        .catch(() => {
+          splashScreen.hide();
+        });
       
     });
     this.pages=[

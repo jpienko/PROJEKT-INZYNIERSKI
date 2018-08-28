@@ -30,12 +30,12 @@ export class HomePage {
 
   ionViewDidEnter(){
     this.platform.ready().then(()=>{      
-      this.database.GetPresentProfile().then((result: any[]) => {
+      this.database.get(1).then((result: any[]) => {
       this.child = result;
       this.child.forEach(element => {
         this.name = element.name;
         this.birthday = this.getBirthDate(element.birthday);
-        this.height = element.hight;
+        this.height = element.height;
         this.weight = element.weight;
         this.foot = element.foot;
         this.picture = element.picture;

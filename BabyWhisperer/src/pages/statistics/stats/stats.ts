@@ -26,4 +26,8 @@ export class StatsPage {
   goToStatsOfDiapers(){
     this.navCtrl.push('DiaperStatsPage');
   }
+
+  goToStatsOfMetrics(){
+    this.navCtrl.push('MetricsPage');
+  }
 }
