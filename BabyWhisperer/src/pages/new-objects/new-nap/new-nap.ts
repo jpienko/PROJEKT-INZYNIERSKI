@@ -16,6 +16,7 @@ export class NewNapPage {
   private naps : FormGroup;
   public isEdit:boolean;
   private editNaps: any[] = [];
+  public isSchedule:boolean = false;
   protected title:string = "Dodaj drzemkę do harmonogramu";
   protected buttonName:string = "Zapisz drzemkę";
 
@@ -26,15 +27,17 @@ export class NewNapPage {
       this.naps = this.formBuilder.group({
       date:['', Validators.required],
       hourStart: ['', Validators.required],
-      hourStop: ['']
+      hourStop: [''],
+      time:['']
     });
   }
 
   ionViewDidEnter() {
     this.isEdit = false;
     this.isEdit = this.navParams.get('editNap') 
+    this.isSchedule = this.navParams.get('napSchedule')
 
-    if(!this.navParams.get('napSchedule')){
+    if(!this.isSchedule){
       this.title = "Dodaj drzemkę do dziennika";
       if(this.isEdit){
         this.title = "Edytuj drzemkę"
@@ -44,6 +47,7 @@ export class NewNapPage {
           this.naps.controls.hourStart.setValue(this.editNaps[0].hourStart);
           this.naps.controls.hourStop.setValue(this.editNaps[0].hourStop);    
           this.naps.controls.date.setValue(this.editNaps[0].date);
+          this.naps.controls.time.setValue(this.editNaps[0].time);
         });    
       }
     }
@@ -57,9 +61,9 @@ export class NewNapPage {
     this.model.hourStop = this.naps.controls.hourStop.value;
     this.model.date = this.naps.controls.date.value;
     this.model.time = this.getDiff(this.model.hourStart,this.model.hourStop);
-    
-    
-    if (this.navParams.get('napSchedule')){  
+     
+    if (this.isSchedule){  
+      this.model.time = this.naps.controls.time.value;
       this.database.insert(this.model)
         .then((data)=>{
           console.log(data);
@@ -96,9 +100,6 @@ export class NewNapPage {
     let startNap = start.split(":");
     let stopNap = stop.split(":");
 
-    console.log(startNap);
-    console.log(stopNap);
-
     if(stopNap[1]>startNap[1]){
       var mins = stopNap[1]-startNap[1];
       var hours = stopNap[0]-startNap[0];
@@ -106,9 +107,6 @@ export class NewNapPage {
       var mins = stopNap[1]-startNap[1]+60;
       var hours = stopNap[0]-startNap[0]-1;
     }
-     console.log(mins);
-     console.log(hours);
-     
      
     return hours + (mins/60);
     

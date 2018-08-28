@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavController} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
@@ -20,14 +20,25 @@ import { CalendarComponent } from "ionic2-calendar/calendar";
 import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.service';
 import { DoctorsListProvider } from '../providers/database/doctors';
 import { HttpModule, JsonpModule, Http } from '../../node_modules/@angular/http';
-import {File} from '@ionic-native/file'
+import { File } from '@ionic-native/file'
 import { DiaperDaybookProvider } from '../providers/database/diaper-daybook';
+import { DaybookPage } from '../pages/daybooks/daybook/daybook';
+import { DocsListPage } from '../pages/docs-list/docs-list';
+import { SchedulesPage } from '../pages/schedule/schedules/schedules';
+import { StatsPage } from '../pages/statistics/stats/stats';
+import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
+import { ChildProfileProvider } from '../providers/database/child-profile';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    DaybookPage,
+    SchedulesPage,
+    DocsListPage,
+    StatsPage,
+    GuidebooksPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +55,12 @@ import { DiaperDaybookProvider } from '../providers/database/diaper-daybook';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    DaybookPage,
+    DocsListPage,
+    SchedulesPage,
+    StatsPage,
+    GuidebooksPage
   ],
   providers: [
     StatusBar,
@@ -64,7 +80,9 @@ import { DiaperDaybookProvider } from '../providers/database/diaper-daybook';
     DiaperDaybookProvider,
     Http,
     HttpModule,
-    File
+    File,
+    ChildProfileProvider
+    
   ]
 })
 export class AppModule {} 
