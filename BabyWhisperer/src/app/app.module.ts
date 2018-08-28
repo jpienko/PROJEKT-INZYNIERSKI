@@ -27,6 +27,7 @@ import { DocsListPage } from '../pages/docs-list/docs-list';
 import { SchedulesPage } from '../pages/schedule/schedules/schedules';
 import { StatsPage } from '../pages/statistics/stats/stats';
 import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
+import { ChildProfileProvider } from '../providers/database/child-profile';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
     Http,
     HttpModule,
     File,
+    ChildProfileProvider
     
   ]
 })

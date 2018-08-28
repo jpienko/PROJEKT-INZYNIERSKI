@@ -8,6 +8,8 @@ import { GuidebooksPage }from '../pages/guidebook/guidebooks/guidebooks'
 import { StatsPage }from '../pages/statistics/stats/stats'
 import { SchedulesPage }from '../pages/schedule/schedules/schedules'
 import { HomePage } from '../pages/home/home';
+import { DatabaseProvider } from '../providers/database/database'
+import { newDB } from '../providers/database/new-database';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,11 +17,16 @@ import { HomePage } from '../pages/home/home';
 
 export class MyApp {
   @ViewChild(Nav) nav:Nav;
-  rootPage:any = HomePage;
-  pages: Array<{ title: string, component: any }>;
+  protected rootPage:any = HomePage;
+  protected pages: Array<{ title: string, component: any }>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menu: MenuController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menu: MenuController, private dB: DatabaseProvider) {
+    
     platform.ready().then(() => {
+      if(newDB){
+        this.dB.dropDB();
+      }
+    this.dB.createDatabase();
 
       statusBar.styleDefault();
       splashScreen.hide();

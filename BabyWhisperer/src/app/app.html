@@ -7,7 +7,7 @@
         </ion-header>
       
         <ion-content class="colors">
-          <ion-list >
+          <ion-list style="margin-top: 20px">
             <button class="semi-trans" ion-item *ngFor="let p of pages" menuClose="menu" (click)="openPage(p.component)">
               {{p.title}}
             </button>

@@ -61,8 +61,7 @@ export class NewNapPage {
     this.model.hourStop = this.naps.controls.hourStop.value;
     this.model.date = this.naps.controls.date.value;
     this.model.time = this.getDiff(this.model.hourStart,this.model.hourStop);
-    
-    
+     
     if (this.isSchedule){  
       this.model.time = this.naps.controls.time.value;
       this.database.insert(this.model)
@@ -101,9 +100,6 @@ export class NewNapPage {
     let startNap = start.split(":");
     let stopNap = stop.split(":");
 
-    console.log(startNap);
-    console.log(stopNap);
-
     if(stopNap[1]>startNap[1]){
       var mins = stopNap[1]-startNap[1];
       var hours = stopNap[0]-startNap[0];
@@ -111,9 +107,6 @@ export class NewNapPage {
       var mins = stopNap[1]-startNap[1]+60;
       var hours = stopNap[0]-startNap[0]-1;
     }
-     console.log(mins);
-     console.log(hours);
-     
      
     return hours + (mins/60);
     
