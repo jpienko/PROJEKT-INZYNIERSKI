@@ -30,6 +30,8 @@ import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 import { ChildProfileProvider } from '../providers/database/child-profile';
 import { Camera } from '../../node_modules/@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
+import { GrowingStepsPage } from '../pages/growing-steps/growing-steps';
+import { GrowthStepsProvider } from '../providers/database/growth-steps';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { CallNumber } from '@ionic-native/call-number';
     SchedulesPage,
     DocsListPage,
     StatsPage,
-    GuidebooksPage
+    GuidebooksPage,
+    GrowingStepsPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,9 @@ import { CallNumber } from '@ionic-native/call-number';
     DocsListPage,
     SchedulesPage,
     StatsPage,
-    GuidebooksPage
+    GuidebooksPage,
+    GrowingStepsPage
+
   ],
   providers: [
     StatusBar,
@@ -84,7 +89,8 @@ import { CallNumber } from '@ionic-native/call-number';
     File,
     ChildProfileProvider,
     Camera,
-    CallNumber
+    CallNumber,
+    GrowthStepsProvider
   ]
 })
 export class AppModule {} 

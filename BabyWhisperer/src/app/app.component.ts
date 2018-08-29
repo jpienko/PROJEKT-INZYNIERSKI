@@ -10,6 +10,7 @@ import { SchedulesPage }from '../pages/schedule/schedules/schedules'
 import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database'
 import { newDB } from '../providers/database/new-database';
+import { GrowingStepsPage } from '../pages/growing-steps/growing-steps';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +43,8 @@ export class MyApp {
         {title: "Harmonogramy", component:SchedulesPage },
         {title: "Lista zaufanych lekarzy", component:DocsListPage},
         {title: "Statystyki", component: StatsPage},
-        {title: "Poradniki", component: GuidebooksPage}
+        {title: "Poradniki", component: GuidebooksPage},
+        {title: "Etapy rozwojowe", component: GrowingStepsPage}
       ];
   }
   public openPage(page){

@@ -1,18 +1,22 @@
-<!--
-  Generated template for the GrowingStepsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>growing-steps</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="header">
+      <ion-title>Etapy rozwojowe</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding class="colors">
+      <ion-list>
+          <ion-item class="semi-trans" *ngFor="let step of steps" >
+            <h3 *ngIf="step.passed" style="margin-top: 3px"> {{step.date}}</h3>
+            <h2>{{step.name}}</h2>
+            <h2>{{step.description}} </h2>
+            <h3>{{getType(step.passed)}}</h3>
+            <button ion-button icon-only item-end *ngIf="step.passed"color="buttons" (click)='passed(step)'><ion-icon name="checkbox"></ion-icon> </button>     
+            <button ion-button icon-only item-end *ngIf="!step.passed"color="buttons" (click)='passed(step)'><ion-icon name="close"></ion-icon> </button>               
+          </ion-item>
+      </ion-list>
+  </ion-content>
+  
