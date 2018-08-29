@@ -29,7 +29,7 @@ import { StatsPage } from '../pages/statistics/stats/stats';
 import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 import { ChildProfileProvider } from '../providers/database/child-profile';
 import { Camera } from '../../node_modules/@ionic-native/camera';
-
+import { CallNumber } from '@ionic-native/call-number';
 
 @NgModule({
   declarations: [
@@ -83,8 +83,8 @@ import { Camera } from '../../node_modules/@ionic-native/camera';
     HttpModule,
     File,
     ChildProfileProvider,
-    Camera
-    
+    Camera,
+    CallNumber
   ]
 })
 export class AppModule {} 

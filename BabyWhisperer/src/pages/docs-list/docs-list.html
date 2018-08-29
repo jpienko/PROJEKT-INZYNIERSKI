@@ -17,6 +17,7 @@
           <h2>{{doc.specialisation}} </h2>
           <h3>{{doc.tel}}</h3>
           <h3>{{doc.adress}} </h3>
+          <button ion-button icon-only item-end color="buttons" (click)='call(doc.tel)'><ion-icon name='call'></ion-icon> </button>     
           <button ion-button icon-only item-end color="buttons" (click)='editDoc(doc)'><ion-icon name='brush'></ion-icon> </button>     
           <button ion-button icon-only item-end color="buttons" (click)='deleteDoc(doc)'><ion-icon name='trash'></ion-icon> </button>     
         </ion-item>
