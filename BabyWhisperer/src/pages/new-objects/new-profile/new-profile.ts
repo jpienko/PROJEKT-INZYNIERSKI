@@ -34,6 +34,7 @@ export class NewProfilePage {
       this.child.controls.weight.setValue(this.profile[0].weight);
       this.child.controls.height.setValue(this.profile[0].height);
       this.child.controls.foot.setValue(this.profile[0].foot);
+      this.model.picture = this.profile[0].picture;
     });    
   }
 

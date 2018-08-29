@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database'
 import { newDB } from '../../providers/database/new-database';
-import { ChildProfileProvider } from '../../providers/database/child-profile';
-import { NewDoctorPage } from '../new-objects/new-doctor/new-doctor';
-
+import { ChildProfileProvider, Child } from '../../providers/database/child-profile';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'page-home',
@@ -20,12 +19,12 @@ export class HomePage {
   protected diaper:string = ""
   protected time:string = ""
   protected child: any[] = [];
-  protected picture: string;
   protected id:number;
   protected age:number;
+  protected imageSrc: any;
 
   constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ChildProfileProvider, 
-              public platform:Platform, public dB:DatabaseProvider) {}
+              public platform:Platform, public dB:DatabaseProvider, private camera: Camera) {}
   
 
   ionViewDidEnter(){
@@ -38,12 +37,13 @@ export class HomePage {
         this.height = element.height;
         this.weight = element.weight;
         this.foot = element.foot;
-        this.picture = element.picture;
+        this.imageSrc = element.picture;
         this.time = this.getTimeDiff(element.birthday);
         this.id = element.id;
         this.age  = this.getAge(element.birthday);
       });
       console.log(this.child);
+      
     }); 
     })
     
@@ -92,4 +92,33 @@ export class HomePage {
     }
     this.navCtrl.push("NewProfilePage", data);
   }
+
+  protected openGallery () {
+    let cameraOptions:CameraOptions = {
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.DATA_URL,      
+      quality: 70,
+      saveToPhotoAlbum:false,
+      correctOrientation: true
+    }
+    console.log(this.child);
+    this.camera.getPicture(cameraOptions).then((imageData) => {
+      this.imageSrc = 'data:image/jpeg;base64,' + imageData;
+      this.child[0].picture = this.imageSrc;
+      console.log(this.child);
+      
+      this.database.update(this.child[0]).then((data)=>{
+        console.log(data);
+      },(error)=>{
+        console.log(error);
+      });
+  
+     }, (err) => {
+      console.log(err);  
+     });  
+
+     
+     
+  }
+  
 }
