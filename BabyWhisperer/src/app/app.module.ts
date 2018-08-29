@@ -28,6 +28,7 @@ import { SchedulesPage } from '../pages/schedule/schedules/schedules';
 import { StatsPage } from '../pages/statistics/stats/stats';
 import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 import { ChildProfileProvider } from '../providers/database/child-profile';
+import { Camera } from '../../node_modules/@ionic-native/camera';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { ChildProfileProvider } from '../providers/database/child-profile';
     Http,
     HttpModule,
     File,
-    ChildProfileProvider
+    ChildProfileProvider,
+    Camera
     
   ]
 })

@@ -37,6 +37,7 @@ export class MyApp {
       
     });
     this.pages=[
+        {title: "Strona główna", component: HomePage},
         {title: "Dzienniki", component: DaybookPage},
         {title: "Harmonogramy", component:SchedulesPage },
         {title: "Lista zaufanych lekarzy", component:DocsListPage},
