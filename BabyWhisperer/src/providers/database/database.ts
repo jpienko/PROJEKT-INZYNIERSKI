@@ -28,7 +28,9 @@ public db:SQLiteObject;
     return this.getDB()
       .then((db: SQLiteObject) => {
         this.createTables(db);
-        this.insertDefaultItems(db);
+        this.insertDefaultChild(db);
+        this.insertDefaultItemsSteps(db);
+
       })
       .catch(e => console.log(e));
   }
@@ -41,18 +43,19 @@ public db:SQLiteObject;
       ['CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY AUTOINCREMENT, purpose TEXT, startTime TEXT, adress TEXT)'],
       ['CREATE TABLE IF NOT EXISTS docs(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, surname TEXT, specialisation TEXT, adress TEXT, tel NUMBER)'],
       ['CREATE TABLE IF NOT EXISTS diapers(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, hour TEXT, type TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, weight NUMBER, height NUMBER, foot NUMBER, picture TEXT, date TEXT)']
+      ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, weight NUMBER, height NUMBER, foot NUMBER, picture TEXT, date TEXT)'],
+      ['CREATE TABLE IF NOT EXISTS steps(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, name TEXT, description TEXT, passed TEXT)']
 
     ])
       .catch(e => console.error(e));
   }
-  private insertDefaultItems(db: SQLiteObject) {
+  private insertDefaultChild(db: SQLiteObject) {
     db.executeSql('select COUNT(id) as qtd from child', <any>{})
     .then((data: any) => {
       if (data.rows.item(0).qtd == 0) {
  
         db.sqlBatch([
-          ['insert into child (name, birthday, weight, height, foot, picture, date) values (?,?,?,?,?,?,?)', ['Imię dziecka', 'data urodzenia', 0, 0, 0, 'ścieżka', 'data' ]],
+          ['insert into child (name, birthday, weight, height, foot, picture, date) values (?,?,?,?,?,?,?)', ['', '2018-08-29', 0, 0, 0, '', '' ]]
         ])
           .then(() => console.log('Dane domyślne dodane'))
           .catch(e => console.error(e));
@@ -61,6 +64,22 @@ public db:SQLiteObject;
     })
     .catch(e => console.error( e));
   }
+  private insertDefaultItemsSteps(db: SQLiteObject) {
+    db.executeSql('select COUNT(id) as qtd from steps', <any>{})
+    .then((data: any) => {
+      if (data.rows.item(0).qtd == 0) {
  
+        db.sqlBatch([
+          ['insert into steps (date, name, description, passed) values (?,?,?,?)', ['', 'Krok1', 'Opis1', 'false' ]],
+          ['insert into steps (date, name, description, passed) values (?,?,?,?)', ['', 'Krok2', 'Opis2', 'false' ]],
+          ['insert into steps (date, name, description, passed) values (?,?,?,?)', ['', 'Krok3', 'Opis3', 'false' ]]
+        ])
+          .then(() => console.log('Dane domyślne dodane'))
+          .catch(e => console.error(e));
+ 
+      }
+    })
+    .catch(e => console.error( e));
+  }
 }
  
