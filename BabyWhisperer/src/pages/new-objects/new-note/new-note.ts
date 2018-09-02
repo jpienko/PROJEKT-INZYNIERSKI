@@ -15,7 +15,7 @@ export class NewNotePage {
   public isEdit:boolean;
   private editNotes: any[] = [];
   protected title:string = "Nowa notatka";
-  protected buttonName:string = "Zapisz posiłek";
+  protected buttonName:string = "Zapisz notatkę";
 
   protected categories: string[] = Object.keys(NotesCategories);
   

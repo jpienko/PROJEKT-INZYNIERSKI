@@ -28,7 +28,7 @@ export class NotesPage {
     this.navCtrl.push('NewNotePage', data);
   }
 
-  public editDoc(id:number){
+  public editNote(id:number){
     let data = {
       newNote: false,
       noteId: id
