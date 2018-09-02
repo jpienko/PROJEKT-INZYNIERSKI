@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { MealScheduleProvider,Meals} from "./../../../providers/database/meal-schedule-provider";
+import { MealScheduleProvider, Meals} from "./../../../providers/database/meal-schedule-provider";
 import { MealsTypes} from "./../../../assets/enums/meals-types.enum"
 import { MealDaybookProvider } from '../../../providers/database/meal-daybook';
 
@@ -22,8 +21,9 @@ export class NewMealPage {
 
   protected types: string[] = Object.keys(MealsTypes);
   
-  constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
-              private formBuilder: FormBuilder, private database:MealScheduleProvider, private database2:MealDaybookProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+              private formBuilder: FormBuilder, private database:MealScheduleProvider, 
+              private database2:MealDaybookProvider) {
                 
       this.meals = this.formBuilder.group({
       date:[''],

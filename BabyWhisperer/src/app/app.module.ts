@@ -17,9 +17,9 @@ import { Calendar } from '@ionic-native/calendar'
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { DoctorVisitsProvider } from '../providers/database/doctor-visits';
 import { CalendarComponent } from "ionic2-calendar/calendar";
-import { CalendarService } from '../../node_modules/ionic2-calendar/calendar.service';
+import { CalendarService } from 'ionic2-calendar/calendar.service';
 import { DoctorsListProvider } from '../providers/database/doctors';
-import { HttpModule, JsonpModule, Http } from '../../node_modules/@angular/http';
+import { HttpModule, JsonpModule, Http } from '@angular/http';
 import { File } from '@ionic-native/file'
 import { DiaperDaybookProvider } from '../providers/database/diaper-daybook';
 import { DaybookPage } from '../pages/daybooks/daybook/daybook';
@@ -28,10 +28,12 @@ import { SchedulesPage } from '../pages/schedule/schedules/schedules';
 import { StatsPage } from '../pages/statistics/stats/stats';
 import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 import { ChildProfileProvider } from '../providers/database/child-profile';
-import { Camera } from '../../node_modules/@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
 import { GrowingStepsPage } from '../pages/growing-steps/growing-steps';
 import { GrowthStepsProvider } from '../providers/database/growth-steps';
+import { NotesProvider } from '../providers/database/notes';
+import { NotesPage } from '../pages/notes/notes';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { GrowthStepsProvider } from '../providers/database/growth-steps';
     DocsListPage,
     StatsPage,
     GuidebooksPage,
-    GrowingStepsPage
+    GrowingStepsPage,
+    NotesPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { GrowthStepsProvider } from '../providers/database/growth-steps';
     SchedulesPage,
     StatsPage,
     GuidebooksPage,
-    GrowingStepsPage
+    GrowingStepsPage,
+    NotesPage
 
   ],
   providers: [
@@ -90,7 +94,8 @@ import { GrowthStepsProvider } from '../providers/database/growth-steps';
     ChildProfileProvider,
     Camera,
     CallNumber,
-    GrowthStepsProvider
+    GrowthStepsProvider,
+    NotesProvider
   ]
 })
 export class AppModule {} 

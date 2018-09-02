@@ -44,6 +44,7 @@ public db:SQLiteObject;
       ['CREATE TABLE IF NOT EXISTS docs(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, surname TEXT, specialisation TEXT, adress TEXT, tel NUMBER)'],
       ['CREATE TABLE IF NOT EXISTS diapers(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, hour TEXT, type TEXT)'],
       ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, birthday TEXT, weight NUMBER, height NUMBER, foot NUMBER, picture TEXT, date TEXT)'],
+      ['CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, date TEXT, note TEXT, category TEXT)'],
       ['CREATE TABLE IF NOT EXISTS steps(id INTEGER PRIMARY KEY AUTOINCREMENT,date TEXT, name TEXT, description TEXT, passed TEXT)']
 
     ])

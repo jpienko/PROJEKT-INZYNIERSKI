@@ -1,1 +1,1 @@
-export const newDB: boolean = false;
+export const newDB: boolean = true;

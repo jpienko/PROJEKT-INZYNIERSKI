@@ -1,18 +1,20 @@
+
 import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from './database';
+import { Title } from '../../../node_modules/@angular/platform-browser';
 
 @Injectable()
-export class ChildProfileProvider {
- 
-  constructor(private dbProvider: DatabaseProvider) { 
-  }
- 
-  public insert(child: Child) {
+export class NotesProvider {
+
+  constructor(private dbProvider: DatabaseProvider) {}
+
+
+  public insert(note: Note) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into child(name, birthday, weight, height, foot, picture, date) values (?, ?, ?, ?, ?, ?, ?)';
-        let data = [child.name,child.birthday, child.weight, child.height, child.foot, child.picture, child.date];
+        let sql = 'insert into notes(title, date, note, category) values ( ?, ?, ?, ?)';
+        let data = [note.title, note.date, note.note, note.category];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -20,11 +22,11 @@ export class ChildProfileProvider {
       .catch((e) => console.error(e));
   }
  
-  public update(child: Child) {
+  public update(note: Note) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update child set name = ?, birthday = ?, weight = ?, height = ?, foot = ?, picture = ?, date = ? where id = ?';
-        let data = [child.name,child.birthday, child.weight, child.height, child.foot, child.picture, child.date, child.id];
+        let sql = 'update notes set title = ?, date = ?, note = ?, category = ? where id = ?';
+        let data = [note.title,note.date, note.note, note.category, note.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -35,7 +37,7 @@ export class ChildProfileProvider {
   public remove(id: number) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'delete from child where id = ?';
+        let sql = 'delete from notes where id = ?';
         let data = [id];
  
         return db.executeSql(sql, data)
@@ -48,21 +50,18 @@ export class ChildProfileProvider {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
        .then((db: SQLiteObject)=>{
-         db.executeSql("SELECT * FROM child where id = ?",[id])
+         db.executeSql("SELECT * FROM notes where id = ?",[id])
          .then((data)=>{
            let arrayChild = [];
            if (data.rows.length>0){
              for(var i  = 0; i<data.rows.length;i++)
              {
                arrayChild.push({
-                 name: data.rows.item(i).name,
+                 title: data.rows.item(i).title,
                  id: data.rows.item(i).id,
-                 birthday: data.rows.item(i).birthday,
-                 weight: data.rows.item(i).weight,
-                 height: data.rows.item(i).height,
-                 foot: data.rows.item(i).foot,
-                 picture: data.rows.item(i).picture,
-                 date: data.rows.item(i).date
+                 date: data.rows.item(i).date,
+                 note: data.rows.item(i).note,
+                 category: data.rows.item(i).category
                });
              }
            }
@@ -77,25 +76,22 @@ export class ChildProfileProvider {
   }
 
 
-  public GetAllChildProfiles(){
+  public getAllNotes(){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child GROUP BY date ORDER BY date ASC",[])
+          db.executeSql("SELECT * FROM notes GROUP BY category ORDER BY date ASC",[])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayChild.push({
-                  name: data.rows.item(i).name,
+                  title: data.rows.item(i).title,
                   id: data.rows.item(i).id,
-                  birthday: data.rows.item(i).birthday,
-                  weight: data.rows.item(i).weight,
-                  height: data.rows.item(i).height,
-                  foot: data.rows.item(i).foot,
-                  picture: data.rows.item(i).picture,
-                  date: data.rows.item(i).date
+                  date: data.rows.item(i).date,
+                  note: data.rows.item(i).note,
+                  category: data.rows.item(i).category
                 });
               }
             }
@@ -111,13 +107,10 @@ export class ChildProfileProvider {
 }
 
  
-export class Child{
+export class Note{
     id:number;
-    name:string;
-    birthday: Date;
-    weight:number;
-    height:number;
-    foot:number;
-    picture:string;
+    title:string;
     date: string;
+    note:string;
+    category:string;
 }

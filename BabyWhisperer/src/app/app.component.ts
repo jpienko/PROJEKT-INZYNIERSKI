@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database'
 import { newDB } from '../providers/database/new-database';
 import { GrowingStepsPage } from '../pages/growing-steps/growing-steps';
+import { NotesPage } from '../pages/notes/notes';
 
 @Component({
   templateUrl: 'app.html'
@@ -44,6 +45,7 @@ export class MyApp {
         {title: "Lista zaufanych lekarzy", component:DocsListPage},
         {title: "Statystyki", component: StatsPage},
         {title: "Poradniki", component: GuidebooksPage},
+        {title: "Notatki", component: NotesPage},
         {title: "Etapy rozwojowe", component: GrowingStepsPage}
       ];
   }

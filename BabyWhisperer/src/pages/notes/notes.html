@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar color="header">
+    <ion-title>Notatki</ion-title>
+    <ion-buttons end style="margin-right: 10px">
+      <button ion-button outline (click) = "goToNewNote()">Dodaj notatkę</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="colors">
+    <ion-list>
+        <ion-item class="semi-trans" *ngFor="let note of notes" >
+          <h2>{{note.date}}</h2>
+          <h2 (click)='editNote(note.id)'>{{note.title}} </h2>
+          <button ion-button icon-only item-end color="buttons" (click)='editNote(note.id)'><ion-icon name='brush'></ion-icon> </button>     
+          <button ion-button icon-only item-end color="buttons" (click)='deleteNote(note)'><ion-icon name='trash'></ion-icon> </button>     
+        </ion-item>
+    </ion-list>
+</ion-content>

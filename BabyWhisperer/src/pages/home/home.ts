@@ -27,6 +27,9 @@ export class HomePage {
   constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ChildProfileProvider, 
               public platform:Platform, public dB:DatabaseProvider, private camera: Camera, private file:File) {}
   
+  ionViewDidLoad(){
+    this.ionViewDidEnter();
+  }
 
   ionViewDidEnter(){
     this.platform.ready().then(()=>{      
@@ -120,7 +123,10 @@ export class HomePage {
         sizes = JSON.parse(text); 
         sizes.forEach(element => {
           if(element.max>this.height){
-            this.size = element.size;
+            if(element.min<this.height){
+               this.size = element.size;
+            
+            }
           }
         });
       }).catch(err => {})
