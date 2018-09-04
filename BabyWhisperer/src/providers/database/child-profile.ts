@@ -112,10 +112,18 @@ export class ChildProfileProvider {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
        .then((db: SQLiteObject)=>{
-         db.executeSql("SELECT COUNT(name) as length FROM child",[])
+         db.executeSql("SELECT COUNT(name) as sized FROM child",[])
          .then((data)=>{
-           length = data.rows.item(0).length;
-           resolve(length)
+          let arrayChild = [];
+          if (data.rows.length>0){
+            for(var i  = 0; i<data.rows.length;i++)
+            {
+              arrayChild.push({
+                sized: data.rows.item(i).sized,
+              });
+            }
+          }
+          resolve(arrayChild)
          },(error)=> {
            reject(error);
          });

@@ -31,6 +31,9 @@ export class NewNotePage {
   }
 
   ionViewDidEnter() {
+    if(this.navParams.get('back')){
+      this.navCtrl.popAll();
+    }
     this.categories = this.categories.slice(this.categories.length / 2);
     this.isEdit = false;
     this.isEdit = !this.navParams.get('newNote');

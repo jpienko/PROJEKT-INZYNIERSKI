@@ -27,7 +27,7 @@ export class NewProfilePage {
   }
 
   ionViewDidLoad() {
-    this.database.get(this.navParams.get('id')).then((result: any[]) => {
+    this.database.get(1).then((result: any[]) => {
       this.profile = result;     
       this.child.controls.name.setValue(this.profile[0].name);
       this.child.controls.birthday.setValue(this.profile[0].birthday);    

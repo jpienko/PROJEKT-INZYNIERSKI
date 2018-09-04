@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database'
@@ -23,47 +24,33 @@ export class HomePage {
   protected id:number;
   protected age:number;
   protected imageSrc: any;
-  public firstLaunch:boolean = false;
 
   constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ChildProfileProvider, 
               public platform:Platform, public dB:DatabaseProvider, private camera: Camera, private file:File) {}
   
   ionViewDidLoad(){
-    this.ionViewDidEnter();
+    this.getProfile();
   }
 
-  ionViewDidEnter(){     
-      this.database.getLength().then((result: any[]) => {
+  getProfile(){
+          
+      this.database.get(1).then((result: any[]) => {
         this.child = result;
-        console.log(this.child);
-        
-        if (this.child.length>0){
-         this.getProfile();
-        }else{
-           // this.firstLaunch = true;
-        }
+        this.child.forEach(element => {
+          this.name = element.name;
+          this.birthday = this.getBirthDate(element.birthday);
+          this.height = element.height;
+          this.weight = element.weight;
+          this.foot = element.foot;
+          this.imageSrc = element.picture;
+          this.time = this.getTimeDiff(element.birthday);
+          this.id = element.id;
+          this.age  = this.getAge(element.birthday);
+        });
         this.getClothesSizes();
         this.getDiapersSizes();
       }); 
     
-  }
-
-  private getProfile(){
-    this.database.get(1).then((result: any[]) => {
-      this.child = result;
-      this.firstLaunch = false;
-      this.child.forEach(element => {
-        this.name = element.name;
-        this.birthday = this.getBirthDate(element.birthday);
-        this.height = element.height;
-        this.weight = element.weight;
-        this.foot = element.foot;
-        this.imageSrc = element.picture;
-        this.time = this.getTimeDiff(element.birthday);
-        this.id = element.id;
-        this.age  = this.getAge(element.birthday);
-      });
-    });
   }
 
   private getTimeDiff(birthday:string){

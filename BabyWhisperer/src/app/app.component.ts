@@ -10,7 +10,7 @@ import { SchedulesPage }from '../pages/schedule/schedules/schedules'
 import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database'
 import { newDB } from '../providers/database/new-database';
-import { GrowingStepsPage } from '../pages/growing-steps/growing-steps';
+import { GrowingStepsPage } from '../pages/steps/growing-steps/growing-steps';
 import { NotesPage } from '../pages/notes/notes';
 
 @Component({

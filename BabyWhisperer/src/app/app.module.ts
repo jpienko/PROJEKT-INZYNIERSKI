@@ -30,7 +30,7 @@ import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 import { ChildProfileProvider } from '../providers/database/child-profile';
 import { Camera } from '@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
-import { GrowingStepsPage } from '../pages/growing-steps/growing-steps';
+import { GrowingStepsPage } from '../pages/steps/growing-steps/growing-steps';
 import { GrowthStepsProvider } from '../providers/database/growth-steps';
 import { NotesProvider } from '../providers/database/notes';
 import { NotesPage } from '../pages/notes/notes';
