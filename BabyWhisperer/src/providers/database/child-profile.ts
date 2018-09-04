@@ -108,7 +108,25 @@ export class ChildProfileProvider {
         });
     })
   }
+  public getLength(){
+    return new Promise((resolve,reject)=>{
+      this.dbProvider.getDB()
+       .then((db: SQLiteObject)=>{
+         db.executeSql("SELECT COUNT(name) as length FROM child",[])
+         .then((data)=>{
+           length = data.rows.item(0).length;
+           resolve(length)
+         },(error)=> {
+           reject(error);
+         });
+       },(error)=> {
+         reject(error);
+       });
+   })
+  }
 }
+
+  
 
  
 export class Child{

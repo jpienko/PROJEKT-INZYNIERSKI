@@ -23,6 +23,7 @@ export class HomePage {
   protected id:number;
   protected age:number;
   protected imageSrc: any;
+  public firstLaunch:boolean = false;
 
   constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ChildProfileProvider, 
               public platform:Platform, public dB:DatabaseProvider, private camera: Camera, private file:File) {}
@@ -31,26 +32,38 @@ export class HomePage {
     this.ionViewDidEnter();
   }
 
-  ionViewDidEnter(){
-    this.platform.ready().then(()=>{      
-      this.database.get(1).then((result: any[]) => {
+  ionViewDidEnter(){     
+      this.database.getLength().then((result: any[]) => {
         this.child = result;
-        this.child.forEach(element => {
-          this.name = element.name;
-          this.birthday = this.getBirthDate(element.birthday);
-          this.height = element.height;
-          this.weight = element.weight;
-          this.foot = element.foot;
-          this.imageSrc = element.picture;
-          this.time = this.getTimeDiff(element.birthday);
-          this.id = element.id;
-          this.age  = this.getAge(element.birthday);
-        });
+        console.log(this.child);
+        
+        if (this.child.length>0){
+         this.getProfile();
+        }else{
+           // this.firstLaunch = true;
+        }
         this.getClothesSizes();
         this.getDiapersSizes();
       }); 
-    })
     
+  }
+
+  private getProfile(){
+    this.database.get(1).then((result: any[]) => {
+      this.child = result;
+      this.firstLaunch = false;
+      this.child.forEach(element => {
+        this.name = element.name;
+        this.birthday = this.getBirthDate(element.birthday);
+        this.height = element.height;
+        this.weight = element.weight;
+        this.foot = element.foot;
+        this.imageSrc = element.picture;
+        this.time = this.getTimeDiff(element.birthday);
+        this.id = element.id;
+        this.age  = this.getAge(element.birthday);
+      });
+    });
   }
 
   private getTimeDiff(birthday:string){

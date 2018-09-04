@@ -28,10 +28,11 @@ export class MyApp {
       if(newDB){
         this.dB.dropDB();
       }
-      statusBar.styleDefault();
+      
       dB.createDatabase()
         .then(() => {
           splashScreen.hide();
+          statusBar.styleDefault();
         })
         .catch(() => {
           splashScreen.hide();
