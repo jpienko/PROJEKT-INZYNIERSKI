@@ -23,7 +23,9 @@ export class DiaperDaybookPage {
   ionViewDidEnter() {
     this.database.GetAllDiapers().then((result: any[]) => {
       this.diapers = result;
-      console.log(this.diapers);
+      this.diapers.forEach(element => {
+        element.type = this.getType(element.type);
+      });
       
     }); 
   }
@@ -51,11 +53,12 @@ export class DiaperDaybookPage {
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
     })
   }
-  public getType(type:boolean):string{
-    if(type){
-      var isType:string = "TAK";
+  public getType(type:string):string{
+    var isType:string;
+    if(type=='false'){
+       isType = "NIE";
     }else{
-      var isType:string = "NIE";
+       isType = "TAK";
     }
     return isType
   } 

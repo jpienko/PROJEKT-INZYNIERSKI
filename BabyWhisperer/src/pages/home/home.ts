@@ -29,10 +29,10 @@ export class HomePage {
               public platform:Platform, public dB:DatabaseProvider, private camera: Camera, private file:File) {}
   
   ionViewDidLoad(){
-    this.getProfile();
+    this.ionViewDidEnter();
   }
 
-  getProfile(){
+  ionViewDidEnter(){
           
       this.database.get(1).then((result: any[]) => {
         this.child = result;
@@ -141,7 +141,7 @@ export class HomePage {
       this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "diapers-sizes.json").then(text => {
         sizes = JSON.parse(text);
         sizes.forEach(element => {
-          if(element.min<this.weight && element.max>this.weight){
+          if(element.min<=this.weight && element.max>this.weight){
             if (this.diaper==""){
               this.diaper = element.size
             }else{

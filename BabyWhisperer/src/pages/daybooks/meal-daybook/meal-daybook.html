@@ -12,6 +12,9 @@
   
   <ion-content padding="true" align="center" class="colors">
     <ion-list>
+      <ion-item-divider class='semi-trans' *ngFor="let meal of meals">
+          {{meal.date}}
+      </ion-item-divider>
         <ion-item  class='semi-trans' *ngFor="let meal of meals">
           <h4 style="margin-top: 3px">{{meal.date}} </h4>
           <h2>{{meal.hour}}</h2>
