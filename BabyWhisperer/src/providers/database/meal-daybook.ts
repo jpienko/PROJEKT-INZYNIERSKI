@@ -79,7 +79,7 @@ export class MealDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM meals ORDER BY date, hour ASC",[])
+          db.executeSql("SELECT * FROM meals ORDER BY date DESC, hour DESC",[])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -108,13 +108,40 @@ export class MealDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT date FROM meals ORDER BY date",[])
+          db.executeSql("SELECT DISTINCT date FROM meals ORDER BY date DESC",[])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayMeals.push({
+                  date:data.rows.item(i).date
+                });
+              }
+            }
+            resolve(arrayMeals)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
+    })
+  }
+  public getByDAte(date: string) {
+    return new Promise((resolve,reject)=>{
+      this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT * FROM meals WHERE date = ?",[date])
+            .then((data)=>{
+              let arrayMeals = [];
+              if (data.rows.length>0){
+                for(var i  = 0; i<data.rows.length;i++){
+                  arrayMeals.push({
+                  id:data.rows.item(i).id,
+                  hour:data.rows.item(i).hour,
+                  type:data.rows.item(i).type,
+                  description:data.rows.item(i).description,
                   date:data.rows.item(i).date
                 });
               }

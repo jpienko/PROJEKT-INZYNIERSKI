@@ -11,7 +11,8 @@ import { MealDaybookProvider } from '../../../providers/database/meal-daybook'
 export class MealDaybookPage {
   protected isEdited:boolean = false;
   protected meals: any[] = [];
-  protected dates: any[]=[]
+  protected dates: any[]=[];
+  protected all:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:MealDaybookProvider,
               public toast:ToastController) {
@@ -19,15 +20,21 @@ export class MealDaybookPage {
 
 
   ionViewDidEnter() {
-    this.database.GetAllMeals().then((result: any[]) => {
-      this.meals = result;
-      console.log(this.meals);
-      
-    }); 
-
     this.database.GetAllDates().then((result: any[]) => {
       this.dates = result;
+      this.dates.forEach(element => {
+       this.database.getByDAte(element.date).then((result:any[])=>{
+          this.meals = result;
+          this.all.push({
+            date: element.date,
+            meal:this.meals
+          })
+       })
+        
+      });
     }); 
+    console.log(this.all);
+    
   }
 
   goToNewMeal(){
