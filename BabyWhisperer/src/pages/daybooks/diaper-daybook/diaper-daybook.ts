@@ -14,6 +14,8 @@ export class DiaperDaybookPage {
 
   isEdited:boolean = false;
   diapers: any[] = [];
+  dates:any[]=[];
+  all:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: DiaperDaybookProvider,
               public toast:ToastController) {
@@ -21,12 +23,17 @@ export class DiaperDaybookPage {
 
 
   ionViewDidEnter() {
-    this.database.GetAllDiapers().then((result: any[]) => {
-      this.diapers = result;
-      this.diapers.forEach(element => {
-        element.type = this.getType(element.type);
+    this.database.GetAllDates().then((result: any[]) => {
+      this.dates = result;
+      this.dates.forEach(element => {
+       this.database.getByDate(element.date).then((result:any[])=>{
+          this.diapers = result; 
+          this.all.push({
+            date: element.date,
+            diaper:this.diapers
+          })
+       }) 
       });
-      
     }); 
   }
 
@@ -46,7 +53,6 @@ export class DiaperDaybookPage {
   }
 
   public deleteNap(diaper:Diaper){
-    console.log(diaper);
     this.database.remove(diaper.id).then(() => {
       var index = this.diapers.indexOf(diaper);
       this.diapers.splice(index, 1);
@@ -55,16 +61,12 @@ export class DiaperDaybookPage {
   }
   public getType(type:string):string{
     var isType:string;
-    if(type=='false'){
-       isType = "NIE";
-    }else{
+    if(type=='true'){
        isType = "TAK";
+    }else{
+       isType = "NIE";
     }
     return isType
   } 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DiaperDaybookPage');
-  }
 
 }

@@ -128,7 +128,8 @@ export class MealDaybookProvider {
         });
     })
   }
-  public getByDAte(date: string) {
+
+  public getByDate(date: string) {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{

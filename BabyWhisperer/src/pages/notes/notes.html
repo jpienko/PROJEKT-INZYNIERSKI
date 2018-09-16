@@ -11,12 +11,19 @@
 
 
 <ion-content padding class="colors">
-    <ion-list>
-        <ion-item class="semi-trans" *ngFor="let note of notes" >
+  <ion-list>
+    <ion-item class='semi-trans' *ngFor="let notes of all">
+        <ion-list-header align="center" style="align-content: center; width: 100%" class="trans">
+            {{notes.category}}
+          </ion-list-header>
+      <ion-list>    
+        <ion-item  style="border-bottom: 3px; border-bottom-color: gray" class="trans" *ngFor="let note of notes.notes" >
           <h2>{{note.date}}</h2>
           <h2 (click)='editNote(note.id)'>{{note.title}} </h2>
           <button ion-button icon-only item-end color="buttons" (click)='editNote(note.id)'><ion-icon name='brush'></ion-icon> </button>     
           <button ion-button icon-only item-end color="buttons" (click)='deleteNote(note)'><ion-icon name='trash'></ion-icon> </button>     
         </ion-item>
-    </ion-list>
+      </ion-list>
+    </ion-item>
+  </ion-list>
 </ion-content>

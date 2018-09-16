@@ -1,11 +1,458 @@
 [ {
-    "id":1,
-    "name":"mleko",
-    "time":"never"
+    "name":"Dynia",
+    "time":"po 5 miesiącu"
   }, 
   {
-    "id":2,
-    "name":"chrupki",
-    "time":"zęby"
+    "name":"Marchewka",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Marchewka",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Ziemniak",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Jabłko",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Ryż biały",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Ryż brązowy",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Kasza ryżowa",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Mąka ryżowa",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Kasza kukurydziana",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Mąka kukurydziana",
+    "time":"po 5 miesiącu"
+  },
+  {
+    "name":"Brokuł",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Brukselka",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Cukinia",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Fasolka szparagowa",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Groszek zielony",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Kabaczek",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Kalafior",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Kapusta biała",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Kapusta czerwona",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Kapusta włoska",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Kukurydza",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Patison",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Pietruszka",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Seler",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Soczewica czerwona",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Jagody",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Dzika róża",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Jagnięcina",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Mięso z indyka",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Mięso z królika",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Mięso z kurczaka",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Ryby",
+    "time":"po 6 miesiącu"
+  },
+  {
+    "name":"Burak",
+    "time":"po 7 miesiącu"
+  },
+  {
+    "name":"Kalarepa",
+    "time":"po 7 miesiącu"
+  },
+  {
+    "name":"Por",
+    "time":"po 7 miesiącu"
+  },
+  {
+    "name":"Soczewica zielona",
+    "time":"po 7 miesiącu"
+  },
+  {
+    "name":"Żółtko jajka kurzego",
+    "time":"po 7 miesiącu"
+  },
+  {
+    "name":"Jarmuż",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Szparagi",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Banany",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Brzoskwinie",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Czereśnie",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Daktyle",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Kiwi",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Melon",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Mango",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Mirabelki",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Renklody",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Rodzynki",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Suszone śliwki",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Śliwki węgierki",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Mąka sojowa",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Kasza gryczana biała niepalona",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Sezam",
+    "time":"po 8 miesiącu"
+  },
+  {
+    "name":"Cebula",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Groch",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Szczaw",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Szpinak",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Arbuz",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Aronia",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Borówka",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Jeżyny",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Porzeczki",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Wiśnie",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Jęczmień",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Kasza jaglana",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Pestki słonecznika",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Pestki dyni",
+    "time":"po 9 miesiącu"
+  },
+  {
+    "name":"Bakłażan",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Bób",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Cieciorka",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Fasola",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Ogórek",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Papryka",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Pomidor",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Rzodkiew",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Soja",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Ananas",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Awokado",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Papaja",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Poziomki",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Truskawki",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Żurawina",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Pieczywo",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Kasza jęczmienna",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Kasza manna",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Kuskus",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Płatki owsiane",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Suchary",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Kiełki",
+    "time":"po 10 miesiącu"
+  },
+  {
+    "name":"Rzepa",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Figi",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Makaron",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Cielęcina",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Wołowina",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Jogurt",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Kefir",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Maślanka",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Mleko acidofilne",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Twarożek",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Jajko kurze całe",
+    "time":"po 11 miesiącu"
+  },
+  {
+    "name":"Sałata",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Cytryny",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Grejpfruty",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Limonki",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Mandarynki",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Pomarańcze",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Produkty glutenowe",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Miód",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Mleko krowie",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Ser żółty",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Wędliny",
+    "time":"po 12 miesiącu"
+  },
+  {
+    "name":"Orzechy",
+    "time":"po 12 miesiącu"
   }
+
 ]

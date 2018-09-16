@@ -23,18 +23,15 @@ export class MealDaybookPage {
     this.database.GetAllDates().then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDAte(element.date).then((result:any[])=>{
+       this.database.getByDate(element.date).then((result:any[])=>{
           this.meals = result;
           this.all.push({
             date: element.date,
             meal:this.meals
           })
-       })
-        
+       }) 
       });
     }); 
-    console.log(this.all);
-    
   }
 
   goToNewMeal(){
@@ -57,7 +54,6 @@ export class MealDaybookPage {
   }
 
   deleteMeal(meal:Meals){
-    console.log(meal);
     this.database.remove(meal.id).then(() => {
       var index = this.meals.indexOf(meal);
       this.meals.splice(index, 1);

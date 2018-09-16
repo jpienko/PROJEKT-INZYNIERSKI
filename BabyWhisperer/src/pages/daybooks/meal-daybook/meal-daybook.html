@@ -13,16 +13,16 @@
   <ion-content padding="true" align="center" class="colors">
     <ion-list>
       <ion-item class='semi-trans' *ngFor="let day of all">
-          <h2 align="center" style="align-content: center; width: 100%" class="trans">{{day.date}}</h2>
-          
+        <h2 align="center" style="align-content: center; width: 100%" class="trans">{{day.date}}</h2>
+        <ion-list>
           <ion-item  class='trans' *ngFor="let meal of day.meal">
             <h2>{{meal.hour}}</h2>
             <h3>{{meal.type}} </h3>
             <h4>{{meal.description}}</h4>
             <button ion-button icon-only item-end color="buttons" (click)='editMeal(meal)'><ion-icon name='brush'></ion-icon> </button>     
             <button ion-button icon-only item-end color="buttons" (click)='deleteMeal(meal)'><ion-icon name='trash'></ion-icon> </button>     
-        </ion-item>
-      
+          </ion-item>
+      </ion-list>
       </ion-item>
     </ion-list>
     

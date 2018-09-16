@@ -16,7 +16,6 @@
             <h3 *ngIf="step.passed" style="margin-top: 3px"> {{step.date}}</h3>
             <h2>{{step.name}}</h2>
             <h2 white-space:normal style="margin-top: 3px" >{{step.description}} </h2>
-            <h3>{{getType(step.passed)}}</h3>
             <button ion-button icon-only item-end *ngIf="step.passed"color="buttons" (click)='passed(step)'><ion-icon name="checkbox"></ion-icon> </button>     
             <button ion-button icon-only item-end *ngIf="!step.passed"color="buttons" (click)='passed(step)'><ion-icon name="close"></ion-icon> </button>               
           </ion-item>

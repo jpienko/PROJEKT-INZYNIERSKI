@@ -74,11 +74,11 @@ export class DiaperDaybookProvider {
  
 
 
-  public GetAllDiapers(){
+  public getByDate(date: string){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM diapers ORDER BY date, hour ASC",[])
+          db.executeSql("SELECT * FROM diapers WHERE date = ?",[date])
           .then((data)=>{
             let arrayDiapers = [];
             if (data.rows.length>0){
@@ -88,7 +88,6 @@ export class DiaperDaybookProvider {
                   id:data.rows.item(i).id,
                   hour:data.rows.item(i).hour,
                   type:data.rows.item(i).type,
-                  date:data.rows.item(i).date
                 });
               }
             }
@@ -106,7 +105,7 @@ export class DiaperDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT date FROM diapers ORDER BY date",[])
+          db.executeSql("SELECT DISTINCT date FROM diapers ORDER BY date DESC",[])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){

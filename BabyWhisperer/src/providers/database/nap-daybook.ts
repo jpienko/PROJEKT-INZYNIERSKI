@@ -75,18 +75,17 @@ export class NapDaybookProvider {
  
 
 
-  public GetAllNaps(){
+  public getByDateNaps(date:string){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM naps ORDER BY date DESC, hourStop ASC",[])
+          db.executeSql("SELECT * FROM naps WHERE date = ?",[date])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayNaps.push({
-                  date: data.rows.item(i).date,
                   id: data.rows.item(i).id,
                   hourStart: data.rows.item(i).hourStart,
                   hourStop: data.rows.item(i).hourStop,
@@ -103,6 +102,33 @@ export class NapDaybookProvider {
         });
     })
   }
+
+  public getAllDates(){
+    return new Promise((resolve,reject)=>{
+       this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT DISTINCT date FROM naps ORDER BY date DESC",[])
+          .then((data)=>{
+            let arrayNaps = [];
+            if (data.rows.length>0){
+              for(var i  = 0; i<data.rows.length;i++)
+              {
+                arrayNaps.push({
+                  date: data.rows.item(i).date,
+                });
+              }
+            }
+            resolve(arrayNaps)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
+    })
+  }
+
+
   public GetAvrageNap(){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
