@@ -34,6 +34,8 @@ import { GrowingStepsPage } from '../pages/steps/growing-steps/growing-steps';
 import { GrowthStepsProvider } from '../providers/database/growth-steps';
 import { NotesProvider } from '../providers/database/notes';
 import { NotesPage } from '../pages/notes/notes';
+import { ProfilesProvider } from '../providers/database/profiles';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { NotesPage } from '../pages/notes/notes';
     StatsPage,
     GuidebooksPage,
     GrowingStepsPage,
-    NotesPage
+    NotesPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { NotesPage } from '../pages/notes/notes';
     StatsPage,
     GuidebooksPage,
     GrowingStepsPage,
-    NotesPage
+    NotesPage,
+    ProfilePage
 
   ],
   providers: [
@@ -95,7 +99,8 @@ import { NotesPage } from '../pages/notes/notes';
     Camera,
     CallNumber,
     GrowthStepsProvider,
-    NotesProvider
+    NotesProvider,
+    ProfilesProvider
   ]
 })
 export class AppModule {} 

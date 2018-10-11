@@ -15,13 +15,14 @@ export class NapStatsPage {
   avg:string[] = [];
   avgAvgNap:string = '0';
   avgSumNap:string = '0';
+  childId:number;
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider) {
   }
   
   ionViewDidLoad() {
     
     console.log('ionViewDidLoad NapStatsPage');
-    this.database.GetAvrageNap().then((result: any[]) => {
+    this.database.GetAvrageNap(this.childId).then((result: any[]) => {
     this.naps = result;
     var i =0;
       this.naps.forEach(element => {

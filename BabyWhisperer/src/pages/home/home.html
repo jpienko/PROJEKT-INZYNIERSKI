@@ -1,39 +1,23 @@
 
   <ion-header >
-  <ion-navbar color="header">
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+      <ion-navbar color="header">
     <ion-title>
       Baby Whisperer
     </ion-title>
-    <ion-buttons end style="margin-right: 10px">
-      <button ion-button outline (click) = "goToNewProfile()">Edytuj</button>
-    </ion-buttons>
-  </ion-navbar>
+    </ion-navbar>
 </ion-header>
 
 
-
-
 <ion-content padding="true" align="center" class="colors">
-  <div class="gallery-button" text-center>
-    <p> 
-      <img style=" height: 100px; width: 100px" [src]="imageSrc" />    
-    </p>
+      <ion-list>
+        <ion-item  class='trans' *ngFor="let profile of profiles">
+        
+          <button ion-button color="buttons" (click)='goToChild(profile.id)' style="width: 60%">{{profile.name}} </button>     
     
-    <button ion-button round small (click) = "openGallery()"outline>Wybierz nowe zdjęcie</button>
-  </div>
-  <h3>Imie: {{name}} </h3>
-  <h3>Wiek: {{age}} miesięcy</h3>
-  <h4>Data urodzenia: {{birthday}} </h4>
-  <h5>Dni do urodzin: {{time}} </h5>
-  <h5>Waga: {{weight}} kg </h5>
-  <h5>Wzrost: {{height}} cm </h5>
-  <h6>Rozmiar stopy: {{foot}} cm </h6>
-  <h6>Rozmiar ubranek: {{size}} </h6>
-  <h6>Rozmiar pieluch: {{diaper}} </h6>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
 </ion-content>
 
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 

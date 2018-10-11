@@ -2,17 +2,16 @@ import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from './database';
 
+
 @Injectable()
-export class ChildProfileProvider {
+export class ProfilesProvider {
+  constructor(private dbProvider: DatabaseProvider) {}
  
-  constructor(private dbProvider: DatabaseProvider) { 
-  }
- 
-  public insert(child: Child) {
+  public insert(child: Profiles) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into child(childID, weight, height, foot, picture, date) values ( ?, ?, ?, ?, ?, ?)';
-        let data = [child.childId, child.weight, child.height, child.foot, child.picture, child.date];
+        let sql = 'insert into profile(name, birthday) values (?, ?)';
+        let data = [child.name,child.birthday];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -20,11 +19,11 @@ export class ChildProfileProvider {
       .catch((e) => console.error(e));
   }
  
-  public update(child: Child) {
+  public update(child: Profiles) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update child set weight = ?, height = ?, foot = ?, picture = ?, date = ? where id = ?';
-        let data = [child.weight, child.height, child.foot, child.picture, child.date, child.id];
+        let sql = 'update profile set name = ?, birthday = ? where id = ?';
+        let data = [child.name,child.birthday, child.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -35,7 +34,7 @@ export class ChildProfileProvider {
   public remove(id: number) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'delete from child where id = ?';
+        let sql = 'delete from profile where id = ?';
         let data = [id];
  
         return db.executeSql(sql, data)
@@ -48,19 +47,16 @@ export class ChildProfileProvider {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
        .then((db: SQLiteObject)=>{
-         db.executeSql("SELECT * FROM child where id = ?",[id])
+         db.executeSql("SELECT * FROM profile where id = ?",[id])
          .then((data)=>{
            let arrayChild = [];
            if (data.rows.length>0){
              for(var i  = 0; i<data.rows.length;i++)
              {
                arrayChild.push({
+                 name: data.rows.item(i).name,
                  id: data.rows.item(i).id,
-                 weight: data.rows.item(i).weight,
-                 height: data.rows.item(i).height,
-                 foot: data.rows.item(i).foot,
-                 picture: data.rows.item(i).picture,
-                 date: data.rows.item(i).date
+                 birthday: data.rows.item(i).birthday,
                });
              }
            }
@@ -75,21 +71,20 @@ export class ChildProfileProvider {
   }
 
 
-  public GetAllChildProfiles(id:number){
+  public GetAllChildProfiles(){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child WHERE childId = ? GROUP BY date",[id])
+          db.executeSql("SELECT * FROM profile",[])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayChild.push({
+                  name: data.rows.item(i).name,
                   id: data.rows.item(i).id,
-                  weight: data.rows.item(i).weight,
-                  height: data.rows.item(i).height,
-                  date: data.rows.item(i).date
+                  birthday: data.rows.item(i).birthday,
                 });
               }
             }
@@ -102,11 +97,11 @@ export class ChildProfileProvider {
         });
     })
   }
-  public getLength(id:number){
+  public getLength(){
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
        .then((db: SQLiteObject)=>{
-         db.executeSql("SELECT COUNT(childId) as sized FROM child WHERE childId = ?",[id])
+         db.executeSql("SELECT COUNT(name) as sized FROM profile",[])
          .then((data)=>{
           let arrayChild = [];
           if (data.rows.length>0){
@@ -126,45 +121,13 @@ export class ChildProfileProvider {
        });
    })
   }
-
-  public GetCurrentProfile(id:number){
-    return new Promise((resolve,reject)=>{
-       this.dbProvider.getDB()
-        .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child WHERE childId = ? ORDER BY date LIMIT 1",[id])
-          .then((data)=>{
-            let arrayChild = [];
-            if (data.rows.length>0){
-              for(var i  = 0; i<data.rows.length;i++)
-              {
-                arrayChild.push({
-                  id: data.rows.item(i).id,
-                  weight: data.rows.item(i).weight,
-                  height: data.rows.item(i).height,
-                  date: data.rows.item(i).date
-                });
-              }
-            }
-            resolve(arrayChild)
-          },(error)=> {
-            reject(error);
-          });
-        },(error)=> {
-          reject(error);
-        });
-    })
-  }
 }
 
   
 
  
-export class Child{
+export class Profiles{
     id:number;
-    childId: number;
-    weight:number;
-    height:number;
-    foot:number;
-    picture:string;
-    date: string;
+    name:string;
+    birthday: Date;
 }

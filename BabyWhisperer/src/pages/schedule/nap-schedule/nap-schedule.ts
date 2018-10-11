@@ -11,13 +11,14 @@ import { NapScheduleProvider, Naps } from '../../../providers/database/nap-sched
 export class NapSchedulePage {
   isEdited:boolean = false;
   naps: any[] = [];
+  childId:number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private database:NapScheduleProvider, private toast: ToastController) {
   }
 
   ionViewDidEnter() {
-    this.database.GetAllNaps().then((result: any[]) => {
+    this.database.GetAllNaps(this.childId).then((result: any[]) => {
       this.naps = result;
     });
     console.log(this.naps);

@@ -14,6 +14,7 @@ export class NapDaybookPage {
   time:string="";
   dates: any[] =[];
   all:any[] = [];
+  childId:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider,
               public toast:ToastController) {
@@ -21,10 +22,10 @@ export class NapDaybookPage {
 
 
   ionViewDidEnter() {
-    this.database.getAllDates().then((result: any[]) => {
+    this.database.getAllDates(this.childId).then((result: any[]) => {
       this.dates = result;      
       this.dates.forEach(element => {
-       this.database.getByDateNaps(element.date).then((result:any[])=>{
+       this.database.getByDateNaps(element.date, this.childId).then((result:any[])=>{
           this.naps = result;          
           this.naps.forEach(element => {
             element.time = this.getTimeOfNap(element.time);

@@ -17,13 +17,14 @@ export class DiaperStatsPage {
   sumDiaper:string[] = [];
   avgDiaper:string = '0';
   avgSumDiaper:string = '0';
+  childId:number;
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:DiaperDaybookProvider) {
   }
   
   ionViewDidLoad() {
     
     console.log('ionViewDidLoad NapStatsPage');
-    this.database.GetSumDiapers().then((result: any[]) => {
+    this.database.GetSumDiapers(this.childId).then((result: any[]) => {
     this.diapers = result;
     console.log(this.diapers);
     
@@ -37,7 +38,7 @@ export class DiaperStatsPage {
       this.getAvgAvg();
       
     }); 
-    this.database.GetAvrageDiaper().then((result: any[]) => {
+    this.database.GetAvrageDiaper(this.childId).then((result: any[]) => {
       this.diapers1 = result;
       var i = 0;
       console.log(this.diapers1);

@@ -20,14 +20,17 @@ export class MetricsPage {
   centilHeight:string ="";
   centilWeight:string="";
   age:number = 0;
+  childId:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:ChildProfileProvider,
               private file:File) {
   }
   
   ionViewDidLoad() {
-    this.database.GetAllChildProfiles().then((result: any[]) => {
+    this.database.GetAllChildProfiles(this.childId).then((result: any[]) => {
     this.child = result;
+    console.log(this.child);
+    
     var i =0;
       this.child.forEach(element => {
         this.dates[i] = element.date;
@@ -84,7 +87,7 @@ export class MetricsPage {
   private getHeightCentil(heights:any){
     if(heights[this.age-1].max>this.height[0]){
       if(heights[this.age-1].min<this.height[0]){
-        this.centilHeight = "Dziecko mieści się w siatce centylowej"
+        this.centilHeight = "Dziecko mieści się w siatce centylowej wzrostu"
       }
       else{
         this.centilHeight = "Dziecko nie mieści się w siatce centylowej - mały wzrost"
@@ -97,7 +100,7 @@ export class MetricsPage {
   private getWeightCentil(weights:any){
     if(weights[this.age-1].max>this.weight[0]){
       if(weights[this.age-1].min<this.weight[0]){
-        this.centilWeight = "Dziecko mieści się w siatce centylowej"
+        this.centilWeight = "Dziecko mieści się w siatce centylowej wagi"
       }
       else{
         this.centilWeight = "Dziecko nie mieści się w siatce centylowej - mała waga"

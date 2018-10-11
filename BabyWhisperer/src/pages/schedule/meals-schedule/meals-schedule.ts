@@ -12,13 +12,14 @@ import { MealScheduleProvider, Meals } from '../../../providers/database/meal-sc
 export class MealsSchedulePage {
   isEdited:boolean = false;
   meals: any[] = [];
+  childId:number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private database:MealScheduleProvider, private toast: ToastController) {
   }
 
   ionViewDidEnter() {
-    this.database.GetAllMeals().then((result: any[]) => {
+    this.database.GetAllMeals(this.childId).then((result: any[]) => {
       this.meals = result;
     });
   }

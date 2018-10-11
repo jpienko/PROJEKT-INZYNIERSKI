@@ -16,6 +16,7 @@ export class DiaperDaybookPage {
   diapers: any[] = [];
   dates:any[]=[];
   all:any[]=[];
+  childId:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: DiaperDaybookProvider,
               public toast:ToastController) {
@@ -23,10 +24,10 @@ export class DiaperDaybookPage {
 
 
   ionViewDidEnter() {
-    this.database.GetAllDates().then((result: any[]) => {
+    this.database.GetAllDates(this.childId).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDate(element.date).then((result:any[])=>{
+       this.database.getByDate(element.date, this.childId).then((result:any[])=>{
           this.diapers = result; 
           this.all.push({
             date: element.date,
