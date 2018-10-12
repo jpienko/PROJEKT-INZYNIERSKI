@@ -4,7 +4,7 @@ import { DatabaseProvider } from '../../providers/database/database'
 import { File } from '@ionic-native/file';
 import { ChildProfileProvider, Child } from '../../providers/database/child-profile';
 import { ProfilesProvider, Profiles } from '../../providers/database/profiles';
-
+import { GlobalsProvider } from '../../providers/globals/globals'
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 
@@ -27,25 +27,23 @@ export class ProfilePage {
   protected id:number;
   protected age:number;
   protected imageSrc: any;
-  protected childId:number;
 
   constructor(public navCtrl: NavController, public navParams:NavParams, private ms:DatabaseProvider, 
               private database: ChildProfileProvider, private database2: ProfilesProvider, 
-              public platform:Platform, public dB:DatabaseProvider, private camera: Camera, private file:File) {}
+              public platform:Platform, public dB:DatabaseProvider, private camera: Camera, 
+              private global: GlobalsProvider, private file:File) {}
   
   ionViewDidLoad(){
     this.ionViewDidEnter();
   }
 
   ionViewDidEnter(){
-    
-    this.childId = this.navParams.get('childId');
     this.getChildDetails();
     this.getChildMainInfo();
   }
 
   private getChildDetails(){
-    this.database.GetCurrentProfile(this.childId).then((result: any[]) => {
+    this.database.GetCurrentProfile(this.global.activeChild).then((result: any[]) => {
         this.child = result;
         
         this.child.forEach(element => {
@@ -60,7 +58,7 @@ export class ProfilePage {
   }
 
   private getChildMainInfo(){
-    this.database2.get(this.childId).then((result: any[]) => {
+    this.database2.get(this.global.activeChild).then((result: any[]) => {
       this.profile = result;
       this.profile.forEach(element => {
        this.name = element.name;
@@ -109,7 +107,6 @@ export class ProfilePage {
   protected goToNewProfile(){
     let data = {
       id: this.id,
-      childId: this.childId
     }
     this.navCtrl.push("NewProfilePage", data);
   }

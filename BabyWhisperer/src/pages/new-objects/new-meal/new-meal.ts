@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
 import { MealScheduleProvider, Meals} from "./../../../providers/database/meal-schedule-provider";
 import { MealsTypes} from "./../../../assets/enums/meals-types.enum"
 import { MealDaybookProvider } from '../../../providers/database/meal-daybook';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -23,7 +24,7 @@ export class NewMealPage {
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database:MealScheduleProvider, 
-              private database2:MealDaybookProvider) {
+              private database2:MealDaybookProvider, private global:GlobalsProvider) {
                 
       this.meals = this.formBuilder.group({
       date:[''],
@@ -63,6 +64,7 @@ export class NewMealPage {
     this.model.type = this.meals.controls.type.value;
     this.model.description = this.meals.controls.description.value;
     this.model.date = this.meals.controls.date.value;
+    this.model.childID = this.global.activeChild;
     console.log(this.model);
 
     if (this.navParams.get('name')){  

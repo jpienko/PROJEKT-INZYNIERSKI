@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database'
 import { ProfilesProvider, Profiles } from '../../providers/database/profiles';
-import {ProfilePage} from '../profile/profile'
+import {ProfilePage} from '../profile/profile';
+import {GlobalsProvider} from '../../providers/globals/globals'
 
 @Component({
   selector: 'page-home',
@@ -15,7 +16,8 @@ export class HomePage {
   protected profiles: any[];
   protected rootPage:any = ProfilePage;
 
-  constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ProfilesProvider) {}
+  constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ProfilesProvider,
+              public global:GlobalsProvider) {}
   
   ionViewDidLoad(){
     this.ionViewDidEnter();
@@ -32,10 +34,8 @@ export class HomePage {
   }
 
   protected goToChild(id:number){
-    let data = {
-      childId: id
-    }
-    this.navCtrl.push(ProfilePage,data);
+    this.global.activeChild = id;
+    this.navCtrl.push(ProfilePage);
   }
   
 }

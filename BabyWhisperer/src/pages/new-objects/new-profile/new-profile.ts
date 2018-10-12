@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder,Validators } from '../../../../node_modules/@angular/forms';
 import { ChildProfileProvider, Child } from '../../../providers/database/child-profile';
-
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 
 @IonicPage()
@@ -14,10 +14,9 @@ export class NewProfilePage {
   protected child : FormGroup;
   protected model = new Child;
   protected profile:any[] = [];
-  protected childId:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, 
-              public database:ChildProfileProvider) {
+              public database:ChildProfileProvider, public global:GlobalsProvider) {
     this.child = this.formBuilder.group({
       weight: [''],
       height:[''],
@@ -26,20 +25,19 @@ export class NewProfilePage {
   }
 
   ionViewDidLoad() {
-    this.childId = this.navParams.get('childId');
-    this.database.GetCurrentProfile(this.childId).then((result: any[]) => {
+    this.database.GetCurrentProfile(this.global.activeChild).then((result: any[]) => {
       this.profile = result;       
-      //if(this.profile!=[])
-      //{
-      //this.child.controls.weight.setValue(this.profile[0].weight);
-      //this.child.controls.height.setValue(this.profile[0].height);
-      //this.child.controls.foot.setValue(this.profile[0].foot);
-      //}
+      if(this.profile!=[])
+      {
+      this.child.controls.weight.setValue(this.profile[0].weight);
+      this.child.controls.height.setValue(this.profile[0].height);
+      this.child.controls.foot.setValue(this.profile[0].foot);
+      }
     });    
   }
 
   protected saveProfile(){
-    this.model.childId = this.childId;
+    this.model.childId = this.global.activeChild;
     this.model.weight = this.correctNumber(this.child.controls.weight.value);
     this.model.height = this.correctNumber(this.child.controls.height.value);
     this.model.foot = this.correctNumber(this.child.controls.foot.value);

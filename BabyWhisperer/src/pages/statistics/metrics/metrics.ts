@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as HighCharts from 'highcharts';
 import {ChildProfileProvider} from '../../../providers/database/child-profile'
 import { File } from '@ionic-native/file';
-
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -20,14 +20,13 @@ export class MetricsPage {
   centilHeight:string ="";
   centilWeight:string="";
   age:number = 0;
-  childId:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:ChildProfileProvider,
-              private file:File) {
+              private file:File, public global:GlobalsProvider) {
   }
   
   ionViewDidLoad() {
-    this.database.GetAllChildProfiles(this.childId).then((result: any[]) => {
+    this.database.GetAllChildProfiles(this.global.activeChild).then((result: any[]) => {
     this.child = result;
     console.log(this.child);
     

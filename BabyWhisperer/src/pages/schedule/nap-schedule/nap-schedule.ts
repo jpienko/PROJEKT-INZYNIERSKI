@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { NapScheduleProvider, Naps } from '../../../providers/database/nap-schedule';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 
 @IonicPage()
@@ -11,14 +12,14 @@ import { NapScheduleProvider, Naps } from '../../../providers/database/nap-sched
 export class NapSchedulePage {
   isEdited:boolean = false;
   naps: any[] = [];
-  childId:number;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private database:NapScheduleProvider, private toast: ToastController) {
+              private database:NapScheduleProvider, private toast: ToastController,
+              public global:GlobalsProvider) {
   }
 
   ionViewDidEnter() {
-    this.database.GetAllNaps(this.childId).then((result: any[]) => {
+    this.database.GetAllNaps(this.global.activeChild).then((result: any[]) => {
       this.naps = result;
     });
     console.log(this.naps);

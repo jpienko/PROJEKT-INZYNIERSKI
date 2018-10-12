@@ -36,6 +36,7 @@ import { NotesProvider } from '../providers/database/notes';
 import { NotesPage } from '../pages/notes/notes';
 import { ProfilesProvider } from '../providers/database/profiles';
 import { ProfilePage } from '../pages/profile/profile';
+import { GlobalsProvider } from '../providers/globals/globals';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { ProfilePage } from '../pages/profile/profile';
     CallNumber,
     GrowthStepsProvider,
     NotesProvider,
-    ProfilesProvider
+    ProfilesProvider,
+    GlobalsProvider
   ]
 })
 export class AppModule {} 

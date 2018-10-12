@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as HighCharts from 'highcharts';
 import {NapDaybookProvider} from '../../../providers/database/nap-daybook'
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -15,14 +16,12 @@ export class NapStatsPage {
   avg:string[] = [];
   avgAvgNap:string = '0';
   avgSumNap:string = '0';
-  childId:number;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider,
+              public global: GlobalsProvider) {
   }
   
   ionViewDidLoad() {
-    
-    console.log('ionViewDidLoad NapStatsPage');
-    this.database.GetAvrageNap(this.childId).then((result: any[]) => {
+    this.database.GetAvrageNap(this.global.activeChild).then((result: any[]) => {
     this.naps = result;
     var i =0;
       this.naps.forEach(element => {
