@@ -38,6 +38,7 @@ export class ProfilePage {
   }
 
   ionViewDidEnter(){
+    
     this.childId = this.navParams.get('childId');
     this.getChildDetails();
     this.getChildMainInfo();
@@ -46,19 +47,12 @@ export class ProfilePage {
   private getChildDetails(){
     this.database.GetCurrentProfile(this.childId).then((result: any[]) => {
         this.child = result;
-
-        if(this.child = []){
-         this.goToNewProfile();
-        }
-
+        
         this.child.forEach(element => {
           this.height = element.height;
           this.weight = element.weight;
           this.foot = element.foot;
-          this.imageSrc = element.picture;
-          this.time = this.getTimeDiff(element.birthday);
           this.id = element.id;
-          this.age  = this.getAge(element.birthday);
         });
       this.getClothesSizes();
       this.getDiapersSizes();
@@ -71,6 +65,9 @@ export class ProfilePage {
       this.profile.forEach(element => {
        this.name = element.name;
        this.birthday = this.getBirthDate(element.birthday);
+       this.time = this.getTimeDiff(element.birthday);
+       this.age  = this.getAge(element.birthday);
+       this.imageSrc = element.picture;
       });
   });
   }
@@ -128,8 +125,8 @@ export class ProfilePage {
 
     this.camera.getPicture(cameraOptions).then((imageData) => {
       this.imageSrc = 'data:image/jpeg;base64,' + imageData;
-      this.child[0].picture = this.imageSrc;  
-      this.database.update(this.child[0]).then((data)=>{
+      this.profile[0].picture = this.imageSrc;  
+      this.database2.update(this.profile[0]).then((data)=>{
         console.log(data);
       },(error)=>{
         console.log(error);
@@ -146,7 +143,7 @@ export class ProfilePage {
         sizes = JSON.parse(text); 
         sizes.forEach(element => {
           if(element.max>this.height){
-            if(element.min<this.height){
+            if(element.min<=this.height){
                this.size = element.size;
             
             }

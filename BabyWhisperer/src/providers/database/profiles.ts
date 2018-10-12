@@ -10,8 +10,8 @@ export class ProfilesProvider {
   public insert(child: Profiles) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into profile(name, birthday) values (?, ?)';
-        let data = [child.name,child.birthday];
+        let sql = 'insert into profile(name, birthday, picture) values (?, ?, ?)';
+        let data = [child.name,child.birthday, child.picture];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -22,8 +22,8 @@ export class ProfilesProvider {
   public update(child: Profiles) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update profile set name = ?, birthday = ? where id = ?';
-        let data = [child.name,child.birthday, child.id];
+        let sql = 'update profile set name = ?, birthday = ?, picture = ? where id = ?';
+        let data = [child.name, child.birthday, child.picture, child.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -57,6 +57,7 @@ export class ProfilesProvider {
                  name: data.rows.item(i).name,
                  id: data.rows.item(i).id,
                  birthday: data.rows.item(i).birthday,
+                 picture: data.rows.item(i).picture
                });
              }
            }
@@ -85,6 +86,7 @@ export class ProfilesProvider {
                   name: data.rows.item(i).name,
                   id: data.rows.item(i).id,
                   birthday: data.rows.item(i).birthday,
+                  picture: data.rows.item(i).picture
                 });
               }
             }
@@ -130,4 +132,5 @@ export class Profiles{
     id:number;
     name:string;
     birthday: Date;
+    picture:string;
 }

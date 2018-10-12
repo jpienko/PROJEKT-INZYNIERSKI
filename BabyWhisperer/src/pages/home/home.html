@@ -12,12 +12,12 @@
       <ion-list>
         <ion-item  class='trans' *ngFor="let profile of profiles">
         
-          <button ion-button color="buttons" (click)='goToChild(profile.id)' style="width: 60%">{{profile.name}} </button>     
+          <button ion-button round medium color="buttons" (click)='goToChild(profile.id)' style="width: 97%">{{profile.name}} </button>     
     
         </ion-item>
     </ion-list>
 
-    <button ion-button color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
+    <button ion-button round color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
 </ion-content>
 
 

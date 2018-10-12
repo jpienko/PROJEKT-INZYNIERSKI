@@ -11,8 +11,8 @@ export class ChildProfileProvider {
   public insert(child: Child) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into child(childID, weight, height, foot, picture, date) values ( ?, ?, ?, ?, ?, ?)';
-        let data = [child.childId, child.weight, child.height, child.foot, child.picture, child.date];
+        let sql = 'insert into child(childID, weight, height, foot, date) values ( ?, ?, ?, ?, ?)';
+        let data = [child.childId, child.weight, child.height, child.foot, child.date];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -23,8 +23,8 @@ export class ChildProfileProvider {
   public update(child: Child) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update child set weight = ?, height = ?, foot = ?, picture = ?, date = ? where id = ?';
-        let data = [child.weight, child.height, child.foot, child.picture, child.date, child.id];
+        let sql = 'update child set weight = ?, height = ?, foot = ?, date = ? where id = ?';
+        let data = [child.weight, child.height, child.foot, child.date, child.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -59,7 +59,6 @@ export class ChildProfileProvider {
                  weight: data.rows.item(i).weight,
                  height: data.rows.item(i).height,
                  foot: data.rows.item(i).foot,
-                 picture: data.rows.item(i).picture,
                  date: data.rows.item(i).date
                });
              }
@@ -131,7 +130,7 @@ export class ChildProfileProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child WHERE childId = ? ORDER BY date LIMIT 1",[id])
+          db.executeSql("SELECT * FROM child WHERE childId = ? ORDER BY date",[id])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
@@ -141,6 +140,7 @@ export class ChildProfileProvider {
                   id: data.rows.item(i).id,
                   weight: data.rows.item(i).weight,
                   height: data.rows.item(i).height,
+                  foot:data.rows.item(i).foot,
                   date: data.rows.item(i).date
                 });
               }
@@ -165,6 +165,5 @@ export class Child{
     weight:number;
     height:number;
     foot:number;
-    picture:string;
     date: string;
 }

@@ -36,7 +36,6 @@ export class HomePage {
       childId: id
     }
     this.navCtrl.push(ProfilePage,data);
-    this.navCtrl.popToRoot();
   }
   
 }

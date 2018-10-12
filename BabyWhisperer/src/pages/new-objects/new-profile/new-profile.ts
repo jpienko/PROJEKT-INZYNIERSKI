@@ -14,6 +14,7 @@ export class NewProfilePage {
   protected child : FormGroup;
   protected model = new Child;
   protected profile:any[] = [];
+  protected childId:number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, 
               public database:ChildProfileProvider) {
@@ -25,30 +26,26 @@ export class NewProfilePage {
   }
 
   ionViewDidLoad() {
-    this.database.get(1).then((result: any[]) => {
+    this.childId = this.navParams.get('childId');
+    this.database.GetCurrentProfile(this.childId).then((result: any[]) => {
       this.profile = result;       
-      this.child.controls.weight.setValue(this.profile[0].weight);
-      this.child.controls.height.setValue(this.profile[0].height);
-      this.child.controls.foot.setValue(this.profile[0].foot);
-      this.model.picture = this.profile[0].picture;
+      //if(this.profile!=[])
+      //{
+      //this.child.controls.weight.setValue(this.profile[0].weight);
+      //this.child.controls.height.setValue(this.profile[0].height);
+      //this.child.controls.foot.setValue(this.profile[0].foot);
+      //}
     });    
   }
 
   protected saveProfile(){
+    this.model.childId = this.childId;
     this.model.weight = this.correctNumber(this.child.controls.weight.value);
     this.model.height = this.correctNumber(this.child.controls.height.value);
     this.model.foot = this.correctNumber(this.child.controls.foot.value);
-    this.model.id = this.navParams.get("id");
     this.model.date = new Date().getDate().toString() +"."+ new Date().getMonth().toString() + "."+new Date().getFullYear().toString();
     console.log(this.model);
     
-    this.database.update(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-    });
-
     this.database.insert(this.model)
         .then((data)=>{
           console.log(data);

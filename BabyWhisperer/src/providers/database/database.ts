@@ -41,10 +41,10 @@ public db:SQLiteObject;
       ['CREATE TABLE IF NOT EXISTS visits(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, purpose TEXT, startTime TEXT, adress TEXT)'],
       ['CREATE TABLE IF NOT EXISTS docs(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, name TEXT, surname TEXT, specialisation TEXT, adress TEXT, tel NUMBER)'],
       ['CREATE TABLE IF NOT EXISTS diapers(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, date TEXT, hour TEXT, type TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, weight NUMBER, height NUMBER, foot NUMBER, picture TEXT, date TEXT)'],
+      ['CREATE TABLE IF NOT EXISTS child(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, weight NUMBER, height NUMBER, foot NUMBER, date TEXT)'],
       ['CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, title TEXT, date TEXT, note TEXT, category TEXT)'],
       ['CREATE TABLE IF NOT EXISTS steps(id INTEGER PRIMARY KEY AUTOINCREMENT, childId NUMBER, date TEXT, name TEXT, description TEXT, passed TEXT)'],
-      ['CREATE TABLE IF NOT EXISTS profile(id INTEGER PRIMARY KEY AUTOINCREMENT, birthday TEXT, name TEXT)']
+      ['CREATE TABLE IF NOT EXISTS profile(id INTEGER PRIMARY KEY AUTOINCREMENT, birthday TEXT, name TEXT, picture TEXT)']
     ])
       .catch(e => console.error(e));
   }
