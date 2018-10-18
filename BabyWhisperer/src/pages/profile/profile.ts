@@ -81,14 +81,18 @@ export class ProfilePage {
     var birthDate = new Date(birth);
     var birthday:string;
     
-    if (today.getMonth()<= birthDate.getMonth()){
-      if (today.getDay()<= birthDate.getDay()){
-       birthday = today.getFullYear().toString() +"-"+(birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
-      }else{
-        birthday = (today.getFullYear()+1).toString() +"-"+ (birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
-      }
+    if (today.getMonth()< birthDate.getMonth()){
+       birthday = (today.getFullYear()).toString() +"-"+(birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
     }else{
-      birthday = (today.getFullYear()+1).toString() +"-"+(birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
+      if (today.getMonth() == birthDate.getMonth()){
+        if (today.getDate()>= birthDate.getDate()){
+          birthday = (today.getFullYear()+1).toString() +"-"+(birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
+         }else{
+           birthday = (today.getFullYear()).toString() +"-"+ (birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
+         }      
+      }else{
+        birthday = (today.getFullYear()+1).toString() +"-"+(birthDate.getMonth()+1).toString() + "-"+birthDate.getDate().toString()
+      }
     }  
     return birthday;
   } 
