@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController  } from 'ionic-angular';
 import { MealScheduleProvider, Meals } from '../../../providers/database/meal-schedule-provider';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 
 
@@ -14,16 +15,14 @@ export class MealsSchedulePage {
   meals: any[] = [];
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private database:MealScheduleProvider, private toast: ToastController) {
+              private database:MealScheduleProvider, private toast: ToastController,
+              public global:GlobalsProvider) {
   }
 
   ionViewDidEnter() {
-    this.database.GetAllMeals().then((result: any[]) => {
+    this.database.GetAllMeals(this.global.activeChild).then((result: any[]) => {
       this.meals = result;
     });
-  }
-
-  loadSchedule(){
   }
 
   goToNewMeal(){

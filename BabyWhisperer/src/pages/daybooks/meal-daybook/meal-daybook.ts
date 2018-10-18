@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { Meals } from '../../../providers/database/meal-schedule-provider';
 import { MealDaybookProvider } from '../../../providers/database/meal-daybook'
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -15,15 +16,15 @@ export class MealDaybookPage {
   protected all:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:MealDaybookProvider,
-              public toast:ToastController) {
+              public toast:ToastController, public global:GlobalsProvider) {
   }
 
 
   ionViewDidEnter() {
-    this.database.GetAllDates().then((result: any[]) => {
+    this.database.GetAllDates(this.global.activeChild).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDate(element.date).then((result:any[])=>{
+       this.database.getByDate(element.date, this.global.activeChild).then((result:any[])=>{
           this.meals = result;
           this.all.push({
             date: element.date,

@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as HighCharts from 'highcharts';
 import {ChildProfileProvider} from '../../../providers/database/child-profile'
 import { File } from '@ionic-native/file';
-
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -22,12 +22,14 @@ export class MetricsPage {
   age:number = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:ChildProfileProvider,
-              private file:File) {
+              private file:File, public global:GlobalsProvider) {
   }
   
   ionViewDidLoad() {
-    this.database.GetAllChildProfiles().then((result: any[]) => {
+    this.database.GetAllChildProfiles(this.global.activeChild).then((result: any[]) => {
     this.child = result;
+    console.log(this.child);
+    
     var i =0;
       this.child.forEach(element => {
         this.dates[i] = element.date;
@@ -84,7 +86,7 @@ export class MetricsPage {
   private getHeightCentil(heights:any){
     if(heights[this.age-1].max>this.height[0]){
       if(heights[this.age-1].min<this.height[0]){
-        this.centilHeight = "Dziecko mieści się w siatce centylowej"
+        this.centilHeight = "Dziecko mieści się w siatce centylowej wzrostu"
       }
       else{
         this.centilHeight = "Dziecko nie mieści się w siatce centylowej - mały wzrost"
@@ -97,7 +99,7 @@ export class MetricsPage {
   private getWeightCentil(weights:any){
     if(weights[this.age-1].max>this.weight[0]){
       if(weights[this.age-1].min<this.weight[0]){
-        this.centilWeight = "Dziecko mieści się w siatce centylowej"
+        this.centilWeight = "Dziecko mieści się w siatce centylowej wagi"
       }
       else{
         this.centilWeight = "Dziecko nie mieści się w siatce centylowej - mała waga"

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { DiaperDaybookProvider, Diaper } from '../../../providers/database/diaper-daybook';
 import { isType } from '../../../../node_modules/@angular/core/src/type';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 
 
@@ -18,15 +19,15 @@ export class DiaperDaybookPage {
   all:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: DiaperDaybookProvider,
-              public toast:ToastController) {
+              public toast:ToastController, private global:GlobalsProvider) {
   }
 
 
   ionViewDidEnter() {
-    this.database.GetAllDates().then((result: any[]) => {
+    this.database.GetAllDates(this.global.activeChild).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDate(element.date).then((result:any[])=>{
+       this.database.getByDate(element.date, this.global.activeChild).then((result:any[])=>{
           this.diapers = result; 
           this.all.push({
             date: element.date,

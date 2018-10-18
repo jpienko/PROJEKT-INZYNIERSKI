@@ -12,8 +12,8 @@ export class MealDaybookProvider {
   public insert(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into meals(hour, type, description, date) values (?, ?, ?, ?)';
-        let data = [meal.hour, meal.type, meal.description, meal.date];
+        let sql = 'insert into meals(childId, hour, type, description, date) values (?, ?, ?, ?, ?)';
+        let data = [meal.childID, meal.hour, meal.type, meal.description, meal.date];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -24,8 +24,8 @@ export class MealDaybookProvider {
   public update(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update meals set hour = ?, type = ?, description = ?, date=? where id = ?';
-        let data = [meal.hour, meal.type, meal.description, meal.date, meal.id];
+        let sql = 'update meals set childId = ? hour = ?, type = ?, description = ?, date=? where id = ?';
+        let data = [meal.childID, meal.hour, meal.type, meal.description, meal.date, meal.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -75,11 +75,11 @@ export class MealDaybookProvider {
  
 
 
-  public GetAllMeals(){
+  public GetAllMeals(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM meals ORDER BY date DESC, hour DESC",[])
+          db.executeSql("SELECT * FROM meals WHERE childId = ? ORDER BY date DESC, hour DESC",[id])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -104,11 +104,11 @@ export class MealDaybookProvider {
     })
   }
 
-  public GetAllDates(){
+  public GetAllDates(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT DISTINCT date FROM meals ORDER BY date DESC",[])
+          db.executeSql("SELECT DISTINCT date FROM meals WHERE childId = ? ORDER BY date DESC",[id])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -129,11 +129,11 @@ export class MealDaybookProvider {
     })
   }
 
-  public getByDate(date: string) {
+  public getByDate(date: string, id:number) {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM meals WHERE date = ?",[date])
+          db.executeSql("SELECT * FROM meals WHERE date = ? AND childId = ?",[date,id])
             .then((data)=>{
               let arrayMeals = [];
               if (data.rows.length>0){

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as HighCharts from 'highcharts';
 import { DiaperDaybookProvider } from '../../../providers/database/diaper-daybook';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -17,13 +18,15 @@ export class DiaperStatsPage {
   sumDiaper:string[] = [];
   avgDiaper:string = '0';
   avgSumDiaper:string = '0';
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database:DiaperDaybookProvider) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private database:DiaperDaybookProvider,
+              public global:GlobalsProvider) {
   }
   
   ionViewDidLoad() {
     
     console.log('ionViewDidLoad NapStatsPage');
-    this.database.GetSumDiapers().then((result: any[]) => {
+    this.database.GetSumDiapers(this.global.activeChild).then((result: any[]) => {
     this.diapers = result;
     console.log(this.diapers);
     
@@ -37,7 +40,7 @@ export class DiaperStatsPage {
       this.getAvgAvg();
       
     }); 
-    this.database.GetAvrageDiaper().then((result: any[]) => {
+    this.database.GetAvrageDiaper(this.global.activeChild).then((result: any[]) => {
       this.diapers1 = result;
       var i = 0;
       console.log(this.diapers1);

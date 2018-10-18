@@ -12,8 +12,8 @@ export class NapDaybookProvider {
   public insert(naps: Naps) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into naps(date,hourStart, hourStop, time) values (?, ?, ?, ?)';
-        let data = [naps.date,naps.hourStart, naps.hourStop, naps.time];
+        let sql = 'insert into naps(childId, date,hourStart, hourStop, time) values (?, ?, ?, ?, ?)';
+        let data = [naps.childId ,naps.date,naps.hourStart, naps.hourStop, naps.time];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -75,11 +75,11 @@ export class NapDaybookProvider {
  
 
 
-  public getByDateNaps(date:string){
+  public getByDateNaps(date:string, id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM naps WHERE date = ?",[date])
+          db.executeSql("SELECT * FROM naps WHERE date = ? AND childId = ?",[date,id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
@@ -103,11 +103,11 @@ export class NapDaybookProvider {
     })
   }
 
-  public getAllDates(){
+  public getAllDates(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT DISTINCT date FROM naps ORDER BY date DESC",[])
+          db.executeSql("SELECT DISTINCT date FROM naps WHERE childId = ? ORDER BY date DESC",[id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
@@ -129,11 +129,11 @@ export class NapDaybookProvider {
   }
 
 
-  public GetAvrageNap(){
+  public GetAvrageNap(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT DISTINCT SUM(time) as sum, AVG(time) as avg ,date FROM naps GROUP BY date",[])
+          db.executeSql("SELECT DISTINCT SUM(time) as sum, AVG(time) as avg ,date FROM naps WHERE childId = ? GROUP BY date",[id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
