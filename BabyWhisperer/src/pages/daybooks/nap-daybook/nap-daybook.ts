@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { Naps } from '../../../providers/database/nap-schedule';
 import { NapDaybookProvider } from '../../../providers/database/nap-daybook'
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -12,19 +13,31 @@ export class NapDaybookPage {
   isEdited:boolean = false;
   naps: any[] = [];
   time:string="";
+  dates: any[] =[];
+  all:any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider,
-              public toast:ToastController) {
+              public toast:ToastController, public global: GlobalsProvider) {
   }
 
 
   ionViewDidEnter() {
-    this.database.GetAllNaps().then((result: any[]) => {
-      this.naps = result;
-      this.naps.forEach(element => {
-        element.time = this.getTimeOfNap(element.time);
+    this.database.getAllDates(this.global.activeChild).then((result: any[]) => {
+      this.dates = result;      
+      this.dates.forEach(element => {
+       this.database.getByDateNaps(element.date, this.global.activeChild).then((result:any[])=>{
+          this.naps = result;          
+          this.naps.forEach(element => {
+            element.time = this.getTimeOfNap(element.time);
+          });
+          this.all.push({
+            date: element.date,
+            nap:this.naps
+          })          
+       }) 
       });
     }); 
+
   }
 
   public goToNewNap(){
@@ -47,7 +60,6 @@ export class NapDaybookPage {
   }
 
   public deleteNap(nap:Naps){
-    console.log(nap);
     this.database.remove(nap.id).then(() => {
       var index = this.naps.indexOf(nap);
       this.naps.splice(index, 1);

@@ -10,11 +10,6 @@ export class DaybookPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    
-  }
-  
   
   goToDaybookOfMeals(){
     this.navCtrl.push('MealDaybookPage');

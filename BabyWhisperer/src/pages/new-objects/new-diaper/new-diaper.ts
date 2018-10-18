@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators,  } from '@angular/forms';
 import { DiaperDaybookProvider, Diaper } from '../../../providers/database/diaper-daybook';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 
 @IonicPage()
@@ -19,7 +20,8 @@ export class NewDiaperPage {
   protected buttonName:string = "Zapisz przewijanie";
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private formBuilder: FormBuilder, private database: DiaperDaybookProvider) {
+              private formBuilder: FormBuilder, private database: DiaperDaybookProvider,
+              private global:GlobalsProvider) {
                 
       this.diapers = this.formBuilder.group({
       date:[''],
@@ -48,7 +50,7 @@ export class NewDiaperPage {
   protected saveForm(){
     this.model.hour = this.diapers.controls.hour.value;
     this.model.type = this.diapers.controls.type.value;
-
+    this.model.childID = this.global.activeChild;
     this.model.date = this.diapers.controls.date.value;
     console.log(this.model);
 
@@ -72,8 +74,5 @@ export class NewDiaperPage {
     this.diapers.reset();
   }
    
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewDiaperPage');
-  }
 
 }

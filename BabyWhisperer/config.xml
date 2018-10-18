@@ -3,7 +3,7 @@
     <name>BabyWhisperer</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.0.5:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -90,5 +90,7 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <allow-navigation href="http://192.168.0.5:8100" />
+    <allow-navigation href="http://192.168.0.3:8100" />
+    <plugin name="call-number" spec="^1.0.1" />
     <engine name="android" spec="7.0.0" />
 </widget>

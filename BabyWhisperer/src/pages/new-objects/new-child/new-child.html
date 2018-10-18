@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar color="header">
+    <ion-title>Dodaj profil dziecka</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding="true" align="center" class="colors">
+  <div class="gallery-button" text-center>
+    <p> 
+      <img style=" height: 100px; width: 100px" [src]="imageSrc" />    
+    </p>
+    
+    <button ion-button round small (click) = "openGallery()"outline>Wybierz zdjęcie</button>
+  </div>
+
+   <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%">
+    <ion-item class="semi-trans" >
+      <ion-label>Data urodzenia</ion-label>
+      <ion-datetime  displayFormat="D MMM YYYY" min="2017"  formControlName="birthday" ></ion-datetime>
+    </ion-item>
+
+    <ion-item class="semi-trans">
+      <ion-label floating>Imie</ion-label>
+      <ion-input type="text" formControlName="name" value=""></ion-input>
+    </ion-item>
+     
+    
+    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>Zapisz profil</button>
+   </form>
+
+  
+</ion-content>

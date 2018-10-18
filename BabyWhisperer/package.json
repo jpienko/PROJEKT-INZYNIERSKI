@@ -21,7 +21,7 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/calendar": "^4.12.0",
-    "@ionic-native/call-number": "^4.12.0",
+    "@ionic-native/call-number": "^4.15.0",
     "@ionic-native/camera": "^4.12.0",
     "@ionic-native/core": "~4.11.0",
     "@ionic-native/file": "^4.12.0",
@@ -72,7 +72,8 @@
       "cordova-plugin-file": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-camera": {},
-      "mx.ferreyra.callnumber": {}
+      "mx.ferreyra.callnumber": {},
+      "call-number": {}
     },
     "platforms": [
       "android"

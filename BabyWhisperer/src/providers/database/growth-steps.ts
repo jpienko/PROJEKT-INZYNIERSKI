@@ -51,11 +51,11 @@ export class GrowthStepsProvider {
  
 
 
-  public GetAllSteps(){
+  public GetAllSteps(pass:string){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM steps",[])
+          db.executeSql("SELECT * FROM steps WHERE passed = ?",[pass])
           .then((data)=>{
             let arraySteps = [];
             if (data.rows.length>0){

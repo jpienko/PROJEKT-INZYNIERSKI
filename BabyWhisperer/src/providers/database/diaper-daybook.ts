@@ -12,8 +12,8 @@ export class DiaperDaybookProvider {
   public insert(diaper: Diaper) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into diapers( date, hour, type) values (?, ?, ?)';
-        let data = [diaper.date, diaper.hour, diaper.type ];
+        let sql = 'insert into diapers( childId, date, hour, type) values (?, ?, ?, ?, ?)';
+        let data = [diaper.childID, diaper.date, diaper.hour, diaper.type ];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -24,8 +24,8 @@ export class DiaperDaybookProvider {
   public update(diaper: Diaper) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'update diapers set date = ?, hour = ?, type = ? where id = ?';
-        let data = [diaper.date, diaper.hour, diaper.type, diaper.id];
+        let sql = 'update diapers set childID = ?, date = ?, hour = ?, type = ? where id = ?';
+        let data = [diaper.childID ,diaper.date, diaper.hour, diaper.type, diaper.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -74,11 +74,11 @@ export class DiaperDaybookProvider {
  
 
 
-  public GetAllDiapers(){
+  public getByDate(date: string, id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM diapers ORDER BY date, hour ASC",[])
+          db.executeSql("SELECT * FROM diapers WHERE date = ? AND childId = ?",[date, id])
           .then((data)=>{
             let arrayDiapers = [];
             if (data.rows.length>0){
@@ -88,7 +88,6 @@ export class DiaperDaybookProvider {
                   id:data.rows.item(i).id,
                   hour:data.rows.item(i).hour,
                   type:data.rows.item(i).type,
-                  date:data.rows.item(i).date
                 });
               }
             }
@@ -102,11 +101,11 @@ export class DiaperDaybookProvider {
     })
   }
 
-  public GetAllDates(){
+  public GetAllDates(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT date FROM diapers ORDER BY date",[])
+          db.executeSql("SELECT DISTINCT date FROM diapers WHERE childId = ? ORDER BY date DESC",[id])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -127,11 +126,11 @@ export class DiaperDaybookProvider {
     })
   }
 
-  public GetSumDiapers(){
+  public GetSumDiapers(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT DISTINCT date, COUNT(hour) as sum  FROM diapers GROUP BY date",[])
+          db.executeSql("SELECT DISTINCT date, COUNT(hour) as sum  FROM diapers WHERE childId = ? GROUP BY date",[id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
@@ -154,11 +153,11 @@ export class DiaperDaybookProvider {
   }
 
 
-  public GetAvrageDiaper(){
+  public GetAvrageDiaper(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT COUNT(type) as avg FROM diapers WHERE type like ? GROUP BY date",['true'])
+          db.executeSql("SELECT COUNT(type) as avg FROM diapers WHERE type like ? AND  childId = ? GROUP BY date",['true',id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
@@ -182,6 +181,7 @@ export class DiaperDaybookProvider {
 
 export class Diaper{
     id:number;
+    childID:number;
     date:string;
     hour: string;
     type: boolean;

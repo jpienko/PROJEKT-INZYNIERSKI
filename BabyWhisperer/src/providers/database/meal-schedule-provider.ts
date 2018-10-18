@@ -11,8 +11,8 @@ export class MealScheduleProvider {
   public insert(meal: Meals) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into schedule(hour, type, description) values (?, ?, ?)';
-        let data = [meal.hour, meal.type, meal.description];
+        let sql = 'insert into schedule(childId, hour, type, description) values (?, ?, ?, ?)';
+        let data = [meal.childID, meal.hour, meal.type, meal.description];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -71,11 +71,11 @@ export class MealScheduleProvider {
  
 
 
-  public GetAllMeals(){
+  public GetAllMeals(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM schedule ORDER BY hour ASC",[])
+          db.executeSql("SELECT * FROM schedule WHERE childId = ? ORDER BY hour ASC",[id])
           .then((data)=>{
             let arrayMeals = [];
             if (data.rows.length>0){
@@ -104,6 +104,7 @@ export class MealScheduleProvider {
  
 export class Meals{
     id:number;
+    childID:number;
     hour: string;
     type:string;
     description:string;

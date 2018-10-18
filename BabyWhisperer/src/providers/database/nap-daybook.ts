@@ -12,8 +12,8 @@ export class NapDaybookProvider {
   public insert(naps: Naps) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into naps(date,hourStart, hourStop, time) values (?, ?, ?, ?)';
-        let data = [naps.date,naps.hourStart, naps.hourStop, naps.time];
+        let sql = 'insert into naps(childId, date,hourStart, hourStop, time) values (?, ?, ?, ?, ?)';
+        let data = [naps.childId ,naps.date,naps.hourStart, naps.hourStop, naps.time];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -75,18 +75,17 @@ export class NapDaybookProvider {
  
 
 
-  public GetAllNaps(){
+  public getByDateNaps(date:string, id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM naps ORDER BY date DESC, hourStop ASC",[])
+          db.executeSql("SELECT * FROM naps WHERE date = ? AND childId = ?",[date,id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayNaps.push({
-                  date: data.rows.item(i).date,
                   id: data.rows.item(i).id,
                   hourStart: data.rows.item(i).hourStart,
                   hourStop: data.rows.item(i).hourStop,
@@ -103,11 +102,38 @@ export class NapDaybookProvider {
         });
     })
   }
-  public GetAvrageNap(){
+
+  public getAllDates(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT DISTINCT SUM(time) as sum, AVG(time) as avg ,date FROM naps GROUP BY date",[])
+          db.executeSql("SELECT DISTINCT date FROM naps WHERE childId = ? ORDER BY date DESC",[id])
+          .then((data)=>{
+            let arrayNaps = [];
+            if (data.rows.length>0){
+              for(var i  = 0; i<data.rows.length;i++)
+              {
+                arrayNaps.push({
+                  date: data.rows.item(i).date,
+                });
+              }
+            }
+            resolve(arrayNaps)
+          },(error)=> {
+            reject(error);
+          });
+        },(error)=> {
+          reject(error);
+        });
+    })
+  }
+
+
+  public GetAvrageNap(id:number){
+    return new Promise((resolve,reject)=>{
+       this.dbProvider.getDB()
+        .then((db: SQLiteObject)=>{
+          db.executeSql("SELECT DISTINCT SUM(time) as sum, AVG(time) as avg ,date FROM naps WHERE childId = ? GROUP BY date",[id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){

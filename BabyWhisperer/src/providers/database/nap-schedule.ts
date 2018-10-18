@@ -11,8 +11,8 @@ export class NapScheduleProvider {
   public insert(naps: Naps) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into napsSchedule(date,hourStart, hourStop, time) values (?, ?, ?, ?)';
-        let data = [naps.date,naps.hourStart, naps.hourStop, naps.time];
+        let sql = 'insert into napsSchedule(childId, date,hourStart, hourStop, time) values (?, ?, ?, ?, ?)';
+        let data = [naps.childId, naps.date,naps.hourStart, naps.hourStop, naps.time];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -72,11 +72,11 @@ export class NapScheduleProvider {
  
 
 
-  public GetAllNaps(){
+  public GetAllNaps(id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM napsSchedule ORDER BY hourStart ASC",[])
+          db.executeSql("SELECT * FROM napsSchedule WHERE childId = ? ORDER BY hourStart ASC",[id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
@@ -106,6 +106,7 @@ export class NapScheduleProvider {
  
 export class Naps{
     id:number;
+    childId:number;
     date:string;
     hourStart: string;
     hourStop:string;

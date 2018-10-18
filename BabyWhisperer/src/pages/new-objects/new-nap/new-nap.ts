@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NapScheduleProvider,Naps} from "../../../providers/database/nap-schedule";
 import { NapDaybookProvider } from '../../../providers/database/nap-daybook';
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -22,7 +23,8 @@ export class NewNapPage {
 
  
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
-              private formBuilder: FormBuilder, private database:NapScheduleProvider, private database2:NapDaybookProvider) {
+              private formBuilder: FormBuilder, private database:NapScheduleProvider, 
+              private database2:NapDaybookProvider, private global:GlobalsProvider) {
                 
       this.naps = this.formBuilder.group({
       date:['', Validators.required],
@@ -61,6 +63,7 @@ export class NewNapPage {
     this.model.hourStop = this.naps.controls.hourStop.value;
     this.model.date = this.naps.controls.date.value;
     this.model.time = this.getDiff(this.model.hourStart,this.model.hourStop);
+    this.model.childId = this.global.activeChild;
      
     if (this.isSchedule){  
       this.model.time = this.naps.controls.time.value;

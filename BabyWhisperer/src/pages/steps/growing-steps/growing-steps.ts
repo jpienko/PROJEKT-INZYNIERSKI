@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { GrowthStepsProvider, Steps} from '../../providers/database/growth-steps';
+import { GrowthStepsProvider, Steps} from '../../../providers/database/growth-steps';
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ export class GrowingStepsPage {
   }
 
   ionViewDidEnter() {
-    this.database.GetAllSteps().then((result:any[])=>{
+    this.database.GetAllSteps("false").then((result:any[])=>{
       this.steps = result;
       this.steps.forEach(element => {
         if(element.passed=="false"){
@@ -55,4 +55,7 @@ export class GrowingStepsPage {
     }
     return isType
   } 
+  public goToPassed(){
+    this.navCtrl.push('PassedStepsPage');
+  }
 }

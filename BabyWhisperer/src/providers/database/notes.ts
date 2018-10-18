@@ -76,11 +76,11 @@ export class NotesProvider {
   }
 
 
-  public getAllNotes(){
+  public getNotes(category:string){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM notes GROUP BY category ORDER BY date ASC",[])
+          db.executeSql("SELECT * FROM notes WHERE category = ? ORDER BY date ASC",[category])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
@@ -90,7 +90,6 @@ export class NotesProvider {
                   title: data.rows.item(i).title,
                   id: data.rows.item(i).id,
                   date: data.rows.item(i).date,
-                  note: data.rows.item(i).note,
                   category: data.rows.item(i).category
                 });
               }

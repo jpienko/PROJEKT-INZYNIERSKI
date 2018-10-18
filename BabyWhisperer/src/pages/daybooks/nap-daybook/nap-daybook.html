@@ -12,14 +12,19 @@
   
   <ion-content padding="true" align="center" class="colors">
     <ion-list>
-        <ion-item  *ngFor="let nap of naps">
-            <h4 style="margin-top: 3px">{{nap.date}} </h4>
-          <h2>Początek drzemki: {{nap.hourStart}}</h2>
-          <h2>Koniec drzemki: {{nap.hourStop}} </h2>
-          <h3>Czas trwania: {{nap.time}}</h3>
-          <button ion-button icon-only item-end color="buttons" (click)='editNap(nap)'><ion-icon name='brush'></ion-icon> </button>     
-          <button ion-button icon-only item-end color="buttons" (click)='deleteNap(nap)'><ion-icon name='trash'></ion-icon> </button>     
-        </ion-item>
+      <ion-item class='semi-trans' *ngFor="let day of all">
+        <h2 align="center" style="align-content: center; width: 100%" class="trans">{{day.date}}</h2>
+        <ion-list>      
+          <ion-item  class="trans" *ngFor="let nap of day.nap">
+            <h2>Początek drzemki: {{nap.hourStart}}</h2>
+            <h2>Koniec drzemki: {{nap.hourStop}} </h2>
+            <h3>Czas trwania: {{nap.time}}</h3>
+            <button ion-button icon-only item-end color="buttons" (click)='editNap(nap)'><ion-icon name='brush'></ion-icon> </button>     
+            <button ion-button icon-only item-end color="buttons" (click)='deleteNap(nap)'><ion-icon name='trash'></ion-icon> </button>     
+          </ion-item>
+        </ion-list>
+      </ion-item>
     </ion-list>
-    
+
+   
   </ion-content>

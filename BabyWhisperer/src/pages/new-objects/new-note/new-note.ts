@@ -15,7 +15,7 @@ export class NewNotePage {
   public isEdit:boolean;
   private editNotes: any[] = [];
   protected title:string = "Nowa notatka";
-  protected buttonName:string = "Zapisz posiłek";
+  protected buttonName:string = "Zapisz notatkę";
 
   protected categories: string[] = Object.keys(NotesCategories);
   
@@ -31,6 +31,9 @@ export class NewNotePage {
   }
 
   ionViewDidEnter() {
+    if(this.navParams.get('back')){
+      this.navCtrl.popAll();
+    }
     this.categories = this.categories.slice(this.categories.length / 2);
     this.isEdit = false;
     this.isEdit = !this.navParams.get('newNote');
