@@ -69,7 +69,7 @@ export class ChildProfileProvider {
          });
        },(error)=> {
          reject(error);
-       });
+      });
    })
   }
 
@@ -122,7 +122,7 @@ export class ChildProfileProvider {
          });
        },(error)=> {
          reject(error);
-       });
+      });
    })
   }
 
@@ -160,10 +160,10 @@ export class ChildProfileProvider {
 
  
 export class Child{
-    id:number;
-    childId: number;
-    weight:number;
-    height:number;
-    foot:number;
-    date: string;
+  id:number;
+  childId: number;
+  weight:number;
+  height:number;
+  foot:number;
+  date: string;
 }

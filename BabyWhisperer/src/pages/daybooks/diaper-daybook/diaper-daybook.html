@@ -1,27 +1,25 @@
 <ion-header>
-
   <ion-navbar color="header">
     <ion-title>Dziennik wypróżnień</ion-title>
     <ion-buttons end style="margin-right: 10px">
       <button ion-button outline (click) = "goToNewDiaper()">Dodaj</button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding="true" align="center" class="colors">
   <ion-list>
-      <ion-item class='semi-trans' *ngFor="let day of all">
-          <h2 align="center" style="align-content: center; width: 100%" class="trans">{{day.date}}</h2>
-          <ion-list>      
-            <ion-item  class="trans" *ngFor="let diaper of day.diaper">
-        <h2>Godzina: {{diaper.hour}}</h2>
-        <h2>Stolec: {{getType(diaper.type)}} </h2>
-        <button ion-button icon-only item-end color="buttons" (click)='editDiaper(diaper)'><ion-icon name='brush'></ion-icon> </button>     
-        <button ion-button icon-only item-end color="buttons" (click)='deleteDiaper(diaper)'><ion-icon name='trash'></ion-icon> </button>     
-      </ion-item>
+    <ion-item class='semi-trans' *ngFor="let day of all">
+      <h2 align="center" style="align-content: center; width: 100%" class="trans">{{day.date}}</h2>
+      <ion-list>      
+        <ion-item  class="trans" *ngFor="let diaper of day.diaper">
+          <h2>Godzina: {{diaper.hour}}</h2>
+          <h2>Stolec: {{getType(diaper.type)}} </h2>
+          <button ion-button icon-only item-end color="buttons" (click)='editDiaper(diaper)'><ion-icon name='brush'></ion-icon> </button>     
+          <button ion-button icon-only item-end color="buttons" (click)='deleteDiaper(diaper)'><ion-icon name='trash'></ion-icon> </button>     
+        </ion-item>
+      </ion-list>
+    </ion-item>
   </ion-list>
-</ion-item>
-</ion-list>
 </ion-content>

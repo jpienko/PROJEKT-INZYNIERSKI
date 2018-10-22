@@ -54,7 +54,6 @@ export class NewMealPage {
         });    
       }
     }
-    
   }
   
   
@@ -65,33 +64,24 @@ export class NewMealPage {
     this.model.description = this.meals.controls.description.value;
     this.model.date = this.meals.controls.date.value;
     this.model.childID = this.global.activeChild;
-    console.log(this.model);
 
     if (this.navParams.get('name')){  
       this.database.insert(this.model)
         .then((data)=>{
-          console.log(data);
         },(error)=>{
-          console.log(error);
         })
-    } 
-    else{   
+    }else{   
       if(this.isEdit) {
         this.model.id = this.navParams.get('mealId');
         this.database2.update(this.model)
         .then((data)=>{
-          console.log(data);
         },(error)=>{
-          console.log(error);
         })
         this.navCtrl.pop();
-      }
-      else{
+      }else{
       this.database2.insert(this.model)
         .then((data)=>{
-          console.log(data);
         },(error)=>{
-          console.log(error);
         })
       }
     }

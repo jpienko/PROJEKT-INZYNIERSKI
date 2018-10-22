@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup, FormBuilder,Validators } from '../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { ChildProfileProvider, Child } from '../../../providers/database/child-profile';
 import { GlobalsProvider } from '../../../providers/globals/globals'
 
@@ -42,15 +42,8 @@ export class NewProfilePage {
     this.model.height = this.correctNumber(this.child.controls.height.value);
     this.model.foot = this.correctNumber(this.child.controls.foot.value);
     this.model.date = new Date().getDate().toString() +"."+ new Date().getMonth().toString() + "."+new Date().getFullYear().toString();
-    console.log(this.model);
     
-    this.database.insert(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-    });
-
+    this.database.insert(this.model).then((data)=>{},(error)=>{});
     this.navCtrl.pop();
   }
 

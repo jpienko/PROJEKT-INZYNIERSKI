@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav} from 'ionic-angular';
+import { Platform, Nav} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DaybookPage }from '../pages/daybooks/daybook/daybook'
@@ -22,7 +22,7 @@ export class MyApp {
   protected rootPage:any = HomePage;
   protected pages: Array<{ title: string, component: any }>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menu: MenuController, private dB: DatabaseProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private dB: DatabaseProvider) {
     
     platform.ready().then(() => {
       if(newDB){

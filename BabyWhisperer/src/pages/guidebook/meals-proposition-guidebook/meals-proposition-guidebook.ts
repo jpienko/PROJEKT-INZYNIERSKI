@@ -14,6 +14,7 @@ protected showSchedule:boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public file:File) {
   }
+
   private getPropositions(){
     this.file.checkDir(this.file.applicationDirectory , "www/assets/mock").then(_=>{
       this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "meals-proposition.json").then(text => {
@@ -23,13 +24,11 @@ protected showSchedule:boolean = false;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MealsPropositionGuidebookPage');
     this.getPropositions();
   }
 
   protected showHideSchedule(){
     this.showSchedule = !this.showSchedule;
   }
-
- 
+  
 }

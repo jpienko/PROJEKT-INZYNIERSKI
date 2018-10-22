@@ -21,6 +21,7 @@ export class ProgressStepsGuidebookPage {
       }).catch(err => {})
     });
   }
+  
   ionViewDidLoad() {
     this.getSteps();
   }

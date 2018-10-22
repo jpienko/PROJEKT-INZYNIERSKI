@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { DiaperDaybookProvider, Diaper } from '../../../providers/database/diaper-daybook';
-import { isType } from '../../../../node_modules/@angular/core/src/type';
 import { GlobalsProvider } from '../../../providers/globals/globals'
-
-
 
 @IonicPage()
 @Component({
@@ -22,20 +19,24 @@ export class DiaperDaybookPage {
               public toast:ToastController, private global:GlobalsProvider) {
   }
 
-
   ionViewDidEnter() {
+    this.getAllDiapers(); 
+  }
+
+  private getAllDiapers() {
+    this.all = [];
     this.database.GetAllDates(this.global.activeChild).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDate(element.date, this.global.activeChild).then((result:any[])=>{
-          this.diapers = result; 
+        this.database.getByDate(element.date, this.global.activeChild).then((result: any[]) => {
+          this.diapers = result;
           this.all.push({
             date: element.date,
-            diaper:this.diapers
-          })
-       }) 
+            diaper: this.diapers
+          });
+        });
       });
-    }); 
+    });
   }
 
   public goToNewDiaper(){
@@ -60,6 +61,7 @@ export class DiaperDaybookPage {
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
     })
   }
+
   public getType(type:string):string{
     var isType:string;
     if(type=='true'){
@@ -67,7 +69,7 @@ export class DiaperDaybookPage {
     }else{
        isType = "NIE";
     }
-    return isType
+    return isType;
   } 
 
 }

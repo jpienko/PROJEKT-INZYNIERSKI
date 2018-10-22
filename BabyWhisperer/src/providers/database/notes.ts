@@ -2,7 +2,6 @@
 import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from './database';
-import { Title } from '../../../node_modules/@angular/platform-browser';
 
 @Injectable()
 export class NotesProvider {

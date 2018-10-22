@@ -1,25 +1,22 @@
 <ion-header>
-
   <ion-navbar color="header">
     <ion-title>Harmonogram posiłków</ion-title>
     <ion-buttons end style="margin-right: 10px">
-    <button ion-button outline *ngIf="isEdited" (click) = "goToNewMeal()">Dodaj</button>
-    <button ion-button outline *ngIf="!isEdited" (click)='editSchedule()'>Edytuj</button>
-    <button ion-button outline *ngIf="isEdited"(click)='editSchedule()'>Zakończ</button>
-  </ion-buttons>
+      <button ion-button outline *ngIf="isEdited" (click) = "goToNewMeal()">Dodaj</button>
+      <button ion-button outline *ngIf="!isEdited" (click)='editSchedule()'>Edytuj</button>
+      <button ion-button outline *ngIf="isEdited"(click)='editSchedule()'>Zakończ</button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding="true" align="center" class="colors">
   <ion-list>
-      <ion-item  *ngFor="let meal of meals">
-        <h2>{{meal.hour}}</h2>
-        <h3>{{meal.type}} </h3>
-        <h4>{{meal.description}}</h4>
-        <button ion-button icon-only item-end color="buttons" *ngIf="isEdited"(click)='deleteMeal(meal)'><ion-icon name='trash'></ion-icon> </button>     
-      </ion-item>
+    <ion-item  *ngFor="let meal of meals">
+      <h2>{{meal.hour}}</h2>
+      <h3>{{meal.type}} </h3>
+      <h4>{{meal.description}}</h4>
+      <button ion-button icon-only item-end color="buttons" *ngIf="isEdited"(click)='deleteMeal(meal)'><ion-icon name='trash'></ion-icon> </button>     
+    </ion-item>
   </ion-list>
-  
 </ion-content>

@@ -1,8 +1,7 @@
 
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { DatabaseProvider } from '../../providers/database/database'
-import { ProfilesProvider, Profiles } from '../../providers/database/profiles';
+import { ProfilesProvider } from '../../providers/database/profiles';
 import {ProfilePage} from '../profile/profile';
 import {GlobalsProvider} from '../../providers/globals/globals'
 
@@ -16,7 +15,7 @@ export class HomePage {
   protected profiles: any[];
   protected rootPage:any = ProfilePage;
 
-  constructor(public navCtrl: NavController, private ms:DatabaseProvider, private database: ProfilesProvider,
+  constructor(public navCtrl: NavController, private database: ProfilesProvider,
               public global:GlobalsProvider) {}
   
   ionViewDidLoad(){

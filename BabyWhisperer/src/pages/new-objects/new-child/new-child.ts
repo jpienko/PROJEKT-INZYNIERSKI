@@ -31,12 +31,9 @@ export class NewChildPage {
     console.log(this.model);
 
     this.database.insert(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-    });
-
+        .then((data)=>{},
+        (error)=>{}
+      );
     this.navCtrl.pop();
   }
 

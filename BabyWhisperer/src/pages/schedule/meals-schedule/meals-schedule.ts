@@ -11,13 +11,12 @@ import { GlobalsProvider } from '../../../providers/globals/globals'
   templateUrl: 'meals-schedule.html',
 })
 export class MealsSchedulePage {
-  isEdited:boolean = false;
-  meals: any[] = [];
+  protected isEdited:boolean = false;
+  protected meals: any[] = [];
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private database:MealScheduleProvider, private toast: ToastController,
-              public global:GlobalsProvider) {
-  }
+              public global:GlobalsProvider) {}
 
   ionViewDidEnter() {
     this.database.GetAllMeals(this.global.activeChild).then((result: any[]) => {
@@ -31,17 +30,16 @@ export class MealsSchedulePage {
     }
     this.navCtrl.push('NewMealPage',data);
   }
+
   editSchedule(){
     this.isEdited = !this.isEdited;
   }
 
   deleteMeal(meal:Meals){
-    console.log(meal);
     this.database.remove(meal.id).then(() => {
       var index = this.meals.indexOf(meal);
       this.meals.splice(index, 1);
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
     })
-    
   }
 }

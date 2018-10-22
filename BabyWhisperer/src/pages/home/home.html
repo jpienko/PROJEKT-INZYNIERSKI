@@ -1,23 +1,19 @@
-
-  <ion-header >
-      <ion-navbar color="header">
+<ion-header >
+  <ion-navbar color="header">
     <ion-title>
       Baby Whisperer
     </ion-title>
-    </ion-navbar>
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding="true" align="center" class="colors">
-      <ion-list>
-        <ion-item  class='trans' *ngFor="let profile of profiles">
-        
-          <button ion-button round medium color="buttons" (click)='goToChild(profile.id)' style="width: 97%">{{profile.name}} </button>     
-    
-        </ion-item>
-    </ion-list>
-
-    <button ion-button round color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
+  <ion-list>
+    <ion-item  class='trans' *ngFor="let profile of profiles">
+      <button ion-button round medium color="buttons" (click)='goToChild(profile.id)' style="width: 97%">{{profile.name}} </button>     
+    </ion-item>
+   </ion-list>
+  <button ion-button round color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
 </ion-content>
 
 

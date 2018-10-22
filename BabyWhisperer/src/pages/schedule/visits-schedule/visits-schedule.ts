@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import {DoctorVisitsProvider,Visits} from '../../../providers/database/doctor-visits';
+import {DoctorVisitsProvider} from '../../../providers/database/doctor-visits';
 import { GlobalsProvider } from '../../../providers/globals/globals'
 
 
@@ -80,10 +80,11 @@ export class VisitsSchedulePage {
   public getHour(date:string){
     let hour = new Date(date).getHours().toString();
     let minutes = new Date(date).getMinutes().toString();
+    var hours;
     if (minutes.length<2){
-      var hours = hour + ":0" +minutes
+      hours = hour + ":0" +minutes
     }else{
-      var hours = hour + ":" +minutes
+      hours = hour + ":" +minutes
     }
     return hours;
   }

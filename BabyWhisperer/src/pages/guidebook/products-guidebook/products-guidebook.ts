@@ -8,6 +8,7 @@ import { File } from '@ionic-native/file';
   selector: 'page-products-guidebook',
   templateUrl: 'products-guidebook.html',
 })
+
 export class ProductsGuidebookPage {
   protected rulesList;
   protected productsList: Array<Products> =[];
@@ -35,7 +36,6 @@ export class ProductsGuidebookPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProductsGuidebookPage');
     this.getRules();
     this.getProducts();
   }

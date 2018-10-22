@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { GrowthStepsProvider, Steps} from '../../../providers/database/growth-steps';
+import { GrowthStepsProvider } from '../../../providers/database/growth-steps';
 import { GlobalsProvider } from '../../../providers/globals/globals'
 import { StepDesc }from "../growing-steps/growing-steps"
 import { File } from '@ionic-native/file';
@@ -13,7 +13,7 @@ import { File } from '@ionic-native/file';
 export class PassedStepsPage {
 
   protected steps:any[]=[];
-  protected stepsToShow:passedStep[]=[];
+  protected stepsToShow:StepDesc[]=[];
   protected stepsDesc:StepDesc[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public database: GrowthStepsProvider,
@@ -30,45 +30,33 @@ export class PassedStepsPage {
           step.date = element.date;
           step.id = element.id;
            this.stepsToShow.push(step);
-      }) 
-      }).catch(err => {})
-      
+        }) 
+      }).catch(err => {})  
     });
    }
 
   protected getPassedSteps(){
-     this.database.GetAllSteps(this.globals.activeChild ).then((result:any[])=>{
+    this.database.GetAllSteps(this.globals.activeChild ).then((result:any[])=>{
       this.steps = result;
     })
   }
+
   ionViewDidEnter() {
    this.getPassedSteps();
    this.getSteps();
   }
 
-  protected passed(id:number){
-    
+  protected passed(id:number){ 
     this.database.remove(id).then((data)=>{
       console.log(data); 
       this.ionViewDidEnter();
-
     },(error)=>{
       console.log(error);
     })
-  
-   
   }
-
-
 
   public goToUnpassed(){
     this.navCtrl.pop();
   }
 }
 
-export class passedStep{
-  public title;
-  public id;
-  public content;
-  public date;
-}

@@ -1,22 +1,20 @@
 <ion-header>
-
   <ion-navbar color="header">
     <ion-title>Zaliczone etapy rozwojowe</ion-title>
     <ion-buttons end style="margin-right: 10px">
       <button ion-button outline (click) = "goToUnpassed()">Niezaliczone kroki</button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding class="colors">
-    <ion-list>
-        <ion-item text-wrap class="semi-trans" *ngFor="let step of stepsToShow" >
-          <h4 style="margin-top: 3px">{{step.date}} </h4>
-          <h2>{{step.title}}</h2>
-          <h2 white-space:normal style="margin-top: 3px" >{{step.content}} </h2>
-          <button ion-button icon-only item-end color="buttons" (click)='passed(step.id)'><ion-icon name="checkbox"></ion-icon> </button>     
-        </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item text-wrap class="semi-trans" *ngFor="let step of stepsToShow" >
+      <h4 style="margin-top: 3px">{{step.date}} </h4>
+      <h2>{{step.title}}</h2>
+      <h2 white-space:normal style="margin-top: 3px" >{{step.content}} </h2>
+       <button ion-button icon-only item-end color="buttons" (click)='passed(step.id)'><ion-icon name="checkbox"></ion-icon> </button>     
+    </ion-item>
+  </ion-list>
 </ion-content>

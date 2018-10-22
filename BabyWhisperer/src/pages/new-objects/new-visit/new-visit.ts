@@ -16,12 +16,8 @@ export class NewVisitPage {
               public viewCtrl: ViewController) {
     let preselectedDate = moment(this.navParams.get('selectedDay')).format();
     this.event.startTime = preselectedDate;
-
   }
   
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewVisitPage');
-  }
   cancel() {
     this.viewCtrl.dismiss();
   }
@@ -29,7 +25,5 @@ export class NewVisitPage {
   save() {
     this.viewCtrl.dismiss(this.event);
   }
-
-  
 
 }

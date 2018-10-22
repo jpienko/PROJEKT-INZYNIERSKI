@@ -21,18 +21,23 @@ export class MealDaybookPage {
 
 
   ionViewDidEnter() {
+    this.getAllMeals(); 
+  }
+
+  private getAllMeals() {
+    this.all = [];
     this.database.GetAllDates(this.global.activeChild).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDate(element.date, this.global.activeChild).then((result:any[])=>{
+        this.database.getByDate(element.date, this.global.activeChild).then((result: any[]) => {
           this.meals = result;
           this.all.push({
             date: element.date,
-            meal:this.meals
-          })
-       }) 
+            meal: this.meals
+          });
+        });
       });
-    }); 
+    });
   }
 
   goToNewMeal(){

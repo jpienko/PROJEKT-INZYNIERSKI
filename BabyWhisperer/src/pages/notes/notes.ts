@@ -32,8 +32,7 @@ export class NotesPage {
           }
         )
       })
-    });
-    
+    });  
   }
 
   protected goToNewNote(){
