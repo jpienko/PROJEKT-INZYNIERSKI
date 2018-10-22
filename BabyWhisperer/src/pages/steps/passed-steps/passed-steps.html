@@ -12,11 +12,11 @@
 
 <ion-content padding class="colors">
     <ion-list>
-        <ion-item text-wrap class="semi-trans" *ngFor="let step of steps" >
-          <h3 *ngIf="step.passed" style="margin-top: 3px"> {{step.date}}</h3>
-          <h2>{{step.name}}</h2>
-          <h2 white-space:normal style="margin-top: 3px" >{{step.description}} </h2>
-          <button ion-button icon-only item-end *ngIf="step.passed"color="buttons" (click)='passed(step)'><ion-icon name="checkbox"></ion-icon> </button>     
+        <ion-item text-wrap class="semi-trans" *ngFor="let step of stepsToShow" >
+          <h4 style="margin-top: 3px">{{step.date}} </h4>
+          <h2>{{step.title}}</h2>
+          <h2 white-space:normal style="margin-top: 3px" >{{step.content}} </h2>
+          <button ion-button icon-only item-end color="buttons" (click)='passed(step.id)'><ion-icon name="checkbox"></ion-icon> </button>     
         </ion-item>
     </ion-list>
 </ion-content>

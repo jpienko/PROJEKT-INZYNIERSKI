@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { GrowthStepsProvider, Steps} from '../../../providers/database/growth-steps';
+import { GlobalsProvider } from '../../../providers/globals/globals'
+import { StepDesc }from "../growing-steps/growing-steps"
+import { File } from '@ionic-native/file';
 
 @IonicPage()
 @Component({
@@ -9,55 +12,63 @@ import { GrowthStepsProvider, Steps} from '../../../providers/database/growth-st
 })
 export class PassedStepsPage {
 
-  steps:any[]=[];
+  protected steps:any[]=[];
+  protected stepsToShow:passedStep[]=[];
+  protected stepsDesc:StepDesc[] = [];
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: GrowthStepsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: GrowthStepsProvider,
+              private globals:GlobalsProvider, private file:File) {
   }
 
-  ionViewDidEnter() {
-    this.database.GetAllSteps("true").then((result:any[])=>{
+  protected getSteps(){
+    this.file.checkDir(this.file.applicationDirectory , "www/assets/mock").then(_=>{
+      this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "growth-steps.json").then(text => {
+        this.stepsDesc = JSON.parse(<string>text);  
+        this.stepsToShow = [];
+        this.steps.forEach(element=>{ 
+          var step:StepDesc = this.stepsDesc.find(item => item.id === element.stepId);
+          step.date = element.date;
+          step.id = element.id;
+           this.stepsToShow.push(step);
+      }) 
+      }).catch(err => {})
+      
+    });
+   }
+
+  protected getPassedSteps(){
+     this.database.GetAllSteps(this.globals.activeChild ).then((result:any[])=>{
       this.steps = result;
-      this.steps.forEach(element => {
-        if(element.passed=="false"){
-          element.passed = false;
-        }else{
-          element.passed = true;
-        }
-      });
     })
   }
+  ionViewDidEnter() {
+   this.getPassedSteps();
+   this.getSteps();
+  }
 
-  protected passed(step:Steps){
-    step.passed = !step.passed;
-  
-    if(step.passed)
-    {
-      step.date = new Date().getDate() +"-"+ new Date().getMonth() + "-"+ new Date().getFullYear()
-    }else{
-      step.date = '';
-    }
+  protected passed(id:number){
     
-    this.database.update(step).then((data)=>{
-      console.log(data);
+    this.database.remove(id).then((data)=>{
+      console.log(data); 
+      this.ionViewDidEnter();
+
     },(error)=>{
       console.log(error);
     })
   
-    this.ionViewDidEnter();
-    
+   
   }
 
-  public getType(type:boolean):string{
-    if(type){
-      var isType:string = "TAK";
-    }else{
-      var isType:string = "NIE";
-    }
-    return isType
-  } 
+
 
   public goToUnpassed(){
     this.navCtrl.pop();
   }
+}
+
+export class passedStep{
+  public title;
+  public id;
+  public content;
+  public date;
 }

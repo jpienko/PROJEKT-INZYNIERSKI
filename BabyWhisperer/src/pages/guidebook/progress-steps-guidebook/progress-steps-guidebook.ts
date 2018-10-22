@@ -22,7 +22,6 @@ export class ProgressStepsGuidebookPage {
     });
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProgressStepsGuidebookPage');
     this.getSteps();
   }
 
