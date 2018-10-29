@@ -63,6 +63,7 @@ export class NewDoctorPage {
       })
     }
     this.docs.reset();
+    this.navCtrl.pop();
   }
    
 }

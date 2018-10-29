@@ -1,7 +1,7 @@
 <ion-header >
   <ion-navbar color="header">
     <ion-title>
-      Baby Whisperer
+      BabyWhisperer
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -17,15 +17,21 @@
         <p>{{profile.birthday}}</p>
       </ion-item>
 
-      <ion-item-options side="right" (click)='editChildProfile(profile.id)'>
-        <button ion-button color="buttons">
+      <ion-item-options side="right" >
+        <button ion-button color="buttons" (click)='editChildProfile(profile.id)'>
           <ion-icon name="brush"></ion-icon>
           Edytuj
         </button>
+        
         <button ion-button color="secondary" (click)='goToChild(profile.id)'>
           <ion-icon name="checkbox"  ></ion-icon>
           Wybierz
         </button>
+
+        <button ion-button color="danger" (click)='deleteProfile(profile.id)'>
+          <ion-icon name="trash"></ion-icon>
+          Usuń
+        </button>   
       </ion-item-options>
     </ion-item-sliding>
    </ion-list>

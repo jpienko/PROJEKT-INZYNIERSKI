@@ -86,6 +86,7 @@ export class NewMealPage {
       }
     }
    this.meals.reset();
+   this.navCtrl.pop();
   }
     
 }

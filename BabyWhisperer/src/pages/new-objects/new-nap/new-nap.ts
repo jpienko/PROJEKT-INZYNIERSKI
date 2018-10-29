@@ -81,6 +81,7 @@ export class NewNapPage {
       }
     } 
    this.naps.reset();
+   this.navCtrl.pop();
   }
 
   public getDiff(start,stop):number {

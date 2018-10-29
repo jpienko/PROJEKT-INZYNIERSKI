@@ -154,6 +154,19 @@ export class ChildProfileProvider {
         });
     })
   }
+
+  public deleteByChildID(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'delete from child where childId = ?';
+        let data = [id];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+ 
 }
 
   

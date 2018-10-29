@@ -26,7 +26,7 @@ export class MealsSchedulePage {
 
   goToNewMeal(){
     let data = {
-      napSchedule: true
+      name: true
     }
     this.navCtrl.push('NewMealPage',data);
   }

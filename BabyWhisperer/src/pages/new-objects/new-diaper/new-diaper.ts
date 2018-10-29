@@ -57,7 +57,7 @@ export class NewDiaperPage {
         .then((data)=>{
         },(error)=>{
         })
-        this.navCtrl.pop();
+        
     }else{
     this.database.insert(this.model)
         .then((data)=>{
@@ -65,6 +65,7 @@ export class NewDiaperPage {
         })
       }
     this.diapers.reset();
+    this.navCtrl.pop();
   }
    
 

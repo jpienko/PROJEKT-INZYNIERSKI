@@ -34,7 +34,7 @@ export class NapSchedulePage {
     this.isEdited = !this.isEdited;
   }
 
-  protected deleteMeal(nap:Naps){
+  protected deleteNap(nap:Naps){
     this.database.remove(nap.id).then(() => {
       var index = this.naps.indexOf(nap);
       this.naps.splice(index, 1);

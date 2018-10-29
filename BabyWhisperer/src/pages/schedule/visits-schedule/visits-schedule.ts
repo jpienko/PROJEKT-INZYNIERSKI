@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import {DoctorVisitsProvider} from '../../../providers/database/doctor-visits';
-import { GlobalsProvider } from '../../../providers/globals/globals'
+
 
 
 @IonicPage()
@@ -42,8 +42,7 @@ export class VisitsSchedulePage {
 };
  
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private modalCtrl: ModalController, private global: GlobalsProvider,
-              private database:DoctorVisitsProvider) {
+              private modalCtrl: ModalController, private database:DoctorVisitsProvider) {
     
   }
   
