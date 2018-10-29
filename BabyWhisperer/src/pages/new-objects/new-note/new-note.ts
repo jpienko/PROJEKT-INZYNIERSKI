@@ -34,49 +34,40 @@ export class NewNotePage {
     if(this.navParams.get('back')){
       this.navCtrl.popAll();
     }
+    this.getTypeOfPage();
+  }
+  
+  private getTypeOfPage() {
     this.categories = this.categories.slice(this.categories.length / 2);
     this.isEdit = false;
     this.isEdit = !this.navParams.get('newNote');
-    if(this.isEdit){
-      this.title = "Edytuj notatkę"
+    if (this.isEdit) {
+      this.title = "Edytuj notatkę";
       this.buttonName = "Zapisz notatkę";
       this.database.get(this.navParams.get('noteId')).then((result: any[]) => {
-        this.editNotes = result;     
+        this.editNotes = result;
         this.notes.controls.description.setValue(this.editNotes[0].note);
         this.notes.controls.title.setValue(this.editNotes[0].title);
         this.notes.controls.categories.setValue(this.editNotes[0].category);
-      });    
+      });
     }
   }
-  
+
   protected saveNote(){
-    
     var today = new Date;
     this.model.title = this.notes.controls.title.value;
     this.model.category = this.notes.controls.categories.value;
     this.model.note = this.notes.controls.description.value;
     this.model.date = today.getDate().toString() +"-" + (today.getMonth()+1).toString()+ "-" + today.getFullYear().toString();
-    console.log(this.model);
-   
-    if(this.isEdit) {
+
+    if(this.isEdit){
       this.model.id = this.navParams.get('noteId');
-      this.database.update(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-        })
-        this.navCtrl.pop();
+      this.database.update(this.model).then((data)=>{},(error)=>{})
+      this.navCtrl.pop();
     }else{
-    this.database.insert(this.model)
-      .then((data)=>{
-        console.log(data);
-      },(error)=>{
-        console.log(error);
-      })
+      this.database.insert(this.model).then((data)=>{},(error)=>{})
       this.navCtrl.pop();
     }
-    
    this.notes.reset();
   }
 }

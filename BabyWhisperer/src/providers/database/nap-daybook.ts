@@ -45,6 +45,18 @@ export class NapDaybookProvider {
       .catch((e) => console.error(e));
   }
  
+  public deleteByChildID(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'delete from naps where childId = ?';
+        let data = [id];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+
   public get(id: number) {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()

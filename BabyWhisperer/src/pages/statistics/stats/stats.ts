@@ -12,13 +12,6 @@ export class StatsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StatsPage');
-  }
-  goToStatsOfMeals(){
-    //this.navCtrl.push('MealStatsPage');
-  }
-
   goToStatsOfNaps(){
     this.navCtrl.push('NapStatsPage');
   }

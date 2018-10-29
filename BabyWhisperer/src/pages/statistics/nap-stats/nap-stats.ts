@@ -21,44 +21,48 @@ export class NapStatsPage {
   }
   
   ionViewDidLoad() {
+    this.getNapData(); 
+  }
+
+  private getNapData() {
     this.database.GetAvrageNap(this.global.activeChild).then((result: any[]) => {
-    this.naps = result;
-    var i =0;
+      this.naps = result;
+      var i = 0;
       this.naps.forEach(element => {
         this.dates[i] = element.date;
         this.sum[i] = element.sum;
         this.avg[i] = element.avg;
         i++;
-      }); 
+      });
       this.getChart();
       this.getAvgAvg();
       this.getAvgSum();
-    }); 
+    });
   }
 
   getChart(){
     HighCharts.chart('container', {
-        chart: {
-          type: 'bar'
-        },
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'Dzienny wykres drzemek'
+      },
+      xAxis: {
+        categories: this.dates
+      },
+      yAxis: {
         title: {
-          text: 'Dzienny wykres drzemek'
-        },
-        xAxis: {
-          categories: this.dates
-        },
-        yAxis: {
-          title: {
-            text: 'Godziny snu'
-          }
-        },
-        series: [{
-          name: 'Łączna długośc snu',
-          data: this.sum
-        },
-        {
-          name: 'Średnia długośc snu',
-          data: this.avg
+          text: 'Godziny snu'
+        }
+      },
+      series: [{
+        name: 'Łączna długośc snu',
+        data: this.sum
+      },
+      {
+        name: 'Średnia długośc snu',
+        data: this.avg
       }]
     });
   }
@@ -82,8 +86,6 @@ export class NapStatsPage {
   public getTimeOfNap(time:number):string{
     let x = time.toString().split(".");
     var hours = x[0];    
-    console.log(x);
-    
     var minutes = (parseFloat("0."+x[1])*60).toPrecision(2);
     return hours + " godzin " + minutes + " minut"
   } 

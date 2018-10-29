@@ -46,8 +46,8 @@ export class DocsListPage {
 
   public call(tel:number){
     this.callNumber.callNumber(tel.toString(), true)
-    .then(res => console.log('Launched dialer!', res))
-    .catch(err => console.log('Error launching dialer', err));
+    .then(res => {})
+    .catch(err => {});
   }
 
 }

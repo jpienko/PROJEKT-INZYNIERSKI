@@ -15,6 +15,9 @@ export class NewChildPage {
   protected model = new Profiles;
   protected imageSrc:string = "";
   protected profile:any[] = [];
+  protected isEdit:boolean;
+  protected title:string = "Dodaj profil dziecka";
+  protected currentProfile:any[]= [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, 
               public database:ProfilesProvider, private camera: Camera) {
@@ -24,19 +27,40 @@ export class NewChildPage {
     });
   }
 
+  ionViewDidEnter() {
+    this.isEdit = this.navParams.get('editChild');    
+    if(this.isEdit){
+      this.title = "Edytuj profil dziecka"
+      this.database.get(this.navParams.get('childId')).then((result: any[]) => {
+        this.currentProfile = result;         
+        this.imageSrc = this.currentProfile[0].picture;
+        this.child.controls.name.setValue(this.currentProfile[0].name);
+        this.child.controls.birthday.setValue(this.currentProfile[0].birthday);
+      });    
+    }   
+  }
+
   protected saveProfile(){
     this.model.name = this.child.controls.name.value;
     this.model.birthday = this.child.controls.birthday.value;
     this.model.picture = this.imageSrc;
+    this.model.id = this.navParams.get('childId');
+
     console.log(this.model);
+    
+    if(this.isEdit){
+      this.database.update(this.model)
+      .then((data)=>{
+      },
+      (error)=>{ }
+    );
 
-    this.database.insert(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-    });
-
+    }else{
+      this.database.insert(this.model)
+       .then((data)=>{ },
+       (error)=>{}
+      );
+    }
     this.navCtrl.pop();
   }
 

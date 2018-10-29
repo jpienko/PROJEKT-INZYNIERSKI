@@ -24,59 +24,59 @@ export class DiaperStatsPage {
   }
   
   ionViewDidLoad() {
-    
-    console.log('ionViewDidLoad NapStatsPage');
-    this.database.GetSumDiapers(this.global.activeChild).then((result: any[]) => {
-    this.diapers = result;
-    console.log(this.diapers);
-    
-    var i = 0;
-      this.diapers.forEach(element => {
-      this.dates[i] = element.date;
-      this.sumDiaper[i] = element.sum;
-       i++;
-      }); 
-      
-      this.getAvgAvg();
-      
-    }); 
+    this.getSumOfDiapers(); 
+    this.getAverageOfDiapers();
+  }
+
+  private getAverageOfDiapers() {
     this.database.GetAvrageDiaper(this.global.activeChild).then((result: any[]) => {
       this.diapers1 = result;
       var i = 0;
-      console.log(this.diapers1);
-      
-        this.diapers1.forEach(element => {
-          this.sum[i] = element.avg;
-          i++;
-        }); 
-        this.getChart();
-        this.getAvgSum();
+      this.diapers1.forEach(element => {
+        this.sum[i] = element.avg;
+        i++;
       });
+      this.getChart();
+      this.getAvgSum();
+    });
+  }
+
+  private getSumOfDiapers() {
+    this.database.GetSumDiapers(this.global.activeChild).then((result: any[]) => {
+      this.diapers = result;
+      var i = 0;
+      this.diapers.forEach(element => {
+        this.dates[i] = element.date;
+        this.sumDiaper[i] = element.sum;
+        i++;
+      });
+      this.getAvgAvg();
+    });
   }
 
   getChart(){
     HighCharts.chart('container', {
-        chart: {
-          type: 'bar'
-        },
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'Dzienny wykres wypróżnień'
+      },
+      xAxis: {
+        categories: this.dates
+      },
+      yAxis: {
         title: {
-          text: 'Dzienny wykres wypróżnień'
-        },
-        xAxis: {
-          categories: this.dates
-        },
-        yAxis: {
-          title: {
-            text: 'Godziny snu'
-          }
-        },
-        series: [{
-          name: 'Ilość wypróznień',
-          data: this.sum
-        },
-        {
-          name: 'Zużyte pieluchy',
-          data: this.sumDiaper
+          text: 'Godziny snu'
+        }
+      },
+      series: [{
+        name: 'Ilość wypróznień',
+        data: this.sum
+      },
+      {
+        name: 'Zużyte pieluchy',
+        data: this.sumDiaper
       }]
     });
   }
@@ -96,6 +96,5 @@ export class DiaperStatsPage {
     })
     this.avgSumDiaper = (sum/this.sumDiaper.length).toPrecision(1).toString();
   }
-
 
 }

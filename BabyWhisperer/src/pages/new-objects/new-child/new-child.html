@@ -17,7 +17,7 @@
     <button ion-button round small (click) = "openGallery()"outline>Wybierz zdjęcie</button>
   </div>
 
-   <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%">
+  <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%">
     <ion-item class="semi-trans" >
       <ion-label>Data urodzenia</ion-label>
       <ion-datetime  displayFormat="D MMM YYYY" min="2017"  formControlName="birthday" ></ion-datetime>
@@ -27,10 +27,8 @@
       <ion-label floating>Imie</ion-label>
       <ion-input type="text" formControlName="name" value=""></ion-input>
     </ion-item>
-     
-    
+       
     <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>Zapisz profil</button>
-   </form>
+  </form>
 
-  
 </ion-content>

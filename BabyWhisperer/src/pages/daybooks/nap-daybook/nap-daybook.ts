@@ -22,22 +22,26 @@ export class NapDaybookPage {
 
 
   ionViewDidEnter() {
+    this.getAllNaps(); 
+  }
+
+  private getAllNaps() {
+    this.all = [];
     this.database.getAllDates(this.global.activeChild).then((result: any[]) => {
-      this.dates = result;      
+      this.dates = result;
       this.dates.forEach(element => {
-       this.database.getByDateNaps(element.date, this.global.activeChild).then((result:any[])=>{
-          this.naps = result;          
+        this.database.getByDateNaps(element.date, this.global.activeChild).then((result: any[]) => {
+          this.naps = result;
           this.naps.forEach(element => {
             element.time = this.getTimeOfNap(element.time);
           });
           this.all.push({
             date: element.date,
-            nap:this.naps
-          })          
-       }) 
+            nap: this.naps
+          });
+        });
       });
-    }); 
-
+    });
   }
 
   public goToNewNap(){

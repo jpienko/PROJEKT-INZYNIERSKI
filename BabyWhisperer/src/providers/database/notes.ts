@@ -2,7 +2,6 @@
 import { Injectable } from '@angular/core';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from './database';
-import { Title } from '../../../node_modules/@angular/platform-browser';
 
 @Injectable()
 export class NotesProvider {
@@ -38,6 +37,18 @@ export class NotesProvider {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'delete from notes where id = ?';
+        let data = [id];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+
+  public deleteByChildID(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'delete from notes where childId = ?';
         let data = [id];
  
         return db.executeSql(sql, data)

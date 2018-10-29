@@ -1,25 +1,23 @@
 <ion-header>
-
   <ion-navbar color="header">
     <ion-title>Lista zaufanych lekarzy</ion-title>
     <ion-buttons end style="margin-right: 10px">
       <button ion-button outline (click) = "goToNewDoctor()">Dodaj</button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding class="colors">
-    <ion-list>
-        <ion-item class="semi-trans" *ngFor="let doc of docs" >
-          <h2>{{doc.name}}  {{doc.surname}}</h2>
-          <h2>{{doc.specialisation}} </h2>
-          <h3>{{doc.tel}}</h3>
-          <h3>{{doc.adress}} </h3>
-          <button ion-button icon-only item-end color="buttons" (click)='call(doc.tel)'><ion-icon name='call'></ion-icon> </button>     
-          <button ion-button icon-only item-end color="buttons" (click)='editDoc(doc)'><ion-icon name='brush'></ion-icon> </button>     
-          <button ion-button icon-only item-end color="buttons" (click)='deleteDoc(doc)'><ion-icon name='trash'></ion-icon> </button>     
-        </ion-item>
-    </ion-list>
+  <ion-list>
+    <ion-item class="semi-trans" *ngFor="let doc of docs" >
+      <h2>{{doc.name}}  {{doc.surname}}</h2>
+      <h2>{{doc.specialisation}} </h2>
+      <h3>{{doc.tel}}</h3>
+      <h3>{{doc.adress}} </h3>
+      <button ion-button icon-only item-end color="buttons" (click)='call(doc.tel)'><ion-icon name='call'></ion-icon> </button>     
+      <button ion-button icon-only item-end color="buttons" (click)='editDoc(doc)'><ion-icon name='brush'></ion-icon> </button>     
+      <button ion-button icon-only item-end color="buttons" (click)='deleteDoc(doc)'><ion-icon name='trash'></ion-icon> </button>     
+      </ion-item>
+  </ion-list>
 </ion-content>

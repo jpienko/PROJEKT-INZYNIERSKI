@@ -11,11 +11,7 @@ export class GuidebooksPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GuidebooksPage');
-  }
-
+  
   goToProductsGuidebook(){
     this.navCtrl.push('ProductsGuidebookPage');
   }

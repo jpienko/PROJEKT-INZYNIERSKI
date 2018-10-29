@@ -10,20 +10,17 @@ import { GlobalsProvider } from '../../../providers/globals/globals'
   templateUrl: 'nap-schedule.html',
 })
 export class NapSchedulePage {
-  isEdited:boolean = false;
-  naps: any[] = [];
+  protected isEdited:boolean = false;
+  protected naps: any[] = [];
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private database:NapScheduleProvider, private toast: ToastController,
-              public global:GlobalsProvider) {
-  }
+              public global:GlobalsProvider) {}
 
   ionViewDidEnter() {
     this.database.GetAllNaps(this.global.activeChild).then((result: any[]) => {
       this.naps = result;
     });
-    console.log(this.naps);
-    
   }
 
   protected goToNewNap(){
@@ -37,14 +34,12 @@ export class NapSchedulePage {
     this.isEdited = !this.isEdited;
   }
 
-  protected deleteMeal(nap:Naps){
-    console.log(nap);
+  protected deleteNap(nap:Naps){
     this.database.remove(nap.id).then(() => {
       var index = this.naps.indexOf(nap);
       this.naps.splice(index, 1);
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
     })
-    
   }
 
 }

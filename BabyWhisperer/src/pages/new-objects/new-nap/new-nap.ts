@@ -38,27 +38,27 @@ export class NewNapPage {
     this.isEdit = false;
     this.isEdit = this.navParams.get('editNap') 
     this.isSchedule = this.navParams.get('napSchedule')
-
-    if(!this.isSchedule){
-      this.title = "Dodaj drzemkę do dziennika";
-      if(this.isEdit){
-        this.title = "Edytuj drzemkę"
-        this.buttonName = "Edytuj drzemkę";
-        this.database2.get(this.navParams.get('napId')).then((result: any[]) => {
-          this.editNaps = result;     
-          this.naps.controls.hourStart.setValue(this.editNaps[0].hourStart);
-          this.naps.controls.hourStop.setValue(this.editNaps[0].hourStop);    
-          this.naps.controls.date.setValue(this.editNaps[0].date);
-          this.naps.controls.time.setValue(this.editNaps[0].time);
-        });    
-      }
-    }
-    
+    this.getTypeOfPage();  
   }
   
-  
+  private getTypeOfPage() {
+    if (!this.isSchedule) {
+      this.title = "Dodaj drzemkę do dziennika";
+      if (this.isEdit) {
+        this.title = "Edytuj drzemkę";
+        this.buttonName = "Edytuj drzemkę";
+        this.database2.get(this.navParams.get('napId')).then((result: any[]) => {
+          this.editNaps = result;
+          this.naps.controls.hourStart.setValue(this.editNaps[0].hourStart);
+          this.naps.controls.hourStop.setValue(this.editNaps[0].hourStop);
+          this.naps.controls.date.setValue(this.editNaps[0].date);
+          this.naps.controls.time.setValue(this.editNaps[0].time);
+        });
+      }
+    }
+  }
+
   protected saveNap(){
-    
     this.model.hourStart = this.naps.controls.hourStart.value;
     this.model.hourStop = this.naps.controls.hourStop.value;
     this.model.date = this.naps.controls.date.value;
@@ -67,51 +67,36 @@ export class NewNapPage {
      
     if (this.isSchedule){  
       this.model.time = this.naps.controls.time.value;
-      this.database.insert(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-        })
-    } 
-    else{   
+      this.database.insert(this.model).then((data)=>{},(error)=>{})
+    }else{   
       if(this.isEdit) {
         this.model.id = this.navParams.get('napId');
-        this.database2.update(this.model)
-        .then((data)=>{
-          console.log(data);
-        },(error)=>{
-          console.log(error);
-        })
+        this.database2.update(this.model).then((data)=>{},(error)=>{})
         this.navCtrl.pop();
-      }
-      else{
+      }else{
       this.database2.insert(this.model)
         .then((data)=>{
-          console.log(data);
         },(error)=>{
-          console.log(error);
         })
       }
-    }
-  
+    } 
    this.naps.reset();
+   this.navCtrl.pop();
   }
 
   public getDiff(start,stop):number {
-    
     let startNap = start.split(":");
     let stopNap = stop.split(":");
+    var hours;
+    var mins;
 
     if(stopNap[1]>startNap[1]){
-      var mins = stopNap[1]-startNap[1];
-      var hours = stopNap[0]-startNap[0];
+      mins = stopNap[1]-startNap[1];
+      hours = stopNap[0]-startNap[0];
     }else{
-      var mins = stopNap[1]-startNap[1]+60;
-      var hours = stopNap[0]-startNap[0]-1;
+      mins = stopNap[1]-startNap[1]+60;
+      hours = stopNap[0]-startNap[0]-1;
     }
-     
     return hours + (mins/60);
-    
   }
 }

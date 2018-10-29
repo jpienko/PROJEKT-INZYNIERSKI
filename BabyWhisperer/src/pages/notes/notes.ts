@@ -19,6 +19,7 @@ export class NotesPage {
   }
 
   ionViewDidEnter(){
+    this.all = [];
     this.categories = Object.keys(NotesCategories);
     this.categories = this.categories.slice(this.categories.length / 2);
     this.categories.forEach(element => {
@@ -31,8 +32,7 @@ export class NotesPage {
           }
         )
       })
-    });
-    
+    });  
   }
 
   protected goToNewNote(){

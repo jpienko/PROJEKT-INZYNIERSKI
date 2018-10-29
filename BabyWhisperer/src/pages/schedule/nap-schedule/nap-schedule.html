@@ -1,26 +1,30 @@
 <ion-header>
-
   <ion-navbar color="header">
     <ion-title>Harmonogram drzemek</ion-title>
     <ion-buttons end style="margin-right: 10px">
-    <button ion-button outline *ngIf="isEdited" (click) = "goToNewNap()">Dodaj</button>
-    <button ion-button outline *ngIf="!isEdited" (click)='editSchedule()'>Edytuj</button>
-    <button ion-button outline *ngIf="isEdited"(click)='editSchedule()'>Zakończ</button>
-  </ion-buttons>
+      <button ion-button outline *ngIf="isEdited" (click) = "goToNewNap()">Dodaj</button>
+      <button ion-button outline *ngIf="!isEdited" (click)='editSchedule()'>Edytuj</button>
+      <button ion-button outline *ngIf="isEdited"(click)='editSchedule()'>Zakończ</button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding="true" align="center" class="colors">
   <ion-list>
-      <ion-item  *ngFor="let nap of naps">
-          <h2>Oczekiwany początek drzemki: {{nap.hourStart}}</h2>
-          <h2>Oczekiwany koniec drzemki: {{nap.hourStop}} </h2>
-          <h3>Oczekiwany czas trwania: {{nap.time}}</h3>
-        <button ion-button icon-only item-end color="buttons" *ngIf="isEdited"(click)='deleteMeal(meal)'><ion-icon name='trash'></ion-icon> </button>     
+    <ion-item-sliding  *ngFor="let nap of naps">
+      <ion-item>
+        <h2>Oczekiwany początek drzemki: {{nap.hourStart}}</h2>
+        <h2>Oczekiwany koniec drzemki: {{nap.hourStop}} </h2>
+        <h3>Oczekiwany czas trwania: {{nap.time}}</h3>
       </ion-item>
+      <ion-item-options *ngIf="isEdited" side="right">
+          <button ion-button color="danger" (click)='deleteNap(nap)'>
+            <ion-icon name="trash"></ion-icon>
+            Usuń
+          </button>   
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-  
 </ion-content>
 

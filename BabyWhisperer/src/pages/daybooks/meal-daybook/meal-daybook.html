@@ -1,29 +1,36 @@
 <ion-header>
-
     <ion-navbar color="header">
       <ion-title>Dziennik posiłków</ion-title>
       <ion-buttons end style="margin-right: 10px">
       <button ion-button outline (click) = "goToNewMeal()">Dodaj</button>
-    </ion-buttons>
+      </ion-buttons>
     </ion-navbar>
-  
   </ion-header>
   
   
-  <ion-content padding="true" align="center" class="colors">
-    <ion-list>
-      <ion-item class='semi-trans' *ngFor="let day of all">
-        <h2 align="center" style="align-content: center; width: 100%" class="trans">{{day.date}}</h2>
-        <ion-list>
-          <ion-item  class='trans' *ngFor="let meal of day.meal">
-            <h2>{{meal.hour}}</h2>
-            <h3>{{meal.type}} </h3>
-            <h4>{{meal.description}}</h4>
-            <button ion-button icon-only item-end color="buttons" (click)='editMeal(meal)'><ion-icon name='brush'></ion-icon> </button>     
-            <button ion-button icon-only item-end color="buttons" (click)='deleteMeal(meal)'><ion-icon name='trash'></ion-icon> </button>     
-          </ion-item>
-      </ion-list>
-      </ion-item>
-    </ion-list>
+<ion-content padding="true" align="center" class="colors">
+  <ion-list *ngFor="let day of all">
+    <ion-item-divider>
+      {{day.date}}
+    </ion-item-divider>
     
-  </ion-content>
+    <ion-item-sliding  class="trans" *ngFor="let meal of day.meal">
+      <ion-item>
+        <h2>{{meal.hour}}</h2>
+        <h3>{{meal.type}} </h3>
+        <h4>{{meal.description}}</h4>
+      </ion-item>
+          
+      <ion-item-options side="right">
+        <button ion-button color="buttons" (click)='editMeal(meal)'>
+          <ion-icon name="brush"></ion-icon>
+          Edytuj
+        </button>
+        <button ion-button color="secondary" (click)='deleteMeal(meal)'>
+          <ion-icon name="trash"></ion-icon>
+          Usuń
+        </button>    
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

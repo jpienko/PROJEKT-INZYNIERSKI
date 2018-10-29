@@ -28,7 +28,6 @@ export class MetricsPage {
   ionViewDidLoad() {
     this.database.GetAllChildProfiles(this.global.activeChild).then((result: any[]) => {
     this.child = result;
-    console.log(this.child);
     
     var i =0;
       this.child.forEach(element => {
@@ -45,27 +44,27 @@ export class MetricsPage {
 
   getChart(){
     HighCharts.chart('container', {
-        chart: {
-          type: 'line'
-        },
+      chart: {
+        type: 'line'
+      },
+      title: {
+        text: 'Wykres wzrostu i wagi'
+      },
+      xAxis: {
+        categories: this.dates
+      },
+      yAxis: {
         title: {
-          text: 'Wykres wzrostu i wagi'
-        },
-        xAxis: {
-          categories: this.dates
-        },
-        yAxis: {
-          title: {
-            text: 'Waga [kg] wzrost [cm]'
-          }
-        },
-        series: [{
-          name: 'Waga',
-          data: this.weight
-        },
-        {
-          name: 'Wzrost',
-          data: this.height
+          text: 'Waga [kg] wzrost [cm]'
+        }
+      },
+      series: [{
+        name: 'Waga',
+        data: this.weight
+      },
+      {
+        name: 'Wzrost',
+        data: this.height
       }]
     });
   }
@@ -76,8 +75,8 @@ export class MetricsPage {
       this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "growth-chart.json").then(text => {
         sizes = JSON.parse(text); 
         sizes.forEach(element => {
-            this.getHeightCentil(element.height);
-            this.getWeightCentil(element.weight);
+          this.getHeightCentil(element.height);
+          this.getWeightCentil(element.weight);
         });
       }).catch(err => {})
     });

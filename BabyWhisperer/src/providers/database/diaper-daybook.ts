@@ -12,7 +12,7 @@ export class DiaperDaybookProvider {
   public insert(diaper: Diaper) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into diapers( childId, date, hour, type) values (?, ?, ?, ?, ?)';
+        let sql = 'insert into diapers( childId, date, hour, type) values (?, ?, ?, ?)';
         let data = [diaper.childID, diaper.date, diaper.hour, diaper.type ];
  
         return db.executeSql(sql, data)
@@ -37,6 +37,18 @@ export class DiaperDaybookProvider {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'delete from diapers where id = ?';
+        let data = [id];
+ 
+        return db.executeSql(sql, data)
+          .catch((e) => console.error(e));
+      })
+      .catch((e) => console.error(e));
+  }
+
+  public deleteByChildID(id: number) {
+    return this.dbProvider.getDB()
+      .then((db: SQLiteObject) => {
+        let sql = 'delete from diapers where childId = ?';
         let data = [id];
  
         return db.executeSql(sql, data)

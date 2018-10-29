@@ -41,7 +41,10 @@ $colors: (
   dark:       #222,
   header:     #a3cef1,
   back:       #ca99b4,
-  buttons:    #a3cef1
+  buttons:    #a3cef1,
+  trans:      rgba($color: #ffffff, $alpha: 0.3),
+  transparent:      rgba($color: #ffffff, $alpha: 0)
+
 );
 
 
@@ -49,7 +52,8 @@ $colors: (
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
+$item-ios-sliding-content-background: (rgba($color: #ffffff, $alpha: 0.3));
+$item-md-sliding-content-background: ( rgba($color: #ffffff, $alpha: 0.3));
 
 
 // App Material Design Variables

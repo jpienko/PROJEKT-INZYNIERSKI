@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, Platform, NavParams } from 'ionic-angular';
 import { DatabaseProvider } from '../../providers/database/database'
 import { File } from '@ionic-native/file';
-import { ChildProfileProvider, Child } from '../../providers/database/child-profile';
-import { ProfilesProvider, Profiles } from '../../providers/database/profiles';
+import { ChildProfileProvider} from '../../providers/database/child-profile';
+import { ProfilesProvider } from '../../providers/database/profiles';
 import { GlobalsProvider } from '../../providers/globals/globals'
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -28,7 +28,7 @@ export class ProfilePage {
   protected age:number;
   protected imageSrc: any;
 
-  constructor(public navCtrl: NavController, public navParams:NavParams, private ms:DatabaseProvider, 
+  constructor(public navCtrl: NavController, public navParams:NavParams, 
               private database: ChildProfileProvider, private database2: ProfilesProvider, 
               public platform:Platform, public dB:DatabaseProvider, private camera: Camera, 
               private global: GlobalsProvider, private file:File) {}
@@ -127,14 +127,8 @@ export class ProfilePage {
     this.camera.getPicture(cameraOptions).then((imageData) => {
       this.imageSrc = 'data:image/jpeg;base64,' + imageData;
       this.profile[0].picture = this.imageSrc;  
-      this.database2.update(this.profile[0]).then((data)=>{
-        console.log(data);
-      },(error)=>{
-        console.log(error);
-      });
-     },(err) => {
-      console.log(err);  
-    });  
+      this.database2.update(this.profile[0]).then((data)=>{},(error)=>{});
+    },(err) => {});  
   }
 
   private getClothesSizes(){
@@ -146,13 +140,11 @@ export class ProfilePage {
           if(element.max>this.height){
             if(element.min<=this.height){
                this.size = element.size;
-            
             }
           }
         });
       }).catch(err => {})
     });
-    
   }
 
   private getDiapersSizes(){
@@ -173,6 +165,4 @@ export class ProfilePage {
       }).catch(err => {})
     });
   }
-
-
 }

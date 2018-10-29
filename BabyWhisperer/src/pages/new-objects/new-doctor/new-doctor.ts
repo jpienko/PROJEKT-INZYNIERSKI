@@ -24,7 +24,6 @@ export class NewDoctorPage {
       specialisation: [''],
       adress: [''],
       tel: [''],
-
     });
   }
 
@@ -33,11 +32,9 @@ export class NewDoctorPage {
     this.isEdit = !this.navParams.get('newDoc') 
     
     if(this.isEdit){
-      this.title = "Edytuj zaufanego lekarza"
-       
+      this.title = "Edytuj zaufanego lekarza" 
       this.database.get(this.navParams.get('docId')).then((result:any[]) => {
         this.editDoctor = result; 
-
         this.docs.controls.name.setValue(this.editDoctor[0].name);
         this.docs.controls.surname.setValue(this.editDoctor[0].surname);
         this.docs.controls.specialisation.setValue(this.editDoctor[0].specialisation);
@@ -46,36 +43,29 @@ export class NewDoctorPage {
       });    
     }
   }
-  protected saveDoc(){
 
+  protected saveDoc(){
     this.model.name = this.docs.controls.name.value;
     this.model.surname = this.docs.controls.surname.value;
     this.model.specialisation = this.docs.controls.specialisation.value;
     this.model.adress = this.docs.controls.adress.value;
     this.model.tel = this.docs.controls.tel.value;
-    console.log(this.model);
-
-      
+     
     if(this.isEdit) {
       this.model.id = this.navParams.get('mealId');
       this.database.update(this.model).then((data)=>{
-          console.log(data);
         },(error)=>{
-          console.log(error);
         })
       this.navCtrl.pop();
-    }
-    else{
+    }else{
     this.database.insert(this.model).then((data)=>{
-        console.log(data);
       },(error)=>{
-          console.log(error);
       })
     }
     this.docs.reset();
+    this.navCtrl.pop();
   }
    
-  
 }
 
 
