@@ -6,12 +6,28 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content padding="true" align="center" class="colors">
   <ion-list>
-    <ion-item  class='trans' *ngFor="let profile of profiles">
-      <button ion-button round medium color="buttons" (click)='goToChild(profile.id)' style="width: 97%">{{profile.name}} </button>     
-    </ion-item>
+    <ion-item-sliding *ngFor="let profile of profiles">
+      <ion-item >
+        <ion-avatar item-start>
+          <img src={{profile.picture}}>
+        </ion-avatar>
+        <h2 >{{profile.name}}</h2>
+        <p>{{profile.birthday}}</p>
+      </ion-item>
+
+      <ion-item-options side="right" (click)='editChildProfile(profile.id)'>
+        <button ion-button color="buttons">
+          <ion-icon name="brush"></ion-icon>
+          Edytuj
+        </button>
+        <button ion-button color="secondary" (click)='goToChild(profile.id)'>
+          <ion-icon name="checkbox"  ></ion-icon>
+          Wybierz
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
    </ion-list>
   <button ion-button round color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
 </ion-content>

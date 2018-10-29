@@ -29,7 +29,18 @@ export class HomePage {
   }
 
   protected goToNewChildProfile(){
-    this.navCtrl.push('NewChildPage')
+    let data = {
+      editChild: false
+    }
+    this.navCtrl.push('NewChildPage', data)
+  }
+
+  protected editChildProfile(id:number){
+    let data = {
+      editChild: true,
+      childId: id
+    }
+    this.navCtrl.push('NewChildPage', data)
   }
 
   protected goToChild(id:number){
