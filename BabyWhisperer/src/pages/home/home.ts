@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { ProfilesProvider } from '../../providers/database/profiles';
 import { ProfilePage } from '../profile/profile';
 import { GlobalsProvider } from '../../providers/globals/globals';
@@ -30,12 +30,15 @@ export class HomePage {
               private diaperDaybook: DiaperDaybookProvider, private docs: DoctorsListProvider,
               private growthSteps: GrowthStepsProvider, private mealDaybook: MealDaybookProvider,
               private mealSchedule: MealScheduleProvider, private napDaybook: NapDaybookProvider,
-              private napSchedule:NapScheduleProvider, private notes:NotesProvider ) {}
+              private napSchedule:NapScheduleProvider, private notes:NotesProvider,public menu:MenuController ) {}
   
   ionViewDidLoad(){
     this.ionViewDidEnter();
-  }
-
+       this.menu.enable(false);
+     }
+     ionViewDidLeave(){
+       this.menu.enable(true);
+     }
   ionViewDidEnter(){
     this.database.GetAllChildProfiles().then((result: any[]) => {
       this.profiles = result;

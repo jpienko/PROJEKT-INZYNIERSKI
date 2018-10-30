@@ -4,6 +4,7 @@ import * as HighCharts from 'highcharts';
 import {ChildProfileProvider} from '../../../providers/database/child-profile'
 import { File } from '@ionic-native/file';
 import { GlobalsProvider } from '../../../providers/globals/globals'
+import { ProfilesProvider } from '../../../providers/database/profiles'
 
 @IonicPage()
 @Component({
@@ -11,23 +12,41 @@ import { GlobalsProvider } from '../../../providers/globals/globals'
   templateUrl: 'metrics.html',
 })
 export class MetricsPage {
-  child: any[] = [];
-  dates:string[]=[];
-  height:string[] =[];
-  weight:string[] = [];
-  avgAvgNap:string = '0';
-  avgSumNap:string = '0';
-  centilHeight:string ="";
-  centilWeight:string="";
-  age:number = 0;
+  protected child: any[] = [];
+  protected dates:string[]=[];
+  protected height:string[] =[];
+  protected weight:string[] = [];
+  protected avgAvgNap:string = '0';
+  protected avgSumNap:string = '0';
+  protected centilHeight:string ="";
+  protected centilWeight:string="";
+  protected age:number = 0;
+  protected dataIsEmpty:boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:ChildProfileProvider,
-              private file:File, public global:GlobalsProvider) {
+              private file:File, public global:GlobalsProvider, private profile:ProfilesProvider) {
   }
   
   ionViewDidLoad() {
+    this.getChildAge();
+    this.getChildMetrics();
+  }
+
+  protected getChildAge(){
+   this.profile.get(this.global.activeChild).then((result:any[])=>{
+     result.forEach(element=>{
+       this.age = this.getAge(element.birthday)
+     })
+   })
+   console.log(this.age);
+   
+  }
+
+  protected getChildMetrics(){
     this.database.GetAllChildProfiles(this.global.activeChild).then((result: any[]) => {
     this.child = result;
+    console.log(this.child.length);
+    
     
     var i =0;
       this.child.forEach(element => {
@@ -36,13 +55,15 @@ export class MetricsPage {
         this.weight[i] = element.weight;
         i++;
       }); 
-      this.age = this.getAge(this.child[0].birthday)
       this.getChart();
       this.getCentils();
+    if(this.child.length==0){
+        this.dataIsEmpty = true;
+      }
     }); 
   }
 
-  getChart(){
+  protected getChart(){
     HighCharts.chart('container', {
       chart: {
         type: 'line'
@@ -74,7 +95,7 @@ export class MetricsPage {
     this.file.checkDir(this.file.applicationDirectory , "www/assets/mock").then(_=>{
       this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "growth-chart.json").then(text => {
         sizes = JSON.parse(text); 
-        sizes.forEach(element => {
+        sizes.forEach(element => {          
           this.getHeightCentil(element.height);
           this.getWeightCentil(element.weight);
         });
@@ -83,8 +104,8 @@ export class MetricsPage {
   }
 
   private getHeightCentil(heights:any){
-    if(heights[this.age-1].max>this.height[0]){
-      if(heights[this.age-1].min<this.height[0]){
+    if(heights[this.age].max>this.height[0]){
+      if(heights[this.age].min<this.height[0]){
         this.centilHeight = "Dziecko mieści się w siatce centylowej wzrostu"
       }
       else{
@@ -93,11 +114,12 @@ export class MetricsPage {
     }else{
       this.centilHeight = "Dziecko nie mieści się w siatce centylowej - duży wzrost"
     }
+    
   }
 
   private getWeightCentil(weights:any){
-    if(weights[this.age-1].max>this.weight[0]){
-      if(weights[this.age-1].min<this.weight[0]){
+    if(weights[this.age].max>this.weight[0]){
+      if(weights[this.age].min<this.weight[0]){
         this.centilWeight = "Dziecko mieści się w siatce centylowej wagi"
       }
       else{
@@ -106,6 +128,7 @@ export class MetricsPage {
     }else{
       this.centilWeight = "Dziecko nie mieści się w siatce centylowej - duża waga"
     }
+   
   }
 
   private getAge(birthDate:string){

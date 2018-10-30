@@ -1,5 +1,8 @@
 export enum NotesCategories{
-    'problemy zdrowotne' = 0,
-    'do kupienia' = 1,
-    'do zapamiętania' = 2,
+    'ALERGIE' = 0,
+    'PRZEBYTE CHOROBY' = 1,
+    'WAŻNE WYDARZENIA' = 2,
+    'NIEPOKOJĄCE ZDARZENIA/OBJAWY' = 3,
+    'ULUBIONE ZABAWY/PRZEDMIOTY' = 4,
+    'ULUBIONE DANIA' = 5
 }
