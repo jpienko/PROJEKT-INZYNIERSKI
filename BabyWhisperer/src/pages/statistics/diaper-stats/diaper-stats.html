@@ -6,11 +6,14 @@
 
 
 <ion-content padding="true" align="center" class="colors">
+    <h1 *ngIf='dataIsEmpty'>
+        BRAK DANYCH
+      </h1>
   <div id="container" style="display: block;"	></div>
-  <p>
+  <p *ngIf='!dataIsEmpty'>
     Średnia dzienna ilość wypróżnień: {{avgDiaper}}
   </p>
-  <p>
+  <p *ngIf='!dataIsEmpty'>
     Średnia ilość pieluszek zużywana dziennie: {{avgSumDiaper}}
   </p>
 </ion-content>

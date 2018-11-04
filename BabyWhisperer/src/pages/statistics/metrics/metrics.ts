@@ -45,9 +45,7 @@ export class MetricsPage {
   protected getChildMetrics(){
     this.database.GetAllChildProfiles(this.global.activeChild).then((result: any[]) => {
     this.child = result;
-    console.log(this.child.length);
-    
-    
+  
     var i =0;
       this.child.forEach(element => {
         this.dates[i] = element.date;
@@ -59,6 +57,8 @@ export class MetricsPage {
       this.getCentils();
     if(this.child.length==0){
         this.dataIsEmpty = true;
+      }else{
+        this.dataIsEmpty = false;
       }
     }); 
   }
