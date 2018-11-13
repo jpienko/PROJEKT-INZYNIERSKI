@@ -13,27 +13,27 @@
     
     <ion-item class="semi-trans">
       <ion-label>Imie</ion-label>
-      <ion-textarea  formControlName="name"></ion-textarea>
+      <ion-textarea  formControlName="name" [(ngModel)]="model.name"></ion-textarea>
     </ion-item>
       
     <ion-item class="semi-trans">
       <ion-label>Nazwisko</ion-label>
-      <ion-textarea  formControlName="surname"></ion-textarea>
+      <ion-textarea  formControlName="surname" [(ngModel)]="model.surname"></ion-textarea>
     </ion-item>
 
     <ion-item class="semi-trans">
       <ion-label>Specjalizacja</ion-label>
-      <ion-textarea  formControlName="specialisation"></ion-textarea>
+      <ion-textarea  formControlName="specialisation" [(ngModel)]="model.specialisation"></ion-textarea>
     </ion-item>
 
     <ion-item class="semi-trans">
       <ion-label>Adres</ion-label>
-      <ion-textarea  formControlName="adress"></ion-textarea>
+      <ion-textarea  formControlName="adress" [(ngModel)]="model.adress"></ion-textarea>
     </ion-item>      
     
     <ion-item class="semi-trans">
       <ion-label>Telefon</ion-label>
-      <ion-textarea type="tel" maxlength="9"  formControlName="tel"></ion-textarea>
+      <ion-textarea type="number" maxlength="9"  formControlName="tel" [(ngModel)]="model.tel"></ion-textarea>
     </ion-item>
 
     <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px">

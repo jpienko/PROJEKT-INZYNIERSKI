@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup, FormBuilder,Validators } from '../../../../node_modules/@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { ProfilesProvider, Profiles } from '../../../providers/database/profiles';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -22,8 +22,8 @@ export class NewChildPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, 
               public database:ProfilesProvider, private camera: Camera) {
     this.child = this.formBuilder.group({
-      name:['', Validators.required],
-      birthday: ['', Validators.required],
+      name: new FormControl('',Validators.required),
+      birthday: new FormControl('', Validators.required)
     });
   }
 
@@ -41,27 +41,17 @@ export class NewChildPage {
   }
 
   protected saveProfile(){
-    this.model.name = this.child.controls.name.value;
-    this.model.birthday = this.child.controls.birthday.value;
-    this.model.picture = this.imageSrc;
-    this.model.id = this.navParams.get('childId');
-
-    console.log(this.model);
-    
-    if(this.isEdit){
-      this.database.update(this.model)
-      .then((data)=>{
-      },
-      (error)=>{ }
-    );
-
-    }else{
-      this.database.insert(this.model)
-       .then((data)=>{ },
-       (error)=>{}
-      );
-    }
-    this.navCtrl.pop();
+    if(this.child.valid){
+      this.model.picture = this.imageSrc;
+      this.model.id = this.navParams.get('childId');
+      
+      if(this.isEdit){
+        this.database.update(this.model);
+      }else{
+        this.database.insert(this.model);
+      }
+      this.navCtrl.pop();
+   }
   }
 
   protected openGallery () {

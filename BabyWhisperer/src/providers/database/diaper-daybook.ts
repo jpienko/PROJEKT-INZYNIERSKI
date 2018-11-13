@@ -90,7 +90,7 @@ export class DiaperDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM diapers WHERE date = ? AND childId = ?",[date, id])
+          db.executeSql("SELECT * FROM diapers WHERE date = ? AND childId = ? ORDER BY hour",[date, id])
           .then((data)=>{
             let arrayDiapers = [];
             if (data.rows.length>0){
