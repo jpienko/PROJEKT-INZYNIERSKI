@@ -2,26 +2,26 @@
      {
          "id":1,
          "title":"Skupienie wzroku",
-         "content":"Noworodek potrafi skupiać wzrok na przedmiotach i osobach oraz śledzić przedmioty poruszające się w jego polu widzenia. "
+         "content":"Noworodek potrafi skupiać wzrok na przedmiotach i osobach oraz śledzić przedmioty poruszające się w jego polu widzenia."
      },
      {
         "id":2,
-        "title":" ",
-        "content":"leżąc na brzuchu, może już umieć unieść głowę i ramiona na wysokość 5 cm i utrzymać się w tej pozycji coraz dłużej. "
+        "title":"Utrzymywanie główki",
+        "content":"Leżąc na brzuchu, może umieć unieść głowę i ramiona na niewielką wysokość i utrzymać się w tej pozycji przez jakiś czas. "
     },
     {
         "id":3,
-        "title":" ",
-        "content":"W pozycji pionowej zachowuje chwiejnie wyprostowaną postawę, a podtrzymywane w pozycji pionowej dobrze kontroluje ustawienie głowy "
+        "title":"Trzymanie pionu",
+        "content":"W pozycji pionowej zachowuje chwiejnie wyprostowaną postawę, a podtrzymywane w pozycji pionowej dobrze kontroluje ustawienie głowy."
     },
     {
         "id":4,
-        "title":" ",
-        "content":"samodzielnie przewraca się z boku na plecy "
+        "title":"Kołyska",
+        "content":"Samodzielnie przewraca się z boku na plecy "
     },
     {
         "id":5,
-        "title":" ",
+        "title":"Odruch chwytny",
         "content":"Leżąc na pleckach, dziecko zaczepia zawieszone w zasięgu rąk zabawki i niekiedy udaje mu się utrzymać przedmiot włożony mu przez dorosłego do ręki. "
     },
     {
@@ -31,23 +31,23 @@
     },
     {
         "id":7,
-        "title":"Pierwsze dźwięki  ",
+        "title":"Głużenie - pierwsze dźwięki",
         "content":"Zaczyna wydawać też krótkie gardłowe dźwięki: „agu”, „ga”, „kha”, „ehe”, „he” (tzw. głużenie). "
     },
     {
         "id":8,
-        "title":" ",
-        "content":"leżąc na brzuchu (w tzw. pozycji żabki), opierać się symetrycznie na przedramionach i podnosić główkę tak wysoko, że jest w stanie patrzeć prawie na wprost. "
+        "title":"Pozycja żabki",
+        "content":"Leżąc na brzuchu, opierać się symetrycznie na przedramionach i podnosić główkę na tyle wysoko, że jest w stanie patrzeć niemal na wprost. "
     },
     {
         "id":9,
         "title":"Reakcja na ruch",
-        "content":"Potrafi śledzić wzrokiem przedmiot, który znajduje się ok. 15 cm od jego twarzy i porusza się w ruchu kołowym. "
+        "content":"Potrafi śledzić wzrokiem przedmiot/osobę, który/-a znajduje się w niedużej odległości od jego twarzy. "
     },
     {
         "id":10,
-        "title":" ",
-        "content":"Niemowlę położone na plecach wytrwale próbuje obrócić się na bok. I coraz częściej mu się to udaje.  "
+        "title":"Przetaczanie",
+        "content":"Niemowlę położone na plecach wytrwale i coraz częściej skutecznie próbuje obrócić się na bok."
     },
     {
         "id":11,
@@ -61,13 +61,13 @@
     },
     {
         "id":13,
-        "title":" ",
-        "content":"trzymany pionowo niemowlak zaczyna mocno utrzymywać główkę, a położony na brzuszku unosi ją pewnie. Dziecko może też w tej pozycji oprzeć się na samych dłoniach, jednocześnie prężąc nóżki – wówczas buja się na brzuszku jak kołyska. "
+        "title":"Kołyska",
+        "content":"Trzymany pionowo niemowlak zaczyna mocno utrzymywać główkę, a położony na brzuszku unosi ją pewnie. Dziecko może też w tej pozycji oprzeć się na samych dłoniach, jednocześnie prężąc nóżki – wówczas buja się na brzuszku jak kołyska. "
     },
     {
         "id":14,
         "title":"Pierwsze próby raczkowania",
-        "content":"Niemowlę umie już je wyprostować, próbuje się nimi odpychać. "
+        "content":"Niemowlę umie już je wyprostować, próbuje się nimi odpychać."
     },
     {
         "id":15,
@@ -77,12 +77,12 @@
     {
         "id":16,
         "title":"Manifestecja obecności",
-        "content":"Nowo odkrytą umiejętnością jest radosny, głośny śmiech. Oprócz tego wydaje okrzyki od wysokich do niskich tonów, grucha, cmoka.  "
+        "content":"Dziecko wydaje z siebie radosny, głośny śmiech oraz okrzyki od wysokich do niskich tonów, grucha, cmoka.  "
     },
     {
         "id":17,
         "title":"Foczka",
-        "content":" Potrafi podnieść klatkę piersiową niemal pod kątem prostym do podłoża. To tzw. pozycja „foki”, która zapowiada przejście do następnego etapu rozwoju – raczkowania. "
+        "content":" Potrafi podnieść klatkę piersiową niemal pod kątem prostym do podłoża."
     },
     {
         "id":18,
@@ -92,12 +92,12 @@
     {
         "id":19,
         "title":"Wstęp do samodzielności",
-        "content":"Może trzymać kubek obiema rękami i unosić do ust."
+        "content":"Może trzymać kubek/butelkę obiema rękami i unosić do ust."
     },
     {
         "id":20,
         "title":"Pierwsze ząbki",
-        "content":" "
+        "content":"Twarde dziąsła, wzmożone ślinienie oraz pchanie do ust wszystkiego co się napatoczy to pierwsze objawy ząbkowania."
     },
     {
         "id":21,
@@ -107,12 +107,12 @@
     {
         "id":22,
         "title":"Próby pełzania",
-        "content":"w pozycji na brzuszku próbuje pełzać do tyłu.  "
+        "content":"W pozycji na brzuszku próbuje pełzać do tyłu."
     },
     {
         "id":23,
         "title":"Samodzielne siadanie",
-        "content":"Niemowlę umie samo podciągać się do pozycji siedzącej, "
+        "content":"Niemowlę umie samo podciągać się do pozycji siedzącej. "
     },
     {
         "id":24,
@@ -122,22 +122,22 @@
     {
         "id":25,
         "title":"Próby wstawania",
-        "content":"Czasem stara podnieść się do stania. Niemal jednocześnie ze wstawaniem twoje dziecko może wykonać pierwsze kroki, "
+        "content":"Czasem stara podnieść się do stania. Niemal jednocześnie ze wstawaniem dziecko może wykonać pierwsze niesamodzielne kroki. "
     },
     {
         "id":26,
         "title":"Raczkowanie",
-        "content":"raczkować, choć są też takie dzieci, które omijają ten etap rozwoju i poruszają się w inny sposób (np. pełzając) "
+        "content":"Dziecko porusza się na wszystkich kończynach podtrzymując górną część ciała na rączkach i odpychając się nóżkami. "
     },
     {
         "id":27,
         "title":"Samodzielne stanie",
-        "content":" potrafią już przez chwilę samodzielnie ustać na szeroko rozstawionych nogach. Niemowlę może sprawiać wtedy wrażenie, że ugina się pod własnym ciężarem, ale ono w ten sposób po prostu szuka środka ciężkości. "
+        "content":"Dziecko jest w stanie przez chwilę samodzielnie ustać na szeroko rozstawionych nogach. Niemowlę może sprawiać wtedy wrażenie, że ugina się pod własnym ciężarem, ale w rzeczywistości szuka środka ciężkości. "
     },
     {
         "id":28,
         "title":"Naśladowanie",
-        "content":"Dziecko stara się naśladować otaczające je osoby, uwielbia się również popisywać umiejętnościami "
+        "content":"Dziecko stara się naśladować otaczające je osoby, uwielbia się popisywać nabytymi umiejętnościami. "
     },
     {
         "id":29,
@@ -147,17 +147,17 @@
     {
         "id":30,
         "title":"Samodzielne jedzenie",
-        "content":"Dziecko potrafi samodzielnie trafić butelką do ust, łyżeczka z jedzeniem także ląduje w buzi "
+        "content":"Dziecko potrafi samodzielnie trafić butelką do ust, łyżeczka z jedzeniem ląduje w buzi "
     },
     {
         "id":31,
         "title":"Gryzienie mamy, taty ",
-        "content":"Dziecko w ten sposób testuje swoje ząbki. Co oczywiście nie oznacza, że masz się zgadzać na rolę testera. Kiedy niemowlę zamierza cię ugryźć, kategorycznie je odsuń i powiedz, że tak nie wolno robić, bo to cię boli. Jeśli będziesz postępować konsekwentnie, dziecko szybko zrozumie, że takie zachowanie jest zakazane. "
+        "content":"Dziecko w ten sposób testuje swoje ząbki. Jednak nie oznacza to, że należy zgadzać na rolę testera."
     },
     {
         "id":32,
         "title":"Schylanie",
-        "content": "dziecko potrafi schylić się lub ukucnąć, przytrzymując się jakiegoś mebla. "
+        "content": "Dziecko potrafi schylić się lub ukucnąć, przytrzymując się mebla/osoby. "
     },
     {
         "id":33,
@@ -166,7 +166,12 @@
     },
     {
         "id":34,
+        "title":"Próby samodzielnego stania",
+        "content":"Dziecko próbuje puszczać się mebli/osób i utrzymać równowagę stojąc na szeroko rozstawionych nogach."
+    },
+    {
+        "id":35,
         "title":"Samodzielny krok",
-        "content":" "
+        "content":"Dziecko samodzielnie, bez przytrzymywania się mebli/osób potrafi zrobić kilka kroków. "
     }
  ]

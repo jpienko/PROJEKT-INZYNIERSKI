@@ -3,6 +3,12 @@
     <ion-title>
       BabyWhisperer
     </ion-title>
+    <ion-buttons end style="margin-right: 10px">
+      <button ion-button outline (click) = "goToNewChildProfile()">Dodaj dziecko</button>
+    </ion-buttons>
+    <ion-buttons end style="margin-right: 10px">
+      <button ion-button outline (click) = "goToTutorial()">Pomoc</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -34,8 +40,7 @@
         </button>   
       </ion-item-options>
     </ion-item-sliding>
-   </ion-list>
-  <button ion-button round color="buttons" (click)='goToNewChildProfile()'>Dodaj dziecko</button>   
+   </ion-list>  
 </ion-content>
 
 

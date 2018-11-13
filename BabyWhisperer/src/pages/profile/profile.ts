@@ -7,7 +7,6 @@ import { ProfilesProvider } from '../../providers/database/profiles';
 import { GlobalsProvider } from '../../providers/globals/globals'
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
@@ -25,7 +24,7 @@ export class ProfilePage {
   protected child: any[] = [];
   protected profile:any[]=[];
   protected id:number;
-  protected age:number;
+  protected age:string;
   protected imageSrc: any;
 
   constructor(public navCtrl: NavController, public navParams:NavParams, 
@@ -64,7 +63,7 @@ export class ProfilePage {
        this.name = element.name;
        this.birthday = this.getBirthDate(element.birthday);
        this.time = this.getTimeDiff(element.birthday);
-       this.age  = this.getAge(element.birthday);
+       this.age  = this.getAgeSubtext(this.getAge(element.birthday));
        this.imageSrc = element.picture;
       });
   });
@@ -106,6 +105,23 @@ export class ProfilePage {
     let birthday = new Date(birthDate);
     let today = new Date();
     return parseInt(((+today - +birthday)/(1000*3600*24*30)).toString());
+  }
+
+  private getAgeSubtext(age:number){
+    if(age==0 || age>4){
+      if(age>12){
+        return '1 rok'
+      }else if(age>24){
+        return '2 lata'
+      }else{
+        return age.toString() + ' miesięcy'
+      }
+    }else if(age==1){
+      return age.toString() + ' miesiąc'
+    }else if(age>1 && age<5){
+      return age.toString() + ' miesiące'
+    }
+
   }
 
   protected goToNewProfile(){

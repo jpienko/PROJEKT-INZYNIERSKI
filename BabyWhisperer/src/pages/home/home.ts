@@ -1,6 +1,5 @@
-
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { ProfilesProvider } from '../../providers/database/profiles';
 import { ProfilePage } from '../profile/profile';
 import { GlobalsProvider } from '../../providers/globals/globals';
@@ -13,6 +12,8 @@ import { MealScheduleProvider } from '../../providers/database/meal-schedule-pro
 import { NapDaybookProvider } from '../../providers/database/nap-daybook';
 import { NapScheduleProvider} from '../../providers/database/nap-schedule';
 import { NotesProvider} from '../../providers/database/notes';
+import { TutorialPage} from '../tutorial/tutorial'
+
 
 
 @Component({
@@ -30,10 +31,15 @@ export class HomePage {
               private diaperDaybook: DiaperDaybookProvider, private docs: DoctorsListProvider,
               private growthSteps: GrowthStepsProvider, private mealDaybook: MealDaybookProvider,
               private mealSchedule: MealScheduleProvider, private napDaybook: NapDaybookProvider,
-              private napSchedule:NapScheduleProvider, private notes:NotesProvider ) {}
+              private napSchedule:NapScheduleProvider, private notes:NotesProvider,public menu:MenuController ) {}
   
   ionViewDidLoad(){
     this.ionViewDidEnter();
+    this.menu.enable(false);  
+  }
+
+  ionViewDidLeave(){
+    this.menu.enable(true);
   }
 
   ionViewDidEnter(){
@@ -47,6 +53,10 @@ export class HomePage {
       editChild: false
     }
     this.navCtrl.push('NewChildPage', data)
+  }
+
+  protected goToTutorial(){
+    this.navCtrl.push(TutorialPage)
   }
 
   protected editChildProfile(id:number){

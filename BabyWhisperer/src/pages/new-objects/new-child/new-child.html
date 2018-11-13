@@ -9,9 +9,9 @@
 
 
 <ion-content padding="true" align="center" class="colors">
-  <div class="gallery-button" text-center>
+  <div class="gallery-button" text-center style="margin-bottom: 20px">
     <p> 
-      <img style=" height: 100px; width: 100px" [src]="imageSrc" />    
+      <img style="max-height: 180px; max-width: 180px" [src]="imageSrc" />    
     </p>
     
     <button ion-button round small (click) = "openGallery()"outline>Wybierz zdjęcie</button>
@@ -20,7 +20,7 @@
   <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%">
     <ion-item class="semi-trans" >
       <ion-label>Data urodzenia</ion-label>
-      <ion-datetime  displayFormat="D MMM YYYY" min="2017"  formControlName="birthday" ></ion-datetime>
+      <ion-datetime  displayFormat="DD-MM-YYYY" min="2017"  formControlName="birthday" ></ion-datetime>
     </ion-item>
 
     <ion-item class="semi-trans">
@@ -28,7 +28,7 @@
       <ion-input type="text" formControlName="name" value=""></ion-input>
     </ion-item>
        
-    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>Zapisz profil</button>
+    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px"><ion-icon name="add"></ion-icon>Zapisz profil</button>
   </form>
 
 </ion-content>

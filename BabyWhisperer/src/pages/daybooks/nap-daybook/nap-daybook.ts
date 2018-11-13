@@ -30,31 +30,33 @@ export class NapDaybookPage {
     this.database.getAllDates(this.global.activeChild).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-        this.database.getByDateNaps(element.date, this.global.activeChild).then((result: any[]) => {
-          this.naps = result;
-          this.naps.forEach(element => {
-            element.time = this.getTimeOfNap(element.time);
+        if((+new Date() - +new Date(element.date))/(1000*3600*24)<7){
+          this.database.getByDateNaps(element.date, this.global.activeChild).then((result: any[]) => {
+            this.naps = result;
+            this.naps.forEach(element => {
+              element.time = this.getTimeOfNap(element.time);
+            });
+            this.all.push({
+              date: element.date,
+              nap: this.naps
+            });
           });
-          this.all.push({
-            date: element.date,
-            nap: this.naps
-          });
-        });
+        }
       });
     });
   }
 
-  public goToNewNap(){
+  protected goToNewNap(){
     let data = {
       napsSchedule: false
     }
     this.navCtrl.push('NewNapPage', data);
   }
-  public editDaybook(){
+  protected editDaybook(){
     this.isEdited = !this.isEdited;
   }
 
-  public editNap(nap){
+  protected editNap(nap){
     let data = {
       napsSchedule: false,
       editNap:true,
@@ -63,18 +65,20 @@ export class NapDaybookPage {
     this.navCtrl.push('NewNapPage', data);
   }
 
-  public deleteNap(nap:Naps){
+  protected deleteNap(nap:Naps){
     this.database.remove(nap.id).then(() => {
       var index = this.naps.indexOf(nap);
       this.naps.splice(index, 1);
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+      this.ionViewDidEnter();
     })
+    
   }
-  public getTimeOfNap(time:number):string{
+
+  private getTimeOfNap(time:number):string{
     let x = time.toString().split(".");
     var hours = x[0];    
     var minutes = (parseFloat("0."+x[1])*60).toPrecision(2);
     return hours + " godzin " + minutes + " minut"
   } 
-
 }

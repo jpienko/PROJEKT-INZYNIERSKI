@@ -23,15 +23,12 @@ export class NotesPage {
     this.categories = Object.keys(NotesCategories);
     this.categories = this.categories.slice(this.categories.length / 2);
     this.categories.forEach(element => {
-      this.database.getNotes(element).then((result:any[])=>{
-        this.notes = result;
-        this.all.push(
-          {
-            category: element,
-            notes:this.notes
-          }
-        )
-      })
+      this.all.push(
+        {
+          category: element,
+          notes:[]
+        }
+      )
     });  
   }
 
@@ -58,4 +55,16 @@ export class NotesPage {
     })
   }
 
+  protected loadNotes(category){
+    this.all.forEach(element => {
+      if (element.category == category){
+        this.database.getNotes(element.category).then((result:any[])=>{
+          this.notes = result; 
+          element.notes = this.notes
+        })
+      }else{
+        element.notes = [];
+      }
+    });  
+  }
 }

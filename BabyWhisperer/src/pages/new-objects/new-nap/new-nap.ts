@@ -13,13 +13,14 @@ import { GlobalsProvider } from '../../../providers/globals/globals'
 })
 export class NewNapPage {
 
-  model = new Naps;
+  protected model = new Naps;
   private naps : FormGroup;
   public isEdit:boolean;
   private editNaps: any[] = [];
   public isSchedule:boolean = false;
   protected title:string = "Dodaj drzemkę do harmonogramu";
   protected buttonName:string = "Zapisz drzemkę";
+  protected maxDate = new Date().toISOString();
 
  
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 

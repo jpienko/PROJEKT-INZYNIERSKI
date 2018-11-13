@@ -12,17 +12,17 @@
       
     <ion-item *ngIf= "!isSchedule">
       <ion-label>Data</ion-label>
-      <ion-datetime  displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+      <ion-datetime  displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label>Początek drzemki</ion-label>
-      <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStart"></ion-datetime>
+      <ion-datetime type="datetime-local" displayFormat="HH:MM" formControlName="hourStart"></ion-datetime>
     </ion-item>
       
     <ion-item>
       <ion-label>Koniec drzemki</ion-label>
-      <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hourStop"></ion-datetime>
+      <ion-datetime type="datetime-local" displayFormat="HH:MM" formControlName="hourStop"></ion-datetime>
     </ion-item>
 
     <ion-item class="semi-trans" *ngIf= "isSchedule">
@@ -30,6 +30,6 @@
       <ion-textarea  formControlName="time"></ion-textarea>
     </ion-item>
       
-    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="add"></ion-icon>{{buttonName}}</button>
+    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px" ><ion-icon name="add"></ion-icon>{{buttonName}}</button>
   </form>
 </ion-content>

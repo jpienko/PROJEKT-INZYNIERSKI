@@ -6,7 +6,12 @@
 
 
 <ion-content padding="true" align="center" class="colors">
-  <div id="container" style="display: block;"	></div>
-  <label>{{centilHeight}}</label>
-  <label>{{centilWeight}}</label>
+    <h1 *ngIf='dataIsEmpty'>
+    BRAK DANYCH
+  </h1>
+  <div id="container" style="display: block;"></div>
+  <h4 *ngIf='!dataIsEmpty'>{{centilHeight}}</h4>
+  <h4 *ngIf='!dataIsEmpty'>{{centilWeight}}</h4> 
+
+
 </ion-content>

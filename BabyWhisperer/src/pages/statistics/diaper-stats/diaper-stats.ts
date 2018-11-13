@@ -11,13 +11,14 @@ import { GlobalsProvider } from '../../../providers/globals/globals'
 })
 export class DiaperStatsPage {
 
-  diapers: any[] = [];
-  diapers1: any[] = [];
-  dates:string[]=[];
-  sum:string[] =[];
-  sumDiaper:string[] = [];
-  avgDiaper:string = '0';
-  avgSumDiaper:string = '0';
+  protected diapers: any[] = [];
+  protected diapers1: any[] = [];
+  protected dates:string[]=[];
+  protected sum:string[] =[];
+  protected sumDiaper:string[] = [];
+  protected avgDiaper:string = '0';
+  protected avgSumDiaper:string = '0';
+  protected dataIsEmpty:boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:DiaperDaybookProvider,
               public global:GlobalsProvider) {
@@ -51,6 +52,11 @@ export class DiaperStatsPage {
         i++;
       });
       this.getAvgAvg();
+      if(this.diapers.length==0){
+        this.dataIsEmpty = true;
+      }else{
+        this.dataIsEmpty = false;
+      }
     });
   }
 

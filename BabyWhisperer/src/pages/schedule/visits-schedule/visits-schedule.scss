@@ -1,24 +1,25 @@
 page-visits-schedule {
     .monthview-selected {
-        background-color: transparent !important;
-        color: rgb(175, 47, 137) !important;
+        background-color: rgba($color: #ffffff, $alpha: 0.7) !important;
+        color: rgb(192, 21, 21) !important;
         }
         
         td.monthview-current {
-        color: rgb(86, 70, 116);
+        background-color: rgba($color: #ffffff, $alpha: 0.7) !important;
+        color: rgb(48, 4, 243)!important;
 
         }
-        
+
         .monthview-datetable {
         border: 1 !important;
         
         td, th {
           border: 0 !important;
           padding: 3px!important;
-          background-color: rgba($color: #ffffff, $alpha: 0.7) !important;
+          background-color: rgba($color: #ffffff, $alpha: 0.7);
         }
         }
-        
+
         .calendar-day {
         border-radius: 6px;
         padding: 3px 5px;
