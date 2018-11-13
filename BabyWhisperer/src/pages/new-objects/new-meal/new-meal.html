@@ -14,12 +14,12 @@
 
       <ion-item *ngIf="isDaybook">
         <ion-label>Data</ion-label>
-        <ion-datetime displayFormat="D MMM YYYY" min="2018" max="2020" formControlName="date" ></ion-datetime>
+        <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
       </ion-item>
 
       <ion-item>
         <ion-label>Godzina</ion-label>
-        <ion-datetime type="datetime-local" displayFormat="hh:mm A" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
+        <ion-datetime type="datetime-local" displayFormat="HH:MM" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
       </ion-item>
       
       <ion-item>

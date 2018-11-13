@@ -5,7 +5,7 @@
         <ion-icon name="close"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Dodaj wizytę</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
        
     <ion-item>
       <ion-label>Czas wizyty</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="D MMM YYYY :HH:mm" [(ngModel)]="event.startTime"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:MM" pickerFormat="DD-MM-YYYY :HH:MM" [min]="2018" [max]="maxDate" [(ngModel)]="event.startTime"></ion-datetime>
     </ion-item>
      
     <ion-item>
@@ -27,7 +27,7 @@
   </ion-list>
      
   <button ion-button block round color="buttons" icon-left (click)="save()" style = "margin-top: 20px">
-    <ion-icon name="checkmark"></ion-icon> Dodaj wizytę
+    <ion-icon name="checkmark"></ion-icon> {{button}}
   </button>
 
 </ion-content>

@@ -1,12 +1,28 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>tutorial</ion-title>
+  <ion-navbar color="header">
+    <ion-title>Pomoc</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-   
+<ion-content padding="true" align="center" class="colors">
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let step of steps" class="semi-trans">
+      <ion-row>
+        <ion-col>
+          {{step.desc}}
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <img [src]="step.img" />
+        </ion-col>
+      </ion-row>
+     
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>

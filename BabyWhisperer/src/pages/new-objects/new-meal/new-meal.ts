@@ -19,7 +19,7 @@ export class NewMealPage {
   private editMeals: any[] = [];
   protected title:string = "Dodaj posiłek do harmonogramu";
   protected buttonName:string = "Zapisz posiłek";
-
+  protected maxDate = new Date().toISOString();
   protected types: string[] = Object.keys(MealsTypes);
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 

@@ -18,6 +18,7 @@ export class NewDiaperPage {
   private editDiaper: any[] = [];
   protected title:string = "Dodaj przewijanie do dziennika";
   protected buttonName:string = "Zapisz przewijanie";
+  protected maxDate = new Date().toISOString();
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database: DiaperDaybookProvider,

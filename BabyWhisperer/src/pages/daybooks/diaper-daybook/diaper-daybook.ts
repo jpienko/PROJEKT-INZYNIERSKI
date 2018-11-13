@@ -28,13 +28,15 @@ export class DiaperDaybookPage {
     this.database.GetAllDates(this.global.activeChild).then((result: any[]) => {
       this.dates = result;
       this.dates.forEach(element => {
-        this.database.getByDate(element.date, this.global.activeChild).then((result: any[]) => {
-          this.diapers = result;
-          this.all.push({
-            date: element.date,
-            diaper: this.diapers
+        if((+new Date() - +new Date(element.date))/(1000*3600*24)<7){
+          this.database.getByDate(element.date, this.global.activeChild).then((result: any[]) => {
+            this.diapers = result;
+            this.all.push({
+              date: element.date,
+              diaper: this.diapers
+            });
           });
-        });
+        }
       });
     });
   }
@@ -59,6 +61,7 @@ export class DiaperDaybookPage {
       var index = this.diapers.indexOf(diaper);
       this.diapers.splice(index, 1);
       this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+      this.ionViewDidEnter();
     })
   }
 

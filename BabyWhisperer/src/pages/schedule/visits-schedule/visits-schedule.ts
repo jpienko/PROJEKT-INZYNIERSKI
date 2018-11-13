@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import {DoctorVisitsProvider, Visits} from '../../../providers/database/doctor-visits';
+import  localePl  from '@angular/common/locales/pl';
+import { registerLocaleData } from '@angular/common';
 
 
 
@@ -15,8 +17,7 @@ export class VisitsSchedulePage {
   protected selectedDay = new Date();
   protected visits: any[] = [];
   protected visits1: any[] = [];
-  protected isToday:boolean;
-
+  protected isToday:boolean;    
 
   protected calendar = {
     mode: 'month',
@@ -26,31 +27,16 @@ export class VisitsSchedulePage {
     dateFormater:{
       formatMonthViewDay: function(date:Date) {
         return date.getDate().toString();
-      },
-      formatMonthViewTitle: function(date:Date) {
-        const monthNames:Array<string>=['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 
-                                    'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 
-                                    'Grudzień' ];
-        let moisSelec:string=monthNames[date.getMonth()];
-        return moisSelec+" "+String(date.getFullYear());
-      },
-
-      formatMonthViewDayHeader: function(date:Date) {
-        const DaysLetter:Array<string>=["Pn","Wt","Śr","Czw","Pt","So","Nd"];
-        return DaysLetter[date.getDay()];
       }
     }
-
-};
+  };
  
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private modalCtrl: ModalController, private database:DoctorVisitsProvider) {
-    
-  }
+              
+    registerLocaleData(localePl);
 
-  ionViewDidLoad(){
-    this.ionViewDidEnter()
-    }
+  }
  
   ionViewDidEnter() { 
     this.database.GetAllVisits().then((result: any[]) => {
@@ -66,12 +52,14 @@ export class VisitsSchedulePage {
    }
 
   protected addEvent() {
-    let modal = this.modalCtrl.create('NewVisitPage', {selectedDay: this.selectedDay});
+    let modal = this.modalCtrl.create('NewVisitPage', {selectedDay: this.selectedDay, isEdit:false});
     modal.present();
     modal.onDidDismiss(data => {
       if (data) {
         let eventData = data;
-        this.database.insert(eventData);
+        this.database.insert(eventData).then(value=>
+          this.ionViewDidEnter()
+        );
       }
     });
   }
@@ -113,8 +101,6 @@ export class VisitsSchedulePage {
     return events
   }
 
-
-
   protected changeMode(mode) {
       this.calendar.mode = mode;
   }
@@ -143,14 +129,30 @@ export class VisitsSchedulePage {
       event.setHours(0, 0, 0, 0);
       this.isToday = today.getTime() === event.getTime();
   }
-  
-  protected onRangeChanged(ev) {
-      console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
-  }
 
   protected markDisabled = (date:Date) => {
       var current = new Date();
       current.setHours(0, 0, 0);
       return date < current;
   };
+
+  protected editVisit(visit:Visits){
+    let modal = this.modalCtrl.create('NewVisitPage', {id:visit.id, selectedDay: visit.startTime, purpose:visit.purpose, adress:visit.adress, isEdit:true});
+    modal.present();
+    modal.onDidDismiss(data => {
+      if (data) {
+        let eventData = data;
+        this.database.update(eventData).then(value=>
+          this.ionViewDidEnter()
+        );
+      }   
+    });
+  }
+
+  protected deleteVisit(visit:Visits){
+    this.database.remove(visit.id).then(data=>{
+        this.ionViewDidEnter()
+    }
+    )
+  }
 }

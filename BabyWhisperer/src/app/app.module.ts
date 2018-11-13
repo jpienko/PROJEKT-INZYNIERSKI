@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, LOCALE_ID  } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -37,6 +37,7 @@ import { NotesPage } from '../pages/notes/notes';
 import { ProfilesProvider } from '../providers/database/profiles';
 import { ProfilePage } from '../pages/profile/profile';
 import { GlobalsProvider } from '../providers/globals/globals';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { GlobalsProvider } from '../providers/globals/globals';
     GuidebooksPage,
     GrowingStepsPage,
     NotesPage,
-    ProfilePage
+    ProfilePage,
+    TutorialPage
   ],
   imports: [
     BrowserModule,
@@ -74,10 +76,11 @@ import { GlobalsProvider } from '../providers/globals/globals';
     GuidebooksPage,
     GrowingStepsPage,
     NotesPage,
-    ProfilePage
-
+    ProfilePage,
+    TutorialPage
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: 'pl' },
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

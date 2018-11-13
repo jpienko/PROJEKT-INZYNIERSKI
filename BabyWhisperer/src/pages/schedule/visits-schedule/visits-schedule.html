@@ -29,6 +29,7 @@
   </ion-grid>
   
   <calendar [eventSource]="eventSource"
+    [locale] = 'calendar.locale'
     [dateFormatter]="calendar.dateFormatter"
     [monthviewEventDetailTemplate]="template"
     [calendarMode]="calendar.mode"

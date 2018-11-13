@@ -13,7 +13,7 @@
 <ion-content padding class="colors">
 
   <ion-list *ngFor="let notes of all">
-    <ion-item-divider align="center" style="align-content: center; width: 100%" class="trans">
+    <ion-item-divider align="center" style="align-content: center; width: 100%" class="trans" (click)= 'loadNotes(notes.category)'>
       {{notes.category}}
     </ion-item-divider>    
     
