@@ -73,7 +73,7 @@ export class DiaperStatsPage {
       },
       yAxis: {
         title: {
-          text: 'Godziny snu'
+          text: ''
         }
       },
       series: [{

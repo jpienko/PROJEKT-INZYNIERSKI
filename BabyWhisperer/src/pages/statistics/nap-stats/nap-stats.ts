@@ -14,17 +14,21 @@ export class NapStatsPage {
   protected weekDays:string[]=[];
   protected weekSum:string[] =[];
   protected weekAvg:string[] = [];
-
+  protected avgWeekNap:string;
+  protected avgWeekSumNap:string;
+  
   protected monthDays:string[]=[];
   protected monthSum:string[] =[];
   protected monthAvg:string[] = [];
-
+  protected avgMonthlyNap:string;
+  protected avgMonthlySumNap:string;
+  
   protected yearDays:string[]=[];
   protected yearSum:string[] =[];
   protected yearAvg:string[] = [];
+  protected avgYearNap:string;
+  protected avgYearSumNap:string;
 
-  protected avgAvgNap:string = '0';
-  protected avgSumNap:string = '0';
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider,
@@ -39,8 +43,9 @@ export class NapStatsPage {
     this.database.GetAvrageNap(this.global.activeChild).then((result: any[]) => {
       this.naps = result;
       this.getWeekNaps(this.naps);
-
       this.getWeeklyChart();
+      this.getMonthNaps(this.naps);
+      this.getMonthChart();
     });
   }
 
@@ -79,6 +84,8 @@ export class NapStatsPage {
         this.weekSum.push(element.sum)
       }
     })
+    this.avgWeekNap = this.getAvgAvg(this.weekAvg);
+    this.avgWeekSumNap = this.getAvgSum(this.weekSum);
   }
 
   protected getMonthChart(){
@@ -90,7 +97,7 @@ export class NapStatsPage {
         text: 'Dzienny wykres drzemek obecnego miesiąca'
       },
       xAxis: {
-        categories: this.weekDays
+        categories: this.monthDays
       },
       yAxis: {
         title: {
@@ -99,23 +106,29 @@ export class NapStatsPage {
       },
       series: [{
         name: 'Łączna długośc snu',
-        data: this.weekSum
+        data: this.monthSum
       },
       {
         name: 'Średnia długośc snu',
-        data: this.weekAvg
+        data: this.monthAvg
       }]
     });
   }
 
   private getMonthNaps(allNaps:Array<NapsData>){
+    var today = new Date();
+    
     allNaps.forEach(element=>{
-      if((+new Date() - +new Date(element.date))/(1000*3600*24)<7){
-        this.weekDays.push(element.date);
-        this.weekAvg.push(element.avg);
-        this.weekSum.push(element.sum)
+      var date = new Date(element.date);
+      if((today.getMonth() == date.getMonth())&&(today.getFullYear()==date.getFullYear())){
+        this.monthDays.push(element.date);
+        this.monthAvg.push(element.avg);
+        this.monthSum.push(element.sum)
       }
     })
+
+    this.avgMonthlyNap = this.getAvgAvg(this.monthAvg);
+    this.avgMonthlySumNap = this.getAvgSum(this.monthSum);
   }
 
   protected getYearChart(){
@@ -160,7 +173,7 @@ export class NapStatsPage {
     sum.forEach(element => {
       sumNap = sumNap + parseFloat(element)
     });
-    this.avgSumNap = this.getTimeOfNap(sumNap/sum.length);
+    return this.getTimeOfNap(sumNap/sum.length);
   }
 
   private getAvgAvg(avg:string[]){
@@ -168,7 +181,7 @@ export class NapStatsPage {
     avg.forEach(element => {
       avgNap = avgNap + parseFloat(element)
     });
-    this.avgAvgNap = this.getTimeOfNap(avgNap/avg.length);
+    return  this.getTimeOfNap(avgNap/avg.length);
   }
 
   public getTimeOfNap(time:number):string{
