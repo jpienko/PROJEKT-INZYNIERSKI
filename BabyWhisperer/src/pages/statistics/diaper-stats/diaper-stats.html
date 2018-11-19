@@ -5,15 +5,39 @@
 </ion-header>
 
 
-<ion-content padding="true" align="center" class="colors">
+<ion-content align="center" class="colors">
     <h1 *ngIf='dataIsEmpty'>
         BRAK DANYCH
       </h1>
-  <div id="container" style="display: block;"	></div>
-  <p *ngIf='!dataIsEmpty'>
-    Średnia dzienna ilość wypróżnień: {{avgDiaper}}
-  </p>
-  <p *ngIf='!dataIsEmpty'>
-    Średnia ilość pieluszek zużywana dziennie: {{avgSumDiaper}}
-  </p>
+  <ion-slides pager="true">
+      <ion-slide class="semi-trans">   
+        <ion-row>
+          <ion-col>
+            <div id="weekly" style="display: block;"	></div>
+            <h6>Średnia dzienna ilość wypróżnień: {{avgWeekDiaper}}</h6>
+            <h6>Średnia ilość pieluszek zużywana dziennie: {{avgWeekSumDiaper}}</h6>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+  
+      <ion-slide class="semi-trans">   
+        <ion-row>
+          <ion-col>
+            <div id="monthly" style="display: block;"	></div>
+            <h6>Średnia dzienna ilość wypróżnień: {{avgMonthlyDiaper}}</h6>
+            <h6>Średnia ilość pieluszek zużywana dziennie: {{avgMonthlySumDiaper}}</h6>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+  
+      <ion-slide class="semi-trans">   
+        <ion-row>
+          <ion-col>
+            <div id="pYear" style="display: block;"	></div>
+            <h6>Średnia dzienna ilość wypróżnień: {{avgYearDiaper}}</h6>
+            <h6>Średnia ilość pieluszek zużywana dziennie: {{avgYearSumDiaper}}</h6>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+    </ion-slides>
 </ion-content>

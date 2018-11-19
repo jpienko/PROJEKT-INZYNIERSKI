@@ -12,17 +12,25 @@
     
     <form [formGroup]="meals" (ngSubmit)="saveForm()" style="width: 100%">
 
-      <ion-item *ngIf="isDaybook">
+      <ion-item *ngIf="isDaybook" class='semi-trans'>
         <ion-label>Data</ion-label>
         <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
       </ion-item>
 
-      <ion-item>
+      <div class="error" *ngIf="(meals.get('date') == undefined &&isDaybook)">
+        Wybierz datę
+      </div>
+
+      <ion-item class='semi-trans'>
         <ion-label>Godzina</ion-label>
         <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
       </ion-item>
+
+      <div class="error" *ngIf="(meals.get('hour').hasError('required')&&isNotValid)">
+        Wybierz godzinę
+      </div>
       
-      <ion-item>
+      <ion-item class='semi-trans'>
         <ion-label>Rodzaj</ion-label>
         <ion-select formControlName="type" >
           <ion-option *ngFor="let c of types" [value]="c">
@@ -31,13 +39,12 @@
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item class='semi-trans'>
         <ion-label>Opis</ion-label>
         <ion-textarea  formControlName="description"></ion-textarea>
       </ion-item>
 
       <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px">
-      <ion-icon name="save">      </ion-icon>
       {{buttonName}}
     </button>
     </form>

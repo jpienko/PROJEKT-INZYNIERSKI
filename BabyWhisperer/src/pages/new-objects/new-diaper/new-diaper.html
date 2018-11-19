@@ -11,22 +11,30 @@
   
    <form [formGroup]="diapers" (ngSubmit)="saveForm()" style="width: 100%">
 
-    <ion-item>
+    <ion-item class='semi-trans'>
       <ion-label>Data</ion-label>
       <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
     </ion-item>
 
-    <ion-item>
+    <div class="error" *ngIf="(diapers.get('date').hasError('required')&&isNotValid)">
+      Wybierz datę
+    </div>
+
+    <ion-item class='semi-trans'>
       <ion-label>Godzina</ion-label>
-      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>Był stolec</ion-label>
-      <ion-checkbox formControlName="type"></ion-checkbox>
+      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour"  ></ion-datetime>
     </ion-item>
 
-    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px"><ion-icon name="save"></ion-icon>{{buttonName}}</button>
+    <div class="error" *ngIf="(diapers.get('hour').hasError('required')&&isNotValid)">
+      Wybierz godzinę
+    </div>
+    
+    <ion-item class='semi-trans'>
+      <ion-label>Był stolec</ion-label>
+      <ion-checkbox formControlName="type" ></ion-checkbox>
+    </ion-item>
+
+    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px">{{buttonName}}</button>
    </form>
 
   

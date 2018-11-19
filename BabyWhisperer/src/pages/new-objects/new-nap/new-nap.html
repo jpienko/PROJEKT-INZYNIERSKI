@@ -10,26 +10,38 @@
     
   <form [formGroup]="naps" (ngSubmit)="saveNap()" style="width: 100%">
       
-    <ion-item *ngIf= "!isSchedule">
+    <ion-item *ngIf= "!isSchedule" class='semi-trans'>
       <ion-label>Data</ion-label>
       <ion-datetime  displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
     </ion-item>
 
-    <ion-item>
+    <div class="error" *ngIf="(naps.get('date') == undefined && !isSchedule)">
+      Wybierz datę
+    </div>
+
+    <ion-item class='semi-trans'>
       <ion-label>Początek drzemki</ion-label>
       <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hourStart"></ion-datetime>
     </ion-item>
+
+    <div class="error" *ngIf="(naps.get('hourStart').hasError('required')&&isNotValid)">
+      Wybierz godzinę
+    </div>
       
-    <ion-item>
+    <ion-item class='semi-trans'>
       <ion-label>Koniec drzemki</ion-label>
       <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hourStop"></ion-datetime>
     </ion-item>
+
+    <div class="error" *ngIf="(naps.get('hourStop').hasError('required')&&isNotValid)">
+      Wybierz godzinę
+    </div>
 
     <ion-item class="semi-trans" *ngIf= "isSchedule">
       <ion-label>Przewidywany czas drzemki</ion-label>
       <ion-textarea  formControlName="time"></ion-textarea>
     </ion-item>
       
-    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px" ><ion-icon name="add"></ion-icon>{{buttonName}}</button>
+    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px" >{{buttonName}}</button>
   </form>
 </ion-content>

@@ -24,8 +24,8 @@ export class NapStatsPage {
   protected avgMonthlySumNap:string;
   
   protected yearDays:string[]=[];
-  protected yearSum:string[] =[];
-  protected yearAvg:string[] = [];
+  protected yearSum:any[] =[];
+  protected yearAvg:any[] = [];
   protected avgYearNap:string;
   protected avgYearSumNap:string;
 
@@ -46,6 +46,8 @@ export class NapStatsPage {
       this.getWeeklyChart();
       this.getMonthNaps(this.naps);
       this.getMonthChart();
+      this.getYearNaps(this.naps);
+      this.getYearChart();
     });
   }
 
@@ -84,8 +86,8 @@ export class NapStatsPage {
         this.weekSum.push(element.sum)
       }
     })
-    this.avgWeekNap = this.getAvgAvg(this.weekAvg);
-    this.avgWeekSumNap = this.getAvgSum(this.weekSum);
+    this.avgWeekNap = this.getTimeOfNap(this.getAvgAvg(this.weekAvg));
+    this.avgWeekSumNap = this.getTimeOfNap(this.getAvgSum(this.weekSum));
   }
 
   protected getMonthChart(){
@@ -127,8 +129,8 @@ export class NapStatsPage {
       }
     })
 
-    this.avgMonthlyNap = this.getAvgAvg(this.monthAvg);
-    this.avgMonthlySumNap = this.getAvgSum(this.monthSum);
+    this.avgMonthlyNap = this.getTimeOfNap(this.getAvgAvg(this.monthAvg));
+    this.avgMonthlySumNap = this.getTimeOfNap(this.getAvgSum(this.monthSum));
   }
 
   protected getYearChart(){
@@ -140,7 +142,7 @@ export class NapStatsPage {
         text: 'Średni miesięczny wykres drzemek'
       },
       xAxis: {
-        categories: this.weekDays
+        categories: this.yearDays
       },
       yAxis: {
         title: {
@@ -149,23 +151,40 @@ export class NapStatsPage {
       },
       series: [{
         name: 'Łączna długośc snu',
-        data: this.weekSum
+        data: this.yearSum
       },
       {
         name: 'Średnia długośc snu',
-        data: this.weekAvg
+        data: this.yearAvg
       }]
     });
   }
 
   private getYearNaps(allNaps:Array<NapsData>){
-    allNaps.forEach(element=>{
-      if((+new Date() - +new Date(element.date))/(1000*3600*24)<7){
-        this.weekDays.push(element.date);
-        this.weekAvg.push(element.avg);
-        this.weekSum.push(element.sum)
+    var avg:string[]=[];
+    var sum:string[]=[];
+    var exists:boolean = false;
+    for (let index = 0; index < 12; index++) {
+      allNaps.forEach(element=>{
+        if((new Date().getFullYear() == new Date(element.date).getFullYear())&& (new Date(element.date).getMonth()==index)){
+          avg.push(element.avg);
+          sum.push(element.sum);
+          exists = true;
+        }
+      })
+      
+      if(exists){
+        this.yearDays.push((index+1).toString());
+        this.yearAvg.push(this.getAvgAvg(avg))
+        this.yearSum.push(this.getAvgSum(sum));
+        avg=[];
+        sum=[];  
+        exists= false;
       }
-    })
+    }
+  
+    this.avgYearNap = this.getTimeOfNap(this.getAvgAvg(this.yearAvg));
+    this.avgYearSumNap = this.getTimeOfNap(this.getAvgSum(this.yearSum)); 
   }
 
   private getAvgSum(sum:string[]){
@@ -173,7 +192,7 @@ export class NapStatsPage {
     sum.forEach(element => {
       sumNap = sumNap + parseFloat(element)
     });
-    return this.getTimeOfNap(sumNap/sum.length);
+    return sumNap/sum.length;
   }
 
   private getAvgAvg(avg:string[]){
@@ -181,17 +200,17 @@ export class NapStatsPage {
     avg.forEach(element => {
       avgNap = avgNap + parseFloat(element)
     });
-    return  this.getTimeOfNap(avgNap/avg.length);
+    return  avgNap/avg.length;
   }
 
   public getTimeOfNap(time:number):string{
     let x = time.toString().split(".");
     var hours = x[0];    
     var minutes = (parseFloat("0."+x[1])*60).toPrecision(2);
-    return hours + " godzin " + minutes + " minut"
+    return hours + " h " + minutes + " min"
   } 
 
-  
+
 }
 
 export class NapsData{

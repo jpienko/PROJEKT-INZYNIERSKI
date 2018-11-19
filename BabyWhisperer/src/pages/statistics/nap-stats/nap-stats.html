@@ -5,23 +5,14 @@
 </ion-header>
 
 
-<ion-content padding="true" align="center" class="colors">
+<ion-content  align="center" class="colors">
   <ion-slides pager="true">
     <ion-slide class="semi-trans">   
       <ion-row>
         <ion-col>
           <div id="weekly" style="display: block;"	></div>
-        </ion-col>
-      </ion-row>
-         
-      <ion-row>
-        <ion-col>
-          Średnia długość drzemki: {{avgWeekNap}}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Średni czas dziennie poświęcony na sen: {{avgWeekSumNap}}
+          <h6>Średnia długość drzemki: {{avgWeekNap}}</h6>
+          <h6>Średni, dzienny, łączny czas snu: {{avgWeekSumNap}}</h6>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -30,17 +21,8 @@
       <ion-row>
         <ion-col>
           <div id="monthly" style="display: block;"	></div>
-        </ion-col>
-      </ion-row>
-           
-      <ion-row>
-        <ion-col>
-          Średnia długość drzemki: {{avgMonthlyNap}}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Średni czas dziennie poświęcony na sen: {{avgMonthlySumNap}}
+          <h6>Średnia długość drzemki: {{avgMonthlyNap}}</h6>
+          <h6>Średni, dzienny, łączny czas snu: {{avgMonthlySumNap}}</h6>
         </ion-col>
       </ion-row>
     </ion-slide>
@@ -49,17 +31,8 @@
       <ion-row>
         <ion-col>
           <div id="pYear" style="display: block;"	></div>
-        </ion-col>
-      </ion-row>
-         
-      <ion-row>
-        <ion-col>
-          Średnia długość drzemki: {{avgYearNap}}
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Średni czas dziennie poświęcony na sen: {{avgYearSumNap}}
+          <h6>Średnia długość drzemki: {{avgYearNap}}</h6>
+          <h6>Średni, dzienny, łączny czas snu: {{avgYearSumNap}}</h6>
         </ion-col>
       </ion-row>
     </ion-slide>

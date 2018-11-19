@@ -21,6 +21,8 @@ export class NewMealPage {
   protected buttonName:string = "Zapisz posiłek";
   protected maxDate = new Date().toISOString();
   protected types: string[] = Object.keys(MealsTypes);
+  protected isNotValid:boolean = false;
+
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database:MealScheduleProvider, 
@@ -44,7 +46,6 @@ export class NewMealPage {
       this.title = "Dodaj posiłek do dziennika";
       if(this.isEdit){
         this.title = "Edytuj posiłek"
-        this.buttonName = "Edytuj posiłek";
         this.database2.get(this.navParams.get('mealId')).then((result: any[]) => {
           this.editMeals = result;     
           this.meals.controls.description.setValue(this.editMeals[0].description);
@@ -59,6 +60,7 @@ export class NewMealPage {
   
   protected saveForm(){
     
+    if(this.meals.valid){
     this.model.hour = this.meals.controls.hour.value;
     this.model.type = this.meals.controls.type.value;
     this.model.description = this.meals.controls.description.value;
@@ -77,7 +79,6 @@ export class NewMealPage {
         .then((data)=>{
         },(error)=>{
         })
-        this.navCtrl.pop();
       }else{
       this.database2.insert(this.model)
         .then((data)=>{
@@ -87,6 +88,9 @@ export class NewMealPage {
     }
    this.meals.reset();
    this.navCtrl.pop();
+  }else{
+    this.isNotValid = true;
+  }
   }
     
 }

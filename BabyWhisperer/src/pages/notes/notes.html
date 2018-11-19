@@ -17,10 +17,9 @@
       {{notes.category}}
     </ion-item-divider>    
     
-      <ion-item-sliding>
+      <ion-item-sliding *ngFor="let note of notes.notes">
         
-        
-        <ion-item  style="border-bottom: 3px; border-bottom-color: gray" class="trans" *ngFor="let note of notes.notes" >
+        <ion-item  style="border-bottom: 3px; border-bottom-color: gray" class="trans"  >
             <h2>{{note.date}}</h2>
             <h2>{{note.title}} </h2>
         </ion-item>

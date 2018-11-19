@@ -15,6 +15,10 @@
       <ion-label>Imie</ion-label>
       <ion-textarea  formControlName="name" [(ngModel)]="model.name"></ion-textarea>
     </ion-item>
+
+    <div class="error" *ngIf="(docs.get('name').hasError('required')&&isNotValid)">
+      Wpisz imię
+    </div>
       
     <ion-item class="semi-trans">
       <ion-label>Nazwisko</ion-label>
@@ -33,11 +37,13 @@
     
     <ion-item class="semi-trans">
       <ion-label>Telefon</ion-label>
-      <ion-textarea type="number" maxlength="9"  formControlName="tel" [(ngModel)]="model.tel"></ion-textarea>
+      <ion-input type="tel" [maxlength]='9'  formControlName="tel" [(ngModel)]="model.tel"></ion-input>
     </ion-item>
+    <div class="error" *ngIf="(docs.get('tel').hasError('pattern')&&isNotValid)">
+      Błędny format numeru. Prawidłowy format to 9 cyfr od 0 do 9 np. 555666777
+    </div>
 
     <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px">
-      <ion-icon name="add"></ion-icon>
       Zapisz
     </button>
  

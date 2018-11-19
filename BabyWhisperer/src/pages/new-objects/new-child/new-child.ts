@@ -18,6 +18,7 @@ export class NewChildPage {
   protected isEdit:boolean;
   protected title:string = "Dodaj profil dziecka";
   protected currentProfile:any[]= [];
+  protected isNotValid:boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, 
               public database:ProfilesProvider, private camera: Camera) {
@@ -44,13 +45,14 @@ export class NewChildPage {
     if(this.child.valid){
       this.model.picture = this.imageSrc;
       this.model.id = this.navParams.get('childId');
-      
       if(this.isEdit){
         this.database.update(this.model);
       }else{
         this.database.insert(this.model);
       }
       this.navCtrl.pop();
+   }else{
+    this.isNotValid = true;
    }
   }
 

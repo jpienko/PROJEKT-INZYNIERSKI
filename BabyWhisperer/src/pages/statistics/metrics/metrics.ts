@@ -38,20 +38,17 @@ export class MetricsPage {
        this.age = this.getAge(element.birthday)
      })
    })
-   console.log(this.age);
-   
   }
 
   protected getChildMetrics(){
     this.database.GetAllChildProfiles(this.global.activeChild).then((result: any[]) => {
     this.child = result;
-  
-    var i =0;
+    console.log(this.child);
+    
       this.child.forEach(element => {
-        this.dates[i] = element.date;
-        this.height[i] = element.height;
-        this.weight[i] = element.weight;
-        i++;
+        this.dates.push(element.date);
+        this.height.push(element.height);
+        this.weight.push(element.weight);
       }); 
       this.getChart();
       this.getCentils();

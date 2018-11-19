@@ -17,15 +17,16 @@ export class NewDiaperPage {
   public isEdit:boolean = false;
   private editDiaper: any[] = [];
   protected title:string = "Dodaj przewijanie do dziennika";
-  protected buttonName:string = "Zapisz przewijanie";
+  protected buttonName:string = "Zapisz";
   protected maxDate = new Date().toISOString();
+  protected isNotValid:boolean = false;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database: DiaperDaybookProvider,
               private global:GlobalsProvider) {
                 
     this.diapers = this.formBuilder.group({
-      date:[''],
+      date:['', Validators.required],
       hour: ['', Validators.required],
       type: [''],
     });
@@ -36,7 +37,6 @@ export class NewDiaperPage {
     this.isEdit = this.navParams.get('editDiaper');
     if(this.isEdit){
       this.title = "Edytuj posiłek"
-      this.buttonName = "Edytuj posiłek";
       this.database.get(this.navParams.get('diaperId')).then((result: any[]) => {
         this.editDiaper = result;     
         this.diapers.controls.type.setValue(this.editDiaper[0].type);
@@ -47,6 +47,8 @@ export class NewDiaperPage {
   }
 
   protected saveForm(){
+
+    if(this.diapers.valid){
     this.model.hour = this.diapers.controls.hour.value;
     this.model.type = this.diapers.controls.type.value;
     this.model.childID = this.global.activeChild;
@@ -67,6 +69,9 @@ export class NewDiaperPage {
       }
     this.diapers.reset();
     this.navCtrl.pop();
+    }else{
+      this.isNotValid = true;
+    }
   }
    
 

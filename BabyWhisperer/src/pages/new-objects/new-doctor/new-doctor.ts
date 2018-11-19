@@ -14,7 +14,7 @@ export class NewDoctorPage {
   private docs : FormGroup;
   private editDoctor:any[] = [];
   private model = new Docs();
-
+  protected isNotValid:boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database: DoctorsListProvider) {
@@ -53,6 +53,8 @@ export class NewDoctorPage {
       this.database.insert(this.model);
       }
       this.navCtrl.pop();
+    }else{
+      this.isNotValid = true;
     }
   }
    

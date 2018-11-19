@@ -145,7 +145,7 @@ export class MealDaybookProvider {
     return new Promise((resolve,reject)=>{
       this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM meals WHERE date = ? AND childId = ?",[date,id])
+          db.executeSql("SELECT * FROM meals WHERE date = ? AND childId = ? ORDER BY hour DESC",[date,id])
             .then((data)=>{
               let arrayMeals = [];
               if (data.rows.length>0){
