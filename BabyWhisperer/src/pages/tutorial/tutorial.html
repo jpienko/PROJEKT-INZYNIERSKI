@@ -7,12 +7,12 @@
 </ion-header>
 
 
-<ion-content padding="true" align="center" class="colors">
+<ion-content align="center" class="colors">
   <ion-slides pager="true">
-    <ion-slide *ngFor="let step of steps" class="semi-trans">
+    <ion-slide *ngFor="let step of steps" class="trans">
       <ion-row>
         <ion-col>
-          {{step.desc}}
+         <h6>{{step.desc}}</h6> 
         </ion-col>
       </ion-row>
 
