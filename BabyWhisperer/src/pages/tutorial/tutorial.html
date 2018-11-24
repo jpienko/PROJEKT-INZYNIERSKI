@@ -8,8 +8,17 @@
 
 
 <ion-content align="center" class="colors">
+
+  <ion-item class="semi-trans">
+    <ion-label>W czym potrzebujesz pomocy?</ion-label>
+    <ion-select  (ionChange)="onChange($event)"  okText="OK" cancelText="ANULUJ">
+        <ion-label>Wybierz część aplikacji której użycie sprawia kłopot/jest niejasne?</ion-label>
+      <ion-option *ngFor="let cat of categories" [value] = "cat" style="width: 100%;">{{cat}}</ion-option>
+    </ion-select>
+  </ion-item>
+
   <ion-slides pager="true">
-    <ion-slide *ngFor="let step of steps" class="trans">
+    <ion-slide *ngFor="let step of stepsToShow " class="semi-trans">
       <ion-row>
         <ion-col>
          <h6>{{step.desc}}</h6> 

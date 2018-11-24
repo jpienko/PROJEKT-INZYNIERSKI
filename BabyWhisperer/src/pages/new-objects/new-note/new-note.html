@@ -10,16 +10,16 @@
   <form [formGroup]="notes" (ngSubmit)="saveNote()" style="width: 100%">
 
     <ion-item class='semi-trans'>
-      <ion-label>Tytuł</ion-label>
+      <ion-label>Tytuł*</ion-label>
       <ion-textarea  formControlName="title"></ion-textarea>
     </ion-item>
 
     <div class="error" *ngIf="(notes.get('title').hasError('required')&&isNotValid)">
-      Wpisz imię
+      Wpisz tytuł
     </div>
 
     <ion-item class='semi-trans'>
-      <ion-label>Kategoria</ion-label>
+      <ion-label>Kategoria*</ion-label>
       <ion-select formControlName="categories" >
         <ion-option *ngFor="let c of categories" [value]="c">
           {{c}}

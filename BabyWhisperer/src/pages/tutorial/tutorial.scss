@@ -1,3 +1,9 @@
+page-tutorial{
+  ion-select{
+    max-width: 70% !important;
+}
+}
+
 .ios, .md {
  
     page-tutorial {
@@ -11,3 +17,9 @@
     }
    
   }
+
+
+  .ion-select{
+    max-width: 100% !important;
+    width: 100% !important;
+} 

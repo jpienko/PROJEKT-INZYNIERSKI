@@ -17,8 +17,8 @@
     </ion-item>
        
     <ion-item>
-      <ion-label>Czas wizyty</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY HH:MM" pickerFormat="DD-MM-YYYY :HH:MM" [min]="2018" [max]="maxDate" [(ngModel)]="event.startTime"></ion-datetime>
+      <ion-label>Czas wizyty*</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="DD-MM-YYYY :HH:mm" [min]="2018" [max]="maxDate" [(ngModel)]="event.startTime" doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
      
     <ion-item>

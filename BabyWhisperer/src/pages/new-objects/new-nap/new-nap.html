@@ -11,8 +11,8 @@
   <form [formGroup]="naps" (ngSubmit)="saveNap()" style="width: 100%">
       
     <ion-item *ngIf= "!isSchedule" class='semi-trans'>
-      <ion-label>Data</ion-label>
-      <ion-datetime  displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
+      <ion-label>Data*</ion-label>
+      <ion-datetime  displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
 
     <div class="error" *ngIf="(naps.get('date') == undefined && !isSchedule)">
@@ -20,8 +20,8 @@
     </div>
 
     <ion-item class='semi-trans'>
-      <ion-label>Początek drzemki</ion-label>
-      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hourStart"></ion-datetime>
+      <ion-label>Początek drzemki*</ion-label>
+      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hourStart" doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
 
     <div class="error" *ngIf="(naps.get('hourStart').hasError('required')&&isNotValid)">
@@ -29,8 +29,8 @@
     </div>
       
     <ion-item class='semi-trans'>
-      <ion-label>Koniec drzemki</ion-label>
-      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hourStop"></ion-datetime>
+      <ion-label>Koniec drzemki*</ion-label>
+      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hourStop" doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
 
     <div class="error" *ngIf="(naps.get('hourStop').hasError('required')&&isNotValid)">

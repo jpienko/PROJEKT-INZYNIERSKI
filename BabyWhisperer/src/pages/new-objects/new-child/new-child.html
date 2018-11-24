@@ -20,17 +20,17 @@
   <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%" class="semi-trans">
     
     <ion-item class="trans" >
-      <ion-label>Data urodzenia</ion-label>
-      <ion-datetime  displayFormat="DD-MM-YYYY" min="2017" [(ngModel)]="model.birthday" formControlName="birthday" >
+      <ion-label>Data urodzenia*</ion-label>
+      <ion-datetime  displayFormat="DD-MM-YYYY" min="2017" [(ngModel)]="model.birthday" formControlName="birthday"  doneText="OK" cancelText="ANULUJ">
       </ion-datetime>
     </ion-item>
 
     <div class="error" *ngIf="(child.get('birthday').hasError('required')&&isNotValid)">
-      Wybierz datę urodzenia
+      *Wybierz datę urodzenia
     </div>
     
     <ion-item class="trans">
-      <ion-label floating>Imie</ion-label>
+      <ion-label floating>Imie*</ion-label>
       <ion-input type="text" formControlName="name"  [(ngModel)]="model.name" value="">
       </ion-input>
     </ion-item>

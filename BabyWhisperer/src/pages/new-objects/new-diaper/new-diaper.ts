@@ -16,7 +16,7 @@ export class NewDiaperPage {
   private diapers : FormGroup;
   public isEdit:boolean = false;
   private editDiaper: any[] = [];
-  protected title:string = "Dodaj przewijanie do dziennika";
+  protected title:string = "Dodaj przewijanie";
   protected buttonName:string = "Zapisz";
   protected maxDate = new Date().toISOString();
   protected isNotValid:boolean = false;
@@ -36,7 +36,7 @@ export class NewDiaperPage {
   ionViewDidEnter() {
     this.isEdit = this.navParams.get('editDiaper');
     if(this.isEdit){
-      this.title = "Edytuj posiłek"
+      this.title = "Edytuj przewijanie"
       this.database.get(this.navParams.get('diaperId')).then((result: any[]) => {
         this.editDiaper = result;     
         this.diapers.controls.type.setValue(this.editDiaper[0].type);

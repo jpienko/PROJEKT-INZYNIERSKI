@@ -12,8 +12,8 @@
    <form [formGroup]="diapers" (ngSubmit)="saveForm()" style="width: 100%">
 
     <ion-item class='semi-trans'>
-      <ion-label>Data</ion-label>
-      <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
+      <ion-label>Data*</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
 
     <div class="error" *ngIf="(diapers.get('date').hasError('required')&&isNotValid)">
@@ -21,8 +21,8 @@
     </div>
 
     <ion-item class='semi-trans'>
-      <ion-label>Godzina</ion-label>
-      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour"  ></ion-datetime>
+      <ion-label>Godzina*</ion-label>
+      <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour"  doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
 
     <div class="error" *ngIf="(diapers.get('hour').hasError('required')&&isNotValid)">

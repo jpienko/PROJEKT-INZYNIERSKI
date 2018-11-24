@@ -13,8 +13,8 @@
     <form [formGroup]="meals" (ngSubmit)="saveForm()" style="width: 100%">
 
       <ion-item *ngIf="isDaybook" class='semi-trans'>
-        <ion-label>Data</ion-label>
-        <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" ></ion-datetime>
+        <ion-label>Data*</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" doneText="OK" cancelText="ANULUJ"></ion-datetime>
       </ion-item>
 
       <div class="error" *ngIf="(meals.get('date') == undefined &&isDaybook)">
@@ -22,8 +22,8 @@
       </div>
 
       <ion-item class='semi-trans'>
-        <ion-label>Godzina</ion-label>
-        <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour" [(ngModel)]="time" ></ion-datetime>
+        <ion-label>Godzina*</ion-label>
+        <ion-datetime type="datetime-local" displayFormat="HH:mm" formControlName="hour" [(ngModel)]="time" doneText="OK" cancelText="ANULUJ"></ion-datetime>
       </ion-item>
 
       <div class="error" *ngIf="(meals.get('hour').hasError('required')&&isNotValid)">
@@ -32,7 +32,7 @@
       
       <ion-item class='semi-trans'>
         <ion-label>Rodzaj</ion-label>
-        <ion-select formControlName="type" >
+        <ion-select formControlName="type" okText="OK" cancelText="ANULUJ">
           <ion-option *ngFor="let c of types" [value]="c">
             {{c}}
           </ion-option>
