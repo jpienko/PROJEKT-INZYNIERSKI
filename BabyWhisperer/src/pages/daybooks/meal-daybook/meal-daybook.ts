@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController, AlertController } from 'ionic-angular';
 import { Meals } from '../../../providers/database/meal-schedule-provider';
 import { MealDaybookProvider } from '../../../providers/database/meal-daybook'
 import { GlobalsProvider } from '../../../providers/globals/globals'
@@ -16,7 +16,7 @@ export class MealDaybookPage {
   protected all:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:MealDaybookProvider,
-              public toast:ToastController, public global:GlobalsProvider) {
+              public toast:ToastController, private alert:AlertController, public global:GlobalsProvider) {
   }
 
 
@@ -62,12 +62,29 @@ export class MealDaybookPage {
   }
 
   deleteMeal(meal:Meals){
-    this.database.remove(meal.id).then(() => {
-      var index = this.meals.indexOf(meal);
-      this.meals.splice(index, 1);
-      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
-      this.ionViewDidEnter();
-    })
-    
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.database.remove(meal.id).then(() => {
+              var index = this.meals.indexOf(meal);
+              this.meals.splice(index, 1);
+              this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+              this.ionViewDidEnter();
+            })
+          }
+        }
+      ]
+    });
+    alert.present(); 
   }
 }

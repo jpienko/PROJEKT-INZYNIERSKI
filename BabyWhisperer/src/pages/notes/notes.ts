@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController,AlertController } from 'ionic-angular';
 import { NotesProvider, Note} from '../../providers/database/notes';
 import { NotesCategories} from "./../../assets/enums/notes-categories.enum"
+import { GlobalsProvider } from '../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -15,7 +16,8 @@ export class NotesPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              public database:NotesProvider, public toast:ToastController) {
+              public database:NotesProvider, public toast:ToastController,
+              private alert:AlertController, private globals:GlobalsProvider) {
   }
 
   ionViewDidEnter(){
@@ -48,17 +50,36 @@ export class NotesPage {
   }
 
   protected deleteDoc(note:Note){
-    this.database.remove(note.id).then(() => {
-      var index = this.notes.indexOf(note);
-      this.notes.splice(index, 1);
-      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
-    })
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.database.remove(note.id).then(() => {
+              var index = this.notes.indexOf(note);
+              this.notes.splice(index, 1);
+              this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+            })
+          }
+        }
+      ]
+    });
+    alert.present(); 
+    
   }
 
   protected loadNotes(category){
     this.all.forEach(element => {
       if (element.category == category){
-        this.database.getNotes(element.category).then((result:any[])=>{
+        this.database.getNotes(element.category, this.globals.activeChild).then((result:any[])=>{
           this.notes = result; 
           element.notes = this.notes
         })

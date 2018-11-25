@@ -12,8 +12,8 @@ export class NotesProvider {
   public insert(note: Note) {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
-        let sql = 'insert into notes(title, date, note, category) values ( ?, ?, ?, ?)';
-        let data = [note.title, note.date, note.note, note.category];
+        let sql = 'insert into notes(childId, title, date, note, category) values (?, ?, ?, ?, ?)';
+        let data = [note.childId, note.title, note.date, note.note, note.category];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -25,7 +25,7 @@ export class NotesProvider {
     return this.dbProvider.getDB()
       .then((db: SQLiteObject) => {
         let sql = 'update notes set title = ?, date = ?, note = ?, category = ? where id = ?';
-        let data = [note.title,note.date, note.note, note.category, note.id];
+        let data = [note.title, note.date, note.note, note.category, note.id];
  
         return db.executeSql(sql, data)
           .catch((e) => console.error(e));
@@ -87,11 +87,11 @@ export class NotesProvider {
   }
 
 
-  public getNotes(category:string){
+  public getNotes(category:string, id:number){
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM notes WHERE category = ? ORDER BY date ASC",[category])
+          db.executeSql("SELECT * FROM notes WHERE category = ? AND childId = ? ORDER BY date ASC",[id, category])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
@@ -119,6 +119,7 @@ export class NotesProvider {
  
 export class Note{
     id:number;
+    childId:number;
     title:string;
     date: string;
     note:string;

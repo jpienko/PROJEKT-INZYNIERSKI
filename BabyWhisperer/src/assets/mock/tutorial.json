@@ -71,7 +71,7 @@
     {
         "category":"Obsługa dzienników",
         "img": "assets/imgs/tutorial/15.png",
-        "desc":"Dziennik wypróżnień pozwoli oszacować ilość pieluch zużywanych dziennie dzięki czemu możesz oszacować na ile starczy zapas. A także kontrolować regularność wypróżnień"
+        "desc":"Dziennik przewijania pozwoli oszacować ilość pieluch zużywanych dziennie dzięki czemu możesz oszacować na ile starczy zapas. A także kontrolować regularność wypróżnień"
     },
     {
         "category":"Obsługa dzienników",
@@ -166,7 +166,7 @@
     {
         "category":"Obsługa statystyk",
         "img": "assets/imgs/tutorial/34.png",
-        "desc":"Statystyki wypróżnień pomogą oszacować liczbę pieluch zużywanych dziennie oraz monitorować regularność wypróżnień malucha. Analogicznie do drzemek występuje podział wykresu na: wykres ostatnich 7 dni..."
+        "desc":"Statystyki przewijania pomogą oszacować liczbę pieluch zużywanych dziennie oraz monitorować regularność wypróżnień malucha. Analogicznie do drzemek występuje podział wykresu na: wykres ostatnich 7 dni..."
     },
     {
         "category":"Obsługa statystyk",

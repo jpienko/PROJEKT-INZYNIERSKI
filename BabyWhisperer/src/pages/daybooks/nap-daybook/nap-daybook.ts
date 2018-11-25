@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ToastController, AlertController } from 'ionic-angular';
 import { Naps } from '../../../providers/database/nap-schedule';
 import { NapDaybookProvider } from '../../../providers/database/nap-daybook'
 import { GlobalsProvider } from '../../../providers/globals/globals'
@@ -17,7 +17,7 @@ export class NapDaybookPage {
   all:any[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:NapDaybookProvider,
-              public toast:ToastController, public global: GlobalsProvider) {
+              public toast:ToastController,private alert:AlertController, public global: GlobalsProvider) {
   }
 
 
@@ -66,13 +66,31 @@ export class NapDaybookPage {
   }
 
   protected deleteNap(nap:Naps){
-    this.database.remove(nap.id).then(() => {
-      var index = this.naps.indexOf(nap);
-      this.naps.splice(index, 1);
-      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
-      this.ionViewDidEnter();
-    })
-    
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.database.remove(nap.id).then(() => {
+              var index = this.naps.indexOf(nap);
+              this.naps.splice(index, 1);
+              this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+              this.ionViewDidEnter();
+            })
+          }
+        }
+      ]
+    });
+    alert.present(); 
+       
   }
 
   private getTimeOfNap(time:number):string{

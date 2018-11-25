@@ -19,7 +19,7 @@ export class NewChildPage {
   protected title:string = "Dodaj profil dziecka";
   protected currentProfile:any[]= [];
   protected isNotValid:boolean = false;
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder:FormBuilder, 
               public database:ProfilesProvider, private camera: Camera) {
     this.child = this.formBuilder.group({

@@ -38,6 +38,7 @@ import { ProfilesProvider } from '../providers/database/profiles';
 import { ProfilePage } from '../pages/profile/profile';
 import { GlobalsProvider } from '../providers/globals/globals';
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { AlertController } from 'ionic-angular';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     GrowthStepsProvider,
     NotesProvider,
     ProfilesProvider,
-    GlobalsProvider
+    GlobalsProvider,
+    AlertController
   ]
 })
 export class AppModule {} 

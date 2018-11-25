@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController,AlertController } from 'ionic-angular';
 import { DiaperDaybookProvider, Diaper } from '../../../providers/database/diaper-daybook';
 import { GlobalsProvider } from '../../../providers/globals/globals'
 
@@ -16,7 +16,7 @@ export class DiaperDaybookPage {
   all:any[]=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: DiaperDaybookProvider,
-              public toast:ToastController, private global:GlobalsProvider) {
+              public toast:ToastController, private alert:AlertController, private global:GlobalsProvider) {
   }
 
   ionViewDidEnter() {
@@ -57,12 +57,30 @@ export class DiaperDaybookPage {
   }
 
   public deleteNap(diaper:Diaper){
-    this.database.remove(diaper.id).then(() => {
-      var index = this.diapers.indexOf(diaper);
-      this.diapers.splice(index, 1);
-      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
-      this.ionViewDidEnter();
-    })
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.database.remove(diaper.id).then(() => {
+              var index = this.diapers.indexOf(diaper);
+              this.diapers.splice(index, 1);
+              this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+              this.ionViewDidEnter();
+            })
+          }
+        }
+      ]
+    });
+    alert.present(); 
   }
 
   public getType(type:string):string{
