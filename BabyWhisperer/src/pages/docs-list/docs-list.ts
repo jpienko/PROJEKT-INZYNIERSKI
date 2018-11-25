@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { DoctorsListProvider, Docs} from '../../providers/database/doctors';
 import { CallNumber } from '@ionic-native/call-number';
 
@@ -12,7 +12,7 @@ export class DocsListPage {
   docs:any[]=[];
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public database:DoctorsListProvider,
-              public toast:ToastController, private callNumber: CallNumber) {
+              public toast:ToastController, private alert:AlertController, private callNumber: CallNumber) {
   }
 
   ionViewDidEnter(){
@@ -37,11 +37,30 @@ export class DocsListPage {
   }
 
   public deleteDoc(doc:Docs){
-    this.database.remove(doc.id).then(() => {
-      var index = this.docs.indexOf(doc);
-      this.docs.splice(index, 1);
-      this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
-    })
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.database.remove(doc.id).then(() => {
+              var index = this.docs.indexOf(doc);
+              this.docs.splice(index, 1);
+              this.toast.create({ message: 'Usunięto', duration: 3000, position: 'botton' }).present();
+            })
+          }
+        }
+      ]
+    });
+    alert.present(); 
+    
   }
 
   public call(tel:number){

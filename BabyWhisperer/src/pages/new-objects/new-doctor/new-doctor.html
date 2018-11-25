@@ -12,32 +12,38 @@
   <form [formGroup]="docs" (ngSubmit)="saveDoc()" style="width: 100%" > 
     
     <ion-item class="semi-trans">
-      <ion-label>Imie</ion-label>
-      <ion-textarea  formControlName="name"></ion-textarea>
+      <ion-label>Imie*</ion-label>
+      <ion-textarea  formControlName="name" [(ngModel)]="model.name"></ion-textarea>
     </ion-item>
+
+    <div class="error" *ngIf="(docs.get('name').hasError('required')&&isNotValid)">
+      Wpisz imię
+    </div>
       
     <ion-item class="semi-trans">
       <ion-label>Nazwisko</ion-label>
-      <ion-textarea  formControlName="surname"></ion-textarea>
+      <ion-textarea  formControlName="surname" [(ngModel)]="model.surname"></ion-textarea>
     </ion-item>
 
     <ion-item class="semi-trans">
       <ion-label>Specjalizacja</ion-label>
-      <ion-textarea  formControlName="specialisation"></ion-textarea>
+      <ion-textarea  formControlName="specialisation" [(ngModel)]="model.specialisation"></ion-textarea>
     </ion-item>
 
     <ion-item class="semi-trans">
       <ion-label>Adres</ion-label>
-      <ion-textarea  formControlName="adress"></ion-textarea>
+      <ion-textarea  formControlName="adress" [(ngModel)]="model.adress"></ion-textarea>
     </ion-item>      
     
     <ion-item class="semi-trans">
       <ion-label>Telefon</ion-label>
-      <ion-textarea type="tel" maxlength="9"  formControlName="tel"></ion-textarea>
+      <ion-input type="tel" [maxlength]='9'  formControlName="tel" [(ngModel)]="model.tel"></ion-input>
     </ion-item>
+    <div class="error" *ngIf="(docs.get('tel').hasError('pattern')&&isNotValid)">
+      Błędny format numeru. Prawidłowy format to 9 cyfr od 0 do 9 np. 555666777
+    </div>
 
     <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px">
-      <ion-icon name="add"></ion-icon>
       Zapisz
     </button>
  

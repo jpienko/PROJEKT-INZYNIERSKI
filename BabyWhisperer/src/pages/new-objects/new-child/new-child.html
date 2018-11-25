@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar color="header">
-    <ion-title>Dodaj profil dziecka</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,18 +17,32 @@
     <button ion-button round small (click) = "openGallery()"outline>Wybierz zdjęcie</button>
   </div>
 
-  <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%">
-    <ion-item class="semi-trans" >
-      <ion-label>Data urodzenia</ion-label>
-      <ion-datetime  displayFormat="DD-MM-YYYY" min="2017"  formControlName="birthday" ></ion-datetime>
+  <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%" class="semi-trans">
+    
+    <ion-item class="trans" >
+      <ion-label>Data urodzenia*</ion-label>
+      <ion-datetime  displayFormat="DD-MM-YYYY" min="2017" [(ngModel)]="model.birthday" formControlName="birthday"  doneText="OK" cancelText="ANULUJ">
+      </ion-datetime>
     </ion-item>
 
-    <ion-item class="semi-trans">
-      <ion-label floating>Imie</ion-label>
-      <ion-input type="text" formControlName="name" value=""></ion-input>
+    <div class="error" *ngIf="(child.get('birthday').hasError('required')&&isNotValid)">
+      *Wybierz datę urodzenia
+    </div>
+    
+    <ion-item class="trans">
+      <ion-label floating>Imie*</ion-label>
+      <ion-input type="text" formControlName="name"  [(ngModel)]="model.name" value="">
+      </ion-input>
     </ion-item>
+
+    <div class="error" *ngIf="(child.get('name').hasError('required')&&isNotValid)">
+      Wpisz imię
+    </div>
        
-    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px"><ion-icon name="add"></ion-icon>Zapisz profil</button>
+    <button ion-button round icon-start type="submit" color="buttons" block style = "margin-top: 20px">
+        Zapisz profil
+    </button>
+
   </form>
 
 </ion-content>

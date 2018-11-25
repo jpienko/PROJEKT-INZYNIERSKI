@@ -21,16 +21,16 @@ export class NewNapPage {
   protected title:string = "Dodaj drzemkę do harmonogramu";
   protected buttonName:string = "Zapisz drzemkę";
   protected maxDate = new Date().toISOString();
-
+  protected isNotValid:boolean = false;
  
   constructor(public navCtrl: NavController, public http: HttpClient, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database:NapScheduleProvider, 
               private database2:NapDaybookProvider, private global:GlobalsProvider) {
                 
       this.naps = this.formBuilder.group({
-      date:['', Validators.required],
+      date:[''],
       hourStart: ['', Validators.required],
-      hourStop: [''],
+      hourStop: ['', Validators.required],
       time:['']
     });
   }
@@ -60,6 +60,7 @@ export class NewNapPage {
   }
 
   protected saveNap(){
+    if(this.naps.valid){
     this.model.hourStart = this.naps.controls.hourStart.value;
     this.model.hourStop = this.naps.controls.hourStop.value;
     this.model.date = this.naps.controls.date.value;
@@ -73,7 +74,6 @@ export class NewNapPage {
       if(this.isEdit) {
         this.model.id = this.navParams.get('napId');
         this.database2.update(this.model).then((data)=>{},(error)=>{})
-        this.navCtrl.pop();
       }else{
       this.database2.insert(this.model)
         .then((data)=>{
@@ -83,7 +83,10 @@ export class NewNapPage {
     } 
    this.naps.reset();
    this.navCtrl.pop();
+  }else{
+    this.isNotValid = true;
   }
+}
 
   public getDiff(start,stop):number {
     let startNap = start.split(":");

@@ -29,7 +29,7 @@ public db:SQLiteObject;
       .then((db: SQLiteObject) => {
         this.createTables(db);
       })
-      .catch(e => console.log(e));
+      .catch(e => e);
   }
   private createTables(db: SQLiteObject) {
     db.sqlBatch([

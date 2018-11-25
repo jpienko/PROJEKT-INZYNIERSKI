@@ -1,6 +1,41 @@
 page-home {
   
 }
+// http://ionicframework.com/docs/theming/
+
+
+.colors{
+    background-color: darken($color: #f1d6e5, $amount: 0);
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+
+  }
+
+  
+
+.semi-trans{
+  background-color: rgba($color: #ffffff, $alpha: 0.5)
+
+}
+
+.trans{
+  background-color: rgba($color: #ffffff, $alpha: 0)
+}
+
+.list .item, .list .item-complex, .ion-item-sliding, .ion-list, .ion-item, .ion-item-options, .form, .ion-datetime,.ion-input, .ion-option  {
+  background: rgba(255,255,255,0.4);
+}
+
+.error {
+  color: rgb(223, 62, 62);
+  font-size: 11px;
+}
+
+.error1 {
+  color: rgb(75, 75, 75);
+  border-bottom: 1px solid #ff0000;
+}
 
 
 

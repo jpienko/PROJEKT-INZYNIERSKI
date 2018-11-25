@@ -38,16 +38,20 @@ export class NewProfilePage {
 
   protected saveProfile(){
     this.model.childId = this.global.activeChild;
-    this.model.weight = this.correctNumber(this.child.controls.weight.value);
-    this.model.height = this.correctNumber(this.child.controls.height.value);
-    this.model.foot = this.correctNumber(this.child.controls.foot.value);
-    this.model.date = new Date().getDate().toString() +"."+ new Date().getMonth().toString() + "."+new Date().getFullYear().toString();
+    this.model.weight = this.correctNumber(this.model.weight);
+    this.model.height = this.correctNumber(this.model.height);
+    this.model.foot = this.correctNumber(this.model.foot);
+    this.model.date = new Date().getDate().toString() +"."+ (new Date().getMonth()+1).toString() + "."+new Date().getFullYear().toString();
     
     this.database.insert(this.model).then((data)=>{},(error)=>{});
     this.navCtrl.pop();
   }
 
   private correctNumber(value:any){ 
-    return parseFloat(value.toString().replace(',','.')) 
+    if(value!=undefined){
+      return parseFloat(value.toString().replace(',','.')) 
+    }else{
+      return 0;
+    }
   }
 }

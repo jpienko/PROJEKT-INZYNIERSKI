@@ -9,24 +9,31 @@
   
   <form [formGroup]="notes" (ngSubmit)="saveNote()" style="width: 100%">
 
-    <ion-item>
-      <ion-label>Tytuł</ion-label>
+    <ion-item class='semi-trans'>
+      <ion-label>Tytuł*</ion-label>
       <ion-textarea  formControlName="title"></ion-textarea>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Kategoria</ion-label>
+    <div class="error" *ngIf="(notes.get('title').hasError('required')&&isNotValid)">
+      Wpisz tytuł
+    </div>
+
+    <ion-item class='semi-trans'>
+      <ion-label>Kategoria*</ion-label>
       <ion-select formControlName="categories" >
         <ion-option *ngFor="let c of categories" [value]="c">
           {{c}}
         </ion-option>
       </ion-select>
     </ion-item>
+    <div class="error" *ngIf="(notes.get('categories').hasError('required')&&isNotValid)">
+      Wybierz kategorię
+    </div>
 
-    <ion-item style="height: 50%;">
+    <ion-item style="height: 50%;" class='semi-trans'>
       <ion-textarea  formControlName="description"></ion-textarea>
     </ion-item>
    
-    <button ion-button round icon-start type="submit" color="buttons" block><ion-icon name="save" style = "margin-top: 20px" ></ion-icon>{{buttonName}}</button>
+    <button ion-button round icon-start type="submit" color="buttons" block>{{buttonName}}</button>
   </form> 
 </ion-content>

@@ -11,21 +11,21 @@
   <form [formGroup]="child" (ngSubmit)="saveProfile()" style="width: 100%">
      
     <ion-item class="semi-trans">
-      <ion-label floating>Waga</ion-label>
-      <ion-input type="number" formControlName="weight" value=""></ion-input>
+      <ion-label floating>Waga [kg]</ion-label>
+      <ion-input type="number" formControlName="weight" value="" [(ngModel)]="model.weight"></ion-input>
     </ion-item>
 
     <ion-item class="semi-trans">
-      <ion-label floating>Wzrost</ion-label>
-      <ion-input type="number" formControlName="height" value=""></ion-input>
+      <ion-label floating>Wzrost [cm]</ion-label>
+      <ion-input type="number" formControlName="height" value="" [(ngModel)]="model.height"></ion-input>
     </ion-item>
 
     <ion-item class="semi-trans">
-      <ion-label floating>Rozmiar stopy</ion-label>
-      <ion-input type="number" formControlName="foot" value=""></ion-input>
+      <ion-label floating>Rozmiar stopy [cm]</ion-label>
+      <ion-input type="number" formControlName="foot" value="" [(ngModel)]="model.foot"></ion-input>
     </ion-item>
     
-    <button ion-button round icon-start type="submit" color="buttons" style = "margin-top: 20px" block><ion-icon name="add" ></ion-icon>Zapisz profil</button>
+    <button ion-button round icon-start type="submit" color="buttons" style = "margin-top: 20px" block>Zapisz profil</button>
   </form>
 
   

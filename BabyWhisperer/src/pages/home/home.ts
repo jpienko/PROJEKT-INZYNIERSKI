@@ -13,7 +13,7 @@ import { NapDaybookProvider } from '../../providers/database/nap-daybook';
 import { NapScheduleProvider} from '../../providers/database/nap-schedule';
 import { NotesProvider} from '../../providers/database/notes';
 import { TutorialPage} from '../tutorial/tutorial'
-
+import { AlertController } from 'ionic-angular';
 
 
 @Component({
@@ -31,21 +31,18 @@ export class HomePage {
               private diaperDaybook: DiaperDaybookProvider, private docs: DoctorsListProvider,
               private growthSteps: GrowthStepsProvider, private mealDaybook: MealDaybookProvider,
               private mealSchedule: MealScheduleProvider, private napDaybook: NapDaybookProvider,
-              private napSchedule:NapScheduleProvider, private notes:NotesProvider,public menu:MenuController ) {}
+              private napSchedule:NapScheduleProvider, private notes:NotesProvider,public menu:MenuController,
+              private alert:AlertController) {}
   
   ionViewDidLoad(){
     this.ionViewDidEnter();
-    this.menu.enable(false);  
-  }
-
-  ionViewDidLeave(){
-    this.menu.enable(true);
   }
 
   ionViewDidEnter(){
     this.database.GetAllChildProfiles().then((result: any[]) => {
       this.profiles = result;
     }); 
+    this.menu.enable(false);  
   }
 
   protected goToNewChildProfile(){
@@ -69,30 +66,43 @@ export class HomePage {
 
   protected goToChild(id:number){
     this.global.activeChild = id;
+    this.menu.enable(true);
     this.navCtrl.push(ProfilePage);
   }
   
   protected deleteProfile(id:number){
-    this.diaperDaybook.deleteByChildID(id).then( x =>
-      this.docs.deleteByChildID(id).then( x=>
-        this.growthSteps.deleteByChildID(id).then(x =>
-          this.mealDaybook.deleteByChildID(id).then(x=>
-            this.mealSchedule.deleteByChildID(id).then(x=>
-              this.napDaybook.deleteByChildID(id).then(x=>
-                this.napSchedule.deleteByChildID(id).then(x=>
-                  this.childProfile.deleteByChildID(id).then(x=>
-                    this.notes.deleteByChildID(id).then(x=>
-                      this.database.remove(id).then( x=>
-                        this.ionViewDidEnter()
-                      )
-                    )
-                  )
-                )
-              )
-            )
-          )
-        )
-      )
-    )
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.deleteFromAllTables(id);
+          }
+        }
+      ]
+    });
+    alert.present();  
+  }
+
+  private deleteFromAllTables(id: number) {
+    this.diaperDaybook.deleteByChildID(id).then(x => 
+      this.docs.deleteByChildID(id).then(x => 
+        this.growthSteps.deleteByChildID(id).then(x => 
+          this.mealDaybook.deleteByChildID(id).then(x => 
+            this.mealSchedule.deleteByChildID(id).then(x => 
+              this.napDaybook.deleteByChildID(id).then(x => 
+                this.napSchedule.deleteByChildID(id).then(x => 
+                  this.childProfile.deleteByChildID(id).then(x => 
+                    this.notes.deleteByChildID(id).then(x => 
+                      this.database.remove(id).then(x => 
+                        this.ionViewDidEnter()))))))))));
   }
 }

@@ -14,7 +14,7 @@ export class NewDoctorPage {
   private docs : FormGroup;
   private editDoctor:any[] = [];
   private model = new Docs();
-
+  protected isNotValid:boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private formBuilder: FormBuilder, private database: DoctorsListProvider) {
@@ -23,7 +23,7 @@ export class NewDoctorPage {
       surname: [''],
       specialisation: [''],
       adress: [''],
-      tel: [''],
+      tel: ['', Validators.pattern("[0-9]{9}")],
     });
   }
 
@@ -45,25 +45,17 @@ export class NewDoctorPage {
   }
 
   protected saveDoc(){
-    this.model.name = this.docs.controls.name.value;
-    this.model.surname = this.docs.controls.surname.value;
-    this.model.specialisation = this.docs.controls.specialisation.value;
-    this.model.adress = this.docs.controls.adress.value;
-    this.model.tel = this.docs.controls.tel.value;
-     
-    if(this.isEdit) {
-      this.model.id = this.navParams.get('mealId');
-      this.database.update(this.model).then((data)=>{
-        },(error)=>{
-        })
+    if(this.docs.valid){
+      if(this.isEdit) {
+        this.model.id = this.navParams.get('docId');
+        this.database.update(this.model);
+      }else{
+      this.database.insert(this.model);
+      }
       this.navCtrl.pop();
     }else{
-    this.database.insert(this.model).then((data)=>{
-      },(error)=>{
-      })
+      this.isNotValid = true;
     }
-    this.docs.reset();
-    this.navCtrl.pop();
   }
    
 }

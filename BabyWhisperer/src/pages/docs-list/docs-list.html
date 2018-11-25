@@ -10,14 +10,30 @@
 
 <ion-content padding class="colors">
   <ion-list>
-    <ion-item class="semi-trans" *ngFor="let doc of docs" >
-      <h2>{{doc.name}}  {{doc.surname}}</h2>
-      <h2>{{doc.specialisation}} </h2>
-      <h3>{{doc.tel}}</h3>
-      <h3>{{doc.adress}} </h3>
-      <button ion-button icon-only item-end color="buttons" (click)='call(doc.tel)'><ion-icon name='call'></ion-icon> </button>     
-      <button ion-button icon-only item-end color="buttons" (click)='editDoc(doc)'><ion-icon name='brush'></ion-icon> </button>     
-      <button ion-button icon-only item-end color="buttons" (click)='deleteDoc(doc)'><ion-icon name='trash'></ion-icon> </button>     
+    <ion-item-sliding  class="trans" *ngFor="let doc of docs">
+      <ion-item>
+        <h2>{{doc.name}}  {{doc.surname}}</h2>
+        <h2>{{doc.specialisation}} </h2>
+        <h3>{{doc.tel}}</h3>
+        <h3>{{doc.adress}} </h3>
       </ion-item>
+          
+      <ion-item-options side="right">
+        <button ion-button color="secondary" (click)='call(doc.tel)'>
+          <ion-icon name="call"></ion-icon>
+          Zadzwoń
+        </button>
+
+        <button ion-button color="buttons" (click)='editDoc(doc)'>
+          <ion-icon name="brush"></ion-icon>
+          Edytuj
+        </button>
+
+        <button ion-button color="danger" (click)='deleteDoc(doc)'>
+          <ion-icon name="trash"></ion-icon>
+          Usuń
+        </button>    
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

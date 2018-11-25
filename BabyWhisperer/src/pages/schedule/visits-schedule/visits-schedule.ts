@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import {DoctorVisitsProvider, Visits} from '../../../providers/database/doctor-visits';
 import  localePl  from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
@@ -31,7 +31,7 @@ export class VisitsSchedulePage {
     }
   };
  
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alert:AlertController,
               private modalCtrl: ModalController, private database:DoctorVisitsProvider) {
               
     registerLocaleData(localePl);
@@ -150,9 +150,27 @@ export class VisitsSchedulePage {
   }
 
   protected deleteVisit(visit:Visits){
-    this.database.remove(visit.id).then(data=>{
-        this.ionViewDidEnter()
-    }
-    )
+    let alert = this.alert.create({
+      title: 'Wymagane potwierdzenie',
+      message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
+      buttons: [
+        {
+          text: 'Anuluj',
+          role: 'cancel',
+          handler: () => {
+          }
+        },
+        {
+          text: 'Usuń',
+          handler: () => {
+            this.database.remove(visit.id).then(data=>{
+              this.ionViewDidEnter()
+          }
+          )
+          }
+        }
+      ]
+    });
+    alert.present(); 
   }
 }

@@ -90,7 +90,7 @@ export class DiaperDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM diapers WHERE date = ? AND childId = ?",[date, id])
+          db.executeSql("SELECT * FROM diapers WHERE date = ? AND childId = ? ORDER BY hour DESC",[date, id])
           .then((data)=>{
             let arrayDiapers = [];
             if (data.rows.length>0){
@@ -169,13 +169,14 @@ export class DiaperDaybookProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT COUNT(type) as avg FROM diapers WHERE type like ? AND  childId = ? GROUP BY date",['true',id])
+          db.executeSql("SELECT DISTINCT date, COUNT(type) as avg FROM diapers WHERE type like ? AND  childId = ? GROUP BY date",['true',id])
           .then((data)=>{
             let arrayNaps = [];
             if (data.rows.length>0){
               for(var i  = 0; i<data.rows.length;i++)
               {
                 arrayNaps.push({
+                  date: data.rows.item(i).date,
                   avg: data.rows.item(i).avg,
                 });
               }

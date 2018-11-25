@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup} from  '@angular/forms';
 import { NotesProvider, Note} from "./../../../providers/database/notes";
-import { NotesCategories} from "./../../../assets/enums/notes-categories.enum"
+import { NotesCategories} from "./../../../assets/enums/notes-categories.enum";
+import { GlobalsProvider } from '../../../providers/globals/globals'
 
 @IonicPage()
 @Component({
@@ -16,15 +17,15 @@ export class NewNotePage {
   private editNotes: any[] = [];
   protected title:string = "Nowa notatka";
   protected buttonName:string = "Zapisz notatkę";
-
+  protected isNotValid:boolean = false;
   protected categories: string[] = Object.keys(NotesCategories);
   
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private formBuilder: FormBuilder, 
+              private formBuilder: FormBuilder, private globals:GlobalsProvider,
               private database:NotesProvider) {
                 
       this.notes = this.formBuilder.group({
-      title:[''],
+      title:['', Validators.required],
       categories: ['', Validators.required],
       description: [''],
     });
@@ -54,11 +55,13 @@ export class NewNotePage {
   }
 
   protected saveNote(){
+    if(this.notes.valid){
     var today = new Date;
     this.model.title = this.notes.controls.title.value;
     this.model.category = this.notes.controls.categories.value;
     this.model.note = this.notes.controls.description.value;
     this.model.date = today.getDate().toString() +"-" + (today.getMonth()+1).toString()+ "-" + today.getFullYear().toString();
+    this.model.childId = this.globals.activeChild;
 
     if(this.isEdit){
       this.model.id = this.navParams.get('noteId');
@@ -69,5 +72,8 @@ export class NewNotePage {
       this.navCtrl.pop();
     }
    this.notes.reset();
+  }else{
+    this.isNotValid = true;
   }
+}
 }
