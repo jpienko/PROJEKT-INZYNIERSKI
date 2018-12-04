@@ -14,7 +14,7 @@ export class ProductsGuidebookPage {
   protected productsList: Array<Products> =[];
   protected filtred: Array<Products> = [];
   protected showRules:boolean = false;
-  protected showProducts:boolean = false;
+  protected showProducts:boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private file:File) {
   }
@@ -31,6 +31,7 @@ export class ProductsGuidebookPage {
     this.file.checkDir(this.file.applicationDirectory , "www/assets/mock").then(_=>{
       this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "products-timetable.json").then(text => {
         this.productsList = JSON.parse(text);
+        this.ProductsShowHide();
       }).catch(err => {})
     });
   }
@@ -41,15 +42,17 @@ export class ProductsGuidebookPage {
   }
 
   protected RulesShowHide(){
-      this.showRules = !this.showRules;
+      this.showRules = true;
+      this.showProducts = false;
   }
 
   protected ProductsShowHide(){
-    this.showProducts = !this.showProducts;
+    this.showProducts = true;
+    this.showRules = false;
     this.filtred = this.productsList;
   }
 
-  filterItems(ev: any) {
+  protected filterItems(ev: any) {
     this.filtred = this.productsList;
     let val = ev.target.value;
 

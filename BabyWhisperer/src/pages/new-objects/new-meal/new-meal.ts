@@ -29,7 +29,7 @@ export class NewMealPage {
               private database2:MealDaybookProvider, private global:GlobalsProvider) {
                 
       this.meals = this.formBuilder.group({
-      date:[''],
+      date:[null, Validators.required],
       hour: ['', Validators.required],
       type: [''],
       description: [''],
@@ -54,6 +54,9 @@ export class NewMealPage {
           this.meals.controls.date.setValue(this.editMeals[0].date);
         });    
       }
+    }else{
+      this.meals.controls.date.setValue(new Date());
+
     }
   }
   

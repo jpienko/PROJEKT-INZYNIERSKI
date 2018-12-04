@@ -64,9 +64,14 @@ export class DocsListPage {
   }
 
   public call(tel:number){
-    this.callNumber.callNumber(tel.toString(), true)
+    if(tel!=undefined){
+      this.callNumber.callNumber(tel.toString(), true)
     .then(res => {})
     .catch(err => {});
+    }else{
+      this.toast.create({ message: 'Brak numeru', duration: 3000, position: 'botton' }).present();
+    }
+    
   }
 
 }

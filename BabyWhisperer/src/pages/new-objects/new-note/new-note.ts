@@ -68,7 +68,9 @@ export class NewNotePage {
       this.database.update(this.model).then((data)=>{},(error)=>{})
       this.navCtrl.pop();
     }else{
-      this.database.insert(this.model).then((data)=>{},(error)=>{})
+      this.database.insert(this.model).then((data)=>{console.log(data);
+      },(error)=>{console.log(error);
+      })
       this.navCtrl.pop();
     }
    this.notes.reset();

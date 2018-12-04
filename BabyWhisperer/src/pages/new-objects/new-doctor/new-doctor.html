@@ -16,19 +16,25 @@
       <ion-textarea  formControlName="name" [(ngModel)]="model.name"></ion-textarea>
     </ion-item>
 
-    <div class="error" *ngIf="(docs.get('name').hasError('required')&&isNotValid)">
+    <div align="center" class="error" *ngIf="(docs.get('name').hasError('required')&&isNotValid)">
       Wpisz imię
     </div>
       
     <ion-item class="semi-trans">
-      <ion-label>Nazwisko</ion-label>
+      <ion-label>Nazwisko*</ion-label>
       <ion-textarea  formControlName="surname" [(ngModel)]="model.surname"></ion-textarea>
     </ion-item>
+    <div align="center" class="error" *ngIf="(docs.get('surname').hasError('required')&&isNotValid)">
+        Wpisz nazwisko
+      </div>
 
     <ion-item class="semi-trans">
-      <ion-label>Specjalizacja</ion-label>
+      <ion-label>Specjalizacja*</ion-label>
       <ion-textarea  formControlName="specialisation" [(ngModel)]="model.specialisation"></ion-textarea>
     </ion-item>
+    <div align="center" class="error" *ngIf="(docs.get('specialisation').hasError('required')&&isNotValid)">
+        Podaj specjalizację lekarza
+      </div>
 
     <ion-item class="semi-trans">
       <ion-label>Adres</ion-label>

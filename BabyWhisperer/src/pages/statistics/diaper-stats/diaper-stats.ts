@@ -111,9 +111,7 @@ export class DiaperStatsPage {
 
   private getSumOfDiapers() {
     this.database.GetSumDiapers(this.global.activeChild).then((result: any[]) => {
-      this.diapers = result;
-      console.log(this.diapers);
-      
+      this.diapers = result;    
       this.getWeekSumDiaper(this.diapers);
       this.getMonthSumDiaper(this.diapers);
       this.getYearSumDiaper(this.diapers);
@@ -171,7 +169,7 @@ export class DiaperStatsPage {
         type: 'bar'
       },
       title: {
-        text: 'Dzienny wykres wypróżnień ostatnich 7 dni'
+        text: 'Dzienny wykres przewijania ostatnich 7 dni'
       },
       xAxis: {
         categories: this.weekDays
@@ -198,7 +196,7 @@ export class DiaperStatsPage {
         type: 'bar'
       },
       title: {
-        text: 'Dzienny wykres wypróżnień ostatniego miesiąca'
+        text: 'Dzienny wykres przewijania ostatniego miesiąca'
       },
       xAxis: {
         categories: this.monthDays
@@ -225,7 +223,7 @@ export class DiaperStatsPage {
         type: 'bar'
       },
       title: {
-        text: 'Miesięczny wykres wypróżnień obecnego roku'
+        text: 'Miesięczny wykres przewijania obecnego roku'
       },
       xAxis: {
         categories: this.yearDays

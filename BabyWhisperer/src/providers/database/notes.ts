@@ -91,7 +91,7 @@ export class NotesProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM notes WHERE category = ? AND childId = ? ORDER BY date ASC",[id, category])
+          db.executeSql("SELECT * FROM notes WHERE category = ? AND childId = ? ORDER BY date ASC",[category,id])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){

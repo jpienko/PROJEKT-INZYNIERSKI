@@ -28,7 +28,7 @@ export class NewNapPage {
               private database2:NapDaybookProvider, private global:GlobalsProvider) {
                 
       this.naps = this.formBuilder.group({
-      date:[''],
+      date:['', Validators.required],
       hourStart: ['', Validators.required],
       hourStop: ['', Validators.required],
       time:['']
@@ -56,6 +56,8 @@ export class NewNapPage {
           this.naps.controls.time.setValue(this.editNaps[0].time);
         });
       }
+    }else{
+      this.naps.controls.date.setValue(new Date());
     }
   }
 
