@@ -9,7 +9,6 @@ import { StatsPage }from '../pages/statistics/stats/stats'
 import { SchedulesPage }from '../pages/schedule/schedules/schedules'
 import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database'
-import { newDB } from '../providers/database/new-database';
 import { GrowingStepsPage } from '../pages/steps/growing-steps/growing-steps';
 import { NotesPage } from '../pages/notes/notes';
 import { ProfilePage } from '../pages/profile/profile';
@@ -28,11 +27,7 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private dB: DatabaseProvider,
               public menuCtrl: MenuController) {
     
-    platform.ready().then(() => {
-      if(newDB){
-        this.dB.dropDB();
-      }
-      
+    platform.ready().then(() => {      
       dB.createDatabase()
         .then(() => {
           splashScreen.hide();

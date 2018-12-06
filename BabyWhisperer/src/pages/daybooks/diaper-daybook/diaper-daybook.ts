@@ -56,7 +56,7 @@ export class DiaperDaybookPage {
     this.navCtrl.push('NewDiaperPage', data);
   }
 
-  public deleteNap(diaper:Diaper){
+  public deleteDiaper(diaper:Diaper){
     let alert = this.alert.create({
       title: 'Wymagane potwierdzenie',
       message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',

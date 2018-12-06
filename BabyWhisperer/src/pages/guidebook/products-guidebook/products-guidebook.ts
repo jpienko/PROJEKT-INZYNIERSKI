@@ -15,6 +15,7 @@ export class ProductsGuidebookPage {
   protected filtred: Array<Products> = [];
   protected showRules:boolean = false;
   protected showProducts:boolean = true;
+  protected first:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private file:File) {
   }
@@ -31,12 +32,16 @@ export class ProductsGuidebookPage {
     this.file.checkDir(this.file.applicationDirectory , "www/assets/mock").then(_=>{
       this.file.readAsText(this.file.applicationDirectory + "www/assets/mock", "products-timetable.json").then(text => {
         this.productsList = JSON.parse(text);
-        this.ProductsShowHide();
+        if(this.first){
+          this.filtred = this.productsList;
+          this.first = false;
+        }
       }).catch(err => {})
     });
   }
 
   ionViewDidLoad() {
+    this.first = true;
     this.getRules();
     this.getProducts();
   }

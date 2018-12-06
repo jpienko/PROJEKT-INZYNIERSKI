@@ -43,14 +43,11 @@ export class ProfilePage {
 
   private getChildDetails(){
     this.database.GetCurrentProfile(this.global.activeChild).then((result: any[]) => {
-        this.child = result;
-        
-        this.child.forEach(element => {
-          this.height = element.height;
-          this.weight = element.weight;
-          this.foot = element.foot;
-          this.id = element.id;
-        });
+      this.child = result;
+      this.height = this.child[0].height;
+      this.weight = this.child[0].weight;
+      this.foot = this.child[0].foot;
+      this.id = this.child[0].id;
       this.getClothesSizes();
       this.getDiapersSizes();
     }); 

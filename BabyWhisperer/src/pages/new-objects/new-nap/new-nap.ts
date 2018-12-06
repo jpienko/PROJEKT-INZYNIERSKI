@@ -47,7 +47,6 @@ export class NewNapPage {
       this.title = "Dodaj drzemkę do dziennika";
       if (this.isEdit) {
         this.title = "Edytuj drzemkę";
-        this.buttonName = "Edytuj drzemkę";
         this.database2.get(this.navParams.get('napId')).then((result: any[]) => {
           this.editNaps = result;
           this.naps.controls.hourStart.setValue(this.editNaps[0].hourStart);

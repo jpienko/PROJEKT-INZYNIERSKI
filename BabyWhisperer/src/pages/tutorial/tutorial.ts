@@ -25,12 +25,10 @@ export class TutorialPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.navParams.get('menu'));
-    
+   
     if(this.navParams.get('menu')){
       this.menu.enable(false);
-      console.log("yest");
-      
+          
     }
     this.getSteps();
     this.categories = Object.keys(TutorialCategories);

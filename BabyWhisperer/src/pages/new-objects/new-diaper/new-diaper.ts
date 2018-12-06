@@ -17,7 +17,7 @@ export class NewDiaperPage {
   public isEdit:boolean = false;
   private editDiaper: any[] = [];
   protected title:string = "Dodaj przewijanie";
-  protected buttonName:string = "Zapisz";
+  protected buttonName:string = "Zapisz przewijanie";
   protected maxDate = new Date().toISOString();
   protected isNotValid:boolean = false;
   

@@ -130,7 +130,7 @@ export class ChildProfileProvider {
     return new Promise((resolve,reject)=>{
        this.dbProvider.getDB()
         .then((db: SQLiteObject)=>{
-          db.executeSql("SELECT * FROM child WHERE childId = ? ORDER BY date",[id])
+          db.executeSql("SELECT * FROM child WHERE childId = ? ORDER BY date DESC",[id])
           .then((data)=>{
             let arrayChild = [];
             if (data.rows.length>0){
