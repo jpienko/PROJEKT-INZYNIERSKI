@@ -20,8 +20,8 @@ export class NewDoctorPage {
               private formBuilder: FormBuilder, private database: DoctorsListProvider) {
     this.docs = this.formBuilder.group({
       name: ['', Validators.required],
-      surname: [''],
-      specialisation: [''],
+      surname: ['', Validators.required],
+      specialisation: ['', Validators.required],
       adress: [''],
       tel: ['', Validators.pattern("[0-9]{9}")],
     });

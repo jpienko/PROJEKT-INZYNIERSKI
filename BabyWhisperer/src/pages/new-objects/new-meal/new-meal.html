@@ -17,9 +17,9 @@
         <ion-datetime displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" doneText="OK" cancelText="ANULUJ"></ion-datetime>
       </ion-item>
 
-      <div class="error" *ngIf="(meals.get('date') == undefined &&isDaybook)">
-        Wybierz datę
-      </div>
+      <div class="error" *ngIf="(meals.get('date').hasError('required')&&isNotValid)">
+          Wybierz datę
+        </div>
 
       <ion-item class='semi-trans'>
         <ion-label>Godzina*</ion-label>
@@ -31,7 +31,7 @@
       </div>
       
       <ion-item class='semi-trans'>
-        <ion-label>Rodzaj</ion-label>
+        <ion-label>Wybierz rodzaj</ion-label>
         <ion-select formControlName="type" okText="OK" cancelText="ANULUJ">
           <ion-option *ngFor="let c of types" [value]="c">
             {{c}}

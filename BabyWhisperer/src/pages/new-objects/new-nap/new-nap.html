@@ -15,7 +15,7 @@
       <ion-datetime  displayFormat="DD-MM-YYYY" min="2018" [max]='maxDate' formControlName="date" doneText="OK" cancelText="ANULUJ"></ion-datetime>
     </ion-item>
 
-    <div class="error" *ngIf="(naps.get('date') == undefined && !isSchedule)">
+    <div class="error" *ngIf="(naps.get('date').hasError('required')&&isNotValid)">
       Wybierz datę
     </div>
 

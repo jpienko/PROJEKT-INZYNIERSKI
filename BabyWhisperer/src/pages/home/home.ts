@@ -45,6 +45,10 @@ export class HomePage {
     this.menu.enable(false);  
   }
 
+  ionViewDidLeave(){
+    this.menu.enable(true);
+  }
+
   protected goToNewChildProfile(){
     let data = {
       editChild: false
@@ -53,7 +57,10 @@ export class HomePage {
   }
 
   protected goToTutorial(){
-    this.navCtrl.push(TutorialPage)
+    let data ={
+      menu: true
+    }
+    this.navCtrl.push(TutorialPage, data)
   }
 
   protected editChildProfile(id:number){
@@ -66,7 +73,6 @@ export class HomePage {
 
   protected goToChild(id:number){
     this.global.activeChild = id;
-    this.menu.enable(true);
     this.navCtrl.push(ProfilePage);
   }
   

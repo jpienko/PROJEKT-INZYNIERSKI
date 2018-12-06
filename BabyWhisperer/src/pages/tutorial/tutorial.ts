@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { File } from '@ionic-native/file';
 import { TutorialCategories } from '../../assets/enums/tutorial-categories.enum'
 
@@ -13,7 +13,7 @@ export class TutorialPage {
   protected stepsToShow =[];
   protected categories;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private file:File) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private file:File,public menu:MenuController,) {
   }
 
   private getSteps(){
@@ -23,8 +23,13 @@ export class TutorialPage {
       }).catch(err => {})
     });
   }
-  
+
   ionViewDidLoad() {
+   
+    if(this.navParams.get('menu')){
+      this.menu.enable(false);
+          
+    }
     this.getSteps();
     this.categories = Object.keys(TutorialCategories);
     this.categories = this.categories.slice(this.categories.length / 2);

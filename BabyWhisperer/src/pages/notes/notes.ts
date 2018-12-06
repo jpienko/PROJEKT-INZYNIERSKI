@@ -49,7 +49,7 @@ export class NotesPage {
     this.navCtrl.push('NewNotePage', data);
   }
 
-  protected deleteDoc(note:Note){
+  protected deleteNote(note:Note){
     let alert = this.alert.create({
       title: 'Wymagane potwierdzenie',
       message: 'Czy na pewno chcesz usunąć? Po zatwierdzeniu odzyskanie danych jest niemożliwe.',
@@ -82,10 +82,12 @@ export class NotesPage {
         this.database.getNotes(element.category, this.globals.activeChild).then((result:any[])=>{
           this.notes = result; 
           element.notes = this.notes
+          console.log(this.notes);
+          
         })
       }else{
         element.notes = [];
       }  
-    });  
+    });      
   }
 }

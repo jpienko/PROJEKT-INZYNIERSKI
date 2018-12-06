@@ -2,42 +2,42 @@
     "id":1,
     "name":"Zmysłowa rewolucja",
     "time":"ok 5 tygodnia",
-    "desc": "Rozwinięty zmysł wzroku, słuchu, smaku i zapachu. Maluch zaczyna reagować na bodźce zewnętrzne."
+    "desc": "Maluch ma już rozwinięty zmysł wzroku, słuchu, smaku i zapachu. Zaczyna także reagować na bodźce zewnętrzne."
   }, 
   {
     "id":2,
     "name":"Rozróżnianie bodźców",
     "time":"7-9 tydzień",
-    "desc": "Bodźce zaczynają się od siebie różnić. Dziecko zaczyna lepiej rozróżniać dźwięki, zapachy i smaki. Dziecko odkrywa rączki. Wie, że należą do niego i że przy odrobinie wysiłku może nimi kierować, co też zaczyna pilnie ćwiczyć."
+    "desc": "Bodźce napływające ze wszystkich stron zaczynają się od siebie różnić. Maluch zaczyna lepiej rozróżniać dźwięki, zapachy i smaki. Dziecko odkrywa do czego służą rączki oraz jest świadome, że należą do niego i że może nimi kierować, co też zaczyna ćwiczyć."
   }, 
   {
     "id":3,
     "name":"Rozwój ruchowy",
     "time":"11-12 tydzień",
-    "desc":"Dziecko bawi się rączkami. Chętnie potrząsa grzechotką. Przytrzymane za rączki najprawdopodobniej podejmie próbę siadania. "
+    "desc":"Dziecko zaczyna bawić się rączkami. Chętnie potrząsa grzechotką. Przytrzymane za rączki najprawdopodobniej podejmie próbę podniesienia się do pozycji siedzącej. "
   }, 
   {
     "id":4,
     "name":"Komunikatywność",
     "time":"4-5 miesiąc",
-    "desc": "Dziecko jest coraz bardziej komunikatywne. Zaczyna rozumieć proste komunikaty. Zaczyna głużyć, śmieje się w głos, odpowiada dźwiękiem, gdy do niego mówisz. Reaguje na swoje imię i odbicie w lustrze. Potrafi zupełnie celowo sięgnąć po zabawkę, potrząsnąć nią i na koniec, włożyć do „dzioba”. Wyciągnie ręce, gdy będzie chciało trafić w twoje ramiona. Jak nie będzie miało ochoty jeść, odepchnie pierś lub butelkę. Jest coraz sprawniejsze ruchowo i ciekawe świata. Lubi leżeć na brzuszku i być noszone tak, by móc obserwować otoczenie."
+    "desc": "Dziecko zaczyna być coraz bardziej komunikatywne. Rozumie proste komunikaty. Zaczyna głużyć, śmiać się, odpowiada dźwiękiem, gdy się do niego mówi. Może reagować na swoje imię i odbicie w lustrze, które staje się niezwykle interesujące. Potrafi celowo sięgnąć po zabawkę, potrząsnąć nią i na koniec, włożyć do buzi. Maluch wyciągnie ręce, gdy będzie chciał trafić w twoje ramiona. Jeżeli nie będzie miał ochoty jeść, da to do zrozumienia odpychając pierś lub butelkę. Jest coraz sprawniejszy ruchowo i ciekawe świata. Lubi leżeć na brzuszku oraz znajdować się w pozycji umożliwiającej obserwacje otoczenia."
   },
   {
     "id":5,
     "name":"Wiem że jestem",
     "time":"6-7 miesiąc",
-    "desc": "Maluch, który skończył pół roku, widzi świat bogaty w detale. Poświęca dużo uwagi obserwacji tasiemki przy bluzie, a metka na pluszaku na pewno będzie ciekawsza od samego pluszaka. Z zainteresowaniem śledzi wszystko, co nowe i inne. Jest w stanie oglądać z tobą obrazki w książeczce. Zdaje sobie sprawę, że sam potrafi do pewnego stopnia kształtować otoczenie, wpływać na nie. Gdy dasz mu możliwość zabawy włącznikiem światła, na pewno odda się jej bez reszty. Gaworzy, czyli świadomie i celowo naśladuje dźwięki."
+    "desc": "Maluch, który skończył pół roku, widzi świat bogaty w szczegóły. Poświęca niemal całą swoją uwagę na obserwację. Z zainteresowaniem śledzi wszystko, co nowe i inne. Jest w stanie oglądać obrazki w książeczce. Zdaje sobie sprawę, że sam potrafi do pewnego stopnia kształtować otoczenie, wpływać na nie na przykład przewracając wieżę z klocków. Możliwość zabawy włącznikiem światła da mu wiele frajdy. Gaworzy, czyli świadomie i celowo naśladuje dźwięki."
   },
   {
     "id":6,
     "name":"Kryzys ósmego miesiąca",
     "time":"8-9 miesiąc",
-    "desc": "Teraz już wie, że świat jest złożony, kolorowy, ciekawy, a wszystko, co się na niego składa można podzielić, wg określonych schematów. Miłe – niemiłe, smaczne - niesmaczne. Zauważy, że różne przedmioty wydają podobne dźwięki lub jednakowo pachną. Ma świadomość, że wywiera wpływ na otoczenie. Będzie próbował „żartować” sobie z nami, albo z własnym odbiciem w lustrze strojąc miny do niego. Pocieszy smutną lalę. Pobawi się w a kuku i kosi kosi, a na koniec zrobi papa. Okaże swoje niezadowolenie, gdy rodzic zainteresuje się innym dzieckiem. Będzie smutny, gdy mama odejdzie, a obcych będzie się bał. Powoli zacznie samo inicjować zabawę. Zje samodzielnie biszkopta."
+    "desc": "Teraz już wie, że świat jest złożony, kolorowy i ciekawy. Wie co lubi i co mu się podoba. Podświadomie rozumie pojęcia: miłe – niemiłe, smaczne - niesmaczne. Wie, że różne przedmioty wydają podobne dźwięki lub jednakowo pachną. Ma świadomość, że wywiera wpływ na otoczenie. Będzie próbował stroić miny do odbicia w lustrze lub otaczających go osób. Pocieszy smutnego misia. Pobawi się w a kuku, a na koniec zrobi papa. Okaże swoje niezadowolenie, gdy rodzic zainteresuje się innym dzieckiem. Będzie smutny, gdy mama odejdzie, może bać się też obcych. Powoli zacznie sam inicjować zabawę. Zje samodzielnie chrupka, biszkopta czy kawałek jabłka."
   },
   {
     "id":7,
     "name":"Jestem dorosły",
-    "time":"11-12 miesią",
-    "desc": "Im bliżej pierwszych urodzin, tym Twój maluch jest bardziej „dorosły”. Potrafi wciągnąć Cię do zabawy i podzielić się tym, co je. Chętnie poszuka zabawki, którą schowasz, a później schowa ją sam. Ustawi wieżę z klocków. Powkłada przedmioty w odpowiednie otwory. Gdy do ręki dostanie kredkę, lepiej żeby towarzyszyła jej kartka, bo zacięcie do malarstwa już ma. Możliwe, że lada moment uczyni pierwszy krok. Dużo mówi… po swojemu. Chętnie naśladuje zwierzątka, by rodzice mogli być dumni. Umiejętności, które dziecko w tym okresie już posiada, jest bardzo wiele. Maluch jest coraz bardziej samodzielny i coraz chętniej informuje otoczenie o tym, że ma swoje zdanie. Odkrywa znaczenie, słowa – nie. Dziwnym trafem jest to jedno z pierwszych słów którego maluch się uczy. Mówi też mama i tata."
+    "time":"11-12 miesiąc",
+    "desc": "Im bliżej pierwszych urodzin, tym maluch jest bardziej „dorosły”. Potrafi wciągnąć do zabawy i podzielić się tym, co je. Chętnie poszuka zabawki, która jest schowana, a później schowa ją sam. Ustawi wieżę z klocków, a następnie z satyswakcją narobi dużo hałasu burząc ją. Powkłada przedmioty w odpowiednie otwory. Możliwe, że lada moment uczyni pierwszy krok. Dużo mówi, ale po swojemu. Posiada szereg umiejętności i jest coraz bardziej samodzielny. Coraz chętniej informuje otoczenie o tym, że ma swoje zdanie, a manipulacja to jego drugie imię. Odkrywa znaczenie, słowa ,,nie'' i bardzo mu się ono nie spodoba. Mówi też mama i tata."
   }
 ]

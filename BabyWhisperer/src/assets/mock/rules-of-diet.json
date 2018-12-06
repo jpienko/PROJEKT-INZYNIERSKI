@@ -1,28 +1,28 @@
 [ {
     "id":1,
-    "content":"Nowe produkty wprowadzaj pojedynczo. Dzięki temu możesz obserwować, czy dziecko dobrze na nie reaguje."
+    "content":"Nowe produkty wprowadzane powinny być pojedynczo. Dzięki temu można obserwować, czy dziecko dobrze na nie reaguje, a w przypadku reakcji alergicznych łatwiej zidentyfikować winowajce."
 
   }, 
 
   {
     "id":2,
-    "content":"Nowości podawaj w ciągu dnia. Najlepiej przed południem, gdy dziecko jest wypoczęte. "
+    "content":"Nowości powinny być podawane w ciągu dnia - najlepiej przed południem, gdy dziecko jest wypoczęte. Pozwoli to uniknąć również nieprzespanych nocy."
   },
 
   {
     "id":3,
-    "content":"Nie używaj cukru ani soli. To przyprawy niezalecane w diecie niemowląt i małych dzieci.  "
+    "content":"Nie powinno używać się cukru ani soli. To przyprawy niezalecane w diecie niemowląt i małych dzieci. Przyprawy te mogą być stosowane dopiero po 10 miesiącu, choć nie są niezbędne w diecie."
   },
 
   {
     "id":4,
-    "content":"Zawsze podawaj świeże i dobrej jakości jedzenie. Przewód pokarmowy niemowlęcia jest niedojrzały, a przez to bardzo wrażliwy. "
+    "content":"Zawsze podawaj świeże i dobrej jakości jedzenie. Przewód pokarmowy niemowlęcia jest niedojrzały, a co z tego wynika bardzo wrażliwy. "
     
   },
 
   {
     "id":5,
-    "content":"Nie zmuszaj do jedzenia. Jeśli dziecko stanowczo odmawia jedzenia nowości, spokojnie zaczekaj, aż będzie na to gotowe. Niektóre potrawy trzeba maluchowi podać nawet kilkanaście razy, by je zaakceptował."
+    "content":"Nie zmuszaj dziecka do jedzenia. Jeśli maluch stanowczo odmawia jedzenia nowości, zaczekaj, aż będzie gotowe na przygodę z wybranym produktem. Niektóre potrawy trzeba podać do kilkanastu razy, by zostały zaakceptowane."
   }
 
 

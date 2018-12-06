@@ -39,6 +39,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { GlobalsProvider } from '../providers/globals/globals';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { AlertController } from 'ionic-angular';
+import { ProductsGuidebookPage } from '../pages/guidebook/products-guidebook/products-guidebook';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AlertController } from 'ionic-angular';
     GrowingStepsPage,
     NotesPage,
     ProfilePage,
-    TutorialPage
+    TutorialPage,
+    ProductsGuidebookPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { AlertController } from 'ionic-angular';
     GrowingStepsPage,
     NotesPage,
     ProfilePage,
-    TutorialPage
+    TutorialPage,
+    ProductsGuidebookPage
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pl' },
