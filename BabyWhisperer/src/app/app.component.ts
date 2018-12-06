@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DaybookPage }from '../pages/daybooks/daybook/daybook'
 import { DocsListPage }from '../pages/docs-list/docs-list'
-import { GuidebooksPage }from '../pages/guidebook/guidebooks/guidebooks'
 import { StatsPage }from '../pages/statistics/stats/stats'
 import { SchedulesPage }from '../pages/schedule/schedules/schedules'
 import { HomePage } from '../pages/home/home';
@@ -13,7 +12,7 @@ import { GrowingStepsPage } from '../pages/steps/growing-steps/growing-steps';
 import { NotesPage } from '../pages/notes/notes';
 import { ProfilePage } from '../pages/profile/profile';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { ProductsGuidebookPage } from '../pages/guidebook/products-guidebook/products-guidebook';
+import { ProductsGuidebookPage } from '../pages/products-guidebook/products-guidebook';
 
 
 

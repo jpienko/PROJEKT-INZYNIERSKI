@@ -11,241 +11,283 @@
     },
     {
         "category":"Dodaj/wybierz dziecko",
-        "img": "assets/imgs/tutorial/3.png",
+        "img": "assets/imgs/tutorial/2b.png",
+        "desc":"Ustaw datę tak, by porządana wartość była podświetlona na niebiesko i zatwierdź przyciskiem [OK]"
+    },
+    {
+        "category":"Dodaj/wybierz dziecko",
+        "img": "assets/imgs/tutorial/2c.png",
         "desc":"Po uzupełnieniu profilu naciśnij przycisk [ZAPISZ]"
     },
     {
         "category":"Dodaj/wybierz dziecko",
-        "img": "assets/imgs/tutorial/4.png",
-        "desc":"Teraz możesz dodać kolejne dziecko lub przejść do następnego kroku"
+        "img": "assets/imgs/tutorial/2a.png",
+        "desc":"Jeżeli pole oznaczone symbolem [*] nie zostanie uzupełnione zapisanie profilu nie będzie możliwe"
     },
     {
         "category":"Dodaj/wybierz dziecko",
-        "img": "assets/imgs/tutorial/5.png",
-        "desc":"Przesuń w lewo pasek z Uzupełnianie profilum dzicka, aby mieć dostęp do opcji. Możesz edytować profil, usunąć go, a także wybrać jako aktywny"
+        "img": "assets/imgs/tutorial/3.png",
+        "desc":"Teraz możesz dodać kolejne dziecko, edytować istniejące profile lub przejść do następnego kroku"
     },
     {
+        "category":"Dodaj/wybierz dziecko",
+        "img": "assets/imgs/tutorial/3a.png",
+        "desc":"Przesuń w lewo pasek z profilem dziecka, aby mieć dostęp do opcji. Możesz edytować profil (przycisk [EDYTUJ]), usunąć go (przycisk [USUŃ]), a także wybrać jako aktywny(przycisk [WYBIERZ])"
+    },  
+    {
+        "category":"Dodaj/wybierz dziecko",
+        "img": "assets/imgs/tutorial/2d.png",
+        "desc":"Edycja profilu przebiega analogicznie do jego dodania z tą różnicą, że aktualne dane są automatycznie wpisywane w formularz."
+    },
+    {
+        "category":"Dodaj/wybierz dziecko",
+        "img": "assets/imgs/tutorial/3a.png",
+        "desc":"Aby usunąć profil wraz z powiązanymi danymi należy potwierdzić operację, wybierając przycisk [USUŃ]"
+    },  
+    {
+        "category":"Dodaj/wybierz dziecko",
+        "img": "assets/imgs/tutorial/3b.png",
+        "desc":"Teraz zatwierdź wybierając przycisk [USUŃ] na komunikacie, a profil zostanie usunięty"
+    },  
+    {
         "category":"Uzupełnianie profilu",
-        "img": "assets/imgs/tutorial/6.png",
+        "img": "assets/imgs/tutorial/4.png",
         "desc":"Jeżeli nacisnąłeś [WYBIERZ] nastąpiło przekierowanie do profilu dziecka. Teraz możesz uzupełnić/zaktualizować informacje na temat jego metryki naciskając przycisk [EDYTUJ]"
     },
     {
         "category":"Uzupełnianie profilu",
-        "img": "assets/imgs/tutorial/7.png",
-        "desc":"Uzupełnij wagę, wzrost i rozmiar stopy, następnie zatwierdź przyciskiem [ZAPISZ]"
+        "img": "assets/imgs/tutorial/5.png",
+        "desc":"Uzupełnij wagę, wzrost i rozmiar stopy, następnie zatwierdź przyciskiem [ZAPISZ]. Jeżeli pola zostaną puste ich wartość zostanie zapamiętana jako 0. "
     },
     {
         "category":"Uzupełnianie profilu",
-        "img": "assets/imgs/tutorial/8.png",
-        "desc":"Teraz wprowadzone dane są widoczne w profilu. Automatycznie obliczany jest wiek, dni do urodzin, rozmiar ubranek i pieluch"
+        "img": "assets/imgs/tutorial/4a.png",
+        "desc":"Teraz wprowadzone dane są widoczne w profilu. Automatycznie obliczany jest wiek, dni do urodzin, rozmiar ubranek i pieluch. Wzrost, wagę oraz rozmiar stopy można zmienić w każdej chwili powtarzając poprzedni krok."
     },
     {
         "category":"Poruszanie po aplikacji",
-        "img": "assets/imgs/tutorial/9.png",
+        "img": "assets/imgs/tutorial/6.png",
         "desc":"Po naciśnięciu ikony w lewym górnym rogu lub przesunięciu palcem w prawo zaczynając od lewej krawędzi pojawi się menu."
     },
     {
         "category":"Obsługa dzienników",
-        "img": "assets/imgs/tutorial/10.png",
-        "desc":"Po wybraniu opcji [Obsługa dzienników] pojawi się opcja wyboru 3 rodzajów dzienników. Wszystkie wyświetlają dane wprowadzone w ciągu ostatnich 7 dni."
+        "img": "assets/imgs/tutorial/7.png",
+        "desc":"Po wybraniu opcji [Dzienniki] pojawi się opcja wyboru 3 rodzajów dzienników. Wszystkie wyświetlają dane wprowadzone w ciągu ostatnich 7 dni."
     },
     {
         "category":"Obsługa dzienników",
-        "img": "assets/imgs/tutorial/11.png",
+        "img": "assets/imgs/tutorial/8.png",
         "desc":"Dziennik posiłków pozwoli na kontrolowanie właściwej ilości posiłków oraz w przypadku reakcji nieporządanych ustalić np. produkt który uczula dziecko."
     },
     {
         "category":"Obsługa dzienników",
-        "img": "assets/imgs/tutorial/12.png",
-        "desc":"Po naciśnięciu przycisku [DODAJ] następuje przekierowanie. Należy uzupełnić wymagane pola (oznaczone *), a następnie zatwierdzić przyciskiem [ZAPISZ]"
+        "img": "assets/imgs/tutorial/8.png",
+        "desc":"Każdą pozycję można edytować oraz usunąć, postępując analogicznie jak w przypadku profilu dziecka"
     },
     {
         "category":"Obsługa dzienników",
-        "img": "assets/imgs/tutorial/13.png",
+        "img": "assets/imgs/tutorial/9e.png",
+        "desc":"Po naciśnięciu przycisku [DODAJ] następuje przekierowanie. Należy uzupełnić wymagane pola (oznaczone *), a następnie zatwierdzić przyciskiem [ZAPISZ POSIŁEK]. Formularz zachowuje się analogicznie do tego przy tworzeniu profilu"
+    },
+    {
+        "category":"Obsługa dzienników",
+        "img": "assets/imgs/tutorial/10.png",
         "desc":"Dziennik drzemek pozwala na późniejsze uzyskanie statystyk dotyczących ilości snu dziecka."
     },
     {
-        "img": "assets/imgs/tutorial/14.png",
+        "img": "assets/imgs/tutorial/11d.png",
         "desc":"Dodanie drzemki przebiega analogicznie do dodania posiłku."
     },
     {
         "category":"Obsługa dzienników",
-        "img": "assets/imgs/tutorial/15.png",
+        "img": "assets/imgs/tutorial/12.png",
         "desc":"Dziennik przewijania pozwoli oszacować ilość pieluch zużywanych dziennie dzięki czemu możesz oszacować na ile starczy zapas. A także kontrolować regularność wypróżnień"
     },
     {
         "category":"Obsługa dzienników",
-        "img": "assets/imgs/tutorial/16.png",
+        "img": "assets/imgs/tutorial/13d.png",
         "desc":"Dodanie przebiega tak jak w pozostalych dziennikach."
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/17.png",
+        "img": "assets/imgs/tutorial/14.png",
         "desc":"Wybierając opcję [Harmonogramy] pojawi się opcja wybor 3 rodzajów harmonogamów"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/18.png",
-        "desc":"Opcja [Harmonogram posiłków] umożliwi ustalenie pór posiłków oraz ich preferowaną postać. Aby stworzyć harmonogram naciśnij przycisk [EDYTUJ], a następnie [DODAJ]"
+        "img": "assets/imgs/tutorial/15.png",
+        "desc":"Opcja [Harmonogram posiłków] umożliwi ustalenie pór posiłków oraz ich preferowaną postać. Aby stworzyć/edytować harmonogram naciśnij przycisk [EDYTUJ]"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/19.png",
-        "desc":"Wybierz godzinę posiłku, rodzaj oraz uzupełnij opis(może to być ilość oraz rodzaj produktu), następnie zatwierdź przyciskiem [DODAJ]"
+        "img": "assets/imgs/tutorial/15a.png",
+        "desc":"Teraz wybierz przycisk [DODAJ], jeżeli chcesz dodać pozycję"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/20.png",
-        "desc":"Po zakończeniu edycji naciśnij przycisk [ZAKOŃCZ]. Możesz ponownie edytować harmonogram w każdej chwili, posiłek możesz usunąć z harmonogramu podczas edycji przesuwając pasek z posiłkiem w lewo i wybierając [USUŃ]"
+        "img": "assets/imgs/tutorial/16.png",
+        "desc":"Wybierz godzinę posiłku, rodzaj oraz uzupełnij opis (może to być ilość oraz rodzaj produktu), następnie zatwierdź przyciskiem [ZAPISZ POSIŁEK]"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/21.png",
+        "img": "assets/imgs/tutorial/15a.png",
+        "desc":"Po zakończeniu edycji naciśnij przycisk [ZAKOŃCZ]. "
+    },
+    {
+        "category":"Obsługa harmonogramów",
+        "img": "assets/imgs/tutorial/15b.png",
+        "desc":"Możesz ponownie edytować harmonogram w każdej chwili, posiłek możesz usunąć z harmonogramu podczas edycji przesuwając pasek z posiłkiem w lewo i wybierając [USUŃ] "
+    },
+    
+    {
+        "category":"Obsługa harmonogramów",
+        "img": "assets/imgs/tutorial/17.png",
         "desc":"Harmonogram wizyt lekarskich pozwoli na dodanie do kalendarza zaplanowanych wizyt/szczepień, Aby dodać wizytę naciśnij symbol + w prawym górnym rogu."
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/22.png",
+        "img": "assets/imgs/tutorial/18b.png",
         "desc":"Wprowadź cel wizyty, datę oraz czas, możesz dodać miejsce wizyty, następnie zatwierdź przyciskiem [DODAJ WIZYTĘ]"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/23.png",
+        "img": "assets/imgs/tutorial/17a.png",
         "desc":"Po dodaniu wizyty dzień na który została zaplanowana będzie zaznaczony na niebiesko, dzisiejsza data na granatowo a wybrana data na czerwono"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/24.png",
+        "img": "assets/imgs/tutorial/17b.png",
         "desc":"Po naciśnięciu daty, gdzie zaplanowana jest wizyta, jej szczegóły wyświetlą się pod kalendarzem"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/25.png",
+        "img": "assets/imgs/tutorial/17c.png",
+        "desc":"Wizytę można edytować oraz usunąć"
+    },
+    {
+        "category":"Obsługa harmonogramów",
+        "img": "assets/imgs/tutorial/19a.png",
         "desc":"Harmonogram drzemek pozwoli ustalić w jakich godzinach dziecko powinno iśc na drzemkę i ile mniej więcej powinna ona trwać"
     },
     {
         "category":"Obsługa harmonogramów",
-        "img": "assets/imgs/tutorial/26.png",
+        "img": "assets/imgs/tutorial/20c.png",
         "desc":"Edycja następuje w sposób analogiczny do harmonogramu posiłków, nowa drzemka powinna zawierać sugerowany początek drzemki, sugerowany koniec drzemki oraz oczekiwany czas jej trwania."
     },
     {
         "category":"Obsługa listy lekarzy",
-        "img": "assets/imgs/tutorial/27.png",
-        "desc":"Lista zaufanych lekarzy pozwoli przechować w jednych miejscu wszystkich specjalistów, do których ma się zaufanie. Przesunięcie listwy z Uzupełnianie profilum wybranego lekarza w lewo ukaże opcje wykonania połączenia, edycji oraz usunięcia z listy"
+        "img": "assets/imgs/tutorial/21.png",
+        "desc":"Lista zaufanych lekarzy pozwoli przechować w jednych miejscu wszystkich specjalistów, do których ma się zaufanie. "
     },
     {
         "category":"Obsługa listy lekarzy",
-        "img": "assets/imgs/tutorial/28.png",
-        "desc":"Dodanie lekarza do listy następuje analogicznie jak w przypadku pozostałych danych."
+        "img": "assets/imgs/tutorial/22b.png",
+        "desc":"Dodanie lekarza do listy następuje analogicznie jak w przypadku pozostałych danych poprzez wypełnienie formularza oraz zatwierdzenie przyciskiem [ZAPISZ]."
+    },
+    {
+        "category":"Obsługa listy lekarzy",
+        "img": "assets/imgs/tutorial/21a.png",
+        "desc":" Przesunięcie listwy z profilem wybranego lekarza w lewo ukaże opcje wykonania połączenia, edycji oraz usunięcia z listy"
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/29.png",
+        "img": "assets/imgs/tutorial/23.png",
         "desc":"Po wyborze opcji [Statystyki] z menu nastąpi przekierowanie i ukażą się 3 warianty statystyk"
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/30.png",
+        "img": "assets/imgs/tutorial/24.png",
         "desc":"Statystyki drzemek są obliczane na podstawie dzienników drzemek. Wykresy dostępne są w 3 wariantach: 7 ostatnich dni ..."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/31.png",
+        "img": "assets/imgs/tutorial/24a.png",
         "desc":"... Obecny miesiąc ..."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/32.png",
+        "img": "assets/imgs/tutorial/24b.png",
         "desc":"... Obecny rok. Pod wykresami znajduje się podsumowanie w postaci średniej ogólnej wybranego okresu."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/33.png",
+        "img": "assets/imgs/tutorial/24c.png",
         "desc":"Pod wykresem znajduje się legenda, możesz wyłączyć wyświetlanie jednego z parametrów naciskając na niego oraz przywrócić ponownie powtarzając tę czynność"
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/34.png",
+        "img": "assets/imgs/tutorial/25.png",
         "desc":"Statystyki przewijania pomogą oszacować liczbę pieluch zużywanych dziennie oraz monitorować regularność wypróżnień malucha. Analogicznie do drzemek występuje podział wykresu na: wykres ostatnich 7 dni..."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/35.png",
+        "img": "assets/imgs/tutorial/25a.png",
         "desc":"... wykres danego miesiąca..."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/36.png",
+        "img": "assets/imgs/tutorial/25c.png",
         "desc":" Ponownie występuje możliwość wyłączenia dowolnego parametru poprzez naciśnięcie go legendy. Pod wykresem również znajduje się ogólne podsumwanie w postaci średniej"
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/37.png",
+        "img": "assets/imgs/tutorial/25b.png",
         "desc":".. wykres roczny."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/38.png",
+        "img": "assets/imgs/tutorial/26.png",
         "desc":"Statystyki wzrostu pozwolą na monitorowanie wzrostu dziecka. Dodatkowo pod wykresem znajduje się informacja o tym, czy dziecko mieści się w siatkach centylowych wagi i wzrostu."
     },
     {
         "category":"Obsługa statystyk",
-        "img": "assets/imgs/tutorial/39.png",
+        "img": "assets/imgs/tutorial/26a.png",
         "desc":"Regularne (raz na 2-3 tygodnie) aktualizowanie danych matrycznch pozwoli na obserwowanie wzrostu na wykresie. W przypadku, gdy dziecko nie mieści się w centylach pod wykresem znajdzie się informacja o tym fakcie wraz z komentarzem"
     },
+   
     {
         "category":"Obsługa poradnika",
-        "img": "assets/imgs/tutorial/40.png",
-        "desc":"Po wybraniu z MENU opcji [Poradniki] ukaże się opcja skorzystania z 2 poradników"
+        "img": "assets/imgs/tutorial/27.png",
+        "desc":"Po wyborze z menu opcji [Poradnik żywieniowy] wyświetli się lista najważniejszych podstawowych produktów wraz z informacją na jakim etapie bezpieczne jest wprowadzenie produktu do diety"
     },
     {
         "category":"Obsługa poradnika",
-        "img": "assets/imgs/tutorial/41.png",
-        "desc":"Poradnik żywieniowy zawiera dwie opcje"
-    },
-    {
-        "category":"Obsługa poradnika",
-        "img": "assets/imgs/tutorial/42.png",
-        "desc":"Zasady żywieniowe, czyli w jaki sposób najlepiej zadbać o dietę maluszka"
-    },
-    {
-        "category":"Obsługa poradnika",
-        "img": "assets/imgs/tutorial/43.png",
-        "desc":"Lista produktów to lista najważniejszych podstawowych produktów wraz z informacją na jakim etapie bezpieczne jest wprowadzenie produktu do diety"
-    },
-    {
-        "category":"Obsługa poradnika",
-        "img": "assets/imgs/tutorial/44.png",
+        "img": "assets/imgs/tutorial/27a.png",
         "desc":"Produkt można wyszukać wpisując jego nazwę w polu oznaczonym [Znajdź produkt]"
     },
     {
         "category":"Obsługa poradnika",
-        "img": "assets/imgs/tutorial/45.png",
-        "desc":"Drugim poradnikiem jest lista skoków rozwojowych dziecka. Każdy skok rozwojowy zawiera informacje o czasie w jakim powienien nastąpić oraz krótki opis zmian w zachowaniu dziecka"
+        "img": "assets/imgs/tutorial/28.png",
+        "desc":"Zasady żywieniowe, czyli w jaki sposób najlepiej zadbać o dietę maluszka"
     },
     {
         "category":"Obsługa notatek",
-        "img": "assets/imgs/tutorial/46.png",
+        "img": "assets/imgs/tutorial/29.png",
         "desc":"W Menu znajduje się opcja [Notatki] to tam możesz przechowywać dodatkowe informacje o dziecku, dzięki czemu. W celu uporządkowania notatki zostały skategoryzowane. Aby dodać notatkę naciśnij przycisk [Dodaj notatkę] "
     },
     {
         "category":"Obsługa notatek",
-        "img": "assets/imgs/tutorial/47.png",
+        "img": "assets/imgs/tutorial/30c.png",
         "desc":"Notatka powinna zawierać tytuł oraz kategorię. Możliwe jest również uszczegółowienie notatki. Po uzupełnieniu naciśnij przycisk [ZAPISZ]"
     },
     {
         "category":"Obsługa notatek",
-        "img": "assets/imgs/tutorial/48.png",
+        "img": "assets/imgs/tutorial/29a.png",
         "desc":"Aby wyświetlić notatki nalezy wybrać kategorię. Po naciśnięciu nagłówka z nazwą kategorii pojawi się lista notatek z nią związanych"
     },
     {
+        "category":"Obsługa notatek",
+        "img": "assets/imgs/tutorial/29b.png",
+        "desc":"Notatki można edytować oraz usuwać"
+    },
+    {
         "category":"Obsługa etapów rozwojowych",
-        "img": "assets/imgs/tutorial/49.png",
+        "img": "assets/imgs/tutorial/31.png",
         "desc":"Dodatkową opcją aplikacji jest możliwość śledzenia etapów rozwojowych. Po wybraniu z Menu opcji [Etapy rozwojowe] nastąpi przekierowanie do listy etapów rozwojowych jakie dziecko powinno zaliczyć od pierwszego dnia życia do ukończenia roczku. Jeżeli uważasz, że dziecko osiągnęło którykolwiek z etapów naciśnij na przycisk po prawej stronie opisu. Możesz zobaczyć zaliczone kroki po naciśnięciu przycisku [ZALICZONE KROKI]"
     },
     {
         "category":"Obsługa etapów rozwojowych",
-        "img": "assets/imgs/tutorial/50.png",
+        "img": "assets/imgs/tutorial/32.png",
         "desc":"Lista zaliczonych kroków zawiera listę kroków, które uznałeś/-aś za osiągnięte wraz z datą ich zaliczenia, w przypadku pomyłki wystaczy, że naciśniesz przycisk po prwej stronie opisu, aby etap powrócił na listę niezaliczonych"
     }
 ]

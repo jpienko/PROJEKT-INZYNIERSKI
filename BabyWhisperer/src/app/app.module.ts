@@ -26,7 +26,6 @@ import { DaybookPage } from '../pages/daybooks/daybook/daybook';
 import { DocsListPage } from '../pages/docs-list/docs-list';
 import { SchedulesPage } from '../pages/schedule/schedules/schedules';
 import { StatsPage } from '../pages/statistics/stats/stats';
-import { GuidebooksPage } from '../pages/guidebook/guidebooks/guidebooks';
 import { ChildProfileProvider } from '../providers/database/child-profile';
 import { Camera } from '@ionic-native/camera';
 import { CallNumber } from '@ionic-native/call-number';
@@ -39,7 +38,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { GlobalsProvider } from '../providers/globals/globals';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { AlertController } from 'ionic-angular';
-import { ProductsGuidebookPage } from '../pages/guidebook/products-guidebook/products-guidebook';
+import { ProductsGuidebookPage } from '../pages/products-guidebook/products-guidebook';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import { ProductsGuidebookPage } from '../pages/guidebook/products-guidebook/pro
     SchedulesPage,
     DocsListPage,
     StatsPage,
-    GuidebooksPage,
     GrowingStepsPage,
     NotesPage,
     ProfilePage,
@@ -76,7 +74,6 @@ import { ProductsGuidebookPage } from '../pages/guidebook/products-guidebook/pro
     DocsListPage,
     SchedulesPage,
     StatsPage,
-    GuidebooksPage,
     GrowingStepsPage,
     NotesPage,
     ProfilePage,
