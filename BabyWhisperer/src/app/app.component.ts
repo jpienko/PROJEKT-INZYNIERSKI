@@ -13,6 +13,8 @@ import { GrowingStepsPage } from '../pages/steps/growing-steps/growing-steps';
 import { NotesPage } from '../pages/notes/notes';
 import { ProfilePage } from '../pages/profile/profile';
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { ProductsGuidebookPage } from '../pages/guidebook/products-guidebook/products-guidebook';
+
 
 
 @Component({
@@ -45,7 +47,7 @@ export class MyApp {
         {title: "Harmonogramy", component:SchedulesPage },
         {title: "Lista zaufanych lekarzy", component:DocsListPage},
         {title: "Statystyki", component: StatsPage},
-        {title: "Poradniki", component: GuidebooksPage},
+        {title: "Poradnik żywieniowy", component: ProductsGuidebookPage},
         {title: "Notatki", component: NotesPage},
         {title: "Etapy rozwojowe", component: GrowingStepsPage},
         {title: "Pomoc", component: TutorialPage}
